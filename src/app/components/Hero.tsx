@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <YStack height="100vh" width="100vw" justify="space-between" position="relative">
       <img
-        src="/hero.png"
+        src="/hero-2.png"
         alt="Hero Banner"
         style={{
           position: 'absolute',
@@ -18,8 +18,11 @@ export const Hero = () => {
         }}
       />
 
-      <video autoPlay muted loop playsInline aria-label="Hero Video by Ron Lach : https://www.pexels.com/video/back-view-of-a-boy-looking-a-screen-9783697/" style={{ width: '100%', height: '100vh', objectFit: 'cover', position: 'absolute' }}>
+      {/* <video autoPlay muted loop playsInline aria-label="Hero Video by Ron Lach : https://www.pexels.com/video/back-view-of-a-boy-looking-a-screen-9783697/" style={{ width: '100%', height: '100vh', objectFit: 'cover', position: 'absolute' }}>
         <source src="/hero.mp4" type="video/mp4" />
+      </video> */}
+      <video autoPlay muted loop playsInline aria-label="Hero Video by Ron Lach : https://www.pexels.com/video/back-view-of-a-boy-looking-a-screen-9783697/" style={{ width: '100%', height: '100vh', objectFit: 'cover', position: 'absolute' }}>
+        <source src="/hero-2.mp4" type="video/mp4" />
       </video>
 
       <YStack>
