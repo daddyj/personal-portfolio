@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const Projects = () => {
   return (
     <YStack width="100vw" height="100vh" borderWidth={2}>
-      <YStack p={24} px={160} gap={120}>
+      <YStack p={80} px={160} gap={120}>
         <H1 fontWeight="bold">Meine aktiven Projekte</H1>
         {/* Projekt: Myla */}
         <XStack gap={40}>

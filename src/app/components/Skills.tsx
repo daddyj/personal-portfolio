@@ -2,8 +2,8 @@ import { H2, Paragraph, XStack, YStack } from "tamagui"
 
 export const Skills = () => {
   return (
-    <YStack width="100vw" height="100vh" borderWidth={2}>
-      <YStack p={40} px={120} pr={80} gap={80} >
+    <YStack width="100vw" height="100vh" background="#000000">
+      <YStack p={80} px={120} pr={80} gap={80} >
         <XStack gap={2}>
           <XStack flexBasis="30%">
             <H2 fontWeight="bold">Technologien</H2>
