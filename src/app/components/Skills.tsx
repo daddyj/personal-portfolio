@@ -24,6 +24,8 @@ export const Skills = () => {
               <Paragraph text="right">Tailwind CSS</Paragraph>
               <Paragraph text="right">NextJS</Paragraph>
               <Paragraph text="right">Firebase</Paragraph>
+              <Paragraph text="right">Git</Paragraph>
+              <Paragraph text="right">Github/ GitLab</Paragraph>
               <Paragraph text="right">Google Cloud</Paragraph>
               <Paragraph text="right">Google Meet</Paragraph>
               <Paragraph text="right">Miro / Trello / Atlassian Tools</Paragraph>
