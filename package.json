@@ -9,17 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tamagui/config": "^1.125.6",
+    "@tamagui/core": "^1.125.6",
+    "@tamagui/next-plugin": "^1.125.6",
+    "@tamagui/next-theme": "^1.125.6",
+    "@tamagui/polyfill-dev": "^1.125.6",
+    "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.7"
+    "react-native": "^0.77.1",
+    "tamagui": "^1.125.6"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
-    "@eslint/eslintrc": "^3"
+    "typescript": "^5"
   }
 }
