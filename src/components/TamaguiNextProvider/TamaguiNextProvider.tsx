@@ -11,7 +11,6 @@ import { useServerInsertedHTML } from 'next/navigation'
 
 export const NextTamaguiProvider = ({ children }: { children: ReactNode }) => {
   useServerInsertedHTML(() => {
-    // @ts-ignore
     return (
       <>
         <style

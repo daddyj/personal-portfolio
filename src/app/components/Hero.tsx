@@ -1,4 +1,5 @@
-import { H1, H2, XStack, YStack, Text, H3 } from "tamagui"
+/* eslint-disable @next/next/no-img-element */
+import { H1, H2, H3, XStack, YStack } from "tamagui"
 
 export const Hero = () => {
   return (
