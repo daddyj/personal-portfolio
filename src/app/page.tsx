@@ -7,11 +7,12 @@ import { Contact } from "./components/Contact";
 import { Hero } from "./components/Hero";
 import { Skills } from "./components/Skills";
 import { Testimonials } from "./components/Testimonials";
+import { montserrat } from "../../tamagui.config";
 
 export default function Home() {
   return (
     <NextTamaguiProvider>
-      <YStack background="tomato">
+      <YStack background="tomato" style={montserrat.style}>
         <Hero />
         <About />
         <Skills />

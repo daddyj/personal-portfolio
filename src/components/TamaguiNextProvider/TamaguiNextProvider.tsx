@@ -9,6 +9,7 @@ import { TamaguiProvider } from 'tamagui'
 import tamaguiConfig from '../../../tamagui.config'
 import { useServerInsertedHTML } from 'next/navigation'
 
+
 export const NextTamaguiProvider = ({ children }: { children: ReactNode }) => {
   useServerInsertedHTML(() => {
     return (
