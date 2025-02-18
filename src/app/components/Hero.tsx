@@ -1,8 +1,8 @@
-import { H1, H2, XStack, YStack } from "tamagui"
+import { H1, H2, XStack, YStack, Text, H3 } from "tamagui"
 
 export const Hero = () => {
   return (
-    <YStack height="100vh" width="100vw" justify="flex-end" >
+    <YStack height="100vh" width="100vw" justify="space-between" position="relative">
       <img
         src="/hero.png"
         alt="Hero Banner"
@@ -21,10 +21,16 @@ export const Hero = () => {
         <source src="/hero.mp4" type="video/mp4" />
       </video>
 
-      <YStack width="62vw" height={200} background="tomato" p={32} gap={8} self="flex-end">
-        <H1>Unterstützung gefällig?</H1>
+      <YStack>
         <XStack>
-          <H2 hoverStyle={{ fontSize: 64, cursor: 'pointer', borderBottomColor: "#000000" }} animation="bouncy" borderBottomWidth={2}>Hier lang!</H2>
+          <H1 background="tomato" px={40} py={16}>Acun Gürsoy</H1>
+        </XStack>
+      </YStack>
+
+      <YStack height={200} background="tomato" p={32} gap={16} self="flex-end">
+        <H2>Softwareentwicklung Web / Native</H2>
+        <XStack justify="center">
+          <H3 hoverStyle={{ scale: 2, cursor: 'pointer', borderWidth: 2, transform: 'rotate(2deg)', p: 16 }} animation="bouncy" borderBottomWidth={2}>Hier lang</H3>
         </XStack>
       </YStack>
     </YStack >
