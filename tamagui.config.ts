@@ -1,7 +1,7 @@
 import { defaultConfig } from '@tamagui/config/v4'
 import { createTamagui } from 'tamagui' // or '@tamagui/core'
 
-export const appConfig = createTamagui(defaultConfig)
+const appConfig = createTamagui(defaultConfig)
 
 export type AppConfig = typeof appConfig
 
