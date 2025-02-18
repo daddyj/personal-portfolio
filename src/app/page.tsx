@@ -8,6 +8,7 @@ import { Hero } from "./components/Hero";
 import { Skills } from "./components/Skills";
 import { Testimonials } from "./components/Testimonials";
 import { montserrat } from "../../tamagui.config";
+import { Projects } from "./components/Projects";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <YStack background="tomato" style={montserrat.style}>
         <Hero />
         <About />
+        <Projects />
         <Skills />
         <Testimonials />
         <Contact />

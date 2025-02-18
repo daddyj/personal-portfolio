@@ -34,7 +34,9 @@ export const Hero = () => {
       <YStack height={200} background="tomato" p={32} gap={16} self="flex-end">
         <H2 fontWeight="bold">Softwareentwicklung Web / Native</H2>
         <XStack justify="center">
-          <H3 hoverStyle={{ scale: 2, cursor: 'pointer', borderWidth: 2, transform: 'rotate(2deg)', p: 16 }} animation="bouncy" borderBottomWidth={2}>Hier lang</H3>
+          <XStack hoverStyle={{ scale: 2, cursor: 'pointer', borderWidth: 2, transform: 'rotate(2deg)', p: 16 }} animation="bouncy" borderBottomWidth={2}>
+            <H3>Hier lang</H3>
+          </XStack>
         </XStack>
       </YStack>
     </YStack >
