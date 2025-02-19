@@ -1,6 +1,6 @@
 export const Skills = () => {
   return (
-    <div className="w-screen h-screen bg-black">
+    <div className="w-screen bg-black">
       <div className="flex flex-col p-[80px]">
         <div className="grid grid-cols-[400px_1fr_400px] grid-rows-[auto_auto_auto] gap-12">
           <h2 className="text-5xl font-bold">Technologien</h2>
