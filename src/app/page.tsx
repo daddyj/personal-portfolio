@@ -16,7 +16,8 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+      <Projects />
       <div className="w-screen h-screen"></div>
-    </div>
+    </div >
   );
 }
