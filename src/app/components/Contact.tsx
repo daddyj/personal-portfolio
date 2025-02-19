@@ -1,11 +1,9 @@
-import { H1, YStack } from "tamagui"
-
 export const Contact = () => {
   return (
-    <YStack width="100vw" height="100vh">
-      <YStack p={80} px={120} height="100vh" gap={120}>
-        <H1 fontWeight="bold">Kontakt</H1>
-      </YStack>
-    </YStack>
+    <div className="w-screen h-screen">
+      <div className="flex flex-col w-screen h-screen p-20 px-40">
+        <h1 className="text-6xl">Kontakt</h1>
+      </div>
+    </div>
   )
 }

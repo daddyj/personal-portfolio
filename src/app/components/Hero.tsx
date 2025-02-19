@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { H1, H2, H3, XStack, YStack } from "tamagui"
-
 export const Hero = () => {
   return (
     <div className="h-screen w-screen bg-red-200 relative">
@@ -16,7 +14,7 @@ export const Hero = () => {
 
       <div className="flex flex-col items-center gap-8 absolute bottom-0 right-0 p-12 bg-[tomato] max-w-[70vw]">
         <h2 className="text-5xl">Software Entwicklung Web / Mobile</h2>
-        <a href="#" className="text-4xl border-b-2 transition-all duration-120 hover:text-6xl hover:rotate-[-2deg] hover:border-2 hover:p-4">Hier lang</a>
+        <a href="#" className="text-4xl border-b-2 transition-all duration-120 hover:text-6xl hover:rotate-[-2deg] hover:border-2 hover:p-4 animate-pulse hover:animate-none">Hier lang</a>
       </div>
     </div >
   )
