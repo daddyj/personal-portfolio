@@ -3,42 +3,21 @@ import { H1, H2, H3, XStack, YStack } from "tamagui"
 
 export const Hero = () => {
   return (
-    <YStack height="100vh" width="100vw" justify="space-between" position="relative">
-      <img
-        src="/hero-2.png"
-        alt="Hero Banner"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          transition: 'opacity 0.5s',
-        }}
-      />
+    <div className="h-screen w-screen bg-red-200 relative">
+      <img src="/hero-2.png" alt="Hero Intro Banner" className="absolute top-0 left-0 w-full h-full transition-opacity duration-500" style={{ objectFit: 'cover' }} />
 
-      {/* <video autoPlay muted loop playsInline aria-label="Hero Video by Ron Lach : https://www.pexels.com/video/back-view-of-a-boy-looking-a-screen-9783697/" style={{ width: '100%', height: '100vh', objectFit: 'cover', position: 'absolute' }}>
-        <source src="/hero.mp4" type="video/mp4" />
-      </video> */}
-      <video autoPlay muted loop playsInline aria-label="Hero Video by Ron Lach : https://www.pexels.com/video/back-view-of-a-boy-looking-a-screen-9783697/" style={{ width: '100%', height: '100vh', objectFit: 'cover', position: 'absolute' }}>
+      <video autoPlay muted loop playsInline aria-label="Hero Video by Ron Lach : https://www.pexels.com/video/back-view-of-a-boy-looking-a-screen-9783697/" className="w-full h-screen absolute" style={{ objectFit: 'cover' }}>
         <source src="/hero-2.mp4" type="video/mp4" />
       </video>
 
-      <YStack>
-        <XStack>
-          <H1 background="tomato" px={40} py={16}>Acun Gürsoy</H1>
-        </XStack>
-      </YStack>
+      <div className="flex flex-col absolute p-12 bg-[tomato] max-w-[40vw]">
+        <h1 className="text-6xl">Acun Gürsoy</h1>
+      </div>
 
-      <YStack height={200} background="tomato" p={32} gap={16} self="flex-end">
-        <H2 fontWeight="bold">Softwareentwicklung Web / Native</H2>
-        <XStack justify="center">
-          <XStack hoverStyle={{ scale: 2, cursor: 'pointer', borderWidth: 2, transform: 'rotate(2deg)', p: 16 }} animation="bouncy" borderBottomWidth={2}>
-            <H3>Hier lang</H3>
-          </XStack>
-        </XStack>
-      </YStack>
-    </YStack >
+      <div className="flex flex-col items-center gap-8 absolute bottom-0 right-0 p-12 bg-[tomato] max-w-[70vw]">
+        <h2 className="text-5xl">Software Entwicklung Web / Mobile</h2>
+        <a href="#" className="text-4xl border-b-2 transition-all duration-120 hover:text-6xl hover:rotate-[-2deg] hover:border-2 hover:p-4">Hier lang</a>
+      </div>
+    </div >
   )
 }
