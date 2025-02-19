@@ -10,7 +10,8 @@ export const About = () => {
         </div>
         <div className="flex flex-1 w-[60vw] items-end self-end">
           <h2 className="text-3xl text-justify bg-black p-16 px-[40px]">
-            Hi, ich bin Acun. Ich unterstütze Entwicklungsteams sowohl aktiv bei der Entwicklung im Web und App Bereich als auch organisatorisch als Team Lead.
+            Hi, ich bin Acun. Ich bin seit über 15 Jahren in der Industrie als Software Entwickler tätig, sowohl Fullstack als auch mit Fokus im Frontend. <br />
+            Ich unterstütze Entwicklungsteams sowohl aktiv bei der Entwicklung im Web- und App-Bereich als auch organisatorisch als Team Lead mit agilen Methodiken.
           </h2>
         </div>
       </div>
