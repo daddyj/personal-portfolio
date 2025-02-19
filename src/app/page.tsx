@@ -15,6 +15,7 @@ export default function Home() {
     <div className="" style={montserrat.style}>
       <Hero />
       <About />
+      <Skills />
       <div className="w-screen h-screen"></div>
     </div>
   );
