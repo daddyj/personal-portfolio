@@ -17,7 +17,7 @@ export default function Home() {
       <About />
       <Skills />
       <Projects />
-      <div className="w-screen h-screen"></div>
+      <Testimonials />
     </div >
   );
 }
