@@ -10,18 +10,12 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.7",
-    "@tamagui/config": "^1.125.6",
-    "@tamagui/core": "^1.125.6",
-    "@tamagui/next-plugin": "^1.125.6",
-    "@tamagui/next-theme": "^1.125.6",
-    "@tamagui/polyfill-dev": "^1.125.6",
     "next": "15.1.7",
     "postcss": "^8.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-native": "^0.77.1",
-    "tailwindcss": "^4.0.7",
-    "tamagui": "^1.125.6"
+    "tailwindcss": "^4.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
