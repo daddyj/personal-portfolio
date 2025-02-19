@@ -15,7 +15,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-native": "^0.77.1",
-    "tailwindcss": "^4.0.7"
+    "tailwindcss": "^4.0.7",
+    "tailwindcss-animated": "^2.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
