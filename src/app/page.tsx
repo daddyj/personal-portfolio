@@ -8,9 +8,9 @@ import { Skills } from "./components/Skills";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-[cornflowerblue]">
       <Hero />
       <About />
-    </>
+    </div>
   );
 }
