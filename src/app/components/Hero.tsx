@@ -22,9 +22,7 @@ export const Hero = () => {
 
         <GridItem className="col-span-10" />
 
-        <GridItem className="col-span-6 flex items-end z-1">
-          <ArrowDownIcon className="size-32 hover:cursor-pointer" />
-        </GridItem>
+        <GridItem className="col-span-6" />
         <GridItem className="col-span-4 flex items-end justify-end p-1 px-2 gap-4 bg-black animate-fade-up animate-once animate-duration-1200 animate-ease-out animate-delay-720" >
           <h2 className="text-8xl text-end">Acun Gürsoy</h2>
           {/* <a href="#" className="text-4xl font-bold border-b-2 transition-all duration-120 hover:text-6xl hover:rotate-[-2deg] hover:border-2 hover:p-4 animate-pulse hover:animate-none">Hier lang</a> */}
@@ -87,10 +85,10 @@ const GlitchVideo = ({ glitchOnly = false }: { glitchOnly?: boolean }) => {
 
       setTimeout(() => {
         ctx.clearRect(x, y, w, h);
-      }, 150);
+      }, (Math.random() * 200) + 200);
       setTimeout(() => {
         ctx.clearRect(x2, y2, w, h);
-      }, 96);
+      }, (Math.random() * 100) + 100);
       // setTimeout(() => {
       //   ctx.clearRect(x3, y3, w, h);
       // }, 40);

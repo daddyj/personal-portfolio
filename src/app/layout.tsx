@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={montserrat.style}>
-        <nav className="flex fixed z-100 w-screen gap-8 p-4 px-16 text-2xl bg-black items-center">
+        <nav className="flex fixed z-10 w-screen gap-8 p-4 px-16 text-2xl bg-black items-center">
           <div>
             <p>acun gürsoy</p>
           </div>
