@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { Grid, GridItem } from "./Grid";
-import { ArrowDownIcon } from "@heroicons/react/24/outline";
 
 
 export const Hero = () => {

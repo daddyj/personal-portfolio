@@ -169,7 +169,9 @@ const GlitchSkills = () => {
 
       console.log({ randomCol, randomRow })
 
+      // @ts-expect-error need casting
       glitchCell(ctx, randomRow, randomCol, itemMapping[`${randomRow},${randomCol}`], 1000)
+      // @ts-expect-error need casting
       glitchCell(ctx, randomRow2, randomCol2, itemMapping[`${randomRow2},${randomCol2}`], 750)
     }, 1500);
 
