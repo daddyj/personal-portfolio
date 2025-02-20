@@ -15,6 +15,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={montserrat.style}>
+        <nav className="flex fixed z-100 w-screen gap-8 p-4 px-16 text-2xl bg-black items-center">
+          <div>
+            <p>acun gürsoy</p>
+          </div>
+
+          <div className="flex">
+            <div className="flex p-2 rounded-full border-1 items-center gap-2">
+              <div className="w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
+              <p className="text-sm">Offen für Projekte!</p>
+            </div>
+          </div>
+
+          <div className="flex flex-1 justify-end gap-4">
+            <a>projekte</a>
+            <a>über mich</a>
+            <a>kompetenzen</a>
+            <a>kontakt</a>
+          </div>
+        </nav>
         {children}
       </body>
     </html>

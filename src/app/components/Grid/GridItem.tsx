@@ -1,13 +1,13 @@
 import { PropsWithChildren } from "react"
 
 type GridItemProps = PropsWithChildren & {
-  colSpan: number;
+  colSpan?: number;
   className?: string;
 }
 
-const GridItem = ({ children, colSpan, className = "" }: GridItemProps) => {
+const GridItem = ({ children, className = "" }: GridItemProps) => {
   return (
-    <div className={`col-span-${colSpan.toString()} ${className}`}>
+    <div className={className}>
       {children}
     </div>
   )

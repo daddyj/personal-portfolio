@@ -5,7 +5,7 @@ type GridProps = PropsWithChildren & {
 }
 
 const Grid = ({ children, rows }: GridProps) => {
-  let defaultClassnames = "px-12 grid grid-cols-10 w-screen h-screen gap-4 bg-black relative"
+  let defaultClassnames = "p-16 grid grid-cols-10 w-screen h-screen gap-4 bg-black relative"
   if (rows) {
     defaultClassnames += ` grid-rows-${rows.toString()}`
   }
