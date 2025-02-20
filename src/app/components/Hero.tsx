@@ -74,10 +74,10 @@ const GlitchVideo = ({ glitchOnly = false }: { glitchOnly?: boolean }) => {
       const h = Math.ceil(cellHeight);
 
       // Draw black square
-      ctx.fillStyle = 'cornflowerblue';
+      ctx.fillStyle = '#2B7FFF';
       ctx.fillRect(x, y, w, h);
       // Draw black square
-      ctx.fillStyle = 'cornflowerblue';
+      ctx.fillStyle = '#2B7FFF';
       ctx.fillRect(x2, y2, w, h);
       // Draw black square
       // ctx.fillStyle = 'black';

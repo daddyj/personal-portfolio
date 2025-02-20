@@ -9,12 +9,12 @@ import { Skills } from "./components/Skills";
 
 export default function Home() {
   return (
-    <div className="bg-[cornflowerblue]">
+    <div className="bg-blue-400">
       <Hero />
       <About />
       <Skills />
-      {/* <Projects />
-      <Contact /> */}
+      <Projects />
+      <Contact />
       <div className="fixed bottom-16 left-16">
         <ArrowDownIcon className="size-32 hover:cursor-pointer" />
       </div>

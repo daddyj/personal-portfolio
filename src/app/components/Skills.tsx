@@ -8,7 +8,7 @@ export const Skills = () => {
     <>
       <Grid className="grid-rows-[1fr_1fr]">
         <GridItem className="col-span-4">
-          <h2 className="text-5xl font-bold">Technologien</h2>
+          <h2 className="text-6xl font-bold">Technologien</h2>
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-2xl">Ich habe über die Jahre eine Reihe von Technologien für die Web- und Appentwicklung genutzt und mich über die Zeit auf einen Techstack fokussiert um optimale Ergebnisse erzielen zu können. Dabei hat sich React als meine Kern-Bibliothek herausgestellt um maximale Wiederverwendbarkeit von auf unterschiedlichen Plattformen zu gewährleisten: Das Web, native auf iOS und nativ auf Android. Ich liebe es immer wieder neue Sachen auszuprobieren und mich immer wieder von Kolleg:innen inspirieren zu lassen!</p>
@@ -20,7 +20,7 @@ export const Skills = () => {
       </Grid>
       <Grid rows={3}>
         <GridItem className="col-span-4">
-          <h2 className="text-5xl font-bold">Social Skills</h2>
+          <h2 className="text-6xl font-bold">Social Skills</h2>
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-3xl">Neben der Liebe zur Optimierung im technologischen Bereich sehe ich es als essentiell an als Software Entwickler auch methodisch und kommunikativ eine verständliche Brücke zur gemeinsamen Entwicklung zu schaffen. Agile Arbeitsweisen begeistern mich und begleiten mich nun seit mehreren Jahren. Gleichzeitig ist mir ein klassisches Projektmanagement nach Wasserfall Methodik auch kein Fremdwort.</p>
@@ -37,7 +37,7 @@ export const Skills = () => {
             <p>#</p>
             <p>Lean</p>
             <p>#</p>
-            <p>Requirements-Engineering</p>
+            <p>Design-Sprint</p>
           </div>
           <div className="flex gap-4 flex-wrap text-2xl">
             <p className="font-bold">Tools:</p>
@@ -53,13 +53,13 @@ export const Skills = () => {
       </Grid>
       <Grid className="grid-rows-[auto_1fr]">
         <GridItem className="col-span-4">
-          <h2 className="text-5xl font-bold">Lebenslauf</h2>
+          <h2 className="text-6xl font-bold">Lebenslauf</h2>
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-3xl">Hier sind Verweise zu meinem Lebenslauf in unterschiedlichen Formaten. Dort sind gute Überblicke über meine bisherige Berufserfahrung aufgelistet. Schau gerne mal rein.</p>
         </GridItem>
         <GridItem className="col-span-4" />
-        <GridItem className="col-span-6 flex justify-around items-center">
+        <GridItem className="col-span-6 flex justify-around items-center text-xl font-bold">
           <div className="flex flex-col gap-4 items-center">
             <DocumentIcon className="size-32" />
             <p>PDF herunterladen</p>
@@ -97,19 +97,6 @@ const itemMapping = {
   '4,1': 'Github / GitLab',
   '4,2': 'Google Cloud',
 }
-// // UI-Bibliotheken/-Frameworks:
-// React - Native
-// React
-// NextJS
-// // UI-Style/-Component KITs:
-// Tamagui
-// Material UI
-// Tailwind CSS
-// // Cloud:
-// Firebase
-// Git
-// Github / GitLab
-// Google Cloud
 
 const GlitchSkills = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -134,7 +121,7 @@ const GlitchSkills = () => {
     const h = Math.ceil(cellHeight);
 
     // Draw black rectangle
-    ctx.fillStyle = 'cornflowerblue';
+    ctx.fillStyle = '#2B7FFF';
     ctx.fillRect(x, y, w, h);
 
     // Optional: draw some text inside the cell
@@ -182,18 +169,54 @@ const GlitchSkills = () => {
 
       console.log({ randomCol, randomRow })
 
-      glitchCell(ctx, randomRow, randomCol, itemMapping[`${randomRow},${randomCol}`], 1550)
-      glitchCell(ctx, randomRow2, randomCol2, itemMapping[`${randomRow2},${randomCol2}`], 1750)
-    }, 2000);
+      glitchCell(ctx, randomRow, randomCol, itemMapping[`${randomRow},${randomCol}`], 1000)
+      glitchCell(ctx, randomRow2, randomCol2, itemMapping[`${randomRow2},${randomCol2}`], 750)
+    }, 1500);
 
-    // Clean up on unmount
+    let lastHoveredCell: number | null = null;
+
+    const onMouseMove = (e: MouseEvent) => {
+      console.log('mousemove!')
+      if (!gridRef.current) return;
+
+      // Get mouse position relative to the canvas
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      // Figure out which cell the mouse is over
+      const col = Math.floor(mouseX / cellWidth);
+      const row = Math.floor(mouseY / cellHeight);
+
+      // Calculate a unique cell index (row * cols + col)
+      const cellIndex = row * cols + col;
+
+      // If the user moves into a *new* cell, trigger the glitch
+      if (cellIndex !== lastHoveredCell) {
+        lastHoveredCell = cellIndex;
+        glitchCell(ctx, row, col);
+      }
+    };
+
+    const onMouseLeave = () => {
+      // Reset so when the mouse re-enters, we can trigger again
+      lastHoveredCell = null;
+    };
+
+    // Attach listeners
+    canvas.addEventListener('mousemove', onMouseMove);
+    canvas.addEventListener('mouseleave', onMouseLeave);
+
+    // Cleanup
     return () => {
       clearInterval(intervalId);
+      canvas.removeEventListener('mousemove', onMouseMove);
+      canvas.removeEventListener('mouseleave', onMouseLeave);
     };
   }, []);
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden z-10">
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full pointer-events-none"

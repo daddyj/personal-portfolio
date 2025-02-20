@@ -1,22 +1,43 @@
 import Image from 'next/image'
+import { Grid, GridItem } from './Grid'
 
 export const Projects = () => {
   return (
-    <div className="w-screen h-screen bg-black">
-      <div className="flex flex-col p-20 px-40 gap-30">
+    <Grid className="grid-rows-[auto_80px_1fr_80px]">
+      <GridItem className='col-span-10'>
         <h1 className="text-6xl">Meine aktiven Projekte</h1>
-        {/* Projekt: Myla */}
-        <div className="flex gap-12">
-          <div className="flex rounded-sm w-132 overflow-hidden">
-            <Image src="/myla-1.png" width={330 / 1.25} height={717 / 1.25} alt="Erstes Bild zu Myla App" />
-            <Image src="/myla-2.png" width={330 / 1.25} height={717 / 1.25} alt="Erstes Bild zu Myla App" />
-          </div>
-          <div className="flex flex-1">
-            <p className="text-2xl text-justify">Die App Myla hat als Ziel eine individuelle Lernbegleitung für jedes Kind anzubieten. Es nutzt künstliche Intelligenz in einer geführten und interaktiven Erfahrung für die Kinder, so dass Sie spielerisch das selbstständige Lernen erhalten. <br />
-              Die App habe ich vollständig entwickelt und im iOS AppStore für iPads und iPhones veröffentlicht. Android ist auch in Planung. Mehr Informationen findest Du hier: [TODO URL einfügen zu THE ANSWER Homepage]</p>
+      </GridItem>
+      <GridItem className='col-span-10' />
+      <GridItem className='col-span-2 text-6xl'>
+        <p>Myla - App</p>
+      </GridItem>
+      <GridItem className='col-span-4 flex flex-col gap-8'>
+        <p className="text-2xl text-justify">Die App Myla hat als Ziel eine individuelle Lernbegleitung für jedes Kind anzubieten. Es nutzt künstliche Intelligenz in einer geführten und interaktiven Erfahrung für die Kinder, so dass Sie spielerisch das selbstständige Lernen erhalten. <br />
+          Die App habe ich vollständig entwickelt und im iOS AppStore für iPads und iPhones veröffentlicht. Android ist auch in Planung. Mehr Informationen findest Du hier: [TODO URL einfügen zu THE ANSWER Homepage]</p>
+        <div className='text-2xl'>
+          <p className='font-bold'>Rolle in dem Projekt:</p>
+          <p>Fullstack Entwicklung App und Bereitstellung der Cloud Infrastruktur.</p>
+        </div>
+        <div className='text-2xl'>
+          <p className='font-bold'>TechStack (TODO use icons with animation effect):</p>
+          <div className='flex flex-wrap gap-2'>
+            <p>React-Native</p>
+            <p>#</p>
+            <p>Tamagui UI Kit</p>
+            <p>#</p>
+            <p>Firebase</p>
+            <p>#</p>
+            <p>Google-Cloud</p>
           </div>
         </div>
-      </div>
-    </div>
+      </GridItem>
+      <GridItem className='col-span-4 flex justify-end items-start'>
+        <div className="flex rounded-sm overflow-hidden">
+          <Image src="/myla-1.png" width={330 / 1.5} height={717 / 1.5} alt="Erstes Bild zu Myla App" />
+          <Image src="/myla-2.png" width={330 / 1.5} height={717 / 1.5} alt="Erstes Bild zu Myla App" />
+        </div>
+      </GridItem>
+      <GridItem className='col-span-10' />
+    </Grid>
   )
 }
