@@ -13,7 +13,7 @@ export const Projects = ({ id }: { id?: string }) => {
       </GridItem>
       <GridItem className='col-span-10' />
       <GridItem className='col-span-3 text-4xl flex flex-col gap-8'>
-        <p className="border-b-2">Myla - App</p>
+        <p className="border-b-2 text-blue-500">Myla - App</p>
         <p className="text-gray-800 border-b-2 border-transparent hover:border-b-2 hover:border-white hover:text-white transition-all hover:cursor-pointer">THE ANSWER GmbH Homepage</p>
         <p className="text-gray-800 border-b-2 border-transparent hover:border-b-2 hover:border-white hover:text-white transition-all hover:cursor-pointer">Acun Gürsoy Homepage</p>
       </GridItem>

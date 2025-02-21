@@ -1,27 +1,55 @@
-import { useEffect, useRef } from "react";
-import { Grid, GridItem } from "./Grid"
-import Image from 'next/image'
-import { DocumentIcon } from "@heroicons/react/24/outline";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import { DocumentIcon } from "@heroicons/react/24/solid";
+import Image from 'next/image';
+import { useEffect, useRef, useState } from "react";
+import { Grid, GridItem } from "./Grid";
 
 export const Skills = () => {
+  const [showAllTechSkills, setShowAllTechSkills] = useState(false)
+
   return (
     <>
-      <Grid id="skillsTech" className="grid-rows-[1fr_1fr]">
+      <Grid id="skillsTech" className="grid-rows-[auto_16px_1fr]">
         <GridItem className="col-span-4">
           <h2 className="text-6xl">Technologien</h2>
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-2xl">Ich habe über die Jahre eine Reihe von Technologien für die Web- und Appentwicklung genutzt und mich über die Zeit auf einen Techstack fokussiert um optimale Ergebnisse erzielen zu können. Dabei hat sich React als meine Kern-Bibliothek herausgestellt um maximale Wiederverwendbarkeit von auf unterschiedlichen Plattformen zu gewährleisten: Das Web, native auf iOS und nativ auf Android. Ich liebe es immer wieder neue Sachen auszuprobieren und mich immer wieder von Kolleg:innen inspirieren zu lassen!</p>
         </GridItem>
+
+        <GridItem className="col-span-10" />
+
         <GridItem className="col-span-4" />
-        <GridItem className="col-span-6">
-          <GlitchSkills />
+        <GridItem className="col-span-6 flex flex-col gap-4">
+          {!showAllTechSkills && (
+            <>
+              <GlitchSkills />
+              <div className="flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(true)}>
+                <EyeIcon className="size-12" />
+                <p>Alle anzeigen</p>
+              </div>
+            </>
+          )}
+          {showAllTechSkills && (
+            <>
+              <div className="grid grid-cols-3 grid-rows-5 gap-[1px] h-full animate-fade">
+                {
+                  // @ts-expect-error type casting open
+                  Object.keys(itemMapping).map((rowColString) => <GridItem key={rowColString} className="bg-blue-500 flex justify-center items-center font-bold">{itemMapping[rowColString]}</GridItem>)
+                }
+              </div>
+              <div className="flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(false)}>
+                <EyeSlashIcon className="size-12" />
+                <p>Zufällig anzeigen</p>
+              </div>
+            </>
+          )}
         </GridItem>
       </Grid>
-      <Grid id="skillsSocial" rows={3}>
+      <Grid id="skillsSocial" rows={2} className="">
         <GridItem className="col-span-4 flex flex-col gap-16">
           <h2 className="text-6xl ">Social Skills</h2>
-          <div className="w-72 h-72 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.png)', backgroundSize: "100%" }} />
+          <div className="w-64 h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.png)', backgroundSize: "100%" }} />
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-2xl">Neben der Liebe zur Optimierung im technologischen Bereich sehe ich es als essentiell an als Software Entwickler auch methodisch und kommunikativ eine verständliche Brücke zur gemeinsamen Entwicklung zu schaffen. Agile Arbeitsweisen begeistern mich und begleiten mich nun seit mehreren Jahren. Gleichzeitig ist mir ein klassisches Projektmanagement nach Wasserfall Methodik auch kein Fremdwort. <br />
@@ -59,7 +87,7 @@ export const Skills = () => {
           <h2 className="text-6xl">Lebenslauf</h2>
         </GridItem>
         <GridItem className="col-span-6">
-          <p className="text-2xl">Im Folgenden ein paar unterschiedliche Perspektiven um einen detaillierteren Einblick in meine bisherige Erfahrung zu bekommen.</p>
+          <p className="text-2xl">Im Folgenden ein paar unterschiedliche Perspektiven um einen detaillierteren Einblick in meine bisherige Erfahrung zu bekommen. Da ich viele Jahre auch in angestellten Verhältnissen gearbeitet habe, bietet sich durch folgende Perspektiven auch dazu ein besseres Verständnis.</p>
         </GridItem>
         <GridItem className="col-span-4" />
         <GridItem className="col-span-6 flex gap-16 items-center justify-between">
@@ -135,11 +163,11 @@ const GlitchSkills = () => {
 
     // Optional: draw some text inside the cell
     ctx.fillStyle = 'white';
-    ctx.font = '48px sans-serif';
+    ctx.font = '32px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     // console.log({ label, textWidth: ctx.measureText(label).width, cellWidth })
-    ctx.fillText(label, x + w / 2, y + h / 2, ctx.measureText(label).width * 0.75);
+    ctx.fillText(label, x + w / 2, y + h / 2, ctx.measureText(label).width * 0.88);
 
     // Clear after 150ms
     setTimeout(() => {
@@ -227,7 +255,7 @@ const GlitchSkills = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden border-1 border-blue-500 animate-fade">
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full pointer-events-none"

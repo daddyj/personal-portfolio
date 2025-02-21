@@ -10,7 +10,7 @@ export const About = ({ id }: { id?: string }) => {
         </div>
       </GridItem>
       <GridItem className="col-span-4 flex justify-end animate-fade animate-once animate-duration-1500 animate-ease-out">
-        <div className="w-72 h-72 rounded-full bg-center bg-no-repeat" style={{ backgroundImage: 'url(/about-me.png)', backgroundSize: "200%", backgroundPositionY: -100 }}>
+        <div className="w-64 h-64 rounded-full bg-center bg-no-repeat" style={{ backgroundImage: 'url(/about-me.png)', backgroundSize: "200%", backgroundPositionY: -100 }}>
         </div>
       </GridItem>
       <GridItem className="col-span-10" />

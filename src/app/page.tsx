@@ -42,7 +42,13 @@ export default function Home() {
   }, [currentSection])
 
   useEffect(() => {
-    // const heroSection = document.getElementById('hero')
+    setTimeout(() => {
+      setIsChangedByScroll(false)
+    }, 500)
+  })
+
+  useEffect(() => {
+    const heroSection = document.getElementById('hero')
     const aboutSection = document.getElementById('about')
     const skillsTechSection = document.getElementById('skillsTech')
     const skillsSocialSection = document.getElementById('skillsSocial')
@@ -50,15 +56,15 @@ export default function Home() {
     const projectsSection = document.getElementById('projects')
     const contactSection = document.getElementById('contact')
 
-    // const observerHero = new IntersectionObserver((entries) => {
-    //   // entries[0] is our single observed element instance
-    //   const entry = entries[0];
-    //   if (entry.isIntersecting) { setCurrentSection('hero'); setIsChangedByScroll(true); setIsNextSectionAvailable(true) };
-    // }, {
-    //   root: null, // observing for viewport
-    //   rootMargin: '0px',
-    //   threshold: 0.1 // Trigger when at least 10% of the element is visible
-    // });
+    const observerHero = new IntersectionObserver((entries) => {
+      // entries[0] is our single observed element instance
+      const entry = entries[0];
+      if (entry.isIntersecting) { setCurrentSection('hero'); setIsChangedByScroll(true); setIsNextSectionAvailable(true) };
+    }, {
+      root: null, // observing for viewport
+      rootMargin: '0px',
+      threshold: 0.1 // Trigger when at least 10% of the element is visible
+    });
     const observerAbout = new IntersectionObserver((entries) => {
       // entries[0] is our single observed element instance
       const entry = entries[0];
@@ -114,9 +120,9 @@ export default function Home() {
       threshold: 0.1 // Trigger when at least 10% of the element is visible
     });
 
-    // if (heroSection) {
-    //   observerHero.observe(heroSection);
-    // }
+    if (heroSection) {
+      observerHero.observe(heroSection);
+    }
     if (aboutSection) {
       observerAbout.observe(aboutSection);
     }
@@ -138,9 +144,9 @@ export default function Home() {
 
     // Clean up the observer on component unmount
     return () => {
-      // if (heroSection) {
-      //   observerHero.unobserve(heroSection);
-      // }
+      if (heroSection) {
+        observerHero.unobserve(heroSection);
+      }
       if (aboutSection) {
         observerAbout.unobserve(aboutSection);
       }
@@ -166,7 +172,7 @@ export default function Home() {
   return (
     <div className="bg-blue-400">
       <nav className="flex fixed z-10 w-screen gap-8 p-4 px-16 text-2xl bg-black items-center">
-        <div>
+        <div onClick={() => { scrollToSection('hero') }} className="hover:cursor-pointer">
           <p>acun gürsoy</p>
         </div>
 
@@ -178,10 +184,10 @@ export default function Home() {
         </div>
 
         <div className="flex flex-1 justify-end gap-4">
-          <a href="#projects">projekte</a>
-          <a href="#about">über mich</a>
-          <a href="#skillsTech">kompetenzen</a>
-          <a href="#contact">kontakt</a>
+          <div onClick={() => { scrollToSection('projects') }} className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'projects' ? 'border-b-blue-500 text-blue-500' : ''}`}>projekte</div>
+          <div onClick={() => { scrollToSection('about') }} className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'about' ? 'border-b-blue-500 text-blue-500' : ''}`}>über mich</div>
+          <div onClick={() => { scrollToSection('skillsTech') }} className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection) ? 'border-b-blue-500 text-blue-500' : ''}`}>kompetenzen</div>
+          <div onClick={() => { scrollToSection('contact') }} className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'contact' ? 'border-b-blue-500 text-blue-500' : ''}`}>kontakt</div>
         </div>
       </nav>
       <Hero id="hero" />
@@ -192,14 +198,14 @@ export default function Home() {
       {
         isNextSectionAvailable && (
           <div className="fixed bottom-16 left-16 animate animate-fade" onClick={handleArrowClick}>
-            <ArrowDownIcon className="size-32 hover:cursor-pointer" />
+            <ArrowDownIcon className="size-32 hover:cursor-pointer hover:animate-infinite animate-pulse animate-once hover:text-blue-500" />
           </div>
         )
       }
       {
         !isNextSectionAvailable && (
-          <div className="fixed bottom-16 left-16 animate animate-fade" onClick={() => { scrollToSection('hero'); setCurrentSection('hero'); setIsNextSectionAvailable(true) }}>
-            <ArrowUpIcon className="size-32 hover:cursor-pointer" />
+          <div className="fixed bottom-16 left-16 animate animate-fade" onClick={() => { scrollToSection('hero'); setCurrentSection('hero'); setIsNextSectionAvailable(true); setTimeout(() => { setIsChangedByScroll(false) }, 1000) }}>
+            <ArrowUpIcon className="size-32 hover:cursor-pointer hover:animate-infinite animate-pulse animate-once hover:text-blue-500" />
           </div>
         )
       }
