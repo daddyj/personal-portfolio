@@ -8,7 +8,7 @@ export const Skills = () => {
     <>
       <Grid id="skillsTech" className="grid-rows-[1fr_1fr]">
         <GridItem className="col-span-4">
-          <h2 className="text-6xl font-bold">Technologien</h2>
+          <h2 className="text-6xl">Technologien</h2>
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-2xl">Ich habe über die Jahre eine Reihe von Technologien für die Web- und Appentwicklung genutzt und mich über die Zeit auf einen Techstack fokussiert um optimale Ergebnisse erzielen zu können. Dabei hat sich React als meine Kern-Bibliothek herausgestellt um maximale Wiederverwendbarkeit von auf unterschiedlichen Plattformen zu gewährleisten: Das Web, native auf iOS und nativ auf Android. Ich liebe es immer wieder neue Sachen auszuprobieren und mich immer wieder von Kolleg:innen inspirieren zu lassen!</p>
@@ -20,7 +20,7 @@ export const Skills = () => {
       </Grid>
       <Grid id="skillsSocial" rows={3}>
         <GridItem className="col-span-4">
-          <h2 className="text-6xl font-bold">Social Skills</h2>
+          <h2 className="text-6xl ">Social Skills</h2>
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-3xl">Neben der Liebe zur Optimierung im technologischen Bereich sehe ich es als essentiell an als Software Entwickler auch methodisch und kommunikativ eine verständliche Brücke zur gemeinsamen Entwicklung zu schaffen. Agile Arbeitsweisen begeistern mich und begleiten mich nun seit mehreren Jahren. Gleichzeitig ist mir ein klassisches Projektmanagement nach Wasserfall Methodik auch kein Fremdwort.</p>
@@ -53,7 +53,7 @@ export const Skills = () => {
       </Grid>
       <Grid id="skillsCv" className="grid-rows-[auto_1fr]">
         <GridItem className="col-span-4">
-          <h2 className="text-6xl font-bold">Lebenslauf</h2>
+          <h2 className="text-6xl">Lebenslauf</h2>
         </GridItem>
         <GridItem className="col-span-6">
           <p className="text-3xl">Hier sind Verweise zu meinem Lebenslauf in unterschiedlichen Formaten. Dort sind gute Überblicke über meine bisherige Berufserfahrung aufgelistet. Schau gerne mal rein.</p>
@@ -117,8 +117,8 @@ const GlitchSkills = () => {
     // Calculate pixel coordinates
     const x = Math.round(col * cellWidth);
     const y = Math.round(row * cellHeight);
-    const w = Math.ceil(cellWidth);
-    const h = Math.ceil(cellHeight);
+    const w = Math.ceil(cellWidth) - 1;
+    const h = Math.ceil(cellHeight) - 1;
 
     // Draw black rectangle
     ctx.fillStyle = '#2B7FFF';
