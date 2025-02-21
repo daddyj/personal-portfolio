@@ -177,7 +177,7 @@ export default function Home() {
         </div>
 
         <div className="flex">
-          <div className="flex p-2 rounded-full border-1 items-center gap-2">
+          <div className="flex p-2 px-4 rounded-full border-1 items-center gap-2">
             <div className="w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
             <p className="text-sm">Offen für Projekte!</p>
           </div>

@@ -21,7 +21,7 @@ export const About = ({ id }: { id?: string }) => {
         <h2 className="text-2xl bg-black animate-fade-left animate-once">
           Ich bin Acun. Ich bin seit über 15 Jahren in der Industrie als Software Entwickler tätig, sowohl Fullstack als auch mit Fokus im Frontend. <br />
           Ich unterstütze Entwicklungsteams sowohl aktiv bei der Entwicklung im Web- und App-Bereich als auch organisatorisch als Team Lead mit agilen Methodiken. <br />
-          Ach ja, und ich liebe Italien.
+          Ach ja, und ich liebe es zu reisen.
         </h2>
       </GridItem>
     </Grid>
