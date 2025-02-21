@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { Hero } from "./components/Hero";
@@ -157,31 +157,31 @@ export default function Home() {
 }
 
 
-const useIntersector = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef<HTMLVideoElement>(null);
+// const useIntersector = () => {
+//   const [isVisible, setIsVisible] = useState(false);
+//   const elementRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const currentElement = elementRef.current
-    const observer = new IntersectionObserver((entries) => {
-      // entries[0] is our single observed element instance
-      const entry = entries[0];
-      setIsVisible(entry.isIntersecting);
-    }, {
-      root: null, // observing for viewport
-      rootMargin: '0px',
-      threshold: 0.1 // Trigger when at least 10% of the element is visible
-    });
+//   useEffect(() => {
+//     const currentElement = elementRef.current
+//     const observer = new IntersectionObserver((entries) => {
+//       // entries[0] is our single observed element instance
+//       const entry = entries[0];
+//       setIsVisible(entry.isIntersecting);
+//     }, {
+//       root: null, // observing for viewport
+//       rootMargin: '0px',
+//       threshold: 0.1 // Trigger when at least 10% of the element is visible
+//     });
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
+//     if (elementRef.current) {
+//       observer.observe(elementRef.current);
+//     }
 
-    // Clean up the observer on component unmount
-    return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
-    };
-  }, [elementRef]); // Empty dependency array ensures the effect runs only once
-}
+//     // Clean up the observer on component unmount
+//     return () => {
+//       if (currentElement) {
+//         observer.unobserve(currentElement);
+//       }
+//     };
+//   }, [elementRef]); // Empty dependency array ensures the effect runs only once
+// }
