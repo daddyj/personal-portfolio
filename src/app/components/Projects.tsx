@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { Grid, GridItem } from './Grid'
 
-export const Projects = () => {
+export const Projects = ({ id }: { id?: string }) => {
   return (
-    <Grid className="grid-rows-[auto_80px_1fr_80px]">
+    <Grid id={id} className="grid-rows-[auto_80px_1fr_80px]">
       <GridItem className='col-span-10'>
         <h1 className="text-6xl">Meine aktiven Projekte</h1>
       </GridItem>

@@ -6,7 +6,7 @@ import { DocumentIcon } from "@heroicons/react/24/outline";
 export const Skills = () => {
   return (
     <>
-      <Grid className="grid-rows-[1fr_1fr]">
+      <Grid id="skillsTech" className="grid-rows-[1fr_1fr]">
         <GridItem className="col-span-4">
           <h2 className="text-6xl font-bold">Technologien</h2>
         </GridItem>
@@ -18,7 +18,7 @@ export const Skills = () => {
           <GlitchSkills />
         </GridItem>
       </Grid>
-      <Grid rows={3}>
+      <Grid id="skillsSocial" rows={3}>
         <GridItem className="col-span-4">
           <h2 className="text-6xl font-bold">Social Skills</h2>
         </GridItem>
@@ -51,7 +51,7 @@ export const Skills = () => {
           </div>
         </GridItem>
       </Grid>
-      <Grid className="grid-rows-[auto_1fr]">
+      <Grid id="skillsCv" className="grid-rows-[auto_1fr]">
         <GridItem className="col-span-4">
           <h2 className="text-6xl font-bold">Lebenslauf</h2>
         </GridItem>
@@ -129,7 +129,7 @@ const GlitchSkills = () => {
     ctx.font = '48px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    console.log({ label, textWidth: ctx.measureText(label).width, cellWidth })
+    // console.log({ label, textWidth: ctx.measureText(label).width, cellWidth })
     ctx.fillText(label, x + w / 2, y + h / 2, ctx.measureText(label).width * 0.75);
 
     // Clear after 150ms
@@ -167,7 +167,7 @@ const GlitchSkills = () => {
       // const randomCol3 = Math.floor(Math.random() * cols);
       // const randomRow3 = Math.floor(Math.random() * rows);
 
-      console.log({ randomCol, randomRow })
+      // console.log({ randomCol, randomRow })
 
       // @ts-expect-error need casting
       glitchCell(ctx, randomRow, randomCol, itemMapping[`${randomRow},${randomCol}`], 1000)

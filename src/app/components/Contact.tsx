@@ -1,9 +1,9 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline"
 import { Grid, GridItem } from "./Grid"
 
-export const Contact = () => {
+export const Contact = ({ id }: { id?: string }) => {
   return (
-    <Grid className="grid-rows-[auto_1fr]">
+    <Grid id={id} className="grid-rows-[auto_1fr]">
       <GridItem className="col-span-10 flex">
         <p className="text-6xl">Lass uns sprechen!</p>
       </GridItem>

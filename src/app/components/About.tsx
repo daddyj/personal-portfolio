@@ -1,8 +1,8 @@
 import { Grid, GridItem } from "./Grid"
 
-export const About = () => {
+export const About = ({ id }: { id?: string }) => {
   return (
-    <Grid rows={6}>
+    <Grid id={id} rows={6}>
       <GridItem className="col-span-10" />
       <GridItem className="col-span-6">
         <div className="">
