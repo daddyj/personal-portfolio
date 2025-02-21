@@ -19,11 +19,14 @@ export const Skills = () => {
         </GridItem>
       </Grid>
       <Grid id="skillsSocial" rows={3}>
-        <GridItem className="col-span-4">
+        <GridItem className="col-span-4 flex flex-col gap-16">
           <h2 className="text-6xl ">Social Skills</h2>
+          <div className="w-72 h-72 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.png)', backgroundSize: "100%" }} />
         </GridItem>
         <GridItem className="col-span-6">
-          <p className="text-3xl">Neben der Liebe zur Optimierung im technologischen Bereich sehe ich es als essentiell an als Software Entwickler auch methodisch und kommunikativ eine verständliche Brücke zur gemeinsamen Entwicklung zu schaffen. Agile Arbeitsweisen begeistern mich und begleiten mich nun seit mehreren Jahren. Gleichzeitig ist mir ein klassisches Projektmanagement nach Wasserfall Methodik auch kein Fremdwort.</p>
+          <p className="text-2xl">Neben der Liebe zur Optimierung im technologischen Bereich sehe ich es als essentiell an als Software Entwickler auch methodisch und kommunikativ eine verständliche Brücke zur gemeinsamen Entwicklung zu schaffen. Agile Arbeitsweisen begeistern mich und begleiten mich nun seit mehreren Jahren. Gleichzeitig ist mir ein klassisches Projektmanagement nach Wasserfall Methodik auch kein Fremdwort. <br />
+            <br />
+            Ansonsten findet man mich mit meinem best buddy stets in der Natur wieder, denn hier kann ich maximal abschalten und alle notwendige Energie sammeln die ich mir wünsche.</p>
         </GridItem>
         <GridItem className="col-span-4" />
         <GridItem className="col-span-6 flex flex-col text-xl gap-4 justify-end">
@@ -56,24 +59,30 @@ export const Skills = () => {
           <h2 className="text-6xl">Lebenslauf</h2>
         </GridItem>
         <GridItem className="col-span-6">
-          <p className="text-3xl">Hier sind Verweise zu meinem Lebenslauf in unterschiedlichen Formaten. Dort sind gute Überblicke über meine bisherige Berufserfahrung aufgelistet. Schau gerne mal rein.</p>
+          <p className="text-2xl">Im Folgenden ein paar unterschiedliche Perspektiven um einen detaillierteren Einblick in meine bisherige Erfahrung zu bekommen.</p>
         </GridItem>
         <GridItem className="col-span-4" />
-        <GridItem className="col-span-6 flex justify-around items-center text-xl font-bold">
-          <div className="flex flex-col gap-4 items-center">
-            <DocumentIcon className="size-32" />
-            <p>PDF herunterladen</p>
-          </div>
-          <div className="flex flex-col gap-4 items-center">
-            <div className="bg-white p-8">
-              <Image width={256} height={128} src="/linkedin-logo.svg" alt="Link to Github account" />
+        <GridItem className="col-span-6 flex gap-16 items-center justify-between">
+          <a href="#" target="_blank">
+            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-2 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
+              <DocumentIcon className="size-32" />
+              <p>PDF herunterladen</p>
             </div>
-            <p>LinkedIn Profil</p>
-          </div>
-          <div className="flex flex-col items-center gap-4">
-            <Image width={128} height={128} src="/github-logo.svg" alt="Link to Github account" className="" />
-            <p>Github Konto</p>
-          </div>
+          </a>
+          <a href="https://www.linkedin.com/in/acun-g%C3%BCrsoy-83b8ab139/" target="_blank">
+            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
+              <div className="bg-white p-4 rounded-sm">
+                <Image width={128} height={128} src="/linkedin-logo.svg" alt="Link to Github account" />
+              </div>
+              <p>LinkedIn Profil</p>
+            </div>
+          </a>
+          <a href="https://github.com/daddyj" target="_blank">
+            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
+              <Image width={128} height={128} src="/github-logo.svg" alt="Link to Github account" className="" />
+              <p>Github Konto</p>
+            </div>
+          </a>
         </GridItem>
       </Grid>
     </>
@@ -218,7 +227,7 @@ const GlitchSkills = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full overflow-hidden z-10">
+    <div className="relative w-full h-full overflow-hidden">
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full pointer-events-none"

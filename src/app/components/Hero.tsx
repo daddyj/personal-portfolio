@@ -20,7 +20,7 @@ export const Hero = ({ id }: { id?: string }) => {
       <GridItem className="col-span-10" />
 
       <GridItem className="col-span-6" />
-      <GridItem className="col-span-4 flex items-end justify-end p-1 px-2 gap-4 bg-black animate-fade-up animate-once animate-duration-1200 animate-ease-out animate-delay-720" >
+      <GridItem className="col-span-4 flex items-end justify-end p-1 px-2 gap-4 animate-fade-up animate-once animate-duration-1200 animate-ease-out animate-delay-720" >
         <h2 className="text-8xl text-end">Acun Gürsoy</h2>
         {/* <a href="#" className="text-4xl font-bold border-b-2 transition-all duration-120 hover:text-6xl hover:rotate-[-2deg] hover:border-2 hover:p-4 animate-pulse hover:animate-none">Hier lang</a> */}
       </GridItem>

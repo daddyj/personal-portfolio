@@ -44,7 +44,9 @@ export default function Home() {
   useEffect(() => {
     // const heroSection = document.getElementById('hero')
     const aboutSection = document.getElementById('about')
-    const skillsSection = document.getElementById('skills')
+    const skillsTechSection = document.getElementById('skillsTech')
+    const skillsSocialSection = document.getElementById('skillsSocial')
+    const skillsCvSection = document.getElementById('skillsCv')
     const projectsSection = document.getElementById('projects')
     const contactSection = document.getElementById('contact')
 
@@ -66,10 +68,28 @@ export default function Home() {
       rootMargin: '0px',
       threshold: 0.1 // Trigger when at least 10% of the element is visible
     });
-    const observerSkills = new IntersectionObserver((entries) => {
+    const observerSkillsTech = new IntersectionObserver((entries) => {
       // entries[0] is our single observed element instance
       const entry = entries[0];
-      if (entry.isIntersecting) { setCurrentSection('skills'); setIsChangedByScroll(true); setIsNextSectionAvailable(true) };
+      if (entry.isIntersecting) { setCurrentSection('skillsTech'); setIsChangedByScroll(true); setIsNextSectionAvailable(true) };
+    }, {
+      root: null, // observing for viewport
+      rootMargin: '0px',
+      threshold: 0.1 // Trigger when at least 10% of the element is visible
+    });
+    const observerSkillsSocial = new IntersectionObserver((entries) => {
+      // entries[0] is our single observed element instance
+      const entry = entries[0];
+      if (entry.isIntersecting) { setCurrentSection('skillsSocial'); setIsChangedByScroll(true); setIsNextSectionAvailable(true) };
+    }, {
+      root: null, // observing for viewport
+      rootMargin: '0px',
+      threshold: 0.1 // Trigger when at least 10% of the element is visible
+    });
+    const observerSkillsCv = new IntersectionObserver((entries) => {
+      // entries[0] is our single observed element instance
+      const entry = entries[0];
+      if (entry.isIntersecting) { setCurrentSection('skillsCv'); setIsChangedByScroll(true); setIsNextSectionAvailable(true) };
     }, {
       root: null, // observing for viewport
       rootMargin: '0px',
@@ -100,8 +120,14 @@ export default function Home() {
     if (aboutSection) {
       observerAbout.observe(aboutSection);
     }
-    if (skillsSection) {
-      observerSkills.observe(skillsSection);
+    if (skillsTechSection) {
+      observerSkillsTech.observe(skillsTechSection);
+    }
+    if (skillsSocialSection) {
+      observerSkillsSocial.observe(skillsSocialSection);
+    }
+    if (skillsCvSection) {
+      observerSkillsCv.observe(skillsCvSection);
     }
     if (projectsSection) {
       observerProjects.observe(projectsSection);
@@ -118,8 +144,14 @@ export default function Home() {
       if (aboutSection) {
         observerAbout.unobserve(aboutSection);
       }
-      if (skillsSection) {
-        observerSkills.unobserve(skillsSection);
+      if (skillsTechSection) {
+        observerSkillsTech.unobserve(skillsTechSection);
+      }
+      if (skillsSocialSection) {
+        observerSkillsSocial.unobserve(skillsSocialSection);
+      }
+      if (skillsCvSection) {
+        observerSkillsCv.unobserve(skillsCvSection);
       }
       if (projectsSection) {
         observerProjects.unobserve(projectsSection);
@@ -133,6 +165,25 @@ export default function Home() {
 
   return (
     <div className="bg-blue-400">
+      <nav className="flex fixed z-10 w-screen gap-8 p-4 px-16 text-2xl bg-black items-center">
+        <div>
+          <p>acun gürsoy</p>
+        </div>
+
+        <div className="flex">
+          <div className="flex p-2 rounded-full border-1 items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
+            <p className="text-sm">Offen für Projekte!</p>
+          </div>
+        </div>
+
+        <div className="flex flex-1 justify-end gap-4">
+          <a href="#projects">projekte</a>
+          <a href="#about">über mich</a>
+          <a href="#skillsTech">kompetenzen</a>
+          <a href="#contact">kontakt</a>
+        </div>
+      </nav>
       <Hero id="hero" />
       <About id="about" />
       <Skills />
