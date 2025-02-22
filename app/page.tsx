@@ -19,15 +19,13 @@ export default function Home() {
   console.log('fully visible? ', fullyVisible)
 
   return (
-    <div className="bg-blue-400">
-      <NavigationContext.Provider value={{ currentSection, setCurrentSection, fullyVisible, setFullyVisible }} >
-        <TopNavigation />
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </NavigationContext.Provider>
-    </div>
+    <NavigationContext.Provider value={{ currentSection, setCurrentSection, fullyVisible, setFullyVisible }} >
+      <TopNavigation />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+    </NavigationContext.Provider>
   );
 }
