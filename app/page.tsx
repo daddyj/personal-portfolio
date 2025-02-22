@@ -1,14 +1,10 @@
 'use client'
 
 import { TopNavigation } from "@/app/components/TopNavigation";
-import { About } from "@/app/sections/About";
-import { Contact } from "@/app/sections/Contact";
-import { Hero } from "@/app/sections/Hero";
-import { Projects } from "@/app/sections/Projects";
-import { Skills } from "@/app/sections/Skills";
 import { useState } from "react";
 import { HomeSection } from "./lib/types";
 import { NavigationContext } from "./lib/useNavigationContext";
+import { About, Contact, Hero, Projects, Skills } from "./sections";
 
 
 export default function Home() {
