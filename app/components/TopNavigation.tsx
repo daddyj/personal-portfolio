@@ -41,7 +41,7 @@ export const TopNavigation = () => {
   // })
 
   return (
-    <nav className="flex fixed z-10 w-screen gap-8 p-4 px-16 text-2xl bg-black items-center">
+    <nav className="flex fixed z-10 w-screen gap-8 p-4 px-8 sm:px-16 text-md sm:text-2xl bg-black items-center">
       <div onClick={() => { scrollToSection('hero') }} className="hover:cursor-pointer">
         <p>acun gürsoy</p>
       </div>
@@ -53,7 +53,7 @@ export const TopNavigation = () => {
         </div>
       </div>
 
-      <div className="flex flex-1 justify-end gap-4">
+      <div className="hidden sm:flex flex-1 justify-end gap-4">
         <div onClick={() => { scrollToSection('projects') }} className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'projects' ? 'border-b-blue-500 text-blue-500' : ''}`}>projekte</div>
         <div onClick={() => { scrollToSection('about') }} className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'about' ? 'border-b-blue-500 text-blue-500' : ''}`}>über mich</div>
         <div onClick={() => { scrollToSection('skillsTech') }} className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection && ['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection) ? 'border-b-blue-500 text-blue-500' : ''}`}>kompetenzen</div>
@@ -62,7 +62,7 @@ export const TopNavigation = () => {
 
       {
         isNextSectionAvailable && (
-          <div className="fixed bottom-16 left-16 animate animate-fade" onClick={handleArrowClick}>
+          <div className="hidden sm:block fixed bottom-16 left-16 animate animate-fade" onClick={handleArrowClick}>
             <ArrowDownIcon className="size-32 hover:cursor-pointer hover:animate-infinite animate-pulse animate-once hover:text-blue-500" />
           </div>
         )
@@ -70,7 +70,7 @@ export const TopNavigation = () => {
       {
         !isNextSectionAvailable && (
           <div
-            className="fixed bottom-16 left-16 animate animate-fade"
+            className="hidden sm:block fixed bottom-16 left-16 animate animate-fade"
             onClick={() => {
               scrollToSection('hero');
               setIsNextSectionAvailable(true);
