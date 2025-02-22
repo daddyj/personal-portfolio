@@ -107,11 +107,11 @@ export const Skills = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
           <h2 className="text-6xl">Lebenslauf</h2>
         </GridItem>
         <GridItem className="col-span-6">
-          <p className="text-2xl">Nachfolgend ein paar unterschiedliche Perspektiven um einen detaillierteren Einblick in meine bisherige Erfahrung zu bekommen. <br />
+          <p className="text-2xl">Nachfolgend unterschiedliche Perspektiven um einen detaillierteren Einblick in meine bisherige Erfahrung zu bekommen. <br />
             Da ich viele Jahre auch in angestellten Verhältnissen gearbeitet habe, bietet sich durch folgende Perspektiven auch dazu ein besseres Verständnis.</p>
         </GridItem>
         <GridItem className="col-span-4" />
-        <GridItem className="col-span-6 flex gap-16 items-center justify-between">
+        <GridItem className="col-span-6 flex gap-16 items-center justify-around">
           <a href="#" target="_blank">
             <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-2 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
               <DocumentIcon className="size-32" />
@@ -126,12 +126,12 @@ export const Skills = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
               <p>LinkedIn Profil</p>
             </div>
           </a>
-          <a href="https://github.com/daddyj" target="_blank">
+          {/* <a href="https://github.com/daddyj" target="_blank">
             <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
               <Image width={128} height={128} src="/github-logo.svg" alt="Link to Github account" className="" />
               <p>Github Konto</p>
             </div>
-          </a>
+          </a> */}
         </GridItem>
       </Grid>
     </>
