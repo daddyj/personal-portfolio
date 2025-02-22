@@ -5,6 +5,25 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
 import { useNavigationContext } from "../lib/useNavigationContext";
 import { useViewportIntersect } from "../lib/useViewportIntersect";
+import { GlitchCanvas } from "../components/GlitchCanvas";
+
+const itemMapping = {
+  '0,0': 'Javascript',
+  '0,1': 'Typescript',
+  '0,2': 'HTML',
+  '1,0': 'CSS / SCSS',
+  '1,1': 'SASS / CSS-in-JS',
+  '1,2': 'React-Native',
+  '2,0': 'React',
+  '2,1': 'NextJS',
+  '2,2': 'Tamagui UI',
+  '3,0': 'Material UI',
+  '3,1': 'Tailwind CSS',
+  '3,2': 'Firebase',
+  '4,0': 'Git',
+  '4,1': 'Github / GitLab',
+  '4,2': 'Google Cloud',
+}
 
 export const Skills = () => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
@@ -42,7 +61,8 @@ export const Skills = () => {
         <GridItem colSpan={6} className="flex flex-col gap-4">
           {!showAllTechSkills && (
             <>
-              <GlitchSkills />
+              { /* @ts-expect-error type casting open */}
+              <GlitchCanvas rows={5} cols={3} mode="skills" getLabel={(row, col) => itemMapping[`${row},${col}`]} />
               <div className="flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(true)}>
                 <EyeIcon className="size-12" />
                 <p>Alle anzeigen</p>
@@ -135,151 +155,4 @@ export const Skills = () => {
       </Grid >
     </>
   )
-}
-// Programmiersprachen:
-const itemMapping = {
-  '0,0': 'Javascript',
-  '0,1': 'Typescript',
-  '0,2': 'HTML',
-  '1,0': 'CSS / SCSS',
-  '1,1': 'SASS / CSS-in-JS',
-  '1,2': 'React-Native',
-  '2,0': 'React',
-  '2,1': 'NextJS',
-  '2,2': 'Tamagui UI',
-  '3,0': 'Material UI',
-  '3,1': 'Tailwind CSS',
-  '3,2': 'Firebase',
-  '4,0': 'Git',
-  '4,1': 'Github / GitLab',
-  '4,2': 'Google Cloud',
-}
-
-const GlitchSkills = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  // Store grid info for reuse in random glitch + hover
-  const gridRef = useRef<{
-    rows: number;
-    cols: number;
-    cellWidth: number;
-    cellHeight: number;
-  }>(null);
-
-  // Helper function to "glitch" a specific cell
-  function glitchCell(ctx: CanvasRenderingContext2D, row: number, col: number, label = 'glitch!', timeout = 1500) {
-    if (!gridRef.current) return;
-    const { cellWidth, cellHeight } = gridRef.current;
-
-    // Calculate pixel coordinates
-    const x = Math.round(col * cellWidth);
-    const y = Math.round(row * cellHeight);
-    const w = Math.ceil(cellWidth) - 1;
-    const h = Math.ceil(cellHeight) - 1;
-
-    // Draw black rectangle
-    ctx.fillStyle = '#2B7FFF';
-    ctx.fillRect(x, y, w, h);
-
-    // Optional: draw some text inside the cell
-    ctx.fillStyle = 'white';
-    ctx.font = '32px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    // console.log({ label, textWidth: ctx.measureText(label).width, cellWidth })
-    ctx.fillText(label, x + w / 2, y + h / 2, ctx.measureText(label).width * 0.88);
-
-    // Clear after 150ms
-    setTimeout(() => {
-      ctx.clearRect(x, y, w, h);
-    }, timeout);
-  }
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Match the viewport
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-
-    // 10x10 grid
-    const rows = 5;
-    const cols = 3;
-    const cellWidth = width / cols;
-    const cellHeight = height / rows;
-    gridRef.current = { rows, cols, cellWidth, cellHeight };
-
-    // Draw black squares at random intervals
-    const intervalId = setInterval(() => {
-      // Pick a random cell
-      const randomCol = Math.floor(Math.random() * cols);
-      const randomRow = Math.floor(Math.random() * rows);
-      const randomCol2 = Math.floor(Math.random() * cols);
-      const randomRow2 = Math.floor(Math.random() * rows);
-      // const randomCol3 = Math.floor(Math.random() * cols);
-      // const randomRow3 = Math.floor(Math.random() * rows);
-
-      // console.log({ randomCol, randomRow })
-
-      // @ts-expect-error need casting
-      glitchCell(ctx, randomRow, randomCol, itemMapping[`${randomRow},${randomCol}`], 2000)
-      // @ts-expect-error need casting
-      glitchCell(ctx, randomRow2, randomCol2, itemMapping[`${randomRow2},${randomCol2}`], 1750)
-    }, 1000);
-
-    let lastHoveredCell: number | null = null;
-
-    const onMouseMove = (e: MouseEvent) => {
-      console.log('mousemove!')
-      if (!gridRef.current) return;
-
-      // Get mouse position relative to the canvas
-      const rect = canvas.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-
-      // Figure out which cell the mouse is over
-      const col = Math.floor(mouseX / cellWidth);
-      const row = Math.floor(mouseY / cellHeight);
-
-      // Calculate a unique cell index (row * cols + col)
-      const cellIndex = row * cols + col;
-
-      // If the user moves into a *new* cell, trigger the glitch
-      if (cellIndex !== lastHoveredCell) {
-        lastHoveredCell = cellIndex;
-        glitchCell(ctx, row, col);
-      }
-    };
-
-    const onMouseLeave = () => {
-      // Reset so when the mouse re-enters, we can trigger again
-      lastHoveredCell = null;
-    };
-
-    // Attach listeners
-    canvas.addEventListener('mousemove', onMouseMove);
-    canvas.addEventListener('mouseleave', onMouseLeave);
-
-    // Cleanup
-    return () => {
-      clearInterval(intervalId);
-      canvas.removeEventListener('mousemove', onMouseMove);
-      canvas.removeEventListener('mouseleave', onMouseLeave);
-    };
-  }, []);
-
-  return (
-    <div className="relative w-full h-full overflow-hidden border-1 border-blue-500 animate-fade">
-      <canvas
-        ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full pointer-events-none"
-      />
-    </div>
-  );
 }
