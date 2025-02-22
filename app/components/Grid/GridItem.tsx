@@ -5,9 +5,10 @@ type GridItemProps = PropsWithChildren & {
   className?: string;
 }
 
-const GridItem = ({ children, className = "" }: GridItemProps) => {
+const GridItem = ({ children, colSpan, className = "" }: GridItemProps) => {
+  const colSpanClassName = `col-span-${colSpan?.toString()}`
   return (
-    <div className={className}>
+    <div className={[className, colSpanClassName].join(' ')}>
       {children}
     </div>
   )
