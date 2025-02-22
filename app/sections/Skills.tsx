@@ -1,14 +1,15 @@
 'use client'
 
+import { Grid, GridItem } from "@/app/components/Grid";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { DocumentIcon } from "@heroicons/react/24/solid";
 import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
-import { Grid, GridItem } from "@/app/components/Grid";
-import { HomeSectionProps } from "../lib/types";
+import { useNavigationContext } from "../lib/useNavigationContext";
 import { useViewportIntersect } from "../lib/useViewportIntersect";
 
-export const Skills = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+export const Skills = () => {
+  const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const [showAllTechSkills, setShowAllTechSkills] = useState(false)
 
   const gridWrapperTech = useRef<HTMLDivElement>(null)
@@ -19,13 +20,13 @@ export const Skills = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
   const { isVisible: isVisibleCv, isFullyVisible: isFullyVisibleCv } = useViewportIntersect(gridWrapperCv)
 
   useEffect(() => {
-    if (isVisibleTech) onEnter('skillsTech')
-    if (isVisibleSocial) onEnter('skillsSocial')
-    if (isVisibleCv) onEnter('skillsCv')
-    if (isFullyVisibleTech) onFullyVisible('skillsTech')
-    if (isFullyVisibleSocial) onFullyVisible('skillsSocial')
-    if (isFullyVisibleCv) onFullyVisible('skillsCv')
-  }, [isFullyVisibleCv, isFullyVisibleSocial, isFullyVisibleTech, isVisibleCv, isVisibleSocial, isVisibleTech, onEnter, onFullyVisible])
+    if (isVisibleTech) setCurrentSection('skillsTech')
+    if (isVisibleSocial) setCurrentSection('skillsSocial')
+    if (isVisibleCv) setCurrentSection('skillsCv')
+    if (isFullyVisibleTech) setFullyVisible('skillsTech')
+    if (isFullyVisibleSocial) setFullyVisible('skillsSocial')
+    if (isFullyVisibleCv) setFullyVisible('skillsCv')
+  }, [isFullyVisibleCv, isFullyVisibleSocial, isFullyVisibleTech, isVisibleCv, isVisibleSocial, isVisibleTech, setCurrentSection, setFullyVisible])
 
   return (
     <>

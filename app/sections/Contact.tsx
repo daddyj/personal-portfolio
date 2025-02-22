@@ -1,17 +1,18 @@
-import { EnvelopeIcon } from "@heroicons/react/24/outline"
 import { Grid, GridItem } from "@/app/components/Grid"
-import { HomeSectionProps } from "../lib/types"
-import { useRef, useEffect } from "react"
+import { EnvelopeIcon } from "@heroicons/react/24/outline"
+import { useEffect, useRef } from "react"
+import { useNavigationContext } from "../lib/useNavigationContext"
 import { useViewportIntersect } from "../lib/useViewportIntersect"
 
-export const Contact = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+export const Contact = () => {
+  const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
 
   useEffect(() => {
-    if (isVisible) onEnter('contact')
-    if (isFullyVisible) onFullyVisible('contact')
-  }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
+    if (isVisible) setCurrentSection('contact')
+    if (isFullyVisible) setFullyVisible('contact')
+  }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
     <Grid ref={gridWrapper} id="contact" className="grid-rows-[auto_1fr_auto]">

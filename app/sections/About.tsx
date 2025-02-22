@@ -2,17 +2,19 @@
 
 import { Grid, GridItem } from "@/app/components/Grid"
 import { useEffect, useRef } from "react"
-import { HomeSectionProps } from "../lib/types"
+import { useNavigationContext } from "../lib/useNavigationContext"
 import { useViewportIntersect } from "../lib/useViewportIntersect"
 
-export const About = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+export const About = () => {
+  const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
 
   useEffect(() => {
-    if (isVisible) onEnter('about')
-    if (isFullyVisible) onFullyVisible('about')
-  }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
+    console.log('about', { isVisible, isFullyVisible })
+    if (isVisible) setCurrentSection('about')
+    if (isFullyVisible) setFullyVisible('about')
+  }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
     <Grid id="about" rows={6} ref={gridWrapper}>

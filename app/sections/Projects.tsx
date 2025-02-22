@@ -1,23 +1,24 @@
 'use client'
 
 import Image from 'next/image'
-import { Grid, GridItem } from '../components/Grid'
-import { HomeSectionProps } from '../lib/types'
 import { useEffect, useRef } from 'react'
+import { Grid, GridItem } from '../components/Grid'
+import { useNavigationContext } from '../lib/useNavigationContext'
 import { useViewportIntersect } from '../lib/useViewportIntersect'
 
 // const ProjectsToggle = () => {
 //   return 
 // }
 
-export const Projects = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+export const Projects = () => {
+  const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
 
   useEffect(() => {
-    if (isVisible) onEnter('projects')
-    if (isFullyVisible) onFullyVisible('projects')
-  }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
+    if (isVisible) setCurrentSection('projects')
+    if (isFullyVisible) setFullyVisible('projects')
+  }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
     <Grid ref={gridWrapper} id="projects" className="grid-rows-[auto_80px_auto_auto]">

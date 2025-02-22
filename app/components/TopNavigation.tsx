@@ -1,6 +1,7 @@
-import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline"
-import { useState, useCallback, useEffect } from "react"
-import { HomeSection, sections } from "../lib/types";
+import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
+import { useCallback, useEffect, useState } from "react";
+import { sections } from "../lib/types";
+import { useNavigationContext } from "../lib/useNavigationContext";
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -11,12 +12,14 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-export const TopNavigation = ({ currentSection, fullyVisible }: { currentSection: HomeSection, fullyVisible: HomeSection }) => {
+export const TopNavigation = () => {
+  const { currentSection, fullyVisible } = useNavigationContext()
   // const [currentSection, setCurrentSection] = useState<string>('hero')
   const [isNextSectionAvailable, setIsNextSectionAvailable] = useState(true)
   // const [isChangedByScroll, setIsChangedByScroll] = useState(false)
 
   const handleArrowClick = useCallback(() => {
+    console.log('arrow click action with current section', currentSection)
     const currentIndex = sections.findIndex((section => currentSection === section))
     const nextIndex = fullyVisible === currentSection ? currentIndex + 1 : currentIndex
     // console.log('handleArrowClick', { currentIndex, nextIndex, section: sections?.[nextIndex], isChangedByScroll })
