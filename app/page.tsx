@@ -212,33 +212,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-// const useIntersector = () => {
-//   const [isVisible, setIsVisible] = useState(false);
-//   const elementRef = useRef<HTMLVideoElement>(null);
-
-//   useEffect(() => {
-//     const currentElement = elementRef.current
-//     const observer = new IntersectionObserver((entries) => {
-//       // entries[0] is our single observed element instance
-//       const entry = entries[0];
-//       setIsVisible(entry.isIntersecting);
-//     }, {
-//       root: null, // observing for viewport
-//       rootMargin: '0px',
-//       threshold: 0.1 // Trigger when at least 10% of the element is visible
-//     });
-
-//     if (elementRef.current) {
-//       observer.observe(elementRef.current);
-//     }
-
-//     // Clean up the observer on component unmount
-//     return () => {
-//       if (currentElement) {
-//         observer.unobserve(currentElement);
-//       }
-//     };
-//   }, [elementRef]); // Empty dependency array ensures the effect runs only once
-// }
