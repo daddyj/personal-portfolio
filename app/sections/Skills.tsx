@@ -49,7 +49,7 @@ export const Skills = () => {
     <>
       <Grid ref={gridWrapperTech} id="skillsTech" className="grid-rows-[auto_auto_auto_auto_1fr] sm:grid-rows-[auto_16px_1fr]">
         <GridItem className="col-span-10 sm:col-span-4">
-          <h2 className="text-4xl sm:text-6xl">Technologien</h2>
+          <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Technologien</h2>
         </GridItem>
         <GridItem className="col-span-10 sm:col-span-6">
           <p className="text-xl sm:text-2xl">Ich habe über die Jahre eine Reihe von Technologien für die Web- und Appentwicklung genutzt und mich über die Zeit auf einen Techstack fokussiert um optimale Ergebnisse erzielen zu können. Dabei hat sich React als meine Kern-Bibliothek im Frontend herausgestellt um maximale Wiederverwendbarkeit auf unterschiedlichen Plattformen zu gewährleisten: Das Web, nativ auf iOS und nativ auf Android. Ich liebe es immer wieder neue Sachen auszuprobieren und mich immer wieder von Kolleg:innen inspirieren zu lassen!</p>
@@ -87,8 +87,8 @@ export const Skills = () => {
       </Grid>
       <Grid ref={gridWrapperSocial} id="skillsSocial" rows={2} className="">
         <GridItem className="col-span-10 sm:col-span-4 flex flex-col sm:gap-16">
-          <h2 className="text-4xl sm:text-6xl ">Social Skills</h2>
-          <div className="my-8 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.png)', backgroundSize: "100%" }} />
+          <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Social Skills</h2>
+          <div className="my-16 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.png)', backgroundSize: "100%" }} />
         </GridItem>
         <GridItem className="sm:pt-0 col-span-10 sm:col-span-6">
           <p className="text-xl sm:text-2xl">Meine Leidenschaft für technologische Optimierung kombiniere ich mit einem starken methodischen und kommunikativen Ansatz. Als Softwareentwickler lege ich großen Wert darauf, eine verständliche Brücke zwischen Technik und gemeinsamer Projektentwicklung zu schaffen. Agile Arbeitsmethoden begeistern mich und prägen seit mehreren Jahren meinen Arbeitsstil. Gleichzeitig verfüge ich über fundierte Erfahrungen im klassischen Projektmanagement nach der Wasserfall-Methodik – Flexibilität und Anpassungsfähigkeit sind für mich selbstverständlich.<br />
@@ -123,7 +123,7 @@ export const Skills = () => {
       </Grid>
       <Grid ref={gridWrapperCv} id="skillsCv" className="grid-rows-[auto_1fr]">
         <GridItem className="col-span-10 sm:col-span-4">
-          <h2 className="text-4xl sm:text-6xl">Lebenslauf</h2>
+          <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Lebenslauf</h2>
         </GridItem>
         <GridItem className="col-span-10 sm:col-span-6">
           <p className="text-xl sm:text-2xl">Nachfolgend unterschiedliche Perspektiven um einen detaillierteren Einblick in meine bisherige Erfahrung zu bekommen. <br />
@@ -145,12 +145,12 @@ export const Skills = () => {
               <p>LinkedIn Profil</p>
             </div>
           </a>
-          {/* <a href="https://github.com/daddyj" target="_blank">
+          <a href="https://github.com/daddyj" target="_blank">
             <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
               <Image width={128} height={128} src="/github-logo.svg" alt="Link to Github account" className="" />
               <p>Github Konto</p>
             </div>
-          </a> */}
+          </a>
         </GridItem>
       </Grid>
     </>

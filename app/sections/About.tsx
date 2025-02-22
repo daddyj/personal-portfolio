@@ -18,9 +18,9 @@ export const About = () => {
     <Grid id="about" ref={gridWrapper}>
       <GridItem className="col-span-10" />
       <GridItem className="col-span-10 sm:col-span-6">
-        <h1 className="bold text-9xl text-center sm:text-left">Hi!</h1>
+        <h1 className="bold text-9xl">Hi!</h1>
       </GridItem>
-      <GridItem className="py-16 sm:py-0 col-span-10 h-auto w-auto sm:col-span-4 flex justify-center sm:justify-end animate-fade animate-once animate-duration-1500 animate-ease-out">
+      <GridItem className="pt-8 sm:pt-0 col-span-10 h-auto w-auto sm:col-span-4 flex justify-start sm:justify-end animate-fade animate-once animate-duration-1500 animate-ease-out">
         <div className="w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat" style={{ backgroundImage: 'url(/about-me.png)', backgroundSize: "200%", backgroundPositionY: -100 }}>
         </div>
       </GridItem>
