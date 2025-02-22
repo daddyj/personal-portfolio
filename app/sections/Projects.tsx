@@ -2,14 +2,25 @@
 
 import Image from 'next/image'
 import { Grid, GridItem } from '../components/Grid'
+import { HomeSectionProps } from '../lib/types'
+import { useEffect, useRef } from 'react'
+import { useViewportIntersect } from '../lib/useViewportIntersect'
 
 // const ProjectsToggle = () => {
 //   return 
 // }
 
-export const Projects = ({ id }: { id?: string }) => {
+export const Projects = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+  const gridWrapper = useRef<HTMLDivElement>(null)
+  const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
+
+  useEffect(() => {
+    if (isVisible) onEnter('projects')
+    if (isFullyVisible) onFullyVisible('projects')
+  }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
+
   return (
-    <Grid id={id} className="grid-rows-[auto_80px_auto_auto]">
+    <Grid ref={gridWrapper} id="projects" className="grid-rows-[auto_80px_auto_auto]">
       <GridItem className='col-span-10'>
         <h1 className="text-6xl">Meine aktiven Projekte</h1>
       </GridItem>

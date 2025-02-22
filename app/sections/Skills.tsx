@@ -5,13 +5,31 @@ import { DocumentIcon } from "@heroicons/react/24/solid";
 import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
 import { Grid, GridItem } from "@/app/components/Grid";
+import { HomeSectionProps } from "../lib/types";
+import { useViewportIntersect } from "../lib/useViewportIntersect";
 
-export const Skills = () => {
+export const Skills = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
   const [showAllTechSkills, setShowAllTechSkills] = useState(false)
+
+  const gridWrapperTech = useRef<HTMLDivElement>(null)
+  const gridWrapperSocial = useRef<HTMLDivElement>(null)
+  const gridWrapperCv = useRef<HTMLDivElement>(null)
+  const { isVisible: isVisibleTech, isFullyVisible: isFullyVisibleTech } = useViewportIntersect(gridWrapperTech)
+  const { isVisible: isVisibleSocial, isFullyVisible: isFullyVisibleSocial } = useViewportIntersect(gridWrapperSocial)
+  const { isVisible: isVisibleCv, isFullyVisible: isFullyVisibleCv } = useViewportIntersect(gridWrapperCv)
+
+  useEffect(() => {
+    if (isVisibleTech) onEnter('skillsTech')
+    if (isVisibleSocial) onEnter('skillsSocial')
+    if (isVisibleCv) onEnter('skillsCv')
+    if (isFullyVisibleTech) onFullyVisible('skillsTech')
+    if (isFullyVisibleSocial) onFullyVisible('skillsSocial')
+    if (isFullyVisibleCv) onFullyVisible('skillsCv')
+  }, [isFullyVisibleCv, isFullyVisibleSocial, isFullyVisibleTech, isVisibleCv, isVisibleSocial, isVisibleTech, onEnter, onFullyVisible])
 
   return (
     <>
-      <Grid id="skillsTech" className="grid-rows-[auto_16px_1fr]">
+      <Grid ref={gridWrapperTech} id="skillsTech" className="grid-rows-[auto_16px_1fr]">
         <GridItem className="col-span-4">
           <h2 className="text-6xl">Technologien</h2>
         </GridItem>
@@ -48,7 +66,7 @@ export const Skills = () => {
           )}
         </GridItem>
       </Grid>
-      <Grid id="skillsSocial" rows={2} className="">
+      <Grid ref={gridWrapperSocial} id="skillsSocial" rows={2} className="">
         <GridItem className="col-span-4 flex flex-col gap-16">
           <h2 className="text-6xl ">Social Skills</h2>
           <div className="w-64 h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.png)', backgroundSize: "100%" }} />
@@ -84,7 +102,7 @@ export const Skills = () => {
           </div>
         </GridItem>
       </Grid>
-      <Grid id="skillsCv" className="grid-rows-[auto_1fr]">
+      <Grid ref={gridWrapperCv} id="skillsCv" className="grid-rows-[auto_1fr]">
         <GridItem className="col-span-4">
           <h2 className="text-6xl">Lebenslauf</h2>
         </GridItem>

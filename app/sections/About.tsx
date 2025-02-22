@@ -1,8 +1,21 @@
-import { Grid, GridItem } from "@/app/components/Grid"
+'use client'
 
-export const About = ({ id }: { id?: string }) => {
+import { Grid, GridItem } from "@/app/components/Grid"
+import { useEffect, useRef } from "react"
+import { HomeSectionProps } from "../lib/types"
+import { useViewportIntersect } from "../lib/useViewportIntersect"
+
+export const About = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+  const gridWrapper = useRef<HTMLDivElement>(null)
+  const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
+
+  useEffect(() => {
+    if (isVisible) onEnter('about')
+    if (isFullyVisible) onFullyVisible('about')
+  }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
+
   return (
-    <Grid id={id} rows={6}>
+    <Grid id="about" rows={6} ref={gridWrapper}>
       <GridItem className="col-span-10" />
       <GridItem className="col-span-6">
         <div className="">

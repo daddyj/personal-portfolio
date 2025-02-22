@@ -1,12 +1,20 @@
-'use client'
-
 import { useEffect, useRef } from "react";
 import { Grid, GridItem } from "@/app/components/Grid";
+import { useViewportIntersect } from "@/app/lib/useViewportIntersect";
+import { HomeSectionProps } from "../lib/types";
 
 
-export const Hero = ({ id }: { id?: string }) => {
+export const Hero = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+  const gridWrapper = useRef<HTMLDivElement>(null)
+  const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
+
+  useEffect(() => {
+    if (isVisible) onEnter('hero')
+    if (isFullyVisible) onFullyVisible('hero')
+  }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
+
   return (
-    <Grid id={id} rows={`[auto_auto_auto_auto]`}>
+    <Grid id="hero" rows={`[auto_auto_auto_auto]`}>
       <div className="absolute w-screen h-screen">
         <GlitchVideo glitchOnly />
       </div>

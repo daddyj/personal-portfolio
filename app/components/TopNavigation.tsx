@@ -1,9 +1,6 @@
-'use client'
-
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/outline"
 import { useState, useCallback, useEffect } from "react"
-
-const sections = ['hero', 'about', 'skillsTech', 'skillsSocial', 'skillsCv', 'projects', 'contact']
+import { HomeSection, sections } from "../lib/types";
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -14,33 +11,31 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-export const TopNavigation = () => {
-  const [currentSection, setCurrentSection] = useState<string>('hero')
+export const TopNavigation = ({ currentSection, fullyVisible }: { currentSection: HomeSection, fullyVisible: HomeSection }) => {
+  // const [currentSection, setCurrentSection] = useState<string>('hero')
   const [isNextSectionAvailable, setIsNextSectionAvailable] = useState(true)
-  const [isChangedByScroll, setIsChangedByScroll] = useState(false)
+  // const [isChangedByScroll, setIsChangedByScroll] = useState(false)
 
   const handleArrowClick = useCallback(() => {
     const currentIndex = sections.findIndex((section => currentSection === section))
-    const nextIndex = isChangedByScroll ? currentIndex : currentIndex + 1
-    console.log('handleArrowClick', { currentIndex, nextIndex, section: sections?.[nextIndex], isChangedByScroll })
+    const nextIndex = fullyVisible === currentSection ? currentIndex + 1 : currentIndex
+    // console.log('handleArrowClick', { currentIndex, nextIndex, section: sections?.[nextIndex], isChangedByScroll })
     scrollToSection(sections[nextIndex])
-    if (nextIndex < sections.length - 1) {
-      setCurrentSection(sections[nextIndex])
-    } else {
+    if (nextIndex === sections.length - 1) {
       setIsNextSectionAvailable(false)
     }
-    setTimeout(() => setIsChangedByScroll(false), 500)
-  }, [currentSection, isChangedByScroll])
+    // setTimeout(() => setIsChangedByScroll(false), 500)
+  }, [currentSection, fullyVisible])
 
   useEffect(() => {
     console.log({ currentSection })
   }, [currentSection])
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsChangedByScroll(false)
-    }, 500)
-  })
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsChangedByScroll(false)
+  //   }, 500)
+  // })
 
   return (
     <nav className="flex fixed z-10 w-screen gap-8 p-4 px-16 text-2xl bg-black items-center">
@@ -71,7 +66,13 @@ export const TopNavigation = () => {
       }
       {
         !isNextSectionAvailable && (
-          <div className="fixed bottom-16 left-16 animate animate-fade" onClick={() => { scrollToSection('hero'); setCurrentSection('hero'); setIsNextSectionAvailable(true); setTimeout(() => { setIsChangedByScroll(false) }, 1000) }}>
+          <div
+            className="fixed bottom-16 left-16 animate animate-fade"
+            onClick={() => {
+              scrollToSection('hero');
+              setIsNextSectionAvailable(true);
+              // setTimeout(() => { setIsChangedByScroll(false) }, 1000)
+            }}>
             <ArrowUpIcon className="size-32 hover:cursor-pointer hover:animate-infinite animate-pulse animate-once hover:text-blue-500" />
           </div>
         )

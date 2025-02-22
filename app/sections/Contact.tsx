@@ -1,9 +1,20 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline"
 import { Grid, GridItem } from "@/app/components/Grid"
+import { HomeSectionProps } from "../lib/types"
+import { useRef, useEffect } from "react"
+import { useViewportIntersect } from "../lib/useViewportIntersect"
 
-export const Contact = ({ id }: { id?: string }) => {
+export const Contact = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
+  const gridWrapper = useRef<HTMLDivElement>(null)
+  const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
+
+  useEffect(() => {
+    if (isVisible) onEnter('contact')
+    if (isFullyVisible) onFullyVisible('contact')
+  }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
+
   return (
-    <Grid id={id} className="grid-rows-[auto_1fr_auto]">
+    <Grid ref={gridWrapper} id="contact" className="grid-rows-[auto_1fr_auto]">
       <GridItem className="col-span-10 flex">
         <p className="text-6xl">Lust auf einen Austausch?</p>
       </GridItem>
