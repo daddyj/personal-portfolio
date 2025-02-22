@@ -1,4 +1,4 @@
-import { Grid, GridItem } from "./Grid"
+import { Grid, GridItem } from "@/app/components/Grid"
 
 export const About = ({ id }: { id?: string }) => {
   return (

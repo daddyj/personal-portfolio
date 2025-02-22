@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Grid, GridItem } from './Grid'
+import { Grid, GridItem } from '../components/Grid'
 
 // const ProjectsToggle = () => {
 //   return 

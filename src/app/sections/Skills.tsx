@@ -2,7 +2,7 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { DocumentIcon } from "@heroicons/react/24/solid";
 import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
-import { Grid, GridItem } from "./Grid";
+import { Grid, GridItem } from "@/app/components/Grid";
 
 export const Skills = () => {
   const [showAllTechSkills, setShowAllTechSkills] = useState(false)

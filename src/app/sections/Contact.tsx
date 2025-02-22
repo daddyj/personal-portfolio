@@ -1,5 +1,5 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline"
-import { Grid, GridItem } from "./Grid"
+import { Grid, GridItem } from "@/app/components/Grid"
 
 export const Contact = ({ id }: { id?: string }) => {
   return (
