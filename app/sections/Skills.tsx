@@ -1,3 +1,5 @@
+'use client'
+
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { DocumentIcon } from "@heroicons/react/24/solid";
 import Image from 'next/image';

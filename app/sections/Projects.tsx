@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { Grid, GridItem } from '../components/Grid'
 

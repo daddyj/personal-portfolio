@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef } from "react";
 import { Grid, GridItem } from "@/app/components/Grid";
 
