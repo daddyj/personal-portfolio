@@ -14,7 +14,7 @@ export const Hero = ({ onEnter, onFullyVisible }: HomeSectionProps) => {
   }, [isFullyVisible, isVisible, onEnter, onFullyVisible])
 
   return (
-    <Grid id="hero" rows={`[auto_auto_auto_auto]`}>
+    <Grid ref={gridWrapper} id="hero" rows={`[auto_auto_auto_auto]`}>
       <div className="absolute w-screen h-screen">
         <GlitchVideo glitchOnly />
       </div>
