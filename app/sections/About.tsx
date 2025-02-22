@@ -1,5 +1,3 @@
-'use client'
-
 import { Grid, GridItem } from "@/app/components/Grid"
 import { useEffect, useRef } from "react"
 import { useNavigationContext } from "../lib/useNavigationContext"

@@ -1,5 +1,3 @@
-'use client'
-
 import { Grid, GridItem } from "@/app/components/Grid";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { DocumentIcon } from "@heroicons/react/24/solid";
