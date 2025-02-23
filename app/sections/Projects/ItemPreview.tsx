@@ -1,10 +1,11 @@
 import { GridItem } from "@/app/components/Grid";
+import { React } from "@/app/components/Icons/React";
 import Image from 'next/image';
-import { Fragment } from "react";
+import { Fragment, JSX } from "react";
 
 interface ItemPreviewProps {
   role: string;
-  techStack: React.ReactNode[];
+  techStack: JSX.Element[];
   images: string[];
   description: React.ReactNode
 }
@@ -18,23 +19,23 @@ export const ItemPreview = ({
   return (
     <>
       <GridItem className='col-span-10 sm:col-span-3 flex flex-col gap-8 animate-fade'>
-        <div className='text-md sm:text-2xl'>
+        <div className='text-md sm:text-2xl flex flex-col gap-4'>
           <p className='font-bold'>Rolle in dem Projekt:</p>
           <p>{role}</p>
         </div>
-        <div className='text-md sm:text-2xl'>
-          <p className='font-bold'>TechStack (TODO use icons with animation effect):</p>
-          <div className='flex flex-wrap gap-2'>
-            {techStack.map((tech: React.ReactNode, index) => (
-              <Fragment key={tech?.toString()}>
-                <p>{tech}</p>
+        <div className='text-md sm:text-2xl flex flex-col gap-4'>
+          <p className='font-bold'>Technologien:</p>
+          <div className='flex flex-wrap gap-2 sm:gap-4 items-center font-bold'>
+            {techStack.map((tech: JSX.Element, index) => (
+              <Fragment key={tech.key}>
+                {tech}
                 {index < techStack.length - 1 && <p>#</p>}
               </Fragment>
             ))}
           </div>
         </div>
       </GridItem>
-      <GridItem className='col-span-10 sm:col-span-4 flex justify-start sm:justify-end items-start animate-fade relative'>
+      <GridItem className='col-span-10 sm:col-span-4 flex flex-1 justify-start sm:justify-end items-start animate-fade relative'>
         {images.map((image, index) => {
           const offset = index * 16
           const rotate = ((index + 1) * 8) - 16
