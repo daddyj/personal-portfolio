@@ -1,8 +1,8 @@
 import { Grid, GridItem } from "@/app/components/Grid"
 import { EnvelopeIcon } from "@heroicons/react/24/outline"
 import { useEffect, useRef } from "react"
-import { useNavigationContext } from "../lib/useNavigationContext"
-import { useViewportIntersect } from "../lib/useViewportIntersect"
+import { useNavigationContext } from "@/app/lib/useNavigationContext"
+import { useViewportIntersect } from "@/app/lib/useViewportIntersect"
 
 export const Contact = () => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()

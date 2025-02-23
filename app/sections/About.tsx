@@ -1,7 +1,7 @@
 import { Grid, GridItem } from "@/app/components/Grid"
 import { useEffect, useRef } from "react"
-import { useNavigationContext } from "../lib/useNavigationContext"
-import { useViewportIntersect } from "../lib/useViewportIntersect"
+import { useNavigationContext } from "@/app/lib/useNavigationContext"
+import { useViewportIntersect } from "@/app/lib/useViewportIntersect"
 
 export const About = () => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()

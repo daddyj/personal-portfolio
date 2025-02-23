@@ -3,9 +3,9 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { DocumentIcon } from "@heroicons/react/24/solid";
 import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
-import { useNavigationContext } from "../lib/useNavigationContext";
-import { useViewportIntersect } from "../lib/useViewportIntersect";
-import { GlitchCanvas } from "../components/GlitchCanvas";
+import { useNavigationContext } from "@/app/lib/useNavigationContext";
+import { useViewportIntersect } from "@/app/lib/useViewportIntersect";
+import { GlitchCanvas } from "@/app/components/GlitchCanvas";
 
 const itemMapping = {
   '0,0': 'Javascript',

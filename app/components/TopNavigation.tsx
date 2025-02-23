@@ -1,7 +1,7 @@
 import { ArrowDownIcon, ArrowUpIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useCallback, useEffect, useState } from "react";
-import { sections } from "../lib/types";
-import { useNavigationContext } from "../lib/useNavigationContext";
+import { sections } from "@/app/lib/types";
+import { useNavigationContext } from "@/app/lib/useNavigationContext";
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
