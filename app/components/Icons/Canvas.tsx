@@ -2,12 +2,12 @@ import { IconProps } from "./types";
 
 export function Canvas(props: IconProps) {
   return (
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank">
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        width="4rem"
-        height="4rem"
+        width="2rem"
+        height="2rem"
         {...props}
       >
         <g
@@ -22,6 +22,7 @@ export function Canvas(props: IconProps) {
           <path d="M10.699 5.566c1.23-.176 3.268-.106 1.581 1.587c-2.108 2.115-5.272 6.876-1.581 5.29c3.69-1.588 5.272-.53 3.69 1.057M12 17v4m-7 1l3-5m11 5l-3-5"></path>
         </g>
       </svg>
+      <p>Canvas</p>
     </a>
   )
 }

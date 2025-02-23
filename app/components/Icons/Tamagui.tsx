@@ -2,12 +2,12 @@ import { IconProps } from "./types";
 
 export function Tamagui(props: IconProps) {
   return (
-    <a href="https://tamagui.dev" target="_blank">
+    <a href="https://tamagui.dev" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
-        width="4rem"
-        height="4rem"
+        width="2rem"
+        height="2rem"
         {...props}
       >
         <path
@@ -20,6 +20,7 @@ export function Tamagui(props: IconProps) {
           <path d="M20.72 4.79h1.86v1.86h-1.86zm-1.86 1.85h1.86V8.5h-1.86zM13.14 8.5H15v1.86h-1.86zm0 7.43v3.71H15v-3.71zm-1.85 3.71h1.86v1.86h-1.86zm-1.86-1.86v1.86h1.86v-3.71H9.43z"></path>
         </g>
       </svg>
+      <p>Tamagui UI</p>
     </a>
   )
 }

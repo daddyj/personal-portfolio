@@ -2,12 +2,12 @@ import { IconProps } from "./types";
 
 export function Nextjs(props: IconProps) {
   return (
-    <a href="https://nextjs.org/" target="_blank">
+    <a href="https://nextjs.org/" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"
-        width="4rem"
-        height="4rem"
+        width="2rem"
+        height="2rem"
         {...props}
       >
         <g fill="none">
@@ -18,6 +18,7 @@ export function Nextjs(props: IconProps) {
           ></path>
         </g>
       </svg>
+      <p>NextJS</p>
     </a>
   )
 }

@@ -2,12 +2,12 @@ import { IconProps } from "./types";
 
 export function MaterialUi(props: IconProps) {
   return (
-    <a href="https://mui.com/material-ui/" target="_blank">
+    <a href="https://mui.com/material-ui/" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 128 128"
-        width="4rem"
-        height="4rem"
+        width="2rem"
+        height="2rem"
         {...props}
       >
         <path
@@ -24,6 +24,7 @@ export function MaterialUi(props: IconProps) {
           d="M80 114.6L127.8 87V50.2l-16 9.2v18.4L80 96.2v18.4zM111.9 41V22.6l16-9.2v18.4l-16 9.2z"
         ></path>
       </svg>
+      <p>Material UI</p>
     </a>
   )
 }

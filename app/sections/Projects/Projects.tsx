@@ -38,7 +38,7 @@ const projectDetails = {
   'own-hp': {
     navLabel: 'Acun Gürsoy Homepage',
     role: 'Fullstack Entwicklung Homepage und UI Design',
-    techStack: [<React key="react" />, <Nextjs key="nextjs" />, <TailwindCss key="tailwind-css" />, <Canvas key="canvas" />],
+    techStack: [<React key="react" />, <Nextjs key="nextjs" />, <Canvas key="canvas" />, <TailwindCss key="tailwind-css" />],
     images: ["/own-hp-3.png", "/own-hp-2.png", "/own-hp-1.png"],
     description: <>Für eine weitere technologische Fallstudie und um auch eine produktive, technische &quot;Spielwiese&quot; zu haben, habe ich auch meine eigene Homepage entwickelt. Hier waren meine Ziele möglichst zeiteffizient eine flexible und wartbare Lösung zu schaffen.</>
   }

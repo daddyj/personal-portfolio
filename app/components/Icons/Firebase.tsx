@@ -2,12 +2,12 @@ import { IconProps } from "./types";
 
 export function Firebase(props: IconProps) {
   return (
-    <a href="https://console.firebase.google.com" target="_blank">
+    <a href="https://console.firebase.google.com" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
-        width="4rem"
-        height="4rem"
+        width="2rem"
+        height="2rem"
         {...props}
       >
         <path
@@ -27,6 +27,7 @@ export function Firebase(props: IconProps) {
           d="M16.59 2c-2.13 1.7-3.81 3.95-4.83 6.54a15.6 15.6 0 0 0-1.05 4.75a8.41 8.41 0 0 1 6.3 8.44a8.27 8.27 0 0 1-1.27 4.15a15.8 15.8 0 0 0 4.93 3.1c3.7-1.71 6.32-5.38 6.47-9.73c.1-2.82-.98-5.33-2.51-7.45c-1.62-2.24-8.04-9.79-8.04-9.79Z"
         ></path>
       </svg>
+      <p>Firebase</p>
     </a>
   )
 }

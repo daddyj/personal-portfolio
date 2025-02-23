@@ -2,12 +2,12 @@ import { IconProps } from "./types";
 
 export function GCloud(props: IconProps) {
   return (
-    <a href="https://console.cloud.google.com/" target="_blank">
+    <a href="https://console.cloud.google.com/" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 128 128"
-        width="4rem"
-        height="4rem"
+        width="2rem"
+        height="2rem"
         {...props}
       >
         <path
@@ -27,6 +27,7 @@ export function GCloud(props: IconProps) {
           d="M40.2 41.9c-14.9.1-28.1 9.3-32.9 22.8c-4.8 13.6 0 28.5 11.8 37.3l15.6-14.9c-8.6-3.7-10.6-14.5-4-20.8c6.6-6.4 17.8-4.4 21.7 3.8L68 55.2C61.4 46.9 51.1 42 40.2 42.1z"
         ></path>
       </svg>
+      <p>Google Cloud</p>
     </a>
   )
 }
