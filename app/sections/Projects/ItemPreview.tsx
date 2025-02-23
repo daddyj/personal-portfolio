@@ -25,12 +25,9 @@ export const ItemPreview = ({
         </div>
         <div className='text-md sm:text-2xl flex flex-col gap-4'>
           <p className='font-bold'>Technologien:</p>
-          <div className='flex flex-wrap gap-2 sm:gap-4 items-center font-bold'>
-            {techStack.map((tech: JSX.Element, index) => (
-              <Fragment key={tech.key}>
-                {tech}
-                {index < techStack.length - 1 && <p>#</p>}
-              </Fragment>
+          <div className='flex flex-wrap gap-2 sm:gap-4 items-end font-bold text-sm'>
+            {techStack.map((tech: JSX.Element) => (
+              tech
             ))}
           </div>
         </div>
