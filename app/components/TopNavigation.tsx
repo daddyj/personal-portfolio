@@ -39,9 +39,11 @@ export const TopNavigation = () => {
         <p>acun gürsoy</p>
       </div>
 
-      <div className="flex flex-1 p-2 sm:px-4 rounded-full border-1 items-center gap-2">
-        <div className="flex w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
-        <p className="text-xs sm:text-sm text-center ">Offen für Projekte!</p>
+      <div className="flex">
+        <div className="flex flex-1 p-2 sm:px-4 rounded-full border-1 items-center gap-2">
+          <div className="flex w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
+          <p className="text-xs sm:text-sm text-center ">Offen für Projekte!</p>
+        </div>
       </div>
 
       <div className="hidden sm:flex flex-1 justify-end gap-4">
