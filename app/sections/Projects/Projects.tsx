@@ -40,7 +40,7 @@ const projectDetails = {
     role: 'Fullstack Entwicklung Homepage und UI Design',
     techStack: [<React key="react" />, <Nextjs key="nextjs" />, <Canvas key="canvas" />, <TailwindCss key="tailwind-css" />],
     images: ["/own-hp-3.png", "/own-hp-2.png", "/own-hp-1.png"],
-    description: <>Für eine weitere technologische Fallstudie und um auch eine produktive, technische &quot;Spielwiese&quot; zu haben, habe ich auch meine eigene Homepage entwickelt. Hier waren meine Ziele möglichst zeiteffizient eine flexible und wartbare Lösung zu schaffen.</>
+    description: <>Für eine weitere technologische Fallstudie und um auch eine produktive, technische &quot;Spielwiese&quot; zu haben, habe ich auch meine eigene Homepage entwickelt. Hier waren meine Ziele möglichst zeiteffizient eine flexible und wartbare Lösung zu schaffen. Ausserdem bietet das Projekt eine anderen Techstack im Frontend um auf Codebasis den Vorteil/ Nachteil von gewissen Technologien gemeinsam zu besprechen! Let&apos;s chat!</>
   }
 }
 

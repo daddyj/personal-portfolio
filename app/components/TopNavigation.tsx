@@ -31,7 +31,7 @@ export const TopNavigation = () => {
   }, [currentSection])
 
   return (
-    <nav className="flex fixed z-10 w-screen gap-4 sm:gap-8 p-4 px-8 sm:px-16 text-md sm:text-2xl bg-black items-center">
+    <nav className="flex fixed z-10 w-screen gap-4 sm:gap-8 p-4 px-8 sm:px-16 text-sm sm:text-2xl bg-black items-center">
       <div className="flex sm:hidden" onClick={() => { setIsMobileMenuOpen(true) }}>
         <Bars3Icon className="size-10" />
       </div>
@@ -39,11 +39,9 @@ export const TopNavigation = () => {
         <p>acun gürsoy</p>
       </div>
 
-      <div className="flex">
-        <div className="flex p-2 sm:px-4 rounded-full border-1 items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
-          <p className="text-xs sm:text-sm">Offen für Projekte!</p>
-        </div>
+      <div className="flex flex-1 p-2 sm:px-4 rounded-full border-1 items-center gap-2">
+        <div className="flex w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
+        <p className="text-xs sm:text-sm text-center ">Offen für Projekte!</p>
       </div>
 
       <div className="hidden sm:flex flex-1 justify-end gap-4">
