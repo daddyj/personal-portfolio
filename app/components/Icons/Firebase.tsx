@@ -2,7 +2,7 @@ import { IconProps } from "./types";
 
 export function Firebase(props: IconProps) {
   return (
-    <a href="https://console.firebase.google.com" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
+    <a href="https://console.firebase.google.com" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[125%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"

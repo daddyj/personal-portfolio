@@ -2,7 +2,7 @@ import { IconProps } from "./types";
 
 export function ReactNative(props: IconProps) {
   return (
-    <a href="https://reactnative.dev/" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[121%] transition-all">
+    <a href="https://reactnative.dev/" target="_blank" className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[125%] transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 128 128"
