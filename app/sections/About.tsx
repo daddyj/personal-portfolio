@@ -29,7 +29,7 @@ export const About = () => {
       <GridItem className="col-[none] sm:col-span-3" />
       <GridItem className="col-[none] sm:col-span-7 flex gap-8">
         <h1 className="hidden sm:block bold text-9xl rotate-[-6deg]">Hi!</h1>
-        <div className="hidden sm:block w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat" style={{ backgroundImage: 'url(/about-me.png)', backgroundSize: "200%", backgroundPositionY: -100 }}></div>
+        <div className="hidden sm:block w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat" style={{ backgroundImage: 'url(/about-me.jpeg)', backgroundSize: "200%", backgroundPositionY: -100 }}></div>
       </GridItem>
 
       <GridItem className="col-[none] sm:col-span-4" />
