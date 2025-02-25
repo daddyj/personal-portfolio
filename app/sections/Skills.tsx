@@ -88,7 +88,7 @@ export const Skills = () => {
       <Grid ref={gridWrapperSocial} id="skillsSocial" rows={2} className="">
         <GridItem className="col-span-10 sm:col-span-4 flex flex-col sm:gap-16">
           <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Social Skills</h2>
-          <div className="my-16 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.png)', backgroundSize: "100%" }} />
+          <div className="my-16 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.jpeg)', backgroundSize: "100%" }} />
         </GridItem>
         <GridItem className="sm:pt-0 col-span-10 sm:col-span-6">
           <p className="text-xl sm:text-2xl">Meine Leidenschaft für technologische Optimierung kombiniere ich mit einem starken methodischen und kommunikativen Ansatz. Als Softwareentwickler lege ich großen Wert darauf, eine verständliche Brücke zwischen Technik und gemeinsamer Projektentwicklung zu schaffen. Agile Arbeitsmethoden begeistern mich und prägen seit mehreren Jahren meinen Arbeitsstil. Gleichzeitig verfüge ich über fundierte Erfahrungen im klassischen Projektmanagement nach der Wasserfall-Methodik – Flexibilität und Anpassungsfähigkeit sind für mich selbstverständlich.<br />
@@ -132,13 +132,13 @@ export const Skills = () => {
         <GridItem className="col-[none] sm:col-span-4" />
         <GridItem className="col-span-10 sm:col-span-6 flex flex-col sm:flex-row gap-16 items-center justify-around">
           <a href="/acun_guersoy_cv_2025.pdf" target="_blank">
-            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-2 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
+            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-2 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[125%] transition-all">
               <DocumentIcon className="size-24 sm:size-32" />
               <p>PDF herunterladen</p>
             </div>
           </a>
           <a href="https://www.linkedin.com/in/acun-g%C3%BCrsoy-83b8ab139/" target="_blank">
-            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
+            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[125%] transition-all">
               <div className="bg-white p-4 rounded-sm">
                 <Image width={128} height={128} src="/linkedin-logo.svg" alt="Link to Github account" />
               </div>
@@ -146,7 +146,7 @@ export const Skills = () => {
             </div>
           </a>
           <a href="https://github.com/daddyj" target="_blank">
-            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[121%] transition-all">
+            <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[125%] transition-all">
               <Image width={128} height={128} src="/github-logo.svg" alt="Link to Github account" className="" />
               <p>Github Konto</p>
             </div>
