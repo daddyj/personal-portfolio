@@ -1,14 +1,13 @@
 import { Grid, GridItem } from '@/app/components/Grid'
+import { Firebase, GCloud, Nextjs, React, ReactNative, Tamagui } from '@/app/components/Icons'
+import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 import { useEffect, useRef, useState } from 'react'
 import { ItemPreview } from './ItemPreview'
 import { NavItem } from './NavItem'
-import { Canvas, Firebase, GCloud, Nextjs, React, ReactNative, Tamagui } from '@/app/components/Icons'
-import { MaterialUi } from '@/app/components/Icons/MaterialUi'
-import { TailwindCss } from '@/app/components/Icons/TailwindCss'
 
-const projects = ['myla', 'theanswer-hp', 'myla-portal', 'own-hp'] as const
+const projects = ['myla', 'theanswer-hp', 'myla-portal'] as const
 export type ProjectListItem = typeof projects[number]
 
 const projectDetails = {
@@ -34,13 +33,6 @@ const projectDetails = {
     techStack: [<React key="react" />, <Nextjs key="nextjs" />, <MaterialUi key="material-ui" />, <Firebase key="firebase" />],
     images: ["/myla-portal-3.png", "/myla-portal-2.png", "/myla-portal-1.png"],
     description: <>Die App Myla wird sowohl auf dem Privatmarkt vertrieben, als auch für Schulen auf geschäftlicher Ebene über eine jährliche Schullizenz pro Gerät. Hierfür habe ich eine minimale Form von Portal entwickelt um zum Einen den time-to-market nicht zu verzögern und zum Anderen dem Benutzer nur die Informationsmenge und Funktionsvielfalt mitzugeben die zu jeweiligem Entwickklungsstand am hilfreichsten ist.</>
-  },
-  'own-hp': {
-    navLabel: 'Acun Gürsoy Homepage',
-    role: 'Fullstack Entwicklung Homepage und UI Design',
-    techStack: [<React key="react" />, <Nextjs key="nextjs" />, <Canvas key="canvas" />, <TailwindCss key="tailwind-css" />],
-    images: ["/own-hp-3.png", "/own-hp-2.png", "/own-hp-1.png"],
-    description: <>Für eine weitere technologische Fallstudie und um auch eine produktive, technische &quot;Spielwiese&quot; zu haben, habe ich auch meine eigene Homepage entwickelt. Hier waren meine Ziele möglichst zeiteffizient eine flexible und wartbare Lösung zu schaffen. Ausserdem bietet das Projekt eine anderen Techstack im Frontend um auf Codebasis den Vorteil/ Nachteil von gewissen Technologien gemeinsam zu besprechen! Let&apos;s chat!</>
   }
 }
 
