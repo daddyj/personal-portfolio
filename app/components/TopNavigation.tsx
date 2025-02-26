@@ -31,7 +31,7 @@ export const TopNavigation = () => {
   }, [currentSection])
 
   return (
-    <nav className="flex fixed z-10 w-screen gap-4 sm:gap-8 p-4 px-8 sm:px-16 text-sm sm:text-2xl bg-black items-center">
+    <nav className="flex fixed z-10 w-screen gap-4 sm:gap-8 p-4 px-8 sm:px-16 text-sm sm:text-2xl bg-[var(--background)] items-center">
       <div className="flex sm:hidden" onClick={() => { setIsMobileMenuOpen(true) }}>
         <Bars3Icon className="size-10" />
       </div>
@@ -74,7 +74,7 @@ export const TopNavigation = () => {
         )
       }
       {isMobileMenuOpen && (
-        <div className="fixed top-0 left-0 p-8 w-screen h-screen bg-black animate-fade animate-duration-420 flex flex-col items-center text-4xl gap-4">
+        <div className="fixed top-0 left-0 p-8 w-screen h-screen bg-[var(--background)] animate-fade animate-duration-420 flex flex-col items-center text-4xl gap-4">
           <div className="flex justify-end w-full" onClick={() => { setIsMobileMenuOpen(false) }}>
             <XMarkIcon className="size-24" />
           </div>

@@ -74,7 +74,7 @@ export const Skills = () => {
               <div className="grid grid-cols-3 grid-rows-5 gap-[1px] h-full animate-fade">
                 {
                   // @ts-expect-error type casting open
-                  Object.keys(itemMapping).map((rowColString) => <GridItem key={rowColString} className="p-4 sm:p-0 bg-blue-500 flex justify-center items-center font-bold text-center text-xs sm:text-xl">{itemMapping[rowColString]}</GridItem>)
+                  Object.keys(itemMapping).map((rowColString) => <GridItem key={rowColString} className="p-4 sm:p-0 bg-blue-500 flex justify-center items-center font-bold text-center text-xs sm:text-xl text-white">{itemMapping[rowColString]}</GridItem>)
                 }
               </div>
               <div className="hidden sm:flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(false)}>
