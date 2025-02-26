@@ -1,9 +1,7 @@
 import { GlitchCanvas } from "@/app/components/GlitchCanvas";
-import { Grid, GridItem } from "@/app/components/Grid";
-import { useNavigationContext } from "@/app/lib/useNavigationContext";
-import { useViewportIntersect } from "@/app/lib/useViewportIntersect";
+import { GridItem } from "@/app/components/Grid";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const itemMapping = {
   '0,0': 'Javascript',
@@ -24,22 +22,10 @@ const itemMapping = {
 }
 
 export const SkillsTech = () => {
-  const { setCurrentSection, setFullyVisible } = useNavigationContext()
-
-  const gridWrapper = useRef<HTMLDivElement>(null)
-  const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
-
-
   const [showAllTechSkills, setShowAllTechSkills] = useState(true)
 
-
-  useEffect(() => {
-    if (isVisible) setCurrentSection('skillsTech')
-    if (isFullyVisible) setFullyVisible('skillsTech')
-  }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
-
   return (
-    <Grid ref={gridWrapper} id="skillsTech" className="grid-rows-[auto_auto_auto_auto_1fr] sm:grid-rows-[auto_16px_1fr]">
+    <>
       <GridItem className="col-span-10 sm:col-span-4">
         <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Technologien</h2>
       </GridItem>
@@ -76,6 +62,6 @@ export const SkillsTech = () => {
           </>
         )}
       </GridItem>
-    </Grid>
+    </>
   )
 }
