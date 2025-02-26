@@ -131,7 +131,7 @@ export const Skills = () => {
         </GridItem>
         <GridItem className="col-[none] sm:col-span-4" />
         <GridItem className="col-span-10 sm:col-span-6 flex flex-col sm:flex-row gap-16 items-center justify-around">
-          <a href="/acun_guersoy_cv_2025.pdf" target="_blank">
+          <a href="/docs/acun_guersoy_cv_2025.pdf" target="_blank">
             <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-2 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[125%] transition-all">
               <DocumentIcon className="size-24 sm:size-32" />
               <p>PDF herunterladen</p>
@@ -140,14 +140,14 @@ export const Skills = () => {
           <a href="https://www.linkedin.com/in/acun-g%C3%BCrsoy-83b8ab139/" target="_blank">
             <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[125%] transition-all">
               <div className="bg-white p-4 rounded-sm">
-                <Image width={128} height={128} src="/linkedin-logo.svg" alt="Link to Github account" />
+                <Image width={128} height={128} src="/logos/linkedin.svg" alt="Link to Github account" />
               </div>
               <p>LinkedIn Profil</p>
             </div>
           </a>
           <a href="https://github.com/daddyj" target="_blank">
             <div className="flex flex-col items-center justify-end h-40 min-w-[180px] hover:font-bold hover:text-blue-500 hover:cursor-pointer gap-4 border-b-2 border-transparent hover:border-blue-500 hover:rotate-2 hover:scale-[125%] transition-all">
-              <Image width={128} height={128} src="/github-logo.svg" alt="Link to Github account" className="" />
+              <Image width={128} height={128} src="/logos/github.svg" alt="Link to Github account" className="" />
               <p>Github Konto</p>
             </div>
           </a>
