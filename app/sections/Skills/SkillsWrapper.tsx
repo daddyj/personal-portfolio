@@ -4,7 +4,7 @@ import { useNavigationContext } from "@/app/lib/useNavigationContext"
 import { useViewportIntersect } from "@/app/lib/useViewportIntersect"
 import { useRef, useEffect, PropsWithChildren } from "react"
 
-export const SkillsWrapper = ({ skillsKey, children }: { skillsKey: HomeSection } & PropsWithChildren) => {
+export const SkillsWrapper = ({ skillsKey, className = '', children }: { skillsKey: HomeSection; className?: string } & PropsWithChildren) => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
 
   const gridWrapper = useRef<HTMLDivElement>(null)
@@ -16,7 +16,7 @@ export const SkillsWrapper = ({ skillsKey, children }: { skillsKey: HomeSection 
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible, skillsKey])
 
   return (
-    <Grid ref={gridWrapper} id={skillsKey} rows={2} className="">
+    <Grid ref={gridWrapper} id={skillsKey} className={className}>
       {children}
     </Grid>
   )

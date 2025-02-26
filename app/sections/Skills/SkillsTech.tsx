@@ -2,6 +2,7 @@ import { GlitchCanvas } from "@/app/components/GlitchCanvas";
 import { GridItem } from "@/app/components/Grid";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { SkillsWrapper } from "./SkillsWrapper";
 
 const itemMapping = {
   '0,0': 'Javascript',
@@ -25,7 +26,7 @@ export const SkillsTech = () => {
   const [showAllTechSkills, setShowAllTechSkills] = useState(true)
 
   return (
-    <>
+    <SkillsWrapper skillsKey="skillsTech" className="grid-rows-[auto_1fr]">
       <GridItem className="col-span-10 sm:col-span-4">
         <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Technologien</h2>
       </GridItem>
@@ -33,7 +34,7 @@ export const SkillsTech = () => {
         <p className="text-xl sm:text-2xl">Ich habe über die Jahre eine Reihe von Technologien für die Web- und Appentwicklung genutzt und mich über die Zeit auf einen Techstack fokussiert um optimale Ergebnisse erzielen zu können. Dabei hat sich React als meine Kern-Bibliothek im Frontend herausgestellt um maximale Wiederverwendbarkeit auf unterschiedlichen Plattformen zu gewährleisten: Das Web, nativ auf iOS und nativ auf Android. Ich liebe es immer wieder neue Sachen auszuprobieren und mich immer wieder von Kolleg:innen inspirieren zu lassen!</p>
       </GridItem>
 
-      <GridItem className="col-span-10" />
+      <GridItem className="col-span-10 sm:col-[none]" />
 
       <GridItem className="col-span-10 sm:col-span-4" />
       <GridItem className="col-span-10 sm:col-span-6 flex flex-col gap-2 sm:gap-4">
@@ -62,6 +63,6 @@ export const SkillsTech = () => {
           </>
         )}
       </GridItem>
-    </>
+    </SkillsWrapper>
   )
 }

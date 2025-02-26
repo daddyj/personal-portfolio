@@ -1,7 +1,8 @@
 import { GridItem } from "@/app/components/Grid";
+import { SkillsWrapper } from "./SkillsWrapper";
 
 export const SkillsSocial = () => (
-  <>
+  <SkillsWrapper skillsKey="skillsSocial">
     <GridItem className="col-span-10 sm:col-span-4 flex flex-col sm:gap-16">
       <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Social Skills</h2>
       <div className="my-16 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.jpeg)', backgroundSize: "100%" }} />
@@ -36,5 +37,5 @@ export const SkillsSocial = () => (
         <p>Miro / Trello / Atlassian Tools</p>
       </div>
     </GridItem>
-  </>
+  </SkillsWrapper>
 )

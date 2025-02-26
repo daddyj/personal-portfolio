@@ -1,10 +1,10 @@
 import { GridItem } from "@/app/components/Grid";
 import { DocumentIcon } from "@heroicons/react/24/outline";
 import Image from 'next/image';
+import { SkillsWrapper } from "./SkillsWrapper";
 
 export const SkillsCv = () => (
-  <>
-
+  <SkillsWrapper skillsKey="skillsCv">
     <GridItem className="col-span-10 sm:col-span-4">
       <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Lebenslauf</h2>
     </GridItem>
@@ -35,5 +35,5 @@ export const SkillsCv = () => (
         </div>
       </a>
     </GridItem>
-  </>
+  </SkillsWrapper>
 )
