@@ -3,8 +3,8 @@ import "./globals.css";
 import { montserrat } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Acun Gürsoy Homepage",
-  description: "Portfolio und Überblick zu dem Softwareentwickler Acun Gürsoy",
+  title: "Acun Gürsoy Softwareentwicklung",
+  description: "Software Web App Entwicklung React Native Frontend Fullstack Deutschland Nordrhein-Westfalen Rhein Main Remote Hybrid Agil",
 };
 
 export default function RootLayout({
