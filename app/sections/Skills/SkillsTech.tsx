@@ -1,7 +1,7 @@
 import { GlitchCanvas } from "@/app/components/GlitchCanvas";
 import { GridItem } from "@/app/components/Grid";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { SkillsWrapper } from "./SkillsWrapper";
 
 const itemMapping = {
@@ -22,6 +22,24 @@ const itemMapping = {
   '4,2': 'Google Cloud',
 }
 
+const skills = [
+  'Javascript',
+  'Typescript',
+  'HTML',
+  'CSS / SCSS',
+  'SASS / CSS-in-JS',
+  'React-Native',
+  'React',
+  'NextJS',
+  'Tamagui UI',
+  'Material UI',
+  'Tailwind CSS',
+  'Firebase',
+  'Git',
+  'Github / GitLab',
+  'Google Cloud',
+]
+
 export const SkillsTech = () => {
   const [showAllTechSkills, setShowAllTechSkills] = useState(true)
 
@@ -40,8 +58,7 @@ export const SkillsTech = () => {
       <GridItem className="col-span-10 sm:col-span-6 flex flex-col gap-2 sm:gap-4">
         {!showAllTechSkills && (
           <>
-            { /* @ts-expect-error type casting open */}
-            <GlitchCanvas rows={5} cols={3} mode="skills" getLabel={(row, col) => itemMapping[`${row},${col}`]} />
+            <SkillsGrid skills={skills} animated />
             <div className="flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(true)}>
               <EyeIcon className="size-12" />
               <p>Alle anzeigen</p>
@@ -50,12 +67,7 @@ export const SkillsTech = () => {
         )}
         {showAllTechSkills && (
           <>
-            <div className="grid grid-cols-3 grid-rows-5 gap-[1px] h-full animate-fade">
-              {
-                // @ts-expect-error type casting open
-                Object.keys(itemMapping).map((rowColString) => <GridItem key={rowColString} className="p-4 sm:p-0 bg-blue-500 flex justify-center items-center font-bold text-center text-xs sm:text-xl text-white">{itemMapping[rowColString]}</GridItem>)
-              }
-            </div>
+            <SkillsGrid skills={skills} />
             <div className="hidden sm:flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(false)}>
               <EyeSlashIcon className="size-12" />
               <p>Zufällig anzeigen</p>
@@ -64,5 +76,52 @@ export const SkillsTech = () => {
         )}
       </GridItem>
     </SkillsWrapper>
+  )
+}
+
+interface SkillsGridProps {
+  skills: string[]
+  animated?: boolean;
+}
+
+const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
+  const [currentAnimatedCell, setCurrentAnimatedCell] = useState<number>()
+  const animateTimer = useRef<NodeJS.Timeout>(null)
+
+  useEffect(() => {
+    if (animated && animateTimer.current === null) {
+      console.log('setting interval...')
+      animateTimer.current = setInterval(() => {
+        const maxIndex = skills.length - 1
+        const nextCellIndex = Math.round(((Math.random() * maxIndex) % maxIndex))
+        console.log({ nextCellIndex })
+        setCurrentAnimatedCell(nextCellIndex)
+      }, 1000)
+    }
+  }, [animated, skills.length])
+
+  // useEffect(() => {
+  //   return () => {
+  //     if (animateTimer.current) {
+  //       console.log('...clearing interval....')
+  //       clearInterval(animateTimer.current)
+  //     }
+  //   }
+  // })
+
+  return (
+    <div className="grid grid-cols-3 grid-rows-5 gap-[1px] h-full animate-fade">
+      {skills.map((skill, index) => <SkillsItem key={`skill-cell-${skill}`} skill={skill} render={!animated || (animated && currentAnimatedCell === index)} />)}
+    </div>
+  )
+}
+
+const SkillsItem = ({ render = true, skill }: { render?: boolean; skill: string }) => {
+  if (!render) {
+    return <GridItem className="p-4 sm:p-0 bg-black flex justify-center items-center" />
+  }
+
+  return (
+    <GridItem className="p-4 sm:p-0 bg-blue-500 flex justify-center items-center font-bold text-center text-xs sm:text-xl text-white">{skill}</GridItem>
   )
 }
