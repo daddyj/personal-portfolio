@@ -76,7 +76,7 @@ const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
         const nextCellIndex3 = Math.round(((Math.random() * maxIndex) % maxIndex))
         console.log({ nextCellIndex, nextCellIndex2, nextCellIndex3 })
         setCurrentAnimatedCells([nextCellIndex, nextCellIndex2, nextCellIndex3])
-      }, 1000)
+      }, ((Math.random() * 1000) % 1000) + 420)
     }
   }, [animated, skills.length])
 
@@ -95,11 +95,9 @@ const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
 }
 
 const SkillsItem = ({ render = true, skill }: { render?: boolean; skill: string }) => {
-  if (!render) {
-    return <GridItem className="p-4 sm:p-0 bg-black flex justify-center items-center" />
-  }
+  const animation = render ? 'animate-jump-in' : 'animate-jump-out'
 
   return (
-    <GridItem className="p-4 sm:p-0 bg-blue-500 flex justify-center items-center font-bold text-center text-xs sm:text-xl text-white">{skill}</GridItem>
+    <GridItem className={`p-4 sm:p-0 bg-blue-500 flex justify-center items-center font-bold text-center text-xs sm:text-xl text-white ${animation} animate-ease-in rounded-sm`}>{skill}</GridItem>
   )
 }
