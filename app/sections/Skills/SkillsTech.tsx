@@ -22,7 +22,7 @@ const skills = [
 ]
 
 export const SkillsTech = () => {
-  const [showAllTechSkills, setShowAllTechSkills] = useState(true)
+  const [showAllTechSkills, setShowAllTechSkills] = useState(false)
 
   return (
     <SkillsWrapper skillsKey="skillsTech" className="grid-rows-[auto_1fr]">
@@ -40,14 +40,14 @@ export const SkillsTech = () => {
         <>
           <SkillsGrid skills={skills} animated={!showAllTechSkills} />
           {!showAllTechSkills && (
-            <div className="flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(true)}>
-              <EyeIcon className="size-12" />
+            <div className="flex gap-4 text-lg sm:text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(true)}>
+              <EyeIcon className="size-10 sm:size-12" />
               <p>Alle anzeigen</p>
             </div>
           )}
           {showAllTechSkills && (
-            <div className="hidden sm:flex gap-4 text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(false)}>
-              <EyeSlashIcon className="size-12" />
+            <div className="flex gap-4 text-lg items-center hover:text-blue-500 hover:cursor-pointer transition-all" onClick={() => setShowAllTechSkills(false)}>
+              <EyeSlashIcon className="size-10 sm:size:12" />
               <p>Zufällig anzeigen</p>
             </div>
           )}
@@ -76,7 +76,7 @@ const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
         const nextCellIndex3 = Math.round(((Math.random() * maxIndex) % maxIndex))
         console.log({ nextCellIndex, nextCellIndex2, nextCellIndex3 })
         setCurrentAnimatedCells([nextCellIndex, nextCellIndex2, nextCellIndex3])
-      }, ((Math.random() * 1000) % 1000) + 420)
+      }, 1000)
     }
   }, [animated, skills.length])
 
