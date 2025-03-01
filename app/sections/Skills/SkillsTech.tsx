@@ -33,8 +33,6 @@ export const SkillsTech = () => {
         <p className="text-xl sm:text-2xl">Ich habe über die Jahre eine Reihe von Technologien für die Web- und Appentwicklung genutzt und mich über die Zeit auf einen Techstack fokussiert um optimale Ergebnisse erzielen zu können. Dabei hat sich React als meine Kern-Bibliothek im Frontend herausgestellt um maximale Wiederverwendbarkeit auf unterschiedlichen Plattformen zu gewährleisten: Das Web, nativ auf iOS und nativ auf Android. Ich liebe es immer wieder neue Sachen auszuprobieren und mich immer wieder von Kolleg:innen inspirieren zu lassen!</p>
       </GridItem>
 
-      <GridItem className="col-span-10 sm:col-[none]" />
-
       <GridItem className="col-span-10 sm:col-span-4" />
       <GridItem className="col-span-10 sm:col-span-6 flex flex-col gap-2 sm:gap-4">
         <>
@@ -85,7 +83,7 @@ const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
       console.log('...clearing interval....')
       clearInterval(animateTimer.current)
     }
-  })
+  }, [animated])
 
   return (
     <div className="grid grid-cols-3 grid-rows-5 gap-[1px] h-full animate-fade">
