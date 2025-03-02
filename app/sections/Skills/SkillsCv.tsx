@@ -1,6 +1,8 @@
-import { GridItem } from "@/app/components/Grid";
 import { DocumentIcon } from "@heroicons/react/24/outline";
 import Image from 'next/image';
+
+import { GridItem } from "@/app/components/Grid";
+
 import { SkillsWrapper } from "./SkillsWrapper";
 
 export const SkillsCv = () => (

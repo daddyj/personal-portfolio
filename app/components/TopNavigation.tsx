@@ -1,5 +1,6 @@
 import { ArrowDownIcon, ArrowUpIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useCallback, useEffect, useState } from "react";
+
 import { sections } from "@/app/lib/types";
 import { useNavigationContext } from "@/app/lib/useNavigationContext";
 

@@ -1,8 +1,9 @@
-import { GridItem } from "@/app/components/Grid";
-import { React } from "@/app/components/Icons/React";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from 'next/image';
 import { Fragment, JSX, useState } from "react";
+
+import { GridItem } from "@/app/components/Grid";
+import { React } from "@/app/components/Icons/React";
 
 interface ItemPreviewProps {
   role: string;

@@ -1,9 +1,11 @@
+import { useEffect, useRef, useState } from 'react'
+
 import { Grid, GridItem } from '@/app/components/Grid'
 import { Firebase, GCloud, Nextjs, React, ReactNative, Tamagui } from '@/app/components/Icons'
 import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
-import { useEffect, useRef, useState } from 'react'
+
 import { ItemPreview } from './ItemPreview'
 import { NavItem } from './NavItem'
 

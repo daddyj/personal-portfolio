@@ -1,4 +1,5 @@
 import { GridItem } from "@/app/components/Grid";
+
 import { SkillsWrapper } from "./SkillsWrapper";
 
 export const SkillsSocial = () => (

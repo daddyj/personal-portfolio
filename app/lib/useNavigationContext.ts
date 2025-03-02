@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react"
+
 import { NavigationContextProps } from "./types"
 
 export const NavigationContext = createContext<NavigationContextProps>({

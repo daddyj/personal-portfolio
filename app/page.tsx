@@ -1,7 +1,9 @@
 'use client'
 
-import { TopNavigation } from "@/app/components/TopNavigation";
 import { useState } from "react";
+
+import { TopNavigation } from "@/app/components/TopNavigation";
+
 import { HomeSection } from "./lib/types";
 import { NavigationContext } from "./lib/useNavigationContext";
 import { About, Contact, Hero, Projects, Skills } from "./sections";

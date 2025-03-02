@@ -1,8 +1,9 @@
-import { Grid, GridItem } from "@/app/components/Grid";
-import { useViewportIntersect } from "@/app/lib/useViewportIntersect";
 import { useEffect, useRef } from "react";
-import { useNavigationContext } from "@/app/lib/useNavigationContext";
+
 import { GlitchCanvas } from "@/app/components/GlitchCanvas";
+import { Grid, GridItem } from "@/app/components/Grid";
+import { useNavigationContext } from "@/app/lib/useNavigationContext";
+import { useViewportIntersect } from "@/app/lib/useViewportIntersect";
 
 
 export const Hero = () => {

@@ -1,6 +1,8 @@
-import { GridItem } from "@/app/components/Grid";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef, useState } from "react";
+
+import { GridItem } from "@/app/components/Grid";
+
 import { SkillsWrapper } from "./SkillsWrapper";
 
 const skills = [

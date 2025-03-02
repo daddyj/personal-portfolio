@@ -1,5 +1,6 @@
-import { Grid, GridItem } from "@/app/components/Grid"
 import { useEffect, useRef } from "react"
+
+import { Grid, GridItem } from "@/app/components/Grid"
 import { useNavigationContext } from "@/app/lib/useNavigationContext"
 import { useViewportIntersect } from "@/app/lib/useViewportIntersect"
 
