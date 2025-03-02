@@ -6,7 +6,7 @@ import { HomeSection } from '@/app/lib/types'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 
 import { ArrowIcon } from './ArrowIcon'
-import { TopNavigationItem } from './TopNavigationItem'
+import { NavigationItemList } from './NavigationItemList'
 import { TopNavigationMobileSheet } from './TopNavigationMobileSheet'
 
 const scrollToSection = (sectionId: string) => {
@@ -37,11 +37,11 @@ export const TopNavigation = () => {
     scrollToSection('hero')
   }
 
-  const handleTopNavigationClick = (section?: HomeSection) => () => {
+  const handleNavigationItemClick = (section?: HomeSection) => () => {
     if (section) scrollToSection(section)
   }
 
-  const handleTopNavigationMobileClick = (section?: HomeSection) => () => {
+  const handleNavigationItemMobileClick = (section?: HomeSection) => () => {
     if (section) scrollToSection(section)
     setIsMobileMenuOpen(false)
   }
@@ -56,6 +56,12 @@ export const TopNavigation = () => {
       >
         <Bars3Icon className="size-10" />
       </div>
+      <TopNavigationMobileSheet
+        open={isMobileMenuOpen}
+        currentSection={currentSection}
+        onClick={handleNavigationItemMobileClick}
+      />
+
       <div
         onClick={() => {
           scrollToSection('hero')
@@ -73,40 +79,11 @@ export const TopNavigation = () => {
       </div>
 
       <div className="hidden flex-1 justify-end gap-4 sm:flex">
-        <TopNavigationItem
-          isSelected={currentSection === 'projects'}
-          label="projekte"
-          onClick={handleTopNavigationClick}
-          section="projects"
-        />
-        <TopNavigationItem
-          isSelected={currentSection === 'about'}
-          label="über mich"
-          onClick={handleTopNavigationClick}
-          section="about"
-        />
-        <TopNavigationItem
-          isSelected={
-            currentSection &&
-            ['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection)
-          }
-          label="kompetenzen"
-          onClick={handleTopNavigationClick}
-          section="skillsTech"
-        />
-        <TopNavigationItem
-          isSelected={currentSection === 'contact'}
-          label="kontakt"
-          onClick={handleTopNavigationClick}
-          section="contact"
+        <NavigationItemList
+          onClick={handleNavigationItemClick}
+          currentSection={currentSection}
         />
       </div>
-
-      <TopNavigationMobileSheet
-        open={isMobileMenuOpen}
-        currentSection={currentSection}
-        onClick={handleTopNavigationMobileClick}
-      />
 
       {scrollDirection === 'down' && (
         <ArrowIcon direction="down" onClick={handleArrowDownClick} />
