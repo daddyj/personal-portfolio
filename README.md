@@ -5,6 +5,7 @@ Welcome. This repository contains a NextJS project including tailwind CSS so I h
 ## Tech Stack
 
 Using:
+
 - NextJS
 - Tailwind CSS
 - pnpm
@@ -12,11 +13,13 @@ Using:
 You can use the following scripts for running the project locally:
 
 Install all dependencies:
+
 ```sh
 pnpm install
 ```
 
 Run the local development server
+
 ```sh
 pnpm dev
 ```

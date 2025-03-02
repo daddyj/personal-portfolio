@@ -1,11 +1,15 @@
-import { PropsWithChildren,useEffect, useRef } from "react"
+import { PropsWithChildren, useEffect, useRef } from 'react'
 
-import { Grid } from "@/app/components/Grid"
-import { HomeSection } from "@/app/lib/types"
-import { useNavigationContext } from "@/app/lib/useNavigationContext"
-import { useViewportIntersect } from "@/app/lib/useViewportIntersect"
+import { Grid } from '@/app/components/Grid'
+import { HomeSection } from '@/app/lib/types'
+import { useNavigationContext } from '@/app/lib/useNavigationContext'
+import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
-export const SkillsWrapper = ({ skillsKey, className = '', children }: { skillsKey: HomeSection; className?: string } & PropsWithChildren) => {
+export const SkillsWrapper = ({
+  skillsKey,
+  className = '',
+  children,
+}: { skillsKey: HomeSection; className?: string } & PropsWithChildren) => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
 
   const gridWrapper = useRef<HTMLDivElement>(null)

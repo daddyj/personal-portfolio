@@ -1,16 +1,21 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext } from 'react'
 
-import { NavigationContextProps } from "./types"
+import { NavigationContextProps } from './types'
 
 export const NavigationContext = createContext<NavigationContextProps>({
   currentSection: 'hero',
-  setCurrentSection: () => { console.log('TBD') },
+  setCurrentSection: () => {
+    console.log('TBD')
+  },
   fullyVisible: 'hero',
-  setFullyVisible: () => { console.log('TBD') },
+  setFullyVisible: () => {
+    console.log('TBD')
+  },
 })
 
 export const useNavigationContext = () => {
-  const { currentSection, setCurrentSection, fullyVisible, setFullyVisible } = useContext(NavigationContext)
+  const { currentSection, setCurrentSection, fullyVisible, setFullyVisible } =
+    useContext(NavigationContext)
 
   return {
     currentSection,

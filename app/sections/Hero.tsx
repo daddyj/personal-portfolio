@@ -1,10 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react'
 
-import { GlitchCanvas } from "@/app/components/GlitchCanvas";
-import { Grid, GridItem } from "@/app/components/Grid";
-import { useNavigationContext } from "@/app/lib/useNavigationContext";
-import { useViewportIntersect } from "@/app/lib/useViewportIntersect";
-
+import { GlitchCanvas } from '@/app/components/GlitchCanvas'
+import { Grid, GridItem } from '@/app/components/Grid'
+import { useNavigationContext } from '@/app/lib/useNavigationContext'
+import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
 export const Hero = () => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
@@ -18,7 +17,12 @@ export const Hero = () => {
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
-    <Grid ref={gridWrapper} id="hero" rows={`[auto_auto_auto_auto]`} className="h-screen">
+    <Grid
+      ref={gridWrapper}
+      id="hero"
+      rows={`[auto_auto_auto_auto]`}
+      className="h-screen"
+    >
       <div className="absolute w-screen h-screen">
         <GlitchCanvas mode="pixel" />
       </div>
@@ -34,7 +38,7 @@ export const Hero = () => {
       <GridItem className="col-span-10" />
 
       <GridItem className="col-span-6" />
-      <GridItem className="col-span-4 flex items-end justify-end p-1 px-2 gap-4 animate-fade-up animate-once animate-duration-1200 animate-ease-out animate-delay-720" >
+      <GridItem className="col-span-4 flex items-end justify-end p-1 px-2 gap-4 animate-fade-up animate-once animate-duration-1200 animate-ease-out animate-delay-720">
         <h2 className="text-xl sm:text-8xl text-end">Acun Gürsoy</h2>
         {/* <a href="#" className="text-4xl font-bold border-b-2 transition-all duration-120 hover:text-6xl hover:rotate-[-2deg] hover:border-2 hover:p-4 animate-pulse hover:animate-none">Hier lang</a> */}
       </GridItem>

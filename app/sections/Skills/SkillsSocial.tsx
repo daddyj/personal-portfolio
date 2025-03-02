@@ -1,17 +1,37 @@
-import { GridItem } from "@/app/components/Grid";
+import { GridItem } from '@/app/components/Grid'
 
-import { SkillsWrapper } from "./SkillsWrapper";
+import { SkillsWrapper } from './SkillsWrapper'
 
 export const SkillsSocial = () => (
   <SkillsWrapper skillsKey="skillsSocial">
     <GridItem className="col-span-10 sm:col-span-4 flex flex-col sm:gap-16">
-      <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">Social Skills</h2>
-      <div className="my-16 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500" style={{ backgroundImage: 'url(/skills-cv-section-me.jpeg)', backgroundSize: "100%" }} />
+      <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">
+        Social Skills
+      </h2>
+      <div
+        className="my-16 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500"
+        style={{
+          backgroundImage: 'url(/skills-cv-section-me.jpeg)',
+          backgroundSize: '100%',
+        }}
+      />
     </GridItem>
     <GridItem className="sm:pt-0 col-span-10 sm:col-span-6">
-      <p className="text-xl sm:text-2xl">Meine Leidenschaft für technologische Optimierung kombiniere ich mit einem starken methodischen und kommunikativen Ansatz. Als Softwareentwickler lege ich großen Wert darauf, eine verständliche Brücke zwischen Technik und gemeinsamer Projektentwicklung zu schaffen. Agile Arbeitsmethoden begeistern mich und prägen seit mehreren Jahren meinen Arbeitsstil. Gleichzeitig verfüge ich über fundierte Erfahrungen im klassischen Projektmanagement nach der Wasserfall-Methodik – Flexibilität und Anpassungsfähigkeit sind für mich selbstverständlich.<br />
+      <p className="text-xl sm:text-2xl">
+        Meine Leidenschaft für technologische Optimierung kombiniere ich mit
+        einem starken methodischen und kommunikativen Ansatz. Als
+        Softwareentwickler lege ich großen Wert darauf, eine verständliche
+        Brücke zwischen Technik und gemeinsamer Projektentwicklung zu schaffen.
+        Agile Arbeitsmethoden begeistern mich und prägen seit mehreren Jahren
+        meinen Arbeitsstil. Gleichzeitig verfüge ich über fundierte Erfahrungen
+        im klassischen Projektmanagement nach der Wasserfall-Methodik –
+        Flexibilität und Anpassungsfähigkeit sind für mich selbstverständlich.
         <br />
-        Ansonsten findet man mich mit meinem best buddy stets in der Natur wieder, denn hier kann ich maximal abschalten und alle notwendige Energie sammeln die ich mir wünsche.</p>
+        <br />
+        Ansonsten findet man mich mit meinem best buddy stets in der Natur
+        wieder, denn hier kann ich maximal abschalten und alle notwendige
+        Energie sammeln die ich mir wünsche.
+      </p>
     </GridItem>
     <GridItem className="col-span-10 sm:col-span-4" />
     <GridItem className="col-span-10 sm:col-span-6 flex flex-col gap-4 justify-end">
