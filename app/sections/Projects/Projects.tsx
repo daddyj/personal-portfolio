@@ -22,7 +22,7 @@ export type ProjectListItem = (typeof projects)[number]
 const projectDetails = {
   myla: {
     navLabel: 'Myla',
-    role: 'Fullstack Entwicklung App und Bereitstellung der Cloud Infrastruktur.',
+    role: 'Fullstack Entwicklung App',
     techStack: [
       <ReactNative key="react-native" />,
       <Tamagui key="tamagui" />,
@@ -39,10 +39,13 @@ const projectDetails = {
         Die App habe ich vollständig entwickelt und im iOS AppStore für iPads
         und iPhones veröffentlicht. Android ist auch in Planung. Mehr
         Informationen findest Du{' '}
-        <a href="https://the-answer.org" target="_blank">
+        <a
+          href="https://the-answer.org"
+          target="_blank"
+          className="border-b-2 hover:text-blue-500"
+        >
           hier
         </a>
-        :
       </>
     ),
   },
@@ -105,12 +108,14 @@ export const Projects = () => {
     <Grid
       ref={gridWrapper}
       id="projects"
-      className="grid-rows-[auto] sm:grid-rows-[auto_80px_1fr]"
+      className="grid-rows-[auto] sm:grid-rows-[auto_80px_auto_80px_1fr]"
     >
       <GridItem className="col-span-10">
         <h1 className="text-4xl sm:text-6xl">Meine aktiven Projekte</h1>
       </GridItem>
+
       <GridItem className="col-span-10" />
+
       <GridItem className="text-md col-span-10 flex flex-col gap-4 pb-8 sm:col-span-3 sm:gap-8 sm:pb-0 sm:text-4xl">
         {projects.map((projectKey: ProjectListItem) => (
           <NavItem

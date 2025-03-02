@@ -34,7 +34,7 @@ export const ItemPreview = ({
           </div>
         </div>
       </GridItem>
-      <GridItem className="animate-fade relative col-span-10 flex h-60 flex-1 justify-end sm:col-span-4 sm:h-auto">
+      <GridItem className="animate-fade relative col-span-10 flex h-60 flex-1 justify-center sm:col-span-4 sm:h-auto sm:justify-end">
         <ArrowLeftIcon
           className="z-11 size-12 self-center transition-all hover:scale-[125%] hover:cursor-pointer"
           onClick={() =>
@@ -75,8 +75,11 @@ export const ItemPreview = ({
           }
         />
       </GridItem>
+
+      <GridItem className="col-span-10" />
+
       <GridItem className="col-span-3" />
-      <GridItem className="animate-fade col-span-10 flex items-end sm:col-span-7">
+      <GridItem className="animate-fade col-span-10 flex sm:col-span-7">
         <p className="text-md sm:text-2xl">{description}</p>
       </GridItem>
     </>
