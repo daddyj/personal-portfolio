@@ -5,22 +5,20 @@ import { NavigationContextProps } from './types'
 export const NavigationContext = createContext<NavigationContextProps>({
   currentSection: 'hero',
   setCurrentSection: () => {
-    console.log('TBD')
+    console.log('TBD setCurrentSection')
   },
   fullyVisible: 'hero',
   setFullyVisible: () => {
-    console.log('TBD')
+    console.log('TBD setFullyVisible')
+  },
+  scrollDirection: 'down',
+  setScrollDirection: () => {
+    console.log('TBD setScrollDirection')
   },
 })
 
 export const useNavigationContext = () => {
-  const { currentSection, setCurrentSection, fullyVisible, setFullyVisible } =
-    useContext(NavigationContext)
+  const contextProps = useContext(NavigationContext)
 
-  return {
-    currentSection,
-    setCurrentSection,
-    fullyVisible,
-    setFullyVisible,
-  }
+  return contextProps
 }
