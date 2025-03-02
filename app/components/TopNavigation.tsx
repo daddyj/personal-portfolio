@@ -6,7 +6,8 @@ import {
 } from '@heroicons/react/24/outline'
 import { useCallback, useState } from 'react'
 
-import { HomeSection, sections } from '@/app/lib/types'
+import { sections } from '@/app/lib/constants'
+import { HomeSection } from '@/app/lib/types'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 
 const scrollToSection = (sectionId: string) => {
@@ -26,8 +27,10 @@ export const TopNavigation = () => {
     const currentIndex = sections.findIndex(
       (section) => currentSection === section
     )
-    const nextIndex =
-      fullyVisible === currentSection ? currentIndex + 1 : currentIndex
+    const isCurrentSectionFullyRendered = fullyVisible === currentSection
+    const nextIndex = isCurrentSectionFullyRendered
+      ? currentIndex + 1
+      : currentIndex
     scrollToSection(sections[nextIndex])
   }, [currentSection, fullyVisible])
 

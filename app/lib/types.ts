@@ -1,14 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-export const sections = [
-  'hero',
-  'about',
-  'skillsTech',
-  'skillsSocial',
-  'skillsCv',
-  'projects',
-  'contact',
-] as const
+import { sections } from './constants'
 
 export type HomeSection = (typeof sections)[number]
 
