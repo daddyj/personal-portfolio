@@ -10,7 +10,6 @@ export const About = () => {
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
 
   useEffect(() => {
-    console.log('about', { isVisible, isFullyVisible })
     if (isVisible) setCurrentSection('about')
     if (isFullyVisible) setFullyVisible('about')
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])

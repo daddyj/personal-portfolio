@@ -12,9 +12,6 @@ export default function Home() {
   const [currentSection, setCurrentSection] = useState<HomeSection>('hero')
   const [fullyVisible, setFullyVisible] = useState<HomeSection>('hero')
 
-  console.log('current section changed to: ', currentSection)
-  console.log('fully visible? ', fullyVisible)
-
   return (
     <NavigationContext.Provider
       value={{

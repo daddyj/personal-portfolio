@@ -85,13 +85,11 @@ const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
 
   useEffect(() => {
     if (animated) {
-      console.log('setting interval...')
       animateTimer.current = setInterval(() => {
         const maxIndex = skills.length - 1
         const nextCellIndex = Math.round((Math.random() * maxIndex) % maxIndex)
         const nextCellIndex2 = Math.round((Math.random() * maxIndex) % maxIndex)
         const nextCellIndex3 = Math.round((Math.random() * maxIndex) % maxIndex)
-        console.log({ nextCellIndex, nextCellIndex2, nextCellIndex3 })
         setCurrentAnimatedCells([nextCellIndex, nextCellIndex2, nextCellIndex3])
       }, 1000)
     }
@@ -99,7 +97,6 @@ const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
 
   useEffect(() => {
     if (!animated && animateTimer.current) {
-      console.log('...clearing interval....')
       clearInterval(animateTimer.current)
     }
   }, [animated])

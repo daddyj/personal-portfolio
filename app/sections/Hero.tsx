@@ -11,7 +11,6 @@ export const Hero = () => {
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
 
   useEffect(() => {
-    console.log('hero', { isVisible, isFullyVisible })
     if (isVisible) setCurrentSection('hero')
     if (isFullyVisible) setFullyVisible('hero')
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
