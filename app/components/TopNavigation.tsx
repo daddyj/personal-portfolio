@@ -108,7 +108,7 @@ export const TopNavigation = () => {
 
       {scrollDirection === 'down' && (
         <div
-          className="animate animate-fade fixed bottom-4 left-4 sm:bottom-16 sm:left-16"
+          className="animate animate-fade fixed bottom-4 left-4 hidden sm:bottom-16 sm:left-16 sm:block"
           onClick={handleArrowDownClick}
         >
           <ArrowDownIcon className="hover:animate-infinite animate-once size-32 animate-pulse hover:cursor-pointer hover:text-blue-500" />
@@ -116,7 +116,7 @@ export const TopNavigation = () => {
       )}
       {scrollDirection === 'up' && (
         <div
-          className="animate animate-fade fixed bottom-4 left-4 sm:bottom-16 sm:left-16"
+          className="animate animate-fade fixed bottom-4 left-4 hidden sm:bottom-16 sm:left-16 sm:block"
           onClick={handleArrowUpClick}
         >
           <ArrowUpIcon className="hover:animate-infinite animate-once size-32 animate-pulse hover:cursor-pointer hover:text-blue-500" />
