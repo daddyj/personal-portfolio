@@ -40,7 +40,7 @@ export const TopNavigation = () => {
   }, [currentSection])
 
   return (
-    <nav className="flex fixed z-10 w-screen gap-4 sm:gap-8 p-4 px-8 sm:px-16 text-sm sm:text-2xl bg-[var(--background)] items-center">
+    <nav className="fixed z-10 flex w-screen items-center gap-4 bg-[var(--background)] p-4 px-8 text-sm sm:gap-8 sm:px-16 sm:text-2xl">
       <div
         className="flex sm:hidden"
         onClick={() => {
@@ -59,18 +59,18 @@ export const TopNavigation = () => {
       </div>
 
       <div className="flex">
-        <div className="flex flex-1 p-2 sm:px-4 rounded-full border-1 items-center gap-2">
-          <div className="flex w-4 h-4 rounded-full bg-lime-500 animate-pulse" />
-          <p className="text-xs sm:text-sm text-center ">Offen für Projekte!</p>
+        <div className="flex flex-1 items-center gap-2 rounded-full border-1 p-2 sm:px-4">
+          <div className="flex h-4 w-4 animate-pulse rounded-full bg-lime-500" />
+          <p className="text-center text-xs sm:text-sm">Offen für Projekte!</p>
         </div>
       </div>
 
-      <div className="hidden sm:flex flex-1 justify-end gap-4">
+      <div className="hidden flex-1 justify-end gap-4 sm:flex">
         <div
           onClick={() => {
             scrollToSection('projects')
           }}
-          className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'projects' ? 'border-b-blue-500 text-blue-500' : ''}`}
+          className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection === 'projects' ? 'border-b-blue-500 text-blue-500' : ''}`}
         >
           projekte
         </div>
@@ -78,7 +78,7 @@ export const TopNavigation = () => {
           onClick={() => {
             scrollToSection('about')
           }}
-          className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'about' ? 'border-b-blue-500 text-blue-500' : ''}`}
+          className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection === 'about' ? 'border-b-blue-500 text-blue-500' : ''}`}
         >
           über mich
         </div>
@@ -86,7 +86,7 @@ export const TopNavigation = () => {
           onClick={() => {
             scrollToSection('skillsTech')
           }}
-          className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection && ['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection) ? 'border-b-blue-500 text-blue-500' : ''}`}
+          className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection && ['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection) ? 'border-b-blue-500 text-blue-500' : ''}`}
         >
           kompetenzen
         </div>
@@ -94,7 +94,7 @@ export const TopNavigation = () => {
           onClick={() => {
             scrollToSection('contact')
           }}
-          className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'contact' ? 'border-b-blue-500 text-blue-500' : ''}`}
+          className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection === 'contact' ? 'border-b-blue-500 text-blue-500' : ''}`}
         >
           kontakt
         </div>
@@ -102,41 +102,41 @@ export const TopNavigation = () => {
 
       {isNextSectionAvailable && (
         <div
-          className="hidden sm:block fixed bottom-16 left-16 animate animate-fade"
+          className="animate animate-fade fixed bottom-16 left-16 hidden sm:block"
           onClick={handleArrowClick}
         >
-          <ArrowDownIcon className="size-32 hover:cursor-pointer hover:animate-infinite animate-pulse animate-once hover:text-blue-500" />
+          <ArrowDownIcon className="hover:animate-infinite animate-once size-32 animate-pulse hover:cursor-pointer hover:text-blue-500" />
         </div>
       )}
       {!isNextSectionAvailable && (
         <div
-          className="hidden sm:block fixed bottom-16 left-16 animate animate-fade"
+          className="animate animate-fade fixed bottom-16 left-16 hidden sm:block"
           onClick={() => {
             scrollToSection('hero')
             setIsNextSectionAvailable(true)
             // setTimeout(() => { setIsChangedByScroll(false) }, 1000)
           }}
         >
-          <ArrowUpIcon className="size-32 hover:cursor-pointer hover:animate-infinite animate-pulse animate-once hover:text-blue-500" />
+          <ArrowUpIcon className="hover:animate-infinite animate-once size-32 animate-pulse hover:cursor-pointer hover:text-blue-500" />
         </div>
       )}
       {isMobileMenuOpen && (
-        <div className="fixed top-0 left-0 p-8 w-screen h-screen bg-[var(--background)] animate-fade animate-duration-420 flex flex-col items-center text-4xl gap-4">
+        <div className="animate-fade animate-duration-420 fixed top-0 left-0 flex h-screen w-screen flex-col items-center gap-4 bg-[var(--background)] p-8 text-4xl">
           <div
-            className="flex justify-end w-full"
+            className="flex w-full justify-end"
             onClick={() => {
               setIsMobileMenuOpen(false)
             }}
           >
             <XMarkIcon className="size-24" />
           </div>
-          <div className="flex-1 flex flex-col justify-center">
+          <div className="flex flex-1 flex-col justify-center">
             <div
               onClick={() => {
                 scrollToSection('projects')
                 setIsMobileMenuOpen(false)
               }}
-              className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'projects' ? 'border-b-blue-500 text-blue-500' : ''}`}
+              className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection === 'projects' ? 'border-b-blue-500 text-blue-500' : ''}`}
             >
               projekte
             </div>
@@ -145,7 +145,7 @@ export const TopNavigation = () => {
                 scrollToSection('about')
                 setIsMobileMenuOpen(false)
               }}
-              className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'about' ? 'border-b-blue-500 text-blue-500' : ''}`}
+              className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection === 'about' ? 'border-b-blue-500 text-blue-500' : ''}`}
             >
               über mich
             </div>
@@ -154,7 +154,7 @@ export const TopNavigation = () => {
                 scrollToSection('skillsTech')
                 setIsMobileMenuOpen(false)
               }}
-              className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection && ['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection) ? 'border-b-blue-500 text-blue-500' : ''}`}
+              className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection && ['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection) ? 'border-b-blue-500 text-blue-500' : ''}`}
             >
               kompetenzen
             </div>
@@ -163,7 +163,7 @@ export const TopNavigation = () => {
                 scrollToSection('contact')
                 setIsMobileMenuOpen(false)
               }}
-              className={`transition-all border-b-2 border-transparent hover:text-blue-500 hover:border-b-blue-500 hover:cursor-pointer ${currentSection === 'contact' ? 'border-b-blue-500 text-blue-500' : ''}`}
+              className={`border-b-2 border-transparent transition-all hover:cursor-pointer hover:border-b-blue-500 hover:text-blue-500 ${currentSection === 'contact' ? 'border-b-blue-500 text-blue-500' : ''}`}
             >
               kontakt
             </div>

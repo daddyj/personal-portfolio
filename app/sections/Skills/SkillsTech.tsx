@@ -29,7 +29,7 @@ export const SkillsTech = () => {
   return (
     <SkillsWrapper skillsKey="skillsTech" className="grid-rows-[auto_1fr]">
       <GridItem className="col-span-10 sm:col-span-4">
-        <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">
+        <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
           Technologien
         </h2>
       </GridItem>
@@ -47,12 +47,12 @@ export const SkillsTech = () => {
       </GridItem>
 
       <GridItem className="col-span-10 sm:col-span-4" />
-      <GridItem className="col-span-10 sm:col-span-6 flex flex-col gap-2 sm:gap-4">
+      <GridItem className="col-span-10 flex flex-col gap-2 sm:col-span-6 sm:gap-4">
         <>
           <SkillsGrid skills={skills} animated={!showAllTechSkills} />
           {!showAllTechSkills && (
             <div
-              className="flex gap-4 text-lg sm:text-xl items-center hover:text-blue-500 hover:cursor-pointer transition-all"
+              className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500 sm:text-xl"
               onClick={() => setShowAllTechSkills(true)}
             >
               <EyeIcon className="size-10 sm:size-12" />
@@ -61,10 +61,10 @@ export const SkillsTech = () => {
           )}
           {showAllTechSkills && (
             <div
-              className="flex gap-4 text-lg items-center hover:text-blue-500 hover:cursor-pointer transition-all"
+              className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500"
               onClick={() => setShowAllTechSkills(false)}
             >
-              <EyeSlashIcon className="size-10 sm:size:12" />
+              <EyeSlashIcon className="sm:size:12 size-10" />
               <p>Zufällig anzeigen</p>
             </div>
           )}
@@ -105,7 +105,7 @@ const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
   }, [animated])
 
   return (
-    <div className="grid grid-cols-3 grid-rows-5 gap-[1px] h-full animate-fade">
+    <div className="animate-fade grid h-full grid-cols-3 grid-rows-5 gap-[1px]">
       {skills.map((skill, index) => (
         <SkillsItem
           key={`skill-cell-${skill}`}
@@ -130,7 +130,7 @@ const SkillsItem = ({
 
   return (
     <GridItem
-      className={`p-4 sm:p-0 bg-blue-500 flex justify-center items-center font-bold text-center text-xs sm:text-xl text-white ${animation} animate-ease-in rounded-sm`}
+      className={`flex items-center justify-center bg-blue-500 p-4 text-center text-xs font-bold text-white sm:p-0 sm:text-xl ${animation} animate-ease-in rounded-sm`}
     >
       {skill}
     </GridItem>

@@ -4,19 +4,19 @@ import { SkillsWrapper } from './SkillsWrapper'
 
 export const SkillsSocial = () => (
   <SkillsWrapper skillsKey="skillsSocial">
-    <GridItem className="col-span-10 sm:col-span-4 flex flex-col sm:gap-16">
-      <h2 className="text-4xl sm:text-6xl font-bold sm:font-normal">
+    <GridItem className="col-span-10 flex flex-col sm:col-span-4 sm:gap-16">
+      <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
         Social Skills
       </h2>
       <div
-        className="my-16 sm:my-0 w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat bg-blue-500"
+        className="my-16 h-56 w-56 rounded-full bg-blue-500 bg-center bg-no-repeat sm:my-0 sm:h-64 sm:w-64"
         style={{
           backgroundImage: 'url(/skills-cv-section-me.jpeg)',
           backgroundSize: '100%',
         }}
       />
     </GridItem>
-    <GridItem className="sm:pt-0 col-span-10 sm:col-span-6">
+    <GridItem className="col-span-10 sm:col-span-6 sm:pt-0">
       <p className="text-xl sm:text-2xl">
         Meine Leidenschaft für technologische Optimierung kombiniere ich mit
         einem starken methodischen und kommunikativen Ansatz. Als
@@ -34,8 +34,8 @@ export const SkillsSocial = () => (
       </p>
     </GridItem>
     <GridItem className="col-span-10 sm:col-span-4" />
-    <GridItem className="col-span-10 sm:col-span-6 flex flex-col gap-4 justify-end">
-      <div className="flex gap-2 sm:gap-4 flex-wrap text-md sm:text-2xl">
+    <GridItem className="col-span-10 flex flex-col justify-end gap-4 sm:col-span-6">
+      <div className="text-md flex flex-wrap gap-2 sm:gap-4 sm:text-2xl">
         <p className="font-bold">Agile Methoden:</p>
         <p>SCRUM</p>
         <p>#</p>
@@ -47,7 +47,7 @@ export const SkillsSocial = () => (
         <p>#</p>
         <p>Design-Sprint</p>
       </div>
-      <div className="flex gap-2 sm:gap-4 flex-wrap text-md sm:text-2xl">
+      <div className="text-md flex flex-wrap gap-2 sm:gap-4 sm:text-2xl">
         <p className="font-bold">Tools:</p>
         <p>Google-Meet</p>
         <p>#</p>

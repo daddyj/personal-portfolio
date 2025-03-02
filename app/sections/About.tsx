@@ -19,11 +19,11 @@ export const About = () => {
     <Grid id="about" ref={gridWrapper}>
       <GridItem className="col-span-10" />
       <GridItem className="col-span-10 sm:col-span-6">
-        <h1 className="block sm:hidden bold text-9xl rotate-[-6deg]">Hi!</h1>
+        <h1 className="bold block rotate-[-6deg] text-9xl sm:hidden">Hi!</h1>
       </GridItem>
-      <GridItem className="pt-8 sm:pt-0 col-span-10 h-auto w-auto sm:col-span-4 flex justify-start sm:justify-end animate-fade animate-once animate-duration-1500 animate-ease-out">
+      <GridItem className="animate-fade animate-once animate-duration-1500 animate-ease-out col-span-10 flex h-auto w-auto justify-start pt-8 sm:col-span-4 sm:justify-end sm:pt-0">
         <div
-          className="block sm:hidden w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat"
+          className="block h-56 w-56 rounded-full bg-center bg-no-repeat sm:hidden sm:h-64 sm:w-64"
           style={{
             backgroundImage: 'url(/about-me.jpeg)',
             backgroundSize: '200%',
@@ -34,10 +34,10 @@ export const About = () => {
       <GridItem className="col-[none] sm:col-span-10" />
       <GridItem className="col-[none] sm:col-span-10" />
       <GridItem className="col-[none] sm:col-span-3" />
-      <GridItem className="col-[none] sm:col-span-7 flex gap-8">
-        <h1 className="hidden sm:block bold text-9xl rotate-[-6deg]">Hi!</h1>
+      <GridItem className="col-[none] flex gap-8 sm:col-span-7">
+        <h1 className="bold hidden rotate-[-6deg] text-9xl sm:block">Hi!</h1>
         <div
-          className="hidden sm:block w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-center bg-no-repeat"
+          className="hidden h-56 w-56 rounded-full bg-center bg-no-repeat sm:block sm:h-64 sm:w-64"
           style={{
             backgroundImage: 'url(/about-me.jpeg)',
             backgroundSize: '200%',
@@ -47,8 +47,8 @@ export const About = () => {
       </GridItem>
 
       <GridItem className="col-[none] sm:col-span-4" />
-      <GridItem className="col-span-10 sm:col-span-6 flex items-end justify-end">
-        <h2 className="text-xl sm:text-2xl bg-[var(--background)] animate-fade-left animate-once">
+      <GridItem className="col-span-10 flex items-end justify-end sm:col-span-6">
+        <h2 className="animate-fade-left animate-once bg-[var(--background)] text-xl sm:text-2xl">
           Ich bin Acun. Ich bin seit über 15 Jahren in der Industrie als
           Software Entwickler tätig, sowohl Fullstack als auch mit Fokus im
           Frontend. <br />

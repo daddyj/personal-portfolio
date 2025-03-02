@@ -159,7 +159,7 @@ export const GlitchCanvas: React.FC<GlitchCanvasProps> = ({
     <div className={containerClassName || defaultContainerClass}>
       <canvas
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+        className="pointer-events-none absolute top-0 left-0 h-full w-full"
       />
     </div>
   )

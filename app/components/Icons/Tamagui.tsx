@@ -5,7 +5,7 @@ export function Tamagui(props: IconProps) {
     <a
       href="https://tamagui.dev"
       target="_blank"
-      className="flex flex-col items-center gap-2 hover:cursor-pointer hover:animate-pulse hover:scale-[125%] transition-all"
+      className="flex flex-col items-center gap-2 transition-all hover:scale-[125%] hover:animate-pulse hover:cursor-pointer"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
