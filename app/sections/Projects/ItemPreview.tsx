@@ -23,7 +23,7 @@ export const ItemPreview = ({
   return (
     <>
       <GridItem className="animate-fade col-span-10 flex flex-col gap-8 sm:col-span-3">
-        <div className="text-md flex flex-col gap-4 sm:text-2xl">
+        <div className="text-md flex flex-col gap-4 sm:min-h-28 sm:text-2xl">
           <p className="font-bold">Rolle in dem Projekt:</p>
           <p>{role}</p>
         </div>
@@ -50,7 +50,7 @@ export const ItemPreview = ({
             return (
               <div
                 key={`${role}_image_${index}`}
-                className={`absolute top-0 right-0 z-0 self-end overflow-hidden rounded-sm border-1 border-[var(--background)] py-16 sm:w-[400px] sm:py-0`}
+                className={`absolute top-0 right-0 z-0 flex h-full items-center justify-center self-end sm:w-[400px]`}
                 style={{
                   right: offset,
                   rotate: `${rotate}deg`,
@@ -63,6 +63,7 @@ export const ItemPreview = ({
                   alt={`Vorschaubild ${index}`}
                   width={400}
                   height={400}
+                  className="overflow-hidden rounded-sm border-1 border-[var(--background)]"
                 />
               </div>
             )
