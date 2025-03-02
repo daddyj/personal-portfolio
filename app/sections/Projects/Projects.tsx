@@ -105,7 +105,7 @@ export const Projects = () => {
     <Grid
       ref={gridWrapper}
       id="projects"
-      className="h-auto grid-rows-[auto] sm:grid-rows-[auto_80px_auto_auto]"
+      className="grid-rows-[auto] sm:grid-rows-[auto_80px_1fr]"
     >
       <GridItem className="col-span-10">
         <h1 className="text-4xl sm:text-6xl">Meine aktiven Projekte</h1>
