@@ -45,7 +45,7 @@ export const SkillsCv = () => (
           <p>LinkedIn Profil</p>
         </div>
       </a>
-      <a href="https://github.com/daddyj" target="_blank">
+      {/* <a href="https://github.com/daddyj" target="_blank">
         <div className="flex h-40 min-w-[180px] flex-col items-center justify-end gap-4 border-b-2 border-transparent transition-all hover:scale-[125%] hover:rotate-2 hover:cursor-pointer hover:border-blue-500 hover:font-bold hover:text-blue-500">
           <Image
             width={128}
@@ -56,7 +56,7 @@ export const SkillsCv = () => (
           />
           <p>Github Konto</p>
         </div>
-      </a>
+      </a> */}
     </GridItem>
   </SkillsWrapper>
 )
