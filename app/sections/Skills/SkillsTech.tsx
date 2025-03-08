@@ -55,7 +55,7 @@ export const SkillsTech = () => {
               className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500 sm:text-xl"
               onClick={() => setShowAllTechSkills(true)}
             >
-              <EyeIcon className="size-10 sm:size-12" />
+              <EyeIcon className="size-10" />
               <p>Alle anzeigen</p>
             </div>
           )}
@@ -64,7 +64,7 @@ export const SkillsTech = () => {
               className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500"
               onClick={() => setShowAllTechSkills(false)}
             >
-              <EyeSlashIcon className="sm:size:12 size-10" />
+              <EyeSlashIcon className="size-10" />
               <p>Zufällig anzeigen</p>
             </div>
           )}
