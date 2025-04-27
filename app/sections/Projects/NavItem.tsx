@@ -9,7 +9,9 @@ export const NavItem = ({ label, selected, onClick }: NavItemProps) => {
     <button
       onClick={onClick}
       className={`relative px-4 py-2 text-lg font-medium transition-all ${
-        selected ? 'text-white' : 'text-gray-300 hover:text-white'
+        selected
+          ? 'text-white'
+          : 'text-gray-300 hover:cursor-pointer hover:text-white'
       }`}
     >
       {label}

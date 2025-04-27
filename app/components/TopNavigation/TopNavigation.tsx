@@ -47,7 +47,7 @@ export const TopNavigation = () => {
   }
 
   return (
-    <nav className="fixed z-10 flex w-screen items-center gap-4 bg-[var(--background)] p-4 px-8 text-sm sm:gap-8 sm:px-16 sm:text-2xl">
+    <nav className="fixed z-11 flex w-screen items-center gap-4 bg-[var(--background)] p-4 px-8 text-sm sm:gap-8 sm:px-16 sm:text-2xl">
       <div
         className="flex sm:hidden"
         onClick={() => {

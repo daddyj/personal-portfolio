@@ -126,8 +126,7 @@ export const Projects = () => {
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      {/* Fullscreen Image Background */}
+    <div id="projects" className="relative w-full overflow-hidden sm:h-screen">
       <div className="absolute inset-0 z-0">
         <Image
           src={projectDetails[currentProject].images[currentImageIndex]}
@@ -142,61 +141,65 @@ export const Projects = () => {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Content Overlay */}
-      <div className="relative z-10 flex h-full w-full flex-col overflow-y-auto">
+      <div className="relative z-10 flex h-full w-full flex-col overflow-y-auto pt-24">
         <div className="w-full">
-          {/* Header with gradient background */}
-          <div className="bg-gradient-to-b from-black/80 to-transparent p-8">
+          <div className="p-8">
             <h1 className="text-4xl font-bold text-white sm:text-6xl">
               {projectDetails[currentProject].navLabel}
             </h1>
           </div>
 
-          {/* Project Navigation with semi-transparent background */}
-          <div className="">
-            <div className="flex gap-4">
-              {projects.map((projectKey: ProjectListItem) => (
-                <NavItem
-                  key={`nav_${projectKey}`}
-                  onClick={() => setCurrentProject(projectKey)}
-                  selected={currentProject === projectKey}
-                  label={projectDetails[projectKey].navLabel}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Project Details with semi-transparent background */}
           <div className="bg-black/40 p-8 backdrop-blur-sm">
-            <div className="mx-auto max-w-4xl">
-              <div className="flex flex-col gap-8">
-                {/* Role Section */}
-                <div className="flex flex-col gap-4">
-                  <h2 className="text-2xl font-bold text-white">
-                    Rolle in dem Projekt:
-                  </h2>
-                  <p className="text-xl text-white">
-                    {projectDetails[currentProject].role}
-                  </p>
-                </div>
+            <div className="">
+              <div className="flex gap-4">
+                {projects.map((projectKey: ProjectListItem) => (
+                  <NavItem
+                    key={`nav_${projectKey}`}
+                    onClick={() => setCurrentProject(projectKey)}
+                    selected={currentProject === projectKey}
+                    label={projectDetails[projectKey].navLabel}
+                  />
+                ))}
+              </div>
+            </div>
 
-                {/* Tech Stack Section */}
-                <div className="flex flex-col gap-4">
-                  <h2 className="text-2xl font-bold text-white">
-                    Technologien:
-                  </h2>
-                  <div className="flex flex-wrap gap-4">
-                    {projectDetails[currentProject].techStack}
+            <div className="py-8 transition-all duration-300">
+              <div className="max-w-4xl">
+                <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-4">
+                    <h2 className="text-2xl font-bold text-white">
+                      Rolle in dem Projekt:
+                    </h2>
+                    <p className="text-xl text-white">
+                      {projectDetails[currentProject].role}
+                    </p>
                   </div>
-                </div>
 
-                {/* Description Section */}
-                <div className="flex flex-col gap-4">
-                  <h2 className="text-2xl font-bold text-white">
-                    Beschreibung:
-                  </h2>
-                  <div className="text-xl text-white">
-                    {projectDetails[currentProject].description}
+                  <div className="flex flex-col gap-4">
+                    <h2 className="text-2xl font-bold text-white">
+                      Technologien:
+                    </h2>
+                    <div className="flex flex-wrap gap-4">
+                      {projectDetails[currentProject].techStack.map(
+                        (tech, index) => (
+                          <div
+                            key={index}
+                            className="transition-transform duration-300 hover:scale-110"
+                          >
+                            {tech}
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-4">
+                    <h2 className="text-2xl font-bold text-white">
+                      Beschreibung:
+                    </h2>
+                    <div className="text-xl text-white">
+                      {projectDetails[currentProject].description}
+                    </div>
                   </div>
                 </div>
               </div>
