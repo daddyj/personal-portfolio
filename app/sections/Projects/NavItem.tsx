@@ -5,17 +5,17 @@ interface NavItemProps {
 }
 
 export const NavItem = ({ label, selected, onClick }: NavItemProps) => {
-  const fontColor = selected ? 'text-blue-500' : 'text-gray-500'
-  const hoverClasses = selected
-    ? ''
-    : 'hover:cursor-pointer hover:text-[var(--foreground)]'
-
   return (
-    <p
+    <button
       onClick={onClick}
-      className={`${fontColor} ${hoverClasses} transition-all`}
+      className={`relative px-4 py-2 text-lg font-medium transition-all ${
+        selected ? 'text-white' : 'text-gray-300 hover:text-white'
+      }`}
     >
       {label}
-    </p>
+      {selected && (
+        <span className="absolute bottom-0 left-0 h-0.5 w-full bg-white transition-all" />
+      )}
+    </button>
   )
 }

@@ -1,6 +1,6 @@
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
-import { Grid, GridItem } from '@/app/components/Grid'
 import {
   Firebase,
   GCloud,
@@ -13,7 +13,6 @@ import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
-import { ItemPreview } from './ItemPreview'
 import { NavItem } from './NavItem'
 
 const projects = ['myla', 'theanswer-hp', 'myla-portal'] as const
@@ -98,6 +97,28 @@ export const Projects = () => {
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
   const [currentProject, setCurrentProject] = useState<ProjectListItem>('myla')
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  // Auto-transition between images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentImageIndex(
+          (prev) => (prev + 1) % projectDetails[currentProject].images.length
+        )
+        setIsTransitioning(false)
+      }, 500) // Half of the transition duration
+    }, 5000) // Change image every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [currentProject])
+
+  // Reset image index when project changes
+  useEffect(() => {
+    setCurrentImageIndex(0)
+  }, [currentProject])
 
   useEffect(() => {
     if (isVisible) setCurrentSection('projects')
@@ -105,28 +126,84 @@ export const Projects = () => {
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
-    <Grid
-      ref={gridWrapper}
-      id="projects"
-      className="grid-rows-[auto] sm:grid-rows-[auto_80px_auto_120px_1fr]"
-    >
-      <GridItem className="col-span-10">
-        <h1 className="text-4xl sm:text-6xl">Meine aktiven Projekte</h1>
-      </GridItem>
+    <div className="relative h-screen w-full overflow-hidden">
+      {/* Fullscreen Image Background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={projectDetails[currentProject].images[currentImageIndex]}
+          alt={projectDetails[currentProject].navLabel}
+          fill
+          className={`object-cover transition-opacity duration-1000 ${
+            isTransitioning ? 'opacity-0' : 'opacity-100'
+          }`}
+          priority
+          quality={100}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
 
-      <GridItem className="col-span-10" />
+      {/* Content Overlay */}
+      <div className="relative z-10 flex h-full w-full flex-col overflow-y-auto">
+        <div className="w-full">
+          {/* Header with gradient background */}
+          <div className="bg-gradient-to-b from-black/80 to-transparent p-8">
+            <h1 className="text-4xl font-bold text-white sm:text-6xl">
+              {projectDetails[currentProject].navLabel}
+            </h1>
+          </div>
 
-      <GridItem className="text-md col-span-10 flex flex-col gap-4 pb-8 sm:col-span-3 sm:gap-8 sm:pb-0 sm:text-4xl">
-        {projects.map((projectKey: ProjectListItem) => (
-          <NavItem
-            key={`nav_${projectKey}`}
-            onClick={() => setCurrentProject(projectKey)}
-            selected={currentProject === projectKey}
-            label={projectDetails[projectKey].navLabel}
-          />
-        ))}
-      </GridItem>
-      <ItemPreview {...projectDetails[currentProject]} />
-    </Grid>
+          {/* Project Navigation with semi-transparent background */}
+          <div className="">
+            <div className="flex gap-4">
+              {projects.map((projectKey: ProjectListItem) => (
+                <NavItem
+                  key={`nav_${projectKey}`}
+                  onClick={() => setCurrentProject(projectKey)}
+                  selected={currentProject === projectKey}
+                  label={projectDetails[projectKey].navLabel}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Project Details with semi-transparent background */}
+          <div className="bg-black/40 p-8 backdrop-blur-sm">
+            <div className="mx-auto max-w-4xl">
+              <div className="flex flex-col gap-8">
+                {/* Role Section */}
+                <div className="flex flex-col gap-4">
+                  <h2 className="text-2xl font-bold text-white">
+                    Rolle in dem Projekt:
+                  </h2>
+                  <p className="text-xl text-white">
+                    {projectDetails[currentProject].role}
+                  </p>
+                </div>
+
+                {/* Tech Stack Section */}
+                <div className="flex flex-col gap-4">
+                  <h2 className="text-2xl font-bold text-white">
+                    Technologien:
+                  </h2>
+                  <div className="flex flex-wrap gap-4">
+                    {projectDetails[currentProject].techStack}
+                  </div>
+                </div>
+
+                {/* Description Section */}
+                <div className="flex flex-col gap-4">
+                  <h2 className="text-2xl font-bold text-white">
+                    Beschreibung:
+                  </h2>
+                  <div className="text-xl text-white">
+                    {projectDetails[currentProject].description}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
