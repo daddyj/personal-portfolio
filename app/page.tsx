@@ -42,41 +42,50 @@ const Section: React.FC<SectionProps> = ({
   scrollProgress,
   children,
 }) => {
-  const getSectionStyle = (index: number) => {
-    if (index === 0) {
-      return {
-        transform: 'translateY(0)',
-        opacity: scrollProgress.sectionOpacities[index],
-      }
-    }
+  const [sectionStyle, setSectionStyle] = useState({
+    transform: 'translateY(0)',
+    opacity: 1,
+  })
 
-    if (index === 4) {
+  useEffect(() => {
+    const getSectionStyle = (index: number) => {
+      if (index === 0) {
+        return {
+          transform: 'translateY(0)',
+          opacity: scrollProgress.sectionOpacities[index],
+        }
+      }
+
+      if (index === 4) {
+        const translateY =
+          window.innerHeight -
+          scrollProgress.section5Progress * window.innerHeight
+        return {
+          transform: `translateY(${translateY}px)`,
+          opacity: scrollProgress.sectionOpacities[index],
+        }
+      }
+
+      const currentSectionProgress = Math.max(
+        0,
+        Math.min(1, scrollProgress.sectionProgress - (index - 1))
+      )
       const translateY =
-        window.innerHeight -
-        scrollProgress.section5Progress * window.innerHeight
+        window.innerHeight - currentSectionProgress * window.innerHeight
+
       return {
         transform: `translateY(${translateY}px)`,
         opacity: scrollProgress.sectionOpacities[index],
       }
     }
 
-    const currentSectionProgress = Math.max(
-      0,
-      Math.min(1, scrollProgress.sectionProgress - (index - 1))
-    )
-    const translateY =
-      window.innerHeight - currentSectionProgress * window.innerHeight
-
-    return {
-      transform: `translateY(${translateY}px)`,
-      opacity: scrollProgress.sectionOpacities[index],
-    }
-  }
+    setSectionStyle(getSectionStyle(index))
+  }, [index, scrollProgress])
 
   return (
     <section
       className="will-change-opacity absolute top-0 left-0 h-screen w-full bg-black will-change-transform"
-      style={{ ...getSectionStyle(index), zIndex }}
+      style={{ ...sectionStyle, zIndex }}
     >
       {title && <h2 className="mb-8 text-4xl font-bold text-white">{title}</h2>}
       {children}
@@ -89,23 +98,31 @@ const ProjectSubsection: React.FC<ProjectSubsectionProps> = ({
   progress,
   zIndex,
 }) => {
-  const getSubsectionStyle = () => {
-    const startPosition = window.innerWidth
-    const endPosition = 0
-    const currentPosition =
-      startPosition - progress * (startPosition - endPosition)
+  const [subsectionStyle, setSubsectionStyle] = useState({
+    transform: 'translateX(100%)',
+    opacity: 0,
+  })
 
-    return {
-      transform: `translateX(${currentPosition}px)`,
-      opacity: progress,
-      zIndex,
+  useEffect(() => {
+    const getSubsectionStyle = () => {
+      const startPosition = window.innerWidth
+      const endPosition = 0
+      const currentPosition =
+        startPosition - progress * (startPosition - endPosition)
+
+      return {
+        transform: `translateX(${currentPosition}px)`,
+        opacity: progress,
+      }
     }
-  }
+
+    setSubsectionStyle(getSubsectionStyle())
+  }, [progress])
 
   return (
     <div
       className="absolute top-0 left-0 h-full w-full rounded-xl border border-white bg-gray-800 p-6 transition-all duration-300"
-      style={getSubsectionStyle()}
+      style={{ ...subsectionStyle, zIndex }}
     >
       <h3 className="text-2xl font-bold text-white">{title}</h3>
     </div>
