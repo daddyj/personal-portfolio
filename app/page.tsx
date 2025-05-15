@@ -146,8 +146,10 @@ export default function Home() {
       const fadeOutThreshold = 0.5
       if (nextSectionProgress >= fadeOutThreshold) return 0
 
-      // Linear fade from 1 to 0 as next section goes from 0 to 50%
-      return 1 - nextSectionProgress / fadeOutThreshold
+      // Ease-out curve: 1 - (1 - t)^2
+      // This creates a smooth acceleration curve where the fade starts quickly and slows down
+      const t = nextSectionProgress / fadeOutThreshold
+      return 1 - Math.pow(1 - t, 2)
     }
 
     const calculateOpacities = (
