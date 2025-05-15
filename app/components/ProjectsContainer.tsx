@@ -1,5 +1,7 @@
 'use client'
 
+import { PROJECTS } from '@/app/lib/constants/projects'
+
 import { ProjectSubsection } from './ProjectSubsection'
 
 interface ProjectsContainerProps {
@@ -11,10 +13,10 @@ export const ProjectsContainer: React.FC<ProjectsContainerProps> = ({
 }) => {
   return (
     <div className="relative h-[calc(100%-6rem)]">
-      {[0, 1, 2, 3].map((index) => (
+      {PROJECTS.map((project, index) => (
         <ProjectSubsection
-          key={index}
-          title={`Project ${index + 1}`}
+          key={project.id}
+          title={project.title}
           progress={subsectionProgress[index]}
           zIndex={40 + index}
         />

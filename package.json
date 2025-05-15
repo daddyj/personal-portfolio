@@ -20,6 +20,7 @@
     "postcss": "^8.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-intersection-observer": "^9.16.0",
     "react-native": "^0.77.1",
     "tailwindcss": "^4.0.7",
     "tailwindcss-animated": "^2.0.0"
