@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-import { Hero } from './sections'
+import { About, Hero, Skills } from './sections'
 
 // Types
 type ScrollProgress = {
@@ -194,19 +194,13 @@ export default function Home() {
           <Hero />
         </Section>
 
-        <Section
-          index={1}
-          title="Section 2"
-          zIndex={20}
-          scrollProgress={scrollProgress}
-        />
+        <Section index={1} zIndex={20} scrollProgress={scrollProgress}>
+          <About />
+        </Section>
 
-        <Section
-          index={2}
-          title="Section 3"
-          zIndex={30}
-          scrollProgress={scrollProgress}
-        />
+        <Section index={2} zIndex={30} scrollProgress={scrollProgress}>
+          <Skills />
+        </Section>
 
         <Section
           index={3}
