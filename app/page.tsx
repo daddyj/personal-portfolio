@@ -142,14 +142,14 @@ export default function Home() {
 
   useEffect(() => {
     const calculateOpacity = (nextSectionProgress: number): number => {
-      // When next section is at 50%, current section should be fully transparent
+      // When next section is 50% in, current section should be fully transparent
       const fadeOutThreshold = 0.5
       if (nextSectionProgress >= fadeOutThreshold) return 0
 
-      // Ease-out curve: 1 - (1 - t)^2
-      // This creates a smooth acceleration curve where the fade starts quickly and slows down
-      const t = nextSectionProgress / fadeOutThreshold
-      return 1 - Math.pow(1 - t, 2)
+      // Ease-out fade from 1 to 0 in the first 50% of next section's progress
+      const normalizedProgress = nextSectionProgress / fadeOutThreshold
+      // Using quadratic ease-out: 1 - t²
+      return 1 - normalizedProgress * normalizedProgress
     }
 
     const calculateOpacities = (
