@@ -3,13 +3,15 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { About, Hero, Skills } from './sections'
+import { Mindset } from './sections/Mindset'
 
 // Types
 type ScrollProgress = {
   sectionProgress: number
   subsectionProgress: number[]
-  section5Progress: number
+  contactSectionProgress: number
   sectionOpacities: number[]
+  viewportProgress: number[]
 }
 
 type SectionProps = {
@@ -30,8 +32,11 @@ type ProjectSubsectionProps = {
 const ANIMATION_CONSTANTS = {
   PAUSE_DURATION: 0.1,
   SUBSECTION_DURATION: 0.15,
-  SECTION_HEIGHT_MULTIPLIER: 0.6,
-  SECTION5_HEIGHT_MULTIPLIER: 0.4,
+  PROJECTS_SECTION_HEIGHT_MULTIPLIER: 0.6,
+  CONTACT_SECTION_HEIGHT_MULTIPLIER: 0.4,
+  TOTAL_SECTIONS: 6,
+  VIEWPORT_THRESHOLD: 0.8,
+  FADE_OUT_THRESHOLD: 0.5,
 } as const
 
 // Reusable Components
@@ -56,10 +61,10 @@ const Section: React.FC<SectionProps> = ({
         }
       }
 
-      if (index === 4) {
+      if (index === ANIMATION_CONSTANTS.TOTAL_SECTIONS - 1) {
         const translateY =
           window.innerHeight -
-          scrollProgress.section5Progress * window.innerHeight
+          scrollProgress.contactSectionProgress * window.innerHeight
         return {
           transform: `translateY(${translateY}px)`,
           opacity: scrollProgress.sectionOpacities[index],
@@ -151,50 +156,56 @@ export default function Home() {
   const [scrollProgress, setScrollProgress] = useState<ScrollProgress>({
     sectionProgress: 0,
     subsectionProgress: [0, 0, 0, 0],
-    section5Progress: 0,
-    sectionOpacities: [1, 1, 1, 1, 1],
+    contactSectionProgress: 0,
+    sectionOpacities: Array(ANIMATION_CONSTANTS.TOTAL_SECTIONS).fill(1),
+    viewportProgress: Array(ANIMATION_CONSTANTS.TOTAL_SECTIONS).fill(0),
   })
   const containerRef = useRef<HTMLDivElement>(null)
   const animationFrameRef = useRef<number | undefined>(undefined)
 
   useEffect(() => {
-    const calculateOpacity = (nextSectionProgress: number): number => {
-      // When next section is 50% in, current section should be fully transparent
-      const fadeOutThreshold = 0.5
-      if (nextSectionProgress >= fadeOutThreshold) return 0
+    const calculateSectionViewportProgress = (
+      scrollY: number,
+      sectionIndex: number,
+      sectionHeight: number
+    ): number => {
+      const sectionStart = sectionIndex * sectionHeight
+      const sectionEnd = (sectionIndex + 1) * sectionHeight
+      const viewportHeight = window.innerHeight
 
-      // Ease-out fade from 1 to 0 in the first 50% of next section's progress
-      const normalizedProgress = nextSectionProgress / fadeOutThreshold
-      // Using quadratic ease-out: 1 - t²
-      return 1 - normalizedProgress * normalizedProgress
+      // Calculate how much of the section is in the viewport
+      const sectionTop = sectionStart - scrollY
+      const sectionBottom = sectionEnd - scrollY
+
+      // If section is completely above viewport
+      if (sectionBottom <= 0) return 0
+      // If section is completely below viewport
+      if (sectionTop >= viewportHeight) return 0
+
+      // Calculate the visible portion of the section
+      const visibleTop = Math.max(0, sectionTop)
+      const visibleBottom = Math.min(viewportHeight, sectionBottom)
+      const visibleHeight = visibleBottom - visibleTop
+
+      return visibleHeight / sectionHeight
     }
 
-    const calculateOpacities = (
-      rawProgress: number,
-      section4Progress: number,
-      section5Progress: number
-    ) => {
-      const opacities = [1, 1, 1, 1, 1]
-
-      // Calculate opacity for sections 1-3 based on the next section's progress
-      for (let i = 0; i < 3; i++) {
-        const nextSectionProgress = Math.max(0, Math.min(1, rawProgress - i))
-        opacities[i] = calculateOpacity(nextSectionProgress)
+    const calculateSectionOpacity = (
+      viewportProgress: number,
+      nextSectionProgress: number
+    ): number => {
+      // If next section is beyond fade out threshold, current section should be fully transparent
+      if (nextSectionProgress >= ANIMATION_CONSTANTS.FADE_OUT_THRESHOLD) {
+        return 0
       }
 
-      // Special handling for Section 4 (index 3)
-      // Only start fading out when Section 5 starts sliding in
-      const allSubsectionsComplete = section4Progress >= 1
-      if (allSubsectionsComplete) {
-        opacities[3] = calculateOpacity(section5Progress)
-      } else {
-        opacities[3] = 1 // Keep fully visible while subsections are animating
-      }
+      // Calculate normalized progress for fade out (0 to 1)
+      const normalizedProgress =
+        nextSectionProgress / ANIMATION_CONSTANTS.FADE_OUT_THRESHOLD
 
-      // Last section doesn't fade out
-      opacities[4] = 1
-
-      return opacities
+      // Quadratic ease-out: 1 - t²
+      // This gives us a smooth acceleration in the fade out
+      return 1 - normalizedProgress * normalizedProgress
     }
 
     const handleScroll = () => {
@@ -207,65 +218,89 @@ export default function Home() {
 
         const scrollY = window.scrollY
         const sectionHeight = window.innerHeight
-        const totalSections = 5
 
-        // Calculate overall section progress
+        // Calculate viewport progress for each section
+        const viewportProgress = Array(ANIMATION_CONSTANTS.TOTAL_SECTIONS)
+          .fill(0)
+          .map((_, index) =>
+            calculateSectionViewportProgress(scrollY, index, sectionHeight)
+          )
+
+        // Calculate overall section progress for transitions
         const rawProgress = scrollY / sectionHeight
         const sectionProgress = Math.min(
           Math.max(rawProgress, 0),
-          totalSections - 2
+          ANIMATION_CONSTANTS.TOTAL_SECTIONS - 2
         )
 
-        // Calculate subsection progress for section 4
-        const section4Start = 3 * sectionHeight
-        const section4TotalRange =
-          sectionHeight * ANIMATION_CONSTANTS.SECTION_HEIGHT_MULTIPLIER
-        const section4Progress = Math.max(
-          0,
-          Math.min(1, (scrollY - section4Start) / section4TotalRange)
+        // Calculate section opacities with ease-out curve
+        const sectionOpacities = Array(ANIMATION_CONSTANTS.TOTAL_SECTIONS).fill(
+          1
         )
 
-        // Calculate subsection progress with pauses
-        const TOTAL_SUBSECTION_RANGE =
-          (ANIMATION_CONSTANTS.SUBSECTION_DURATION +
-            ANIMATION_CONSTANTS.PAUSE_DURATION) *
-          4
+        // Handle all sections except the last one (contact section)
+        for (let i = 0; i < ANIMATION_CONSTANTS.TOTAL_SECTIONS - 1; i++) {
+          const nextSectionProgress = Math.max(
+            0,
+            Math.min(1, sectionProgress - i)
+          )
+          sectionOpacities[i] = calculateSectionOpacity(
+            viewportProgress[i],
+            nextSectionProgress
+          )
+        }
 
+        // Last section (contact) stays fully opaque
+        sectionOpacities[ANIMATION_CONSTANTS.TOTAL_SECTIONS - 1] = 1
+
+        // Projects section specific calculations
+        const projectsSectionIndex = ANIMATION_CONSTANTS.TOTAL_SECTIONS - 2
+        const isProjectsSectionInView =
+          viewportProgress[projectsSectionIndex] >=
+          ANIMATION_CONSTANTS.VIEWPORT_THRESHOLD
+
+        // Calculate subsection progress only if projects section is properly in view
         const subsectionProgress = [0, 1, 2, 3].map((index) => {
+          if (!isProjectsSectionInView) return 0
+
           const subsectionStart =
             index *
             (ANIMATION_CONSTANTS.SUBSECTION_DURATION +
               ANIMATION_CONSTANTS.PAUSE_DURATION)
+
+          // Calculate progress relative to when projects section entered viewport
+          const projectsSectionEntryPoint =
+            projectsSectionIndex * sectionHeight -
+            (1 - ANIMATION_CONSTANTS.VIEWPORT_THRESHOLD) * sectionHeight
+
+          const adjustedScrollY = scrollY - projectsSectionEntryPoint
           const progress =
-            (section4Progress - subsectionStart) /
+            (adjustedScrollY / sectionHeight - subsectionStart) /
             ANIMATION_CONSTANTS.SUBSECTION_DURATION
+
           return Math.max(0, Math.min(1, progress))
         })
 
-        // Calculate Section 5 progress
-        const section5Start =
-          section4Start + section4TotalRange * TOTAL_SUBSECTION_RANGE
-        const section5Progress = Math.max(
+        // Contact section calculations
+        const contactSectionStart =
+          projectsSectionIndex * sectionHeight +
+          sectionHeight * ANIMATION_CONSTANTS.PROJECTS_SECTION_HEIGHT_MULTIPLIER
+        const contactSectionProgress = Math.max(
           0,
           Math.min(
             1,
-            (scrollY - section5Start) /
-              (sectionHeight * ANIMATION_CONSTANTS.SECTION5_HEIGHT_MULTIPLIER)
+            (scrollY - contactSectionStart) /
+              (sectionHeight *
+                ANIMATION_CONSTANTS.CONTACT_SECTION_HEIGHT_MULTIPLIER)
           )
-        )
-
-        // Calculate dynamic opacities with special handling for Section 4
-        const sectionOpacities = calculateOpacities(
-          rawProgress,
-          section4Progress,
-          section5Progress
         )
 
         setScrollProgress({
           sectionProgress,
           subsectionProgress,
-          section5Progress,
+          contactSectionProgress,
           sectionOpacities,
+          viewportProgress,
         })
       })
     }
@@ -280,23 +315,27 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="relative h-[500vh] w-full">
+    <div className="relative h-[600vh] w-full">
       <div ref={containerRef} className="fixed top-0 left-0 h-screen w-full">
         <Section index={0} zIndex={10} scrollProgress={scrollProgress}>
           <Hero />
         </Section>
 
         <Section index={1} zIndex={20} scrollProgress={scrollProgress}>
+          <Mindset />
+        </Section>
+
+        <Section index={2} zIndex={20} scrollProgress={scrollProgress}>
           <About />
         </Section>
 
-        <Section index={2} zIndex={30} scrollProgress={scrollProgress}>
+        <Section index={3} zIndex={30} scrollProgress={scrollProgress}>
           <Skills />
         </Section>
 
         <Section
-          index={3}
-          title="Section 4 - Projects"
+          index={4}
+          title="Projects"
           zIndex={40}
           scrollProgress={scrollProgress}
         >
@@ -306,11 +345,13 @@ export default function Home() {
         </Section>
 
         <Section
-          index={4}
-          title="Section 5"
+          index={5}
+          title="Contact"
           zIndex={50}
           scrollProgress={scrollProgress}
-        />
+        >
+          {/* Contact section content will go here */}
+        </Section>
       </div>
     </div>
   )
