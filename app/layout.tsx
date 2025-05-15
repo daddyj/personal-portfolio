@@ -17,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={montserrat.style}>
-        <div className="bg-blue-400">{children}</div>
-      </body>
+      <body style={montserrat.style}>{children}</body>
     </html>
   )
 }
