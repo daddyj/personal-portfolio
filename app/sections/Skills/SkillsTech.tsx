@@ -1,33 +1,97 @@
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
-import { useEffect, useRef, useState } from 'react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+import { useRef } from 'react'
 
 import { GridItem } from '@/app/components/Grid'
+import {
+  Canvas,
+  Firebase,
+  GCloud,
+  Nextjs,
+  React,
+  ReactNative,
+  Tamagui,
+} from '@/app/components/Icons'
+import { MaterialUi } from '@/app/components/Icons/MaterialUi'
+import { TailwindCss } from '@/app/components/Icons/TailwindCss'
 
 import { SkillsWrapper } from './SkillsWrapper'
 
-const skills = [
-  'Javascript',
-  'Typescript',
-  'HTML',
-  'CSS / SCSS',
-  'SASS / CSS-in-JS',
-  'React-Native',
-  'React',
-  'NextJS',
-  'Tamagui UI',
-  'Material UI',
-  'Tailwind CSS',
-  'Firebase',
-  'Git',
-  'Github / GitLab',
-  'Google Cloud',
+interface SkillWithIcon {
+  name: string
+  Icon: React.ComponentType<{ className?: string }>
+  hasIcon: true
+}
+
+interface SkillWithoutIcon {
+  name: string
+  hasIcon: false
+}
+
+type Skill = SkillWithIcon | SkillWithoutIcon
+
+const skills: Skill[] = [
+  { name: 'Javascript', hasIcon: false },
+  { name: 'Typescript', hasIcon: false },
+  { name: 'HTML', hasIcon: false },
+  { name: 'CSS / SCSS', hasIcon: false },
+  { name: 'SASS / CSS-in-JS', hasIcon: false },
+  { name: 'React-Native', Icon: ReactNative, hasIcon: true },
+  { name: 'React', Icon: React, hasIcon: true },
+  { name: 'NextJS', Icon: Nextjs, hasIcon: true },
+  { name: 'Tamagui UI', Icon: Tamagui, hasIcon: true },
+  { name: 'Firebase', Icon: Firebase, hasIcon: true },
+  { name: 'Google Cloud', Icon: GCloud, hasIcon: true },
+  { name: 'Git', hasIcon: false },
+  { name: 'Github / GitLab', hasIcon: false },
+  { name: 'Material UI', Icon: MaterialUi, hasIcon: true },
+  { name: 'Tailwind CSS', Icon: TailwindCss, hasIcon: true },
+  { name: 'Canvas', Icon: Canvas, hasIcon: true },
 ]
 
 export const SkillsTech = () => {
-  const [showAllTechSkills, setShowAllTechSkills] = useState(false)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const animationFrameRef = useRef<number | null>(null)
+  const isScrollingRef = useRef(false)
+
+  const startScrolling = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return
+
+    const scrollAmount = 200 // pixels to scroll per interval
+    const scrollSpeed = 16 // approximately 60fps for smooth animation
+    isScrollingRef.current = true
+
+    const animate = () => {
+      if (!scrollContainerRef.current || !isScrollingRef.current) return
+
+      const currentScroll = scrollContainerRef.current.scrollLeft
+      const newScroll =
+        direction === 'left'
+          ? currentScroll - scrollAmount / (1000 / scrollSpeed)
+          : currentScroll + scrollAmount / (1000 / scrollSpeed)
+
+      scrollContainerRef.current.scrollTo({
+        left: newScroll,
+        behavior: 'auto', // Using 'auto' for immediate response
+      })
+
+      if (isScrollingRef.current) {
+        animationFrameRef.current = requestAnimationFrame(animate)
+      }
+    }
+
+    animationFrameRef.current = requestAnimationFrame(animate)
+  }
+
+  const stopScrolling = () => {
+    isScrollingRef.current = false
+    if (animationFrameRef.current !== null) {
+      cancelAnimationFrame(animationFrameRef.current)
+      animationFrameRef.current = null
+    }
+  }
 
   return (
-    <SkillsWrapper skillsKey="skillsTech" className="grid-rows-[auto_1fr]">
+    <SkillsWrapper skillsKey="skillsTech" className="grid-rows-[auto_auto_1fr]">
       <GridItem className="col-span-10 sm:col-span-4">
         <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
           Technologien
@@ -46,90 +110,57 @@ export const SkillsTech = () => {
         </p>
       </GridItem>
 
-      <GridItem className="col-span-10 sm:col-span-4" />
-      <GridItem className="col-span-10 flex flex-col gap-2 sm:col-span-6 sm:gap-4">
-        <>
-          <SkillsGrid skills={skills} animated={!showAllTechSkills} />
-          {!showAllTechSkills && (
-            <div
-              className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500 sm:text-xl"
-              onClick={() => setShowAllTechSkills(true)}
-            >
-              <EyeIcon className="size-10" />
-              <p>Alle anzeigen</p>
-            </div>
-          )}
-          {showAllTechSkills && (
-            <div
-              className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500"
-              onClick={() => setShowAllTechSkills(false)}
-            >
-              <EyeSlashIcon className="size-10" />
-              <p>Zufällig anzeigen</p>
-            </div>
-          )}
-        </>
+      <GridItem className="col-span-10 mt-8">
+        <div className="relative px-4">
+          <button
+            onMouseEnter={() => startScrolling('left')}
+            onMouseLeave={stopScrolling}
+            className="absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md transition-all hover:bg-gray-50"
+          >
+            <ChevronLeftIcon className="h-6 w-6 text-gray-600" />
+          </button>
+
+          <div
+            ref={scrollContainerRef}
+            className="scrollbar-hide flex gap-4 overflow-x-auto overflow-y-visible p-4"
+          >
+            {skills.map((skill) => (
+              <div
+                key={skill.name}
+                className="group relative flex min-w-32 cursor-pointer items-center justify-center rounded-lg bg-white px-6 py-8 shadow-sm transition-all duration-300 hover:scale-[1.08] hover:shadow-md"
+                title={skill.name}
+              >
+                {skill.hasIcon ? (
+                  <div className="h-full w-full text-gray-800 transition-colors duration-300 group-hover:text-blue-600">
+                    <skill.Icon className="h-full w-full" />
+                  </div>
+                ) : (
+                  <span className="text-center text-lg font-semibold text-gray-800 transition-colors duration-300 group-hover:text-blue-600">
+                    {skill.name}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <button
+            onMouseEnter={() => startScrolling('right')}
+            onMouseLeave={stopScrolling}
+            className="absolute top-1/2 right-0 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md transition-all hover:bg-gray-50"
+          >
+            <ChevronRightIcon className="h-6 w-6 text-gray-600" />
+          </button>
+        </div>
       </GridItem>
     </SkillsWrapper>
   )
 }
 
-interface SkillsGridProps {
-  skills: string[]
-  animated?: boolean
-}
-
-const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
-  const [currentAnimatedCells, setCurrentAnimatedCells] = useState<number[]>()
-  const animateTimer = useRef<NodeJS.Timeout>(null)
-
-  useEffect(() => {
-    if (animated) {
-      animateTimer.current = setInterval(() => {
-        const maxIndex = skills.length - 1
-        const nextCellIndex = Math.round((Math.random() * maxIndex) % maxIndex)
-        const nextCellIndex2 = Math.round((Math.random() * maxIndex) % maxIndex)
-        const nextCellIndex3 = Math.round((Math.random() * maxIndex) % maxIndex)
-        setCurrentAnimatedCells([nextCellIndex, nextCellIndex2, nextCellIndex3])
-      }, 1000)
-    }
-  }, [animated, skills.length])
-
-  useEffect(() => {
-    if (!animated && animateTimer.current) {
-      clearInterval(animateTimer.current)
-    }
-  }, [animated])
-
-  return (
-    <div className="animate-fade grid h-full grid-cols-3 grid-rows-5 gap-[1px]">
-      {skills.map((skill, index) => (
-        <SkillsItem
-          key={`skill-cell-${skill}`}
-          skill={skill}
-          render={
-            !animated || (animated && currentAnimatedCells?.includes(index))
-          }
-        />
-      ))}
-    </div>
-  )
-}
-
-const SkillsItem = ({
-  render = true,
-  skill,
-}: {
-  render?: boolean
-  skill: string
-}) => {
-  const animation = render ? 'animate-jump-in' : 'animate-jump-out'
-
-  return (
-    <GridItem
-      className={`flex items-center justify-center bg-blue-500 p-4 text-center text-xs font-bold text-white sm:p-0 sm:text-xl ${animation} animate-ease-in rounded-sm`}
-    >
-      {skill}
-    </GridItem>
-  )
-}
+// Add this to your global CSS file (app/globals.css)
+// .scrollbar-hide {
+//   -ms-overflow-style: none;  /* IE and Edge */
+//   scrollbar-width: none;  /* Firefox */
+// }
+// .scrollbar-hide::-webkit-scrollbar {
+//   display: none;  /* Chrome, Safari and Opera */
+// }
