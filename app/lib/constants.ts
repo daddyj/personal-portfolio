@@ -1,6 +1,6 @@
 export const sections = [
   'hero',
-  'about',
+  'mindset',
   'skillsTech',
   'skillsSocial',
   'skillsCv',
