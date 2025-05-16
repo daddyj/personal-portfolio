@@ -3,37 +3,36 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { ANIMATION_CONSTANTS } from '@/app/lib/constants/animation'
-import { PROJECTS_COUNT } from '@/app/lib/constants/projects'
-import { getSectionIndex, SECTIONS } from '@/app/lib/constants/sections'
+import { SECTIONS } from '@/app/lib/constants/sections'
 import { ScrollProgress } from '@/app/lib/types'
 
 export const useScrollProgress = () => {
   const [scrollProgress, setScrollProgress] = useState<ScrollProgress>({
     sectionProgress: 0,
-    subsectionProgress: Array(PROJECTS_COUNT).fill(0),
     contactSectionProgress: 0,
     sectionOpacities: Array(SECTIONS.length).fill(1),
     viewportProgress: Array(SECTIONS.length).fill(0),
   })
   const containerRef = useRef<HTMLDivElement>(null)
-  const animationFrameRef = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     const calculateSectionViewportProgress = (
       scrollY: number,
       sectionIndex: number,
-      sectionHeight: number
+      sectionElement: HTMLElement
     ): number => {
-      const sectionStart = sectionIndex * sectionHeight
-      const sectionEnd = (sectionIndex + 1) * sectionHeight
+      const sectionRect = sectionElement.getBoundingClientRect()
       const viewportHeight = window.innerHeight
+      const sectionHeight = sectionRect.height
 
-      const sectionTop = sectionStart - scrollY
-      const sectionBottom = sectionEnd - scrollY
+      // Calculate the section's position relative to the viewport
+      const sectionTop = sectionRect.top
+      const sectionBottom = sectionRect.bottom
 
-      if (sectionBottom <= 0) return 0
-      if (sectionTop >= viewportHeight) return 0
+      // If section is completely out of view
+      if (sectionBottom <= 0 || sectionTop >= viewportHeight) return 0
 
+      // Calculate visible portion
       const visibleTop = Math.max(0, sectionTop)
       const visibleBottom = Math.min(viewportHeight, sectionBottom)
       const visibleHeight = visibleBottom - visibleTop
@@ -41,133 +40,92 @@ export const useScrollProgress = () => {
       return visibleHeight / sectionHeight
     }
 
-    const calculateSectionOpacity = (
-      viewportProgress: number,
-      nextSectionProgress: number
-    ): number => {
-      if (nextSectionProgress >= ANIMATION_CONSTANTS.FADE_OUT_THRESHOLD) {
-        return 0
-      }
-
-      const normalizedProgress =
-        nextSectionProgress / ANIMATION_CONSTANTS.FADE_OUT_THRESHOLD
-
-      return 1 - normalizedProgress * normalizedProgress
-    }
-
-    const calculateSubsectionProgress = (
-      scrollY: number,
-      sectionHeight: number,
-      projectsSectionIndex: number,
-      viewportProgress: number[]
-    ): number[] => {
-      const isProjectsSectionInView =
-        viewportProgress[projectsSectionIndex] >=
-        ANIMATION_CONSTANTS.VIEWPORT_THRESHOLD
-
-      if (!isProjectsSectionInView) return Array(PROJECTS_COUNT).fill(0)
-
-      const projectsSectionEntryPoint =
-        projectsSectionIndex * sectionHeight -
-        (1 - ANIMATION_CONSTANTS.VIEWPORT_THRESHOLD) * sectionHeight
-
-      const adjustedScrollY = scrollY - projectsSectionEntryPoint
-      const totalDuration =
-        ANIMATION_CONSTANTS.SUBSECTION_DURATION +
-        ANIMATION_CONSTANTS.PAUSE_DURATION
-
-      return Array.from({ length: PROJECTS_COUNT }, (_, index) => {
-        const subsectionStart = index * totalDuration
-
-        // Calculate progress relative to the current subsection's time window
-        const progress =
-          (adjustedScrollY / sectionHeight - subsectionStart) /
-          ANIMATION_CONSTANTS.SUBSECTION_DURATION
-
-        // Add easing to the progress calculation
-        const easedProgress = Math.max(0, Math.min(1, progress))
-        const easedValue =
-          easedProgress < 0.5
-            ? 2 * easedProgress * easedProgress
-            : 1 - Math.pow(-2 * easedProgress + 2, 2) / 2
-
-        return easedValue
-      })
-    }
+    let ticking = false
+    let lastScrollY = window.scrollY
 
     const handleScroll = () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
+      if (!ticking) {
+        const currentScrollY = window.scrollY
+        // Only update if we've scrolled more than 1px
+        if (Math.abs(currentScrollY - lastScrollY) > 1) {
+          lastScrollY = currentScrollY
+          window.requestAnimationFrame(() => {
+            if (!containerRef.current) return
 
-      animationFrameRef.current = requestAnimationFrame(() => {
-        if (!containerRef.current) return
+            const scrollY = currentScrollY
+            const sections = Array.from(
+              containerRef.current.children
+            ) as HTMLElement[]
+            const totalHeight = window.document.body.offsetHeight
+            const viewportHeight = window.innerHeight
 
-        const scrollY = window.scrollY
-        const sectionHeight = window.innerHeight
+            // Calculate viewport progress for each section
+            const viewportProgress = sections.map((section, index) =>
+              calculateSectionViewportProgress(scrollY, index, section)
+            )
 
-        const viewportProgress = SECTIONS.map((_, index) =>
-          calculateSectionViewportProgress(scrollY, index, sectionHeight)
-        )
+            // Calculate overall progress based on scroll position relative to total scrollable height
+            const maxScroll = totalHeight - viewportHeight
+            const rawProgress = scrollY / maxScroll
+            const sectionProgress = Math.min(
+              Math.max(rawProgress * (SECTIONS.length - 1), 0),
+              SECTIONS.length - 2
+            )
 
-        const rawProgress = scrollY / sectionHeight
-        const sectionProgress = Math.min(
-          Math.max(rawProgress, 0),
-          SECTIONS.length - 2
-        )
+            const sectionOpacities = Array(SECTIONS.length).fill(0)
 
-        const sectionOpacities = Array(SECTIONS.length).fill(1)
+            // Calculate opacity for each section based on its position in the scroll sequence
+            for (let i = 0; i < SECTIONS.length; i++) {
+              const sectionIndex = i
+              const progress = sectionProgress - sectionIndex + 1
 
-        for (let i = 0; i < SECTIONS.length - 1; i++) {
-          const nextSectionProgress = Math.max(
-            0,
-            Math.min(1, sectionProgress - i)
-          )
-          sectionOpacities[i] = calculateSectionOpacity(
-            viewportProgress[i],
-            nextSectionProgress
-          )
+              if (progress <= 0) {
+                // Section is not yet in view
+                sectionOpacities[i] = 0
+              } else if (progress >= 1) {
+                // Section is fully in view
+                sectionOpacities[i] = 1
+              } else {
+                // Section is transitioning
+                sectionOpacities[i] = progress
+              }
+            }
+
+            // Ensure the last section is always visible when scrolled to
+            if (scrollY >= maxScroll * 0.9) {
+              sectionOpacities[SECTIONS.length - 1] = 1
+            }
+
+            const contactSection = sections[sections.length - 1]
+            const contactSectionRect = contactSection.getBoundingClientRect()
+            const contactSectionStart = contactSectionRect.top + window.scrollY
+            const contactSectionProgress = Math.max(
+              0,
+              Math.min(
+                1,
+                (scrollY - contactSectionStart) /
+                  (contactSectionRect.height *
+                    ANIMATION_CONSTANTS.CONTACT_SECTION_HEIGHT_MULTIPLIER)
+              )
+            )
+
+            setScrollProgress({
+              sectionProgress,
+              contactSectionProgress,
+              sectionOpacities,
+              viewportProgress,
+            })
+            ticking = false
+          })
+          ticking = true
         }
-
-        sectionOpacities[SECTIONS.length - 1] = 1
-
-        const projectsSectionIndex = getSectionIndex('projects')
-        const subsectionProgress = calculateSubsectionProgress(
-          scrollY,
-          sectionHeight,
-          projectsSectionIndex,
-          viewportProgress
-        )
-
-        const contactSectionStart =
-          projectsSectionIndex * sectionHeight +
-          sectionHeight * ANIMATION_CONSTANTS.PROJECTS_SECTION_HEIGHT_MULTIPLIER
-        const contactSectionProgress = Math.max(
-          0,
-          Math.min(
-            1,
-            (scrollY - contactSectionStart) /
-              (sectionHeight *
-                ANIMATION_CONSTANTS.CONTACT_SECTION_HEIGHT_MULTIPLIER)
-          )
-        )
-
-        setScrollProgress({
-          sectionProgress,
-          subsectionProgress,
-          contactSectionProgress,
-          sectionOpacities,
-          viewportProgress,
-        })
-      })
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    // Use passive scroll listener for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
     }
   }, [])
 

@@ -23,6 +23,8 @@ export const Section: React.FC<SectionProps> = ({
         return {
           transform: 'translateY(0)',
           opacity: scrollProgress.sectionOpacities[index],
+          visibility:
+            scrollProgress.sectionOpacities[index] > 0 ? 'visible' : 'hidden',
         }
       }
 
@@ -33,6 +35,8 @@ export const Section: React.FC<SectionProps> = ({
         return {
           transform: `translateY(${translateY}px)`,
           opacity: scrollProgress.sectionOpacities[index],
+          visibility:
+            scrollProgress.sectionOpacities[index] > 0 ? 'visible' : 'hidden',
         }
       }
 
@@ -40,12 +44,15 @@ export const Section: React.FC<SectionProps> = ({
         0,
         Math.min(1, scrollProgress.sectionProgress - (index - 1))
       )
-      const translateY =
-        window.innerHeight - currentSectionProgress * window.innerHeight
+
+      // Calculate translateY based on viewport height and progress
+      const translateY = window.innerHeight * (1 - currentSectionProgress)
 
       return {
         transform: `translateY(${translateY}px)`,
         opacity: scrollProgress.sectionOpacities[index],
+        visibility:
+          scrollProgress.sectionOpacities[index] > 0 ? 'visible' : 'hidden',
       }
     }
 
@@ -54,11 +61,21 @@ export const Section: React.FC<SectionProps> = ({
 
   return (
     <section
-      className="will-change-opacity absolute top-0 left-0 h-screen w-full bg-black will-change-transform"
-      style={{ ...sectionStyle, zIndex }}
+      className="will-change-opacity absolute top-0 left-0 h-screen w-full bg-black transition-transform duration-300 ease-out will-change-transform"
+      style={{
+        ...sectionStyle,
+        zIndex,
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        transform: `${sectionStyle.transform} translateZ(0)`,
+      }}
     >
-      {title && <h2 className="mb-8 text-4xl font-bold text-white">{title}</h2>}
-      {children}
+      <div className="h-full w-full">
+        {title && (
+          <h2 className="mb-8 text-4xl font-bold text-white">{title}</h2>
+        )}
+        {children}
+      </div>
     </section>
   )
 }

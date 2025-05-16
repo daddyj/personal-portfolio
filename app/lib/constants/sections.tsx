@@ -1,9 +1,9 @@
 'use client'
 
-import { ProjectsContainer } from '@/app/components/ProjectsContainer'
 import type { Section } from '@/app/lib/types'
 import { About, Hero, Skills } from '@/app/sections'
 import { Mindset } from '@/app/sections/Mindset'
+import { Projects } from '@/app/sections/Projects/Projects'
 
 export const SECTIONS: Section[] = [
   {
@@ -28,7 +28,7 @@ export const SECTIONS: Section[] = [
   },
   {
     id: 'projects',
-    component: <ProjectsContainer subsectionProgress={[]} />,
+    component: <Projects />,
     zIndex: 40,
     title: 'Projects',
   },

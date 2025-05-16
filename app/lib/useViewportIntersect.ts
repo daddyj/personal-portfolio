@@ -11,6 +11,9 @@ import {
 import { useNavigationContext } from './useNavigationContext'
 
 const THRESHOLD_PAGE_EDGE_VERTICAL = 100
+const INTERSECTION_THRESHOLD = 0.2 // Lower threshold for initial visibility
+const FULL_VISIBILITY_THRESHOLD = 0.7 // Lower threshold for full visibility
+const ROOT_MARGIN_PERCENTAGE = 0.1 // 10% of viewport height for root margin
 
 export const useViewportIntersect = (
   elementRef: RefObject<HTMLDivElement | null>
@@ -26,17 +29,23 @@ export const useViewportIntersect = (
     const isScrollingUp = currentScrollY < lastIntersectionScrollY.current
     const isTopOfPage = currentScrollY < THRESHOLD_PAGE_EDGE_VERTICAL
     const pageHeight = window.document.body.offsetHeight
-    const scrollYSectionEnd =
-      currentScrollY + (elementRef.current?.offsetHeight ?? 0)
+    const viewportHeight = window.innerHeight
+    const elementHeight = elementRef.current?.offsetHeight ?? 0
+    const scrollYSectionEnd = currentScrollY + elementHeight
     const isBottomOfPage =
       pageHeight - scrollYSectionEnd <= THRESHOLD_PAGE_EDGE_VERTICAL
 
-    console.log({
-      currentScrollY,
-      lastIntersectionScrollY: lastIntersectionScrollY.current,
-    })
+    // Use viewportHeight to determine if we're near the bottom of the viewport
+    const isNearBottomOfViewport =
+      elementRef.current &&
+      elementRef.current.getBoundingClientRect().bottom <=
+        viewportHeight + THRESHOLD_PAGE_EDGE_VERTICAL
 
-    if ((isScrollingUp && !isTopOfPage) || isBottomOfPage) {
+    if (
+      (isScrollingUp && !isTopOfPage) ||
+      isBottomOfPage ||
+      isNearBottomOfViewport
+    ) {
       setScrollDirection('up')
     } else {
       setScrollDirection('down')
@@ -46,6 +55,10 @@ export const useViewportIntersect = (
 
   useEffect(() => {
     const currentElement = elementRef.current
+    if (!currentElement) return
+
+    const viewportHeight = window.innerHeight
+    const rootMargin = `${Math.round(viewportHeight * ROOT_MARGIN_PERCENTAGE)}px`
 
     const onIntersect = (
       entry: IntersectionObserverEntry[],
@@ -62,8 +75,8 @@ export const useViewportIntersect = (
       },
       {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.1,
+        rootMargin,
+        threshold: INTERSECTION_THRESHOLD,
       }
     )
     const observerFullVisible = new IntersectionObserver(
@@ -72,21 +85,17 @@ export const useViewportIntersect = (
       },
       {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.9,
+        rootMargin,
+        threshold: FULL_VISIBILITY_THRESHOLD,
       }
     )
 
-    if (currentElement) {
-      observerEntry.observe(currentElement)
-      observerFullVisible.observe(currentElement)
-    }
+    observerEntry.observe(currentElement)
+    observerFullVisible.observe(currentElement)
 
     return () => {
-      if (currentElement) {
-        observerEntry.unobserve(currentElement)
-        observerFullVisible.unobserve(currentElement)
-      }
+      observerEntry.unobserve(currentElement)
+      observerFullVisible.unobserve(currentElement)
     }
   }, [elementRef, syncScrollDirection])
 

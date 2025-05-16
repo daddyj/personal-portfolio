@@ -18,7 +18,6 @@ export interface NavigationContextProps {
 // Scroll and section types
 export type ScrollProgress = {
   sectionProgress: number
-  subsectionProgress: number[]
   contactSectionProgress: number
   sectionOpacities: number[]
   viewportProgress: number[]
@@ -30,12 +29,6 @@ export type SectionProps = {
   zIndex: number
   scrollProgress: ScrollProgress
   children?: React.ReactNode
-}
-
-export type ProjectSubsectionProps = {
-  title: string
-  progress: number
-  zIndex: number
 }
 
 export type Section = {
