@@ -10,7 +10,7 @@ export const SkillsSocial = () => (
         Agil denken.
       </h2>
     </GridItem>
-    <GridItem className="col-span-10 mt-12">
+    <GridItem className="col-span-10">
       <AgileMethods />
     </GridItem>
   </SkillsWrapper>

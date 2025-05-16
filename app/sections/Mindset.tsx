@@ -2,21 +2,10 @@ import { motion, useInView } from 'framer-motion'
 import { Brain, LayoutPanelTop, MessageSquare } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 
+import { Card } from '@/app/components/Card'
 import { Grid, GridItem } from '@/app/components/Grid'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  },
-}
 
 const headingVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -45,7 +34,7 @@ export const Mindset = () => {
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
-    <Grid id="mindset" ref={gridWrapper} className="grid-rows-[auto_1fr]">
+    <Grid id="mindset" ref={gridWrapper} className="grid-rows-[auto_1fr] gap-8">
       <GridItem className="col-span-8">
         <motion.h2
           variants={headingVariants}
@@ -57,16 +46,8 @@ export const Mindset = () => {
         </motion.h2>
       </GridItem>
       <GridItem className="col-span-10 flex gap-8">
-        <motion.div
-          variants={cardVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 0.6 }}
-          className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3"
-        >
-          <Brain className="h-12 w-12" color="#0191FF" />
-          <h3 className="text-2xl font-bold">Agil denken</h3>
-          <p className="text-sm">
+        <Card icon={Brain} title="Agil denken" delay={0.6} isInView={isInView}>
+          <p className="">
             Ich bin seit über 15 Jahren als Softwareentwickler tätig – sowohl im
             Web- als auch im App-Bereich, in agilen Teams und mit
             crossfunktionalen Rollen. In der Zeit habe ich gelernt, dass
@@ -78,50 +59,40 @@ export const Mindset = () => {
             inspirieren zu lassen – denn das gehört für mich genauso zu einer
             guten Entwicklerkultur wie sauberer Code.
           </p>
-        </motion.div>
-        <motion.div
-          variants={cardVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 0.9 }}
-          className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3"
+        </Card>
+        <Card
+          icon={MessageSquare}
+          title="Klar kommunizieren"
+          delay={0.9}
+          isInView={isInView}
         >
-          <MessageSquare className="h-12 w-12" color="#0191FF" />
-          <h3 className="text-2xl font-bold">Klar kommunizieren</h3>
-          <p className="text-sm">
-            Ich lege viel Wert auf einen methodischen und gleichzeitig
-            menschlichen Ansatz in der Zusammenarbeit. Gute Kommunikation
-            bedeutet für mich, dass technische Zusammenhänge so erklärt werden,
-            dass alle im Projekt – ob Entwickler:in, Designer:in oder Kunde –
-            sie verstehen und mitgestalten können. Ich sehe mich oft als Brücke
-            zwischen Anforderungen und Umsetzung. Dabei helfen mir sowohl meine
-            Erfahrungen aus klassischem Projektmanagement als auch aus agilen
-            Rollen. Transparenz, ehrliches Feedback und ein respektvoller Umgang
-            auf Augenhöhe sind für mich selbstverständlich – und machen am Ende
-            jedes Projekt besser.
-          </p>
-        </motion.div>
-        <motion.div
-          variants={cardVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          transition={{ delay: 1.2 }}
-          className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3"
+          Ich lege viel Wert auf einen methodischen und gleichzeitig
+          menschlichen Ansatz in der Zusammenarbeit. Gute Kommunikation bedeutet
+          für mich, dass technische Zusammenhänge so erklärt werden, dass alle
+          im Projekt – ob Entwickler:in, Designer:in oder Kunde – sie verstehen
+          und mitgestalten können. Ich sehe mich oft als Brücke zwischen
+          Anforderungen und Umsetzung. Dabei helfen mir sowohl meine Erfahrungen
+          aus klassischem Projektmanagement als auch aus agilen Rollen.
+          Transparenz, ehrliches Feedback und ein respektvoller Umgang auf
+          Augenhöhe sind für mich selbstverständlich – und machen am Ende jedes
+          Projekt besser.
+        </Card>
+        <Card
+          icon={LayoutPanelTop}
+          title="Smart entwickeln"
+          delay={1.2}
+          isInView={isInView}
         >
-          <LayoutPanelTop className="h-12 w-12" color="#0191FF" />
-          <h3 className="text-2xl font-bold">Smart entwickeln</h3>
-          <p className="text-sm">
-            Ich arbeite mit einem modernen Stack rund um React, React Native,
-            Next.js, Firebase und Tailwind – bewusst gewählt, weil er schnelle
-            Ergebnisse liefert, sauber skalierbar ist und perfekt mit aktuellen
-            Trends wie AI-assisted Development harmoniert. Gerade durch Tools
-            wie Copilot und automatisierte Tests wird klar: guter Code ist kein
-            Selbstzweck, sondern Teamarbeit auf Augenhöhe. Ich schreibe
-            verständlich, wiederverwendbar und mit Blick auf das große Ganze –
-            für Nutzer:innen, Entwickler:innen und alle, die das Produkt
-            langfristig betreuen wollen.
-          </p>
-        </motion.div>
+          Ich arbeite mit einem modernen Stack rund um React, React Native,
+          Next.js, Firebase und Tailwind – bewusst gewählt, weil er schnelle
+          Ergebnisse liefert, sauber skalierbar ist und perfekt mit aktuellen
+          Trends wie AI-assisted Development harmoniert. Gerade durch Tools wie
+          Copilot und automatisierte Tests wird klar: guter Code ist kein
+          Selbstzweck, sondern Teamarbeit auf Augenhöhe. Ich schreibe
+          verständlich, wiederverwendbar und mit Blick auf das große Ganze – für
+          Nutzer:innen, Entwickler:innen und alle, die das Produkt langfristig
+          betreuen wollen.
+        </Card>
       </GridItem>
     </Grid>
   )

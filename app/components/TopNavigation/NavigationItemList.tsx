@@ -20,7 +20,7 @@ export const NavigationItemList = ({
       />
       <TopNavigationItem
         isSelected={currentSection === 'mindset'}
-        label="Warum ich?"
+        label="warum ich?"
         onClick={onClick}
         section="mindset"
       />

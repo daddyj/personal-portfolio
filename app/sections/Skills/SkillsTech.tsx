@@ -115,6 +115,8 @@ export const SkillsTech = () => {
   const isScrollingRef = useRef(false)
   const [filter, setFilter] = useState<FilterCategory>('all')
 
+  const ref = useRef<HTMLDivElement>(null)
+
   const filteredSkills = skills.filter((skill) =>
     filter === 'all' ? true : skill.categories.includes(filter)
   )
@@ -161,11 +163,12 @@ export const SkillsTech = () => {
       skillsKey="skillsTech"
       className="grid-rows-[auto_auto_auto_1fr]"
     >
-      <GridItem className="col-span-10 sm:col-span-4">
+      <GridItem ref={ref} className="col-span-10 sm:col-span-3">
         <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
-          Technologien
+          Smart entwickeln.
         </h2>
       </GridItem>
+      <GridItem className="col-span-0 sm:col-span-1" />
       <GridItem className="col-span-10 sm:col-span-6">
         <p className="text-xl sm:text-2xl">
           Ich habe viele Technologien ausprobiert und meinen Fokus bewusst auf
@@ -192,7 +195,7 @@ export const SkillsTech = () => {
             {filteredSkills.map((skill) => (
               <div
                 key={skill.name}
-                className="group relative flex min-w-32 cursor-pointer items-center justify-center rounded-lg bg-white px-6 py-8 shadow-sm transition-all duration-300 hover:scale-[1.08] hover:shadow-md"
+                className="group relative flex min-w-32 cursor-pointer items-center justify-center rounded-lg border-blue-500 bg-blue-100 p-2 px-6 py-8 text-blue-500 shadow-sm transition-all duration-300 group-hover:bg-blue-200 group-hover:text-blue-500 hover:scale-[1.08] hover:shadow-md dark:text-blue-300"
                 title={skill.name}
               >
                 {skill.hasIcon ? (
