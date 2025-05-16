@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import { GridItem } from '@/app/components/Grid'
 import {
@@ -22,41 +22,102 @@ import { Typescript } from '@/app/components/Icons/Typescript'
 
 import { SkillsWrapper } from './SkillsWrapper'
 
+type TechCategory = 'frontend' | 'backend' | 'tool'
+
 interface SkillWithIcon {
   name: string
   Icon: React.ComponentType<{ className?: string }>
   hasIcon: true
+  categories: TechCategory[]
 }
 
 interface SkillWithoutIcon {
   name: string
   hasIcon: false
+  categories: TechCategory[]
 }
 
 type Skill = SkillWithIcon | SkillWithoutIcon
 
 const skills: Skill[] = [
-  { name: 'Javascript', Icon: Javascript, hasIcon: true },
-  { name: 'Typescript', Icon: Typescript, hasIcon: true },
-  { name: 'HTML', Icon: Html, hasIcon: true },
-  { name: 'CSS / SCSS', Icon: Css, hasIcon: true },
-  { name: 'React-Native', Icon: ReactNative, hasIcon: true },
-  { name: 'React', Icon: React, hasIcon: true },
-  { name: 'NextJS', Icon: Nextjs, hasIcon: true },
-  { name: 'Tamagui UI', Icon: Tamagui, hasIcon: true },
-  { name: 'Firebase', Icon: Firebase, hasIcon: true },
-  { name: 'Google Cloud', Icon: GCloud, hasIcon: true },
-  { name: 'Git', Icon: Git, hasIcon: true },
-  { name: 'Github / GitLab', Icon: Github, hasIcon: true },
-  { name: 'Material UI', Icon: MaterialUi, hasIcon: true },
-  { name: 'Tailwind CSS', Icon: TailwindCss, hasIcon: true },
-  { name: 'Canvas', Icon: Canvas, hasIcon: true },
+  {
+    name: 'Javascript',
+    Icon: Javascript,
+    hasIcon: true,
+    categories: ['frontend', 'backend'],
+  },
+  {
+    name: 'Typescript',
+    Icon: Typescript,
+    hasIcon: true,
+    categories: ['frontend', 'backend'],
+  },
+  { name: 'HTML', Icon: Html, hasIcon: true, categories: ['frontend'] },
+  { name: 'CSS / SCSS', Icon: Css, hasIcon: true, categories: ['frontend'] },
+  {
+    name: 'React-Native',
+    Icon: ReactNative,
+    hasIcon: true,
+    categories: ['frontend'],
+  },
+  { name: 'React', Icon: React, hasIcon: true, categories: ['frontend'] },
+  {
+    name: 'NextJS',
+    Icon: Nextjs,
+    hasIcon: true,
+    categories: ['frontend', 'backend'],
+  },
+  {
+    name: 'Tamagui UI',
+    Icon: Tamagui,
+    hasIcon: true,
+    categories: ['frontend'],
+  },
+  { name: 'Firebase', Icon: Firebase, hasIcon: true, categories: ['backend'] },
+  {
+    name: 'Google Cloud',
+    Icon: GCloud,
+    hasIcon: true,
+    categories: ['backend'],
+  },
+  {
+    name: 'Git',
+    Icon: Git,
+    hasIcon: true,
+    categories: ['frontend', 'backend', 'tool'],
+  },
+  {
+    name: 'Github / GitLab',
+    Icon: Github,
+    hasIcon: true,
+    categories: ['frontend', 'backend', 'tool'],
+  },
+  {
+    name: 'Material UI',
+    Icon: MaterialUi,
+    hasIcon: true,
+    categories: ['frontend'],
+  },
+  {
+    name: 'Tailwind CSS',
+    Icon: TailwindCss,
+    hasIcon: true,
+    categories: ['frontend'],
+  },
+  { name: 'Canvas', Icon: Canvas, hasIcon: true, categories: ['frontend'] },
 ]
+
+type FilterCategory = 'all' | 'frontend' | 'backend'
 
 export const SkillsTech = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const animationFrameRef = useRef<number | null>(null)
   const isScrollingRef = useRef(false)
+  const [filter, setFilter] = useState<FilterCategory>('all')
+
+  const filteredSkills = skills.filter((skill) =>
+    filter === 'all' ? true : skill.categories.includes(filter)
+  )
 
   const startScrolling = (direction: 'left' | 'right') => {
     if (!scrollContainerRef.current) return
@@ -96,7 +157,10 @@ export const SkillsTech = () => {
   }
 
   return (
-    <SkillsWrapper skillsKey="skillsTech" className="grid-rows-[auto_auto_1fr]">
+    <SkillsWrapper
+      skillsKey="skillsTech"
+      className="grid-rows-[auto_auto_auto_1fr]"
+    >
       <GridItem className="col-span-10 sm:col-span-4">
         <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
           Technologien
@@ -114,7 +178,6 @@ export const SkillsTech = () => {
           Kolleg:innen inspirieren zu lassen!
         </p>
       </GridItem>
-
       <GridItem className="col-span-10 mt-8">
         <div className="relative px-4">
           <button
@@ -129,7 +192,7 @@ export const SkillsTech = () => {
             ref={scrollContainerRef}
             className="scrollbar-hide flex gap-4 overflow-x-auto overflow-y-visible p-4"
           >
-            {skills.map((skill) => (
+            {filteredSkills.map((skill) => (
               <div
                 key={skill.name}
                 className="group relative flex min-w-32 cursor-pointer items-center justify-center rounded-lg bg-white px-6 py-8 shadow-sm transition-all duration-300 hover:scale-[1.08] hover:shadow-md"
@@ -156,6 +219,38 @@ export const SkillsTech = () => {
             <ChevronRightIcon className="h-6 w-6 text-gray-600" />
           </button>
         </div>
+      </GridItem>
+      <GridItem className="col-span-10 flex justify-center gap-4">
+        <button
+          onClick={() => setFilter('all')}
+          className={`rounded-full px-6 py-2 transition-all ${
+            filter === 'all'
+              ? 'bg-blue-500 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
+        >
+          Alle
+        </button>
+        <button
+          onClick={() => setFilter('frontend')}
+          className={`rounded-full px-6 py-2 transition-all ${
+            filter === 'frontend'
+              ? 'bg-blue-500 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
+        >
+          Frontend
+        </button>
+        <button
+          onClick={() => setFilter('backend')}
+          className={`rounded-full px-6 py-2 transition-all ${
+            filter === 'backend'
+              ? 'bg-blue-500 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
+        >
+          Backend
+        </button>
       </GridItem>
     </SkillsWrapper>
   )
