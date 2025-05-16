@@ -15,12 +15,15 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/postcss": "^4.0.7",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.12.1",
     "lucide-react": "^0.511.0",
     "next": "15.1.7",
     "postcss": "^8.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-native": "^0.77.1",
+    "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.0.7",
     "tailwindcss-animated": "^2.0.0"
   },
