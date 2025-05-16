@@ -168,14 +168,11 @@ export const SkillsTech = () => {
       </GridItem>
       <GridItem className="col-span-10 sm:col-span-6">
         <p className="text-xl sm:text-2xl">
-          Ich habe über die Jahre eine Reihe von Technologien für die Web- und
-          Appentwicklung genutzt und mich über die Zeit auf einen Techstack
-          fokussiert um optimale Ergebnisse erzielen zu können. Dabei hat sich
-          React als meine Kern-Bibliothek im Frontend herausgestellt um maximale
-          Wiederverwendbarkeit auf unterschiedlichen Plattformen zu
-          gewährleisten: Das Web, nativ auf iOS und nativ auf Android. Ich liebe
-          es immer wieder neue Sachen auszuprobieren und mich immer wieder von
-          Kolleg:innen inspirieren zu lassen!
+          Ich habe viele Technologien ausprobiert und meinen Fokus bewusst auf
+          einen modernen Stack rund um React gelegt – für wiederverwendbare
+          Lösungen im Web und auf mobilen Plattformen. Neues auszuprobieren und
+          mich von Kolleg:innen inspirieren zu lassen, gehört für mich einfach
+          dazu.
         </p>
       </GridItem>
       <GridItem className="col-span-10 mt-8">
@@ -183,7 +180,7 @@ export const SkillsTech = () => {
           <button
             onMouseEnter={() => startScrolling('left')}
             onMouseLeave={stopScrolling}
-            className="absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md transition-all hover:bg-gray-50"
+            className="absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md transition-all hover:animate-pulse hover:cursor-pointer hover:bg-gray-50"
           >
             <ChevronLeftIcon className="h-6 w-6 text-gray-600" />
           </button>
