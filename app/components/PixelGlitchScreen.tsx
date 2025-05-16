@@ -42,13 +42,16 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const effectsRef = useRef<PixelEffect[]>([])
   const lastFrameTimeRef = useRef<number>(0)
-  const isDarkMode = useRef(
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  )
+  const isDarkMode = useRef(false) // Initialize with default value
   const noiseCanvasRef = useRef<HTMLCanvasElement | null>(null)
 
   // Listen for color scheme changes
   useEffect(() => {
+    // Set initial value
+    isDarkMode.current = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches
+
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = (e: MediaQueryListEvent) => {
       isDarkMode.current = e.matches
