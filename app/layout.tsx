@@ -16,10 +16,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body style={montserrat.style}>
-        <div className="bg-blue-400">{children}</div>
-      </body>
+    <html lang="de">
+      <body style={montserrat.style}>{children}</body>
     </html>
   )
 }
