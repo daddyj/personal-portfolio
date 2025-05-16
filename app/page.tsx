@@ -16,7 +16,7 @@ export default function Home() {
       <PixelGlitchScreen
         className="h-screen w-screen"
         interval={730}
-        gridSize={20}
+        gridSize={12}
       />
       <TopNavigation />
       <Hero />
