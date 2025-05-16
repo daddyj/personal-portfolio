@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 
 import { Grid, GridItem } from '@/app/components/Grid'
@@ -33,6 +34,15 @@ export const Hero = () => {
       <GridItem className="col-span-2" />
 
       <GridItem className="col-span-10" />
+      <div className="absolute right-16 bottom-16">
+        <Image
+          src="/certified.png"
+          alt="Certified"
+          width={256}
+          height={256}
+          className="text-white-500"
+        />
+      </div>
     </Grid>
   )
 }
