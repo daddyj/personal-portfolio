@@ -1,3 +1,4 @@
+import { motion, useInView } from 'framer-motion'
 import { Brain, LayoutPanelTop, MessageSquare } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 
@@ -5,10 +6,38 @@ import { Grid, GridItem } from '@/app/components/Grid'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  },
+}
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut',
+    },
+  },
+}
+
 export const Mindset = () => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
+  const isInView = useInView(gridWrapper, {
+    once: false,
+    margin: '-100px 0px',
+  })
 
   useEffect(() => {
     if (isVisible) setCurrentSection('mindset')
@@ -18,13 +47,24 @@ export const Mindset = () => {
   return (
     <Grid id="mindset" ref={gridWrapper} className="grid-rows-[auto_1fr]">
       <GridItem className="col-span-8">
-        <h2 className="text-7xl">
+        <motion.h2
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="text-6xl"
+        >
           Agil denken. Klar kommunizieren. Smart entwickeln.
-        </h2>
+        </motion.h2>
       </GridItem>
       <GridItem className="col-span-10 flex gap-8">
-        <div className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3">
-          <Brain className="h-12 w-12" />
+        <motion.div
+          variants={cardVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          transition={{ delay: 0.6 }}
+          className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3"
+        >
+          <Brain className="h-12 w-12" color="#0191FF" />
           <h3 className="text-2xl font-bold">Agil denken</h3>
           <p className="text-sm">
             Ich bin seit über 15 Jahren als Softwareentwickler tätig – sowohl im
@@ -38,9 +78,15 @@ export const Mindset = () => {
             inspirieren zu lassen – denn das gehört für mich genauso zu einer
             guten Entwicklerkultur wie sauberer Code.
           </p>
-        </div>
-        <div className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3">
-          <MessageSquare className="h-12 w-12" />
+        </motion.div>
+        <motion.div
+          variants={cardVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          transition={{ delay: 0.9 }}
+          className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3"
+        >
+          <MessageSquare className="h-12 w-12" color="#0191FF" />
           <h3 className="text-2xl font-bold">Klar kommunizieren</h3>
           <p className="text-sm">
             Ich lege viel Wert auf einen methodischen und gleichzeitig
@@ -54,23 +100,28 @@ export const Mindset = () => {
             auf Augenhöhe sind für mich selbstverständlich – und machen am Ende
             jedes Projekt besser.
           </p>
-        </div>
-        <div className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3">
-          <LayoutPanelTop className="h-12 w-12" />
+        </motion.div>
+        <motion.div
+          variants={cardVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          transition={{ delay: 1.2 }}
+          className="flex flex-col items-center gap-4 border-2 bg-[var(--background)] p-6 sm:col-span-3"
+        >
+          <LayoutPanelTop className="h-12 w-12" color="#0191FF" />
           <h3 className="text-2xl font-bold">Smart entwickeln</h3>
           <p className="text-sm">
-            Mein Techstack basiert auf modernen Web- und Mobile-Technologien wie
-            React, React Native, Next.js, Firebase und Tailwind. Ich habe viele
-            Tools ausprobiert, aber mich bewusst auf Technologien fokussiert,
-            die mir helfen, stabile und skalierbare Lösungen auf allen
-            Plattformen umzusetzen – egal ob für iOS, Android oder im Web. Dabei
-            geht es mir nie nur ums Technische: Ich entwickle so, dass
-            Nutzer:innen das Ergebnis intuitiv verstehen – und Teams das Projekt
-            effizient weiterentwickeln können. Clean Code, Wiederverwendbarkeit
-            und Performance sind für mich keine Buzzwords, sondern Grundlage
-            meines Handwerks.
+            Ich arbeite mit einem modernen Stack rund um React, React Native,
+            Next.js, Firebase und Tailwind – bewusst gewählt, weil er schnelle
+            Ergebnisse liefert, sauber skalierbar ist und perfekt mit aktuellen
+            Trends wie AI-assisted Development harmoniert. Gerade durch Tools
+            wie Copilot und automatisierte Tests wird klar: guter Code ist kein
+            Selbstzweck, sondern Teamarbeit auf Augenhöhe. Ich schreibe
+            verständlich, wiederverwendbar und mit Blick auf das große Ganze –
+            für Nutzer:innen, Entwickler:innen und alle, die das Produkt
+            langfristig betreuen wollen.
           </p>
-        </div>
+        </motion.div>
       </GridItem>
     </Grid>
   )

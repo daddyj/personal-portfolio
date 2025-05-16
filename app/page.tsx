@@ -21,8 +21,8 @@ export default function Home() {
       <TopNavigation />
       <Hero />
       <Mindset />
-      <SkillsTech />
       <SkillsSocial />
+      <SkillsTech />
       <SkillsCv />
       <Projects />
       <Contact />
