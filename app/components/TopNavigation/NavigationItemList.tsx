@@ -19,10 +19,10 @@ export const NavigationItemList = ({
         section="projects"
       />
       <TopNavigationItem
-        isSelected={currentSection === 'about'}
-        label="über mich"
+        isSelected={currentSection === 'mindset'}
+        label="Warum ich?"
         onClick={onClick}
-        section="about"
+        section="mindset"
       />
       <TopNavigationItem
         isSelected={
