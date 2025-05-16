@@ -11,8 +11,14 @@ import {
   ReactNative,
   Tamagui,
 } from '@/app/components/Icons'
+import { Css } from '@/app/components/Icons/CSS'
+import { Git } from '@/app/components/Icons/Git'
+import { Github } from '@/app/components/Icons/Github'
+import { Html } from '@/app/components/Icons/Html'
+import { Javascript } from '@/app/components/Icons/Javascript'
 import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { TailwindCss } from '@/app/components/Icons/TailwindCss'
+import { Typescript } from '@/app/components/Icons/Typescript'
 
 import { SkillsWrapper } from './SkillsWrapper'
 
@@ -30,19 +36,18 @@ interface SkillWithoutIcon {
 type Skill = SkillWithIcon | SkillWithoutIcon
 
 const skills: Skill[] = [
-  { name: 'Javascript', hasIcon: false },
-  { name: 'Typescript', hasIcon: false },
-  { name: 'HTML', hasIcon: false },
-  { name: 'CSS / SCSS', hasIcon: false },
-  { name: 'SASS / CSS-in-JS', hasIcon: false },
+  { name: 'Javascript', Icon: Javascript, hasIcon: true },
+  { name: 'Typescript', Icon: Typescript, hasIcon: true },
+  { name: 'HTML', Icon: Html, hasIcon: true },
+  { name: 'CSS / SCSS', Icon: Css, hasIcon: true },
   { name: 'React-Native', Icon: ReactNative, hasIcon: true },
   { name: 'React', Icon: React, hasIcon: true },
   { name: 'NextJS', Icon: Nextjs, hasIcon: true },
   { name: 'Tamagui UI', Icon: Tamagui, hasIcon: true },
   { name: 'Firebase', Icon: Firebase, hasIcon: true },
   { name: 'Google Cloud', Icon: GCloud, hasIcon: true },
-  { name: 'Git', hasIcon: false },
-  { name: 'Github / GitLab', hasIcon: false },
+  { name: 'Git', Icon: Git, hasIcon: true },
+  { name: 'Github / GitLab', Icon: Github, hasIcon: true },
   { name: 'Material UI', Icon: MaterialUi, hasIcon: true },
   { name: 'Tailwind CSS', Icon: TailwindCss, hasIcon: true },
   { name: 'Canvas', Icon: Canvas, hasIcon: true },
