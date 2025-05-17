@@ -1,5 +1,4 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { GridItem } from '@/app/components/Grid'
 import {
@@ -20,6 +19,7 @@ import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { TailwindCss } from '@/app/components/Icons/TailwindCss'
 import { Typescript } from '@/app/components/Icons/Typescript'
 
+import { SkillItem } from './SkillItem'
 import { SkillsWrapper } from './SkillsWrapper'
 
 type TechCategory = 'frontend' | 'backend' | 'tool'
@@ -37,7 +37,7 @@ interface SkillWithoutIcon {
   categories: TechCategory[]
 }
 
-type Skill = SkillWithIcon | SkillWithoutIcon
+export type Skill = SkillWithIcon | SkillWithoutIcon
 
 const skills: Skill[] = [
   {
@@ -110,60 +110,18 @@ const skills: Skill[] = [
 type FilterCategory = 'all' | 'frontend' | 'backend'
 
 export const SkillsTech = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const animationFrameRef = useRef<number | null>(null)
-  const isScrollingRef = useRef(false)
   const [filter, setFilter] = useState<FilterCategory>('all')
-
-  const ref = useRef<HTMLDivElement>(null)
 
   const filteredSkills = skills.filter((skill) =>
     filter === 'all' ? true : skill.categories.includes(filter)
   )
-
-  const startScrolling = (direction: 'left' | 'right') => {
-    if (!scrollContainerRef.current) return
-
-    const scrollAmount = 200 // pixels to scroll per interval
-    const scrollSpeed = 16 // approximately 60fps for smooth animation
-    isScrollingRef.current = true
-
-    const animate = () => {
-      if (!scrollContainerRef.current || !isScrollingRef.current) return
-
-      const currentScroll = scrollContainerRef.current.scrollLeft
-      const newScroll =
-        direction === 'left'
-          ? currentScroll - scrollAmount / (1000 / scrollSpeed)
-          : currentScroll + scrollAmount / (1000 / scrollSpeed)
-
-      scrollContainerRef.current.scrollTo({
-        left: newScroll,
-        behavior: 'auto', // Using 'auto' for immediate response
-      })
-
-      if (isScrollingRef.current) {
-        animationFrameRef.current = requestAnimationFrame(animate)
-      }
-    }
-
-    animationFrameRef.current = requestAnimationFrame(animate)
-  }
-
-  const stopScrolling = () => {
-    isScrollingRef.current = false
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current)
-      animationFrameRef.current = null
-    }
-  }
 
   return (
     <SkillsWrapper
       skillsKey="skillsTech"
       className="grid-rows-[auto_auto_auto_1fr]"
     >
-      <GridItem ref={ref} className="col-span-10 sm:col-span-3">
+      <GridItem className="col-span-10 sm:col-span-3">
         <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
           Smart entwickeln.
         </h2>
@@ -179,45 +137,10 @@ export const SkillsTech = () => {
         </p>
       </GridItem>
       <GridItem className="col-span-10 mt-8">
-        <div className="relative px-4">
-          <button
-            onMouseEnter={() => startScrolling('left')}
-            onMouseLeave={stopScrolling}
-            className="absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md transition-all hover:animate-pulse hover:cursor-pointer hover:bg-gray-50"
-          >
-            <ChevronLeftIcon className="h-6 w-6 text-gray-600" />
-          </button>
-
-          <div
-            ref={scrollContainerRef}
-            className="scrollbar-hide flex gap-4 overflow-x-auto overflow-y-visible p-4"
-          >
-            {filteredSkills.map((skill) => (
-              <div
-                key={skill.name}
-                className="group relative flex min-w-32 cursor-pointer items-center justify-center rounded-lg border-blue-500 bg-blue-100 p-2 px-6 py-8 text-blue-500 shadow-sm transition-all duration-300 group-hover:bg-blue-200 group-hover:text-blue-500 hover:scale-[1.08] hover:shadow-md dark:text-blue-300"
-                title={skill.name}
-              >
-                {skill.hasIcon ? (
-                  <div className="h-full w-full text-gray-800 transition-colors duration-300 group-hover:text-blue-600">
-                    <skill.Icon className="h-full w-full" />
-                  </div>
-                ) : (
-                  <span className="text-center text-lg font-semibold text-gray-800 transition-colors duration-300 group-hover:text-blue-600">
-                    {skill.name}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <button
-            onMouseEnter={() => startScrolling('right')}
-            onMouseLeave={stopScrolling}
-            className="absolute top-1/2 right-0 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md transition-all hover:bg-gray-50"
-          >
-            <ChevronRightIcon className="h-6 w-6 text-gray-600" />
-          </button>
+        <div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {filteredSkills.map((skill, index) => (
+            <SkillItem key={skill.name} skill={skill} index={index} />
+          ))}
         </div>
       </GridItem>
       <GridItem className="col-span-10 flex justify-center gap-4">
