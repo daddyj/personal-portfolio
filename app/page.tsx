@@ -22,8 +22,8 @@ export default function Home() {
       <Hero />
       <Mindset />
       <SkillsSocial />
-      <SkillsTech />
       <SkillsCv />
+      <SkillsTech />
       <Projects />
       <Contact />
     </NavigationWrapper>
