@@ -40,7 +40,7 @@ export const Hero = () => {
           alt="Certified"
           width={256}
           height={256}
-          className="text-white-500"
+          className="text-white-500 invert dark:invert-0"
         />
       </div>
     </Grid>
