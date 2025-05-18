@@ -1,5 +1,5 @@
 import { useInView } from 'framer-motion'
-import { Kanban, Lightbulb, Sparkles, Target, Timer } from 'lucide-react'
+import { Kanban, Target, Timer } from 'lucide-react'
 import { useRef } from 'react'
 
 import { Card } from '@/app/components/Card'
@@ -13,58 +13,60 @@ interface AgileMethod {
 
 const agileMethods: AgileMethod[] = [
   {
-    name: 'SCRUM',
-    icon: Timer,
+    name: 'Google-OKRs',
+    icon: Target,
     description:
-      'Iterativer Ansatz für Projektmanagement und Softwareentwicklung',
+      'Ich begleite Teams bei der Definition und Umsetzung von Objectives and Key Results',
     benefits: [
-      'Schnelle Anpassung an neue Anforderungen',
-      'Transparente Projektfortschritte',
-      'Regelmäßige Lieferung von Ergebnissen',
+      'Formuliere klare, messbare Ziele mit Teams',
+      'Sichere die Ausrichtung aller Stakeholder auf gemeinsame Ziele',
+      'Führe regelmäßige OKR-Reviews und Anpassungen durch',
     ],
   },
   {
     name: 'Kanban',
     icon: Kanban,
-    description: 'Visuelles Workflow-Management-System',
-    benefits: [
-      'Übersichtliche Darstellung aller Aufgaben',
-      'Schnelle Identifikation von Engpässen',
-      'Flexible Priorisierung von Aufgaben',
-    ],
-  },
-  {
-    name: 'Google-OKRs',
-    icon: Target,
     description:
-      'Zielsetzungs-Framework zur Definition und Verfolgung von Zielen',
+      'Ich implementiere und optimiere Kanban-Boards für effizientes Workflow-Management',
     benefits: [
-      'Klar definierte und messbare Ziele',
-      'Ausrichtung aller Teams auf gemeinsame Ziele',
-      'Regelmäßige Überprüfung und Anpassung',
+      'Gestalte übersichtliche Kanban-Boards für maximale Transparenz',
+      'Identifiziere und behebe Engpässe im Entwicklungsprozess',
+      'Führe Teams bei der Priorisierung und dem Workflow-Management',
     ],
   },
   {
-    name: 'Lean',
-    icon: Sparkles,
+    name: 'SCRUM',
+    icon: Timer,
     description:
-      'Methodik zur Wertmaximierung bei gleichzeitiger Minimierung von Verschwendung',
+      'Ich unterstütze Teams bei der Implementierung und Durchführung von SCRUM-Prozessen für effektives Projektmanagement',
     benefits: [
-      'Optimierung von Arbeitsprozessen',
-      'Reduzierung von Zeit- und Ressourcenverschwendung',
-      'Fokus auf wertschöpfende Aktivitäten',
+      'Führe Teams durch Sprint-Planung und Retrospektiven',
+      'Sichere transparente Kommunikation und regelmäßige Fortschrittsberichte',
+      'Stelle kontinuierliche Lieferung von funktionierenden Ergebnissen sicher',
     ],
   },
-  {
-    name: 'Design-Sprint',
-    icon: Lightbulb,
-    description: 'Fünftägiger Prozess zur Lösung kritischer Geschäftsprobleme',
-    benefits: [
-      'Schnelle Entwicklung von Lösungsansätzen',
-      'Frühe Einbindung von Nutzerfeedback',
-      'Rasche Entscheidungsfindung im Team',
-    ],
-  },
+  // {
+  //   name: 'Lean',
+  //   icon: Sparkles,
+  //   description:
+  //     'Ich optimiere Entwicklungsprozesse nach Lean-Prinzipien für maximale Effizienz',
+  //   benefits: [
+  //     'Analysiere und verbessere bestehende Arbeitsprozesse',
+  //     'Reduziere Verschwendung in der Softwareentwicklung',
+  //     'Fokussiere Teams auf wertschöpfende Aktivitäten',
+  //   ],
+  // },
+  // {
+  //   name: 'Design-Sprint',
+  //   icon: Lightbulb,
+  //   description:
+  //     'Ich moderiere Design Sprints zur schnellen Lösung komplexer Herausforderungen',
+  //   benefits: [
+  //     'Leite Teams durch den fünftägigen Design-Sprint-Prozess',
+  //     'Integriere Nutzerfeedback frühzeitig in die Entwicklung',
+  //     'Fördere schnelle Entscheidungsfindung und Innovation',
+  //   ],
+  // },
 ]
 
 export const AgileMethods = () => {
