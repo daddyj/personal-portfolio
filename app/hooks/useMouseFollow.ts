@@ -9,7 +9,7 @@ interface UseMouseFollowOptions {
 }
 
 export const useMouseFollow = ({
-  maxRotation = 7,
+  maxRotation = 15,
   invertX = false,
   invertY = false,
   enabled = true,
@@ -27,16 +27,26 @@ export const useMouseFollow = ({
       const centerX = rect.left + rect.width / 2
       const centerY = rect.top + rect.height / 2
 
-      const relativeX = e.clientX - centerX
-      const relativeY = e.clientY - centerY
+      // Calculate normalized position (-1 to 1) relative to center
+      // -1 means left/top, +1 means right/bottom
+      const normalizedX = (e.clientX - centerX) / (rect.width / 2)
+      const normalizedY = (e.clientY - centerY) / (rect.height / 2)
 
-      const distanceX = Math.min(Math.abs(relativeX) / (rect.width / 2), 1)
-      const distanceY = Math.min(Math.abs(relativeY) / (rect.height / 2), 1)
+      // Clamp values between -1 and 1
+      const clampedX = Math.max(Math.min(normalizedX, 1), -1)
+      const clampedY = Math.max(Math.min(normalizedY, 1), -1)
 
-      const newRotateX =
-        distanceY * maxRotation * (relativeY > 0 ? -1 : 1) * (invertX ? -1 : 1)
-      const newRotateY =
-        distanceX * maxRotation * (relativeX > 0 ? 1 : -1) * (invertY ? -1 : 1)
+      // For X rotation (vertical mouse movement):
+      // - Mouse at top (negative Y) → Card leans back (negative X rotation)
+      // - Mouse at bottom (positive Y) → Card leans forward (positive X rotation)
+      // We invert the Y value to maintain correct vertical behavior
+      const newRotateX = -clampedY * maxRotation * (invertX ? -1 : 1)
+
+      // For Y rotation (horizontal mouse movement):
+      // - Mouse at left (negative X) → Left edge back, right edge forward (positive Y rotation)
+      // - Mouse at right (positive X) → Left edge forward, right edge back (negative Y rotation)
+      // We invert the X value to make the card face the mouse
+      const newRotateY = -clampedX * maxRotation * (invertY ? -1 : 1)
 
       rotateX.set(newRotateX)
       rotateY.set(newRotateY)
