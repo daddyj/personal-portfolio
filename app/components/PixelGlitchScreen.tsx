@@ -12,6 +12,10 @@ interface PixelEffect {
   opacity: number
   lifetime: number
   createdAt: number
+  pixelDisplacement: { x: number; y: number }
+  glitchType: 'normal' | 'split' | 'distort'
+  colorShift: number
+  noiseIntensity: number
 }
 
 interface PixelGlitchScreenProps {
@@ -91,17 +95,38 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
 
   // Generate a glitch color with RGB splitting - reduced offset for subtler effect
   const generateGlitchColor = () => {
-    const baseHue = 210 // Blue
-    const hueVariation = Math.random() * 20 - 10 // Reduced variation
-    const saturation = 85 + Math.random() * 15
-    const lightness = 45 + Math.random() * 15
+    // More varied color generation for glitch effects
+    const glitchTypes = ['normal', 'split', 'distort'] as const
+    const glitchType =
+      glitchTypes[Math.floor(Math.random() * glitchTypes.length)]
+
+    // Randomly choose between different color schemes
+    const colorSchemes = [
+      // White glitch
+      { baseHue: 0, saturation: 0, lightness: 45 },
+      // Cyan glitch
+      { baseHue: 180, saturation: 100, lightness: 50 },
+      // Magenta glitch
+      { baseHue: 300, saturation: 100, lightness: 50 },
+      // Yellow glitch
+      { baseHue: 60, saturation: 100, lightness: 50 },
+    ]
+
+    const scheme = colorSchemes[Math.floor(Math.random() * colorSchemes.length)]
+    const hueVariation = Math.random() * 40 - 20
+    const saturation = scheme.saturation + Math.random() * 20
+    const lightness = scheme.lightness + Math.random() * 20
+
     return {
-      base: `hsl(${baseHue + hueVariation}, ${saturation}%, ${lightness}%)`,
+      base: `hsl(${scheme.baseHue + hueVariation}, ${saturation}%, ${lightness}%)`,
       rgbOffset: {
-        r: Math.random() * 6 - 3, // Reduced offset
-        g: Math.random() * 6 - 3,
-        b: Math.random() * 6 - 3,
+        r: Math.random() * 12 - 6,
+        g: Math.random() * 12 - 6,
+        b: Math.random() * 12 - 6,
       },
+      glitchType,
+      colorShift: Math.random() * 360,
+      noiseIntensity: Math.random() * 0.5 + 0.5,
     }
   }
 
@@ -162,7 +187,15 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
       width: number,
       height: number
     ): PixelEffect => {
-      const { base, rgbOffset } = generateGlitchColor()
+      const { base, rgbOffset, glitchType, colorShift, noiseIntensity } =
+        generateGlitchColor()
+
+      // Create more dynamic pixel displacement
+      const pixelDisplacement = {
+        x: Math.random() * 10 - 5,
+        y: Math.random() * 10 - 5,
+      }
+
       return {
         x,
         y,
@@ -170,11 +203,15 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
         height,
         color: base,
         rgbOffset,
-        scale: 0.9 + Math.random() * 0.2,
-        rotation: (Math.random() - 0.5) * 0.05,
-        opacity: 0.6 + Math.random() * 0.2,
-        lifetime: 200 + Math.random() * 150,
+        scale: 0.95 + Math.random() * 0.1, // More subtle scaling
+        rotation: (Math.random() - 0.5) * 0.1, // Slightly more rotation
+        opacity: 0.7 + Math.random() * 0.3,
+        lifetime: 100 + Math.random() * 100, // Shorter lifetime for more abrupt effects
         createdAt: Date.now(),
+        pixelDisplacement,
+        glitchType,
+        colorShift,
+        noiseIntensity,
       }
     }
 
@@ -206,67 +243,86 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
         const progress = age / effect.lifetime
         const currentOpacity = effect.opacity * (1 - progress)
 
-        // Draw RGB split effect
         ctx.save()
-        ctx.translate(effect.x + effect.width / 2, effect.y + effect.height / 2)
+
+        // Apply base transformation
+        ctx.translate(
+          effect.x + effect.width / 2 + effect.pixelDisplacement.x,
+          effect.y + effect.height / 2 + effect.pixelDisplacement.y
+        )
         ctx.rotate(effect.rotation)
         ctx.scale(effect.scale, effect.scale)
         ctx.translate(-effect.width / 2, -effect.height / 2)
 
-        // Draw all channels at once for better performance
-        ctx.globalCompositeOperation = 'lighter'
-        ctx.fillStyle = effect.color
-        ctx.globalAlpha = currentOpacity * 0.2
-        ctx.fillRect(effect.rgbOffset.r, 0, effect.width, effect.height)
-        ctx.fillRect(effect.rgbOffset.g, 0, effect.width, effect.height)
-        ctx.fillRect(effect.rgbOffset.b, 0, effect.width, effect.height)
+        // Draw based on glitch type
+        switch (effect.glitchType) {
+          case 'split':
+            // RGB split effect
+            ctx.globalCompositeOperation = 'lighter'
+            ctx.globalAlpha = currentOpacity * 0.3
 
-        // Main color
-        ctx.globalCompositeOperation = 'source-over'
-        ctx.fillStyle = effect.color
-        ctx.globalAlpha = currentOpacity
-        ctx.fillRect(0, 0, effect.width, effect.height)
+            // Draw each channel with offset
+            const channels = [
+              {
+                offset: effect.rgbOffset.r,
+                color: `hsl(${effect.colorShift}, 100%, 50%)`,
+              },
+              {
+                offset: effect.rgbOffset.g,
+                color: `hsl(${(effect.colorShift + 120) % 360}, 100%, 50%)`,
+              },
+              {
+                offset: effect.rgbOffset.b,
+                color: `hsl(${(effect.colorShift + 240) % 360}, 100%, 50%)`,
+              },
+            ]
+
+            channels.forEach((channel) => {
+              ctx.fillStyle = channel.color
+              ctx.fillRect(channel.offset, 0, effect.width, effect.height)
+            })
+            break
+
+          case 'distort':
+            // Distorted pixel effect
+            ctx.globalCompositeOperation = 'source-over'
+            ctx.globalAlpha = currentOpacity
+
+            // Create a distorted rectangle
+            const segments = 4
+            const segmentWidth = effect.width / segments
+
+            for (let i = 0; i < segments; i++) {
+              const distortion = Math.sin(progress * Math.PI * 2 + i) * 5
+              ctx.fillStyle = effect.color
+              ctx.fillRect(
+                i * segmentWidth,
+                distortion,
+                segmentWidth,
+                effect.height - distortion * 2
+              )
+            }
+            break
+
+          default:
+            // Normal glitch with noise
+            ctx.globalCompositeOperation = 'source-over'
+            ctx.globalAlpha = currentOpacity
+            ctx.fillStyle = effect.color
+
+            // Add some noise to the rectangle
+            const noise = Math.random() * effect.noiseIntensity
+            ctx.fillRect(
+              noise,
+              noise,
+              effect.width - noise * 2,
+              effect.height - noise * 2
+            )
+        }
 
         ctx.restore()
         return true
       })
-
-      // // Draw scanline
-      // const scanlineY = ((timestamp % 3000) / 3000) * canvas.height
-      // // Update scanline color based on color scheme
-      // const scanlineColor = isDarkMode.current
-      //   ? 'rgba(255, 255, 255, 0.03)'
-      //   : 'rgba(0, 0, 0, 0.03)'
-      // ctx.fillStyle = scanlineColor
-      // ctx.fillRect(0, scanlineY, canvas.width, 1)
-
-      // // Draw animated noise texture with stronger effect
-      // if (noiseCanvasRef.current) {
-      //   // First pass - multiply blend for better visibility on white
-      //   ctx.globalCompositeOperation = 'multiply'
-      //   ctx.globalAlpha = 0.4 // Increased from 0.25
-      //   ctx.drawImage(noiseCanvasRef.current, 0, 0, canvas.width, canvas.height)
-
-      //   // Second pass - overlay blend for texture
-      //   ctx.globalCompositeOperation = 'overlay'
-      //   ctx.globalAlpha = 0.3 // Increased from 0.15
-      //   ctx.drawImage(noiseCanvasRef.current, 2, 2, canvas.width, canvas.height)
-
-      //   // Third pass - screen blend for highlights
-      //   ctx.globalCompositeOperation = 'screen'
-      //   ctx.globalAlpha = 0.2 // Increased from 0.1
-      //   ctx.drawImage(
-      //     noiseCanvasRef.current,
-      //     -2,
-      //     -2,
-      //     canvas.width,
-      //     canvas.height
-      //   )
-
-      //   ctx.globalCompositeOperation = 'source-over'
-      //   ctx.globalAlpha = 1
-      // }
-
       animationFrameId = requestAnimationFrame(animate)
     }
 
