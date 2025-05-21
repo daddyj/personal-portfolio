@@ -26,8 +26,7 @@ export const NavigationItemList = ({
       />
       <TopNavigationItem
         isSelected={
-          currentSection &&
-          ['skillsTech', 'skillsSocial', 'skillsCv'].includes(currentSection)
+          currentSection && ['skillsTech', 'skillsCv'].includes(currentSection)
         }
         label="kompetenzen"
         onClick={onClick}
