@@ -34,10 +34,10 @@ export const Card = ({
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       transition={{ delay }}
-      className="group relative overflow-hidden p-6 shadow-sm transition-all hover:shadow-md"
+      className="group relative overflow-hidden p-6 transition-all"
     >
       <div className="mb-4 flex items-center gap-3">
-        <div className="rounded-lg p-2 text-blue-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-500 dark:text-blue-300">
+        <div className="p-2 text-blue-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-500 dark:text-blue-300">
           {Icon && <Icon className="h-8 w-8" />}
         </div>
         <h3 className="text-3xl font-semibold">{title}</h3>
