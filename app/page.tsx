@@ -14,8 +14,8 @@ export default function Home() {
     <NavigationWrapper>
       <PixelGlitchScreen
         className="h-full w-screen"
-        interval={730}
-        gridSize={12}
+        interval={42}
+        gridSize={80}
       />
       <TopNavigation />
       <Hero />
