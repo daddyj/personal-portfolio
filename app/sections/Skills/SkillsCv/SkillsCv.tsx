@@ -9,14 +9,15 @@ export const SkillsCv = () => (
   <Grid id="skillsCv" className="rows-[auto_1fr_auto]">
     <GridItem className="col-span-10 sm:col-span-4">
       <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
-        Klar kommunizieren
+        Laufbahn
       </h2>
     </GridItem>
     <GridItem className="col-span-10 sm:col-span-6">
       <p className="mb-8 text-xl sm:text-2xl">
-        Meine Karriere ist geprägt durch eine Mischung aus Freelance- und
-        Angestelltenverhältnissen, was mir eine breite Perspektive und tiefes
-        Verständnis für verschiedene Arbeitsumgebungen ermöglicht hat.
+        Mein beruflicher Werdegang ist geprägt durch eine Mischung aus
+        Freelance- und Angestelltenverhältnissen, was mir eine breite
+        Perspektive und tiefes Verständnis für verschiedene Arbeitsumgebungen
+        ermöglicht hat.
       </p>
     </GridItem>
 
