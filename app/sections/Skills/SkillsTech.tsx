@@ -136,44 +136,44 @@ export const SkillsTech = () => {
           dazu.
         </p>
       </GridItem>
-      <GridItem className="col-span-10 mt-8">
+      <GridItem className="col-span-10 mt-8 flex flex-col gap-4">
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() => setFilter('all')}
+            className={`rounded-full px-6 py-2 transition-all ${
+              filter === 'all'
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            Alle
+          </button>
+          <button
+            onClick={() => setFilter('frontend')}
+            className={`rounded-full px-6 py-2 transition-all ${
+              filter === 'frontend'
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            Frontend
+          </button>
+          <button
+            onClick={() => setFilter('backend')}
+            className={`rounded-full px-6 py-2 transition-all ${
+              filter === 'backend'
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            Backend
+          </button>
+        </div>
         <div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {filteredSkills.map((skill, index) => (
             <SkillItem key={skill.name} skill={skill} index={index} />
           ))}
         </div>
-      </GridItem>
-      <GridItem className="col-span-10 flex justify-center gap-4">
-        <button
-          onClick={() => setFilter('all')}
-          className={`rounded-full px-6 py-2 transition-all ${
-            filter === 'all'
-              ? 'bg-blue-500 text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          Alle
-        </button>
-        <button
-          onClick={() => setFilter('frontend')}
-          className={`rounded-full px-6 py-2 transition-all ${
-            filter === 'frontend'
-              ? 'bg-blue-500 text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          Frontend
-        </button>
-        <button
-          onClick={() => setFilter('backend')}
-          className={`rounded-full px-6 py-2 transition-all ${
-            filter === 'backend'
-              ? 'bg-blue-500 text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          Backend
-        </button>
       </GridItem>
     </SkillsWrapper>
   )

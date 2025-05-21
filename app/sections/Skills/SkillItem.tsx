@@ -45,9 +45,26 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
       className="relative flex min-h-48 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-2 px-6 py-8 shadow-sm dark:from-blue-950 dark:via-blue-900 dark:to-indigo-900"
       title={skill.name}
     >
+      {/* Dynamic light effect overlay */}
+      <div
+        className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 via-transparent to-black/10 opacity-0 transition-opacity duration-300"
+        style={{
+          transform: 'translateZ(1px)',
+          opacity: isInView ? 1 : 0,
+          background: `
+            linear-gradient(
+              ${rotateY.get() * 2}deg,
+              rgba(255, 255, 255, 0.2) 0%,
+              transparent 50%,
+              rgba(0, 0, 0, 0.1) 100%
+            )
+          `,
+        }}
+      />
+
       {/* Decorative gradient overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-blue-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-blue-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           transform: 'translateZ(1px)',
         }}
