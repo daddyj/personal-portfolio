@@ -47,18 +47,16 @@ export const Mindset = () => {
       </GridItem>
       <GridItem className="col-span-10 flex gap-8">
         <Card icon={Brain} title="Agil denken" delay={0.6} isInView={isInView}>
-          <p className="">
-            Ich bin seit über 15 Jahren als Softwareentwickler tätig – sowohl im
-            Web- als auch im App-Bereich, in agilen Teams und mit
-            crossfunktionalen Rollen. In der Zeit habe ich gelernt, dass
-            Veränderungen und neue Anforderungen kein Störfaktor, sondern Teil
-            des Entwicklungsprozesses sind. Mit Methoden wie SCRUM, Kanban oder
-            auch OKRs arbeite ich strukturiert, lösungsorientiert und mit dem
-            Blick dafür, was dem Team wirklich weiterhilft. Dabei habe ich nie
-            aufgehört, neue Ansätze auszuprobieren oder mich von Kolleg:innen
-            inspirieren zu lassen – denn das gehört für mich genauso zu einer
-            guten Entwicklerkultur wie sauberer Code.
-          </p>
+          Ich bin seit über 15 Jahren als Softwareentwickler tätig – sowohl im
+          Web- als auch im App-Bereich, in agilen Teams und mit
+          crossfunktionalen Rollen. In der Zeit habe ich gelernt, dass
+          Veränderungen und neue Anforderungen kein Störfaktor, sondern Teil des
+          Entwicklungsprozesses sind. Mit Methoden wie SCRUM, Kanban oder auch
+          OKRs arbeite ich strukturiert, lösungsorientiert und mit dem Blick
+          dafür, was dem Team wirklich weiterhilft. Dabei habe ich nie
+          aufgehört, neue Ansätze auszuprobieren oder mich von Kolleg:innen
+          inspirieren zu lassen – denn das gehört für mich genauso zu einer
+          guten Entwicklerkultur wie sauberer Code.
         </Card>
         <Card
           icon={MessageSquare}
@@ -91,7 +89,8 @@ export const Mindset = () => {
           Selbstzweck, sondern Teamarbeit auf Augenhöhe. Ich schreibe
           verständlich, wiederverwendbar und mit Blick auf das große Ganze – für
           Nutzer:innen, Entwickler:innen und alle, die das Produkt langfristig
-          betreuen wollen.
+          betreuen wollen. Und ja, auch durch fremden (AI-) Code kann ich mich
+          durcharbeiten und Probleme lösen.
         </Card>
       </GridItem>
     </Grid>
