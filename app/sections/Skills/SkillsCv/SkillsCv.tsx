@@ -6,7 +6,7 @@ import { Grid, GridItem } from '@/app/components/Grid'
 import { CareerPhase } from './index'
 
 export const SkillsCv = () => (
-  <Grid id="skillsCv" className="rows-[auto_1fr_auto]">
+  <Grid id="skillsCv" className="grid-rows-[auto_auto_auto]">
     <GridItem className="col-span-10 sm:col-span-4">
       <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
         Laufbahn
@@ -21,13 +21,9 @@ export const SkillsCv = () => (
       </p>
     </GridItem>
 
-    <GridItem className="relative col-span-10 flex min-h-120">
-      {/* Timeline line */}
-      <div className="absolute top-1/2 right-0 left-0 h-0.5 -translate-y-1/2 bg-gray-300" />
-
-      {/* Timeline content */}
-      <div className="relative flex w-full flex-wrap justify-between">
-        <div className="relative mb-6 self-end">
+    <GridItem className="relative col-span-10 flex flex-wrap">
+      <div className="flex basis-[100%] justify-between">
+        <div className="relative">
           <CareerPhase
             title="Freelance-Phase während des Studiums"
             period="2008 - 2011"
@@ -57,9 +53,58 @@ export const SkillsCv = () => (
               'Fähigkeit, komplexe technische Lösungen verständlich zu kommunizieren',
             ]}
           />
+          <div className="absolute left-1/2 flex w-6 -translate-x-3 flex-col items-center">
+            <div className="h-6 w-0.5 bg-indigo-100" />
+            <div className="h-6 w-6 rounded-full bg-indigo-100" />
+          </div>
         </div>
 
-        <div className="relative self-start">
+        <div className="relative">
+          <CareerPhase
+            title="Aktuelle Freelance-Phase"
+            period="2025 - heute"
+            type="freelance"
+            description="Selbstständigkeit wieder aktiviert um eigene Produkte zu entwickeln und für ausgewählte Projekte zu arbeiten und Impact zu erzielen."
+            technologies={[
+              { name: 'Next.js', icon: '/logos/nextjs.svg', level: 'expert' },
+              { name: 'AWS', icon: '/logos/aws.svg', level: 'advanced' },
+              {
+                name: 'Docker',
+                icon: '/logos/docker.svg',
+                level: 'advanced',
+              },
+            ]}
+            achievements={[
+              {
+                title: 'Moderne Web-Architekturen',
+                description:
+                  'Entwicklung und Implementierung von skalierbaren Web-Anwendungen mit Fokus auf Performance und Benutzerfreundlichkeit',
+                impact:
+                  'Reduzierung der Ladezeiten um 60% und Verbesserung der Conversion-Rate um 25%',
+              },
+            ]}
+            customerBenefits={[
+              'Kombination aus jahrelanger Unternehmenserfahrung und modernster Technologie-Expertise',
+              'Agile Entwicklung mit Fokus auf schnelle Time-to-Market',
+              'Individuelle Beratung und maßgeschneiderte Lösungen für Ihr Unternehmen',
+            ]}
+          />
+          <div className="absolute left-1/2 flex w-6 -translate-x-3 flex-col items-center">
+            <div className="h-6 w-0.5 bg-indigo-100" />
+            <div className="h-6 w-6 rounded-full bg-indigo-100" />
+          </div>
+        </div>
+      </div>
+      <div className="flex min-h-18 basis-[100%] items-center">
+        <div className="mx-8 h-0.5 w-full bg-gray-300" />
+      </div>
+
+      <div className="flex flex-1 justify-center">
+        <div className="relative">
+          <div className="absolute -top-12 left-1/2 flex w-6 -translate-x-3 flex-col items-center">
+            <div className="h-6 w-6 rounded-full bg-indigo-100" />
+            <div className="h-6 w-0.5 bg-indigo-100" />
+          </div>
           <CareerPhase
             title="Angestelltenverhältnisse"
             period="2011 - 2025"
@@ -114,38 +159,6 @@ export const SkillsCv = () => (
               'Umfassende Erfahrung in der Zusammenarbeit mit großen Unternehmen',
               'Weiterbildung zur Teamführung',
               'Expertise in der Integration von modernen Technologien in bestehende Systeme',
-            ]}
-          />
-        </div>
-
-        <div className="self-end">
-          <CareerPhase
-            title="Aktuelle Freelance-Phase"
-            period="2025 - heute"
-            type="freelance"
-            description="Selbstständigkeit wieder aktiviert um eigene Produkte zu entwickeln und für ausgewählte Projekte zu arbeiten und Impact zu erzielen."
-            technologies={[
-              { name: 'Next.js', icon: '/logos/nextjs.svg', level: 'expert' },
-              { name: 'AWS', icon: '/logos/aws.svg', level: 'advanced' },
-              {
-                name: 'Docker',
-                icon: '/logos/docker.svg',
-                level: 'advanced',
-              },
-            ]}
-            achievements={[
-              {
-                title: 'Moderne Web-Architekturen',
-                description:
-                  'Entwicklung und Implementierung von skalierbaren Web-Anwendungen mit Fokus auf Performance und Benutzerfreundlichkeit',
-                impact:
-                  'Reduzierung der Ladezeiten um 60% und Verbesserung der Conversion-Rate um 25%',
-              },
-            ]}
-            customerBenefits={[
-              'Kombination aus jahrelanger Unternehmenserfahrung und modernster Technologie-Expertise',
-              'Agile Entwicklung mit Fokus auf schnelle Time-to-Market',
-              'Individuelle Beratung und maßgeschneiderte Lösungen für Ihr Unternehmen',
             ]}
           />
         </div>
