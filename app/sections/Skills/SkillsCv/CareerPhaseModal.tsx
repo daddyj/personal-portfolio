@@ -14,7 +14,8 @@ export type CareerPhaseProps = {
   title: string
   period: string
   type: 'freelance' | 'employed'
-  description: string
+  description: React.ReactNode
+  moreInformation?: React.ReactNode
   technologies: Technology[]
   achievements: Achievement[]
   customerBenefits: string[]
@@ -101,8 +102,15 @@ export const CareerPhaseModal = ({
                 <p className="mt-2 text-sm">{careerPhase.period}</p>
               </div>
 
-              <p className="">{careerPhase.description}</p>
-
+              <p className="">
+                {careerPhase.description}{' '}
+                {careerPhase.moreInformation && (
+                  <span>
+                    {careerPhase.moreInformation}
+                    <br />
+                  </span>
+                )}
+              </p>
               {/* Technologies Section */}
               <div>
                 <h4 className="mb-3 text-sm font-semibold text-gray-400">

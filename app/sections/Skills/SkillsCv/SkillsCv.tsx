@@ -29,12 +29,13 @@ export const SkillsCv = () => (
       <div className="relative flex w-full flex-wrap justify-between">
         <div className="relative mb-6 self-end">
           <CareerPhase
-            title="Erste Freelance-Phase"
+            title="Freelance-Phase während des Studiums"
             period="2008 - 2011"
             type="freelance"
-            description="Beginn meiner Karriere als selbstständiger Entwickler mit Fokus auf Web-Entwicklung und Software-Lösungen."
+            description="Beginn meiner Karriere als selbstständiger Entwickler mit Fokus auf Projektarbeit für Kunden inklusive Kundenbesuch, Beratung und Entwicklung vor Ort."
             technologies={[
-              { name: 'PHP', icon: '/logos/php.svg', level: 'expert' },
+              { name: 'Javascript', icon: '/logos/php.svg', level: 'advanced' },
+              { name: 'PHP', icon: '/logos/php.svg', level: 'advanced' },
               { name: 'MySQL', icon: '/logos/mysql.svg', level: 'advanced' },
               {
                 name: 'JavaScript',
@@ -44,16 +45,15 @@ export const SkillsCv = () => (
             ]}
             achievements={[
               {
-                title: 'Entwicklung von E-Commerce Lösungen',
+                title: 'Produktionsplanung',
                 description:
-                  'Implementierung mehrerer erfolgreicher Online-Shops mit individuellen Anforderungen',
-                impact:
-                  'Steigerung der Online-Umsätze um durchschnittlich 40% bei den Kunden',
+                  'Entwicklung einer individuellen Produktionsplanung im Browser für einen Kunden',
+                impact: 'Digitalisierung der Produktionsplanung für den Kunden',
               },
             ]}
             customerBenefits={[
-              'Erfahrung in der Entwicklung von skalierbaren Webanwendungen',
-              'Tiefes Verständnis für E-Commerce Anforderungen und Best Practices',
+              'Kundenbetreuung und -beratung',
+              'Tiefes Verständnis für Produktionsplanung und Best Practices',
               'Fähigkeit, komplexe technische Lösungen verständlich zu kommunizieren',
             ]}
           />
@@ -64,13 +64,36 @@ export const SkillsCv = () => (
             title="Angestelltenverhältnisse"
             period="2011 - 2025"
             type="employed"
-            description="14 Jahre Erfahrung in verschiedenen Unternehmen, wo ich tiefe Einblicke in Unternehmensstrukturen und Teamarbeit gewonnen habe."
+            description={
+              <span>
+                14 Jahre Erfahrung in verschiedenen Unternehmen, wo ich tiefe
+                Einblicke in Unternehmensstrukturen und Teamarbeit gewonnen
+                habe.
+              </span>
+            }
+            moreInformation={
+              <span>
+                Siehe hier für mehr Details:{' '}
+                <a
+                  href="https://www.linkedin.com/in/acun-g%C3%BCrsoy-83b8ab139/details/experience/"
+                  target="_blank"
+                  className="text-blue-500"
+                >
+                  Beruflicher Werdegang
+                </a>
+              </span>
+            }
             technologies={[
               { name: 'React', icon: '/logos/react.svg', level: 'expert' },
               {
                 name: 'TypeScript',
                 icon: '/logos/typescript.svg',
                 level: 'expert',
+              },
+              {
+                name: 'C#',
+                icon: '/logos/csharp.svg',
+                level: 'advanced',
               },
               {
                 name: 'Node.js',
@@ -84,12 +107,12 @@ export const SkillsCv = () => (
                 description:
                   'Verantwortlich für die technische Leitung und Mentoring von Entwicklerteams',
                 impact:
-                  'Erfolgreiche Durchführung von 20+ Großprojekten mit internationalen Teams',
+                  'Erfolgreiches globales Ausrollen einer neuen Benutzeroberfläche von 0 auf 100%',
               },
             ]}
             customerBenefits={[
               'Umfassende Erfahrung in der Zusammenarbeit mit großen Unternehmen',
-              'Bewährte Methoden für effizientes Projektmanagement und Teamführung',
+              'Weiterbildung zur Teamführung',
               'Expertise in der Integration von modernen Technologien in bestehende Systeme',
             ]}
           />
@@ -100,7 +123,7 @@ export const SkillsCv = () => (
             title="Aktuelle Freelance-Phase"
             period="2025 - heute"
             type="freelance"
-            description="Zurück zur Selbstständigkeit mit dem Ziel, Unternehmen durch moderne Technologien und agile Methoden zu unterstützen."
+            description="Selbstständigkeit wieder aktiviert um eigene Produkte zu entwickeln und für ausgewählte Projekte zu arbeiten und Impact zu erzielen."
             technologies={[
               { name: 'Next.js', icon: '/logos/nextjs.svg', level: 'expert' },
               { name: 'AWS', icon: '/logos/aws.svg', level: 'advanced' },
