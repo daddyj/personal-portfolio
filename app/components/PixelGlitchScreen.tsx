@@ -338,10 +338,10 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
   }, [interval, gridSize, maxEffects])
 
   return (
-    <div className={`fixed inset-0 min-h-full w-full ${className ?? ''}`}>
+    <div className={`absolute min-h-full w-full ${className ?? ''}`}>
       <canvas
         ref={canvasRef}
-        className="pointer-events-none absolute top-0 left-0 h-full w-full mix-blend-overlay"
+        className="pointer-events-none absolute top-0 left-0 h-full w-full"
       />
     </div>
   )
