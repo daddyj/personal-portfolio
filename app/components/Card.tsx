@@ -37,7 +37,7 @@ export const Card = ({
       className="group relative overflow-hidden bg-black p-6 transition-all"
     >
       <div className="mb-4 flex items-center gap-3">
-        <div className="p-2 text-blue-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-500 dark:text-blue-300">
+        <div className="rounded-xl p-2 text-blue-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-500 dark:text-blue-300">
           {Icon && <Icon className="h-8 w-8" />}
         </div>
         <h3 className="text-3xl font-semibold text-white">{title}</h3>

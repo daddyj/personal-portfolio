@@ -42,7 +42,7 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
         perspective: 1200,
         transformOrigin: 'center center',
       }}
-      className="relative flex min-h-48 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-2 px-6 py-8 shadow-sm dark:from-blue-950 dark:via-blue-900 dark:to-indigo-900"
+      className="group relative flex min-h-48 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-2 px-6 py-8 shadow-sm"
       title={skill.name}
     >
       {/* Dynamic light effect overlay */}
@@ -79,23 +79,18 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
         }}
       >
         {skill.hasIcon ? (
-          <div className="flex h-16 w-16 items-center justify-center text-gray-700 dark:text-gray-300">
+          <div className="flex h-16 w-16 items-center justify-center text-gray-700">
             <skill.Icon className="h-16 w-16" />
           </div>
         ) : (
-          <span className="text-center text-lg font-semibold text-gray-700 dark:text-gray-300">
+          <span className="text-center text-lg font-semibold text-gray-700">
             {skill.name}
           </span>
         )}
       </div>
 
       {/* Bottom accent border */}
-      <div
-        className="absolute right-0 bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500/0 via-blue-500 to-blue-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          transform: 'translateZ(15px)',
-        }}
-      />
+      <div className="absolute right-0 bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500/0 via-blue-500 to-blue-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     </motion.div>
   )
 }
