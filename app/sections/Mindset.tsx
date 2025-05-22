@@ -40,7 +40,7 @@ export const Mindset = () => {
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="text-6xl"
+          className="text-4xl sm:text-6xl"
         >
           Agil denken. Klar kommunizieren. Smart entwickeln.
         </motion.h2>

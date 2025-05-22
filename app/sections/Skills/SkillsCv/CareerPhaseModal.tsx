@@ -77,7 +77,7 @@ export const CareerPhaseModal = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/25 hover:cursor-pointer"
           onClick={onClose}
         >
           <motion.div
@@ -85,29 +85,23 @@ export const CareerPhaseModal = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="relative mx-4 max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-[var(--background)] p-6 shadow-xl"
+            className="relative mx-4 max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-lg border-2 border-blue-500 bg-black p-6 shadow-xl hover:cursor-default"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 rounded-full p-1 hover:bg-gray-100"
+              className="absolute top-4 right-4 rounded-full border-1 border-transparent p-1 hover:cursor-pointer hover:border-gray-300"
             >
-              <XMarkIcon className="h-6 w-6 text-gray-500" />
+              <XMarkIcon className="h-6 w-6" />
             </button>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-[var(--foreground)]">
-                  {careerPhase.title}
-                </h3>
-                <p className="mt-2 text-sm text-[var(--foreground)]">
-                  {careerPhase.period}
-                </p>
+                <h3 className="text-2xl font-bold">{careerPhase.title}</h3>
+                <p className="mt-2 text-sm">{careerPhase.period}</p>
               </div>
 
-              <p className="text-[var(--foreground)]">
-                {careerPhase.description}
-              </p>
+              <p className="">{careerPhase.description}</p>
 
               {/* Technologies Section */}
               <div>
