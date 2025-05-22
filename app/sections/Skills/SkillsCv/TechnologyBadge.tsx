@@ -1,16 +1,12 @@
-import Image from 'next/image'
-
 export type Technology = {
   name: string
-  icon: string
+  icon?: React.ReactNode
   level: 'expert' | 'advanced' | 'intermediate'
 }
 
 export const TechnologyBadge = ({ name, icon, level }: Technology) => (
   <div className="flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1.5">
-    <div className="relative h-5 w-5">
-      <Image fill src={icon} alt={`${name} icon`} className="object-contain" />
-    </div>
+    {icon && <div className="relative h-5 w-5">{icon}</div>}
     <span className="text-sm font-medium">{name}</span>
     <span
       className={`rounded-full px-2 py-0.5 text-xs ${

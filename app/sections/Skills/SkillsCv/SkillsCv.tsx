@@ -2,6 +2,9 @@ import { DocumentIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 
 import { Grid, GridItem } from '@/app/components/Grid'
+import { NextJsSvg, ReactSvg } from '@/app/components/Icons'
+import { JavascriptSvg } from '@/app/components/Icons/Javascript'
+import { TypescriptSvg } from '@/app/components/Icons/Typescript'
 
 import { CareerPhase } from './index'
 
@@ -30,12 +33,16 @@ export const SkillsCv = () => (
             type="freelance"
             description="Beginn meiner Karriere als selbstständiger Entwickler mit Fokus auf Projektarbeit für Kunden inklusive Kundenbesuch, Beratung und Entwicklung vor Ort."
             technologies={[
-              { name: 'Javascript', icon: '/logos/php.svg', level: 'advanced' },
-              { name: 'PHP', icon: '/logos/php.svg', level: 'advanced' },
-              { name: 'MySQL', icon: '/logos/mysql.svg', level: 'advanced' },
+              {
+                name: 'Javascript',
+                icon: <JavascriptSvg />,
+                level: 'advanced',
+              },
+              { name: 'PHP', icon: undefined, level: 'advanced' },
+              { name: 'MySQL', icon: undefined, level: 'advanced' },
               {
                 name: 'JavaScript',
-                icon: '/logos/javascript.svg',
+                icon: undefined,
                 level: 'advanced',
               },
             ]}
@@ -66,11 +73,11 @@ export const SkillsCv = () => (
             type="freelance"
             description="Selbstständigkeit wieder aktiviert um eigene Produkte zu entwickeln und für ausgewählte Projekte zu arbeiten und Impact zu erzielen."
             technologies={[
-              { name: 'Next.js', icon: '/logos/nextjs.svg', level: 'expert' },
-              { name: 'AWS', icon: '/logos/aws.svg', level: 'advanced' },
+              { name: 'Next.js', icon: <NextJsSvg />, level: 'expert' },
+              { name: 'AWS', icon: undefined, level: 'advanced' },
               {
                 name: 'Docker',
-                icon: '/logos/docker.svg',
+                icon: undefined,
                 level: 'advanced',
               },
             ]}
@@ -129,20 +136,20 @@ export const SkillsCv = () => (
               </span>
             }
             technologies={[
-              { name: 'React', icon: '/logos/react.svg', level: 'expert' },
+              { name: 'React', icon: <ReactSvg />, level: 'expert' },
               {
                 name: 'TypeScript',
-                icon: '/logos/typescript.svg',
+                icon: <TypescriptSvg />,
                 level: 'expert',
               },
               {
                 name: 'C#',
-                icon: '/logos/csharp.svg',
+                icon: undefined,
                 level: 'advanced',
               },
               {
                 name: 'Node.js',
-                icon: '/logos/nodejs.svg',
+                icon: undefined,
                 level: 'advanced',
               },
             ]}
