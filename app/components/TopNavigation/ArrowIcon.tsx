@@ -24,7 +24,7 @@ export const ArrowIcon = ({
       )}
       onClick={onClick}
     >
-      <ArrowDirectionComponent className="animate-once size-16 scale-100 animate-pulse transition-all hover:scale-150 hover:cursor-pointer" />
+      <ArrowDirectionComponent className="animate-once size-16 scale-100 animate-pulse stroke-blue-500 transition-all hover:scale-150 hover:cursor-pointer" />
     </div>
   )
 }
