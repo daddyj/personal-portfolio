@@ -47,6 +47,7 @@ export const SkillsCv = () => {
               period="2008 - 2011"
               type="freelance"
               description="Beginn meiner Karriere als selbstständiger Entwickler mit Fokus auf Projektarbeit für Kunden inklusive Kundenbesuch, Beratung und Entwicklung vor Ort."
+              moreInformation="Da diese Phase gegen Ende während meines Studiums stattfand, habe ich die Möglichkeit gehabt praktische Erfahrungen in echten Projekten in der Wirtschaft zu sammeln. So konnte ich auch beginnen meine kommunikativen Fähigkeiten zu entwickeln."
               technologies={[
                 {
                   name: 'Javascript',
