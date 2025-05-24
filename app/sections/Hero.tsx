@@ -28,9 +28,9 @@ export const Hero = () => {
         id="hero"
         className="rows-[auto_auto_auto] h-screen bg-transparent"
       >
-        <GridItem className="col-span-10 flex items-center justify-center sm:justify-start">
+        <GridItem className="col-span-10 flex items-center justify-center lg:justify-start">
           <div
-            className="h-40 w-40 rounded-full bg-blue-500 bg-center bg-no-repeat sm:h-56 sm:w-56"
+            className="h-40 w-40 rounded-full bg-blue-500 bg-center bg-no-repeat lg:h-56 lg:w-56"
             style={{
               backgroundImage: 'url(/skills-cv-section-me.jpeg)',
               backgroundSize: '100%',
@@ -38,18 +38,18 @@ export const Hero = () => {
           />
         </GridItem>
 
-        <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-440 col-span-10 flex flex-col sm:col-span-8">
-          <h1 className="text-4xl uppercase sm:text-6xl">Acun Gürsoy</h1>
-          <h1 className="text-4xl uppercase sm:text-6xl">
+        <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-440 col-span-10 flex flex-col sm:items-center lg:col-span-8 lg:items-start">
+          <h1 className="text-4xl uppercase lg:text-6xl">Acun Gürsoy</h1>
+          <h1 className="text-4xl uppercase lg:text-6xl">
             Web & Mobile Entwickler
           </h1>
           <h2 className="text-xl uppercase">React / React-Native</h2>
         </GridItem>
-        <GridItem className="col-span-0 sm:col-span-2" />
+        <GridItem className="col-span-0 lg:col-span-2" />
 
         <GridItem className="col-span-10 flex items-end justify-end">
           <div
-            className="h-40 w-40 rounded-full bg-center bg-no-repeat sm:my-0 sm:h-64 sm:w-64"
+            className="h-40 w-40 rounded-full bg-center bg-no-repeat lg:my-0 lg:h-64 lg:w-64"
             style={{
               backgroundImage: 'url(/certified.png)',
               backgroundSize: '100%',

@@ -35,17 +35,17 @@ export const Mindset = () => {
 
   return (
     <Grid id="mindset" ref={gridWrapper} className="grid-rows-[auto_1fr] gap-8">
-      <GridItem className="col-span-8 hidden sm:block">
+      <GridItem className="col-span-8 hidden lg:block">
         <motion.h2
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="text-4xl sm:text-8xl"
+          className="text-4xl lg:text-8xl"
         >
           Agil denken. Klar kommunizieren. Smart entwickeln.
         </motion.h2>
       </GridItem>
-      <GridItem className="col-span-10 hidden gap-8 sm:flex">
+      <GridItem className="col-span-10 hidden gap-8 lg:flex">
         <Card icon={Brain} title="Agil denken" delay={0.6} isInView={isInView}>
           Ich bin seit über 15 Jahren als Softwareentwickler tätig – sowohl im
           Web- als auch im App-Bereich, in agilen Teams und mit
@@ -94,17 +94,17 @@ export const Mindset = () => {
         </Card>
       </GridItem>
 
-      <GridItem className="col-span-10 sm:hidden">
+      <GridItem className="col-span-10 lg:hidden">
         <motion.h2
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="text-4xl sm:text-8xl"
+          className="text-4xl lg:text-8xl"
         >
           Agil denken. Klar kommunizieren. Smart entwickeln.
         </motion.h2>
       </GridItem>
-      <GridItem className="col-span-10 sm:hidden">
+      <GridItem className="col-span-10 lg:hidden">
         <Card icon={Brain} title="Agil denken" delay={0.6} isInView={isInView}>
           Ich bin seit über 15 Jahren als Softwareentwickler tätig – sowohl im
           Web- als auch im App-Bereich, in agilen Teams und mit
@@ -118,7 +118,7 @@ export const Mindset = () => {
           guten Entwicklerkultur wie sauberer Code.
         </Card>
       </GridItem>
-      <GridItem className="col-span-10 sm:hidden">
+      <GridItem className="col-span-10 lg:hidden">
         <Card
           icon={MessageSquare}
           title="Klar kommunizieren"
@@ -137,7 +137,7 @@ export const Mindset = () => {
           Projekt besser.
         </Card>
       </GridItem>
-      <GridItem className="col-span-10 sm:hidden">
+      <GridItem className="col-span-10 lg:hidden">
         <Card
           icon={LayoutPanelTop}
           title="Smart entwickeln"

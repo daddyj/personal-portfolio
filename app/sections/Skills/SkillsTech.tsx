@@ -138,14 +138,14 @@ export const SkillsTech = () => {
         ref={skillsWrapperRef}
         className="z-1 grid-rows-[auto_1fr] bg-transparent"
       >
-        <GridItem className="col-span-10 sm:col-span-3">
-          <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
+        <GridItem className="col-span-10 lg:col-span-3">
+          <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
             Smart entwickeln.
           </h2>
         </GridItem>
-        <GridItem className="col-span-0 sm:col-span-1" />
-        <GridItem className="col-span-10 sm:col-span-6">
-          <p className="text-xl sm:text-2xl">
+        <GridItem className="col-span-0 lg:col-span-1" />
+        <GridItem className="col-span-10 lg:col-span-6">
+          <p className="text-xl lg:text-2xl">
             Ich habe viele Technologien ausprobiert und meinen Fokus bewusst auf
             einen modernen Stack rund um React gelegt – für wiederverwendbare
             Lösungen im Web und auf mobilen Plattformen. Neues auszuprobieren
@@ -186,7 +186,7 @@ export const SkillsTech = () => {
               Backend
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-4 px-4 md:grid-cols-4 lg:grid-cols-3 lg:grid-cols-5">
             {filteredSkills.map((skill, index) => (
               <SkillItem key={skill.name} skill={skill} index={index} />
             ))}

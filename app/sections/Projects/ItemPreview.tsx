@@ -22,19 +22,19 @@ export const ItemPreview = ({
 
   return (
     <>
-      <GridItem className="animate-fade col-span-10 flex flex-col gap-8 sm:col-span-3">
-        <div className="text-md flex flex-col gap-4 sm:min-h-28 sm:text-2xl">
+      <GridItem className="animate-fade col-span-10 flex flex-col gap-8 lg:col-span-3">
+        <div className="text-md flex flex-col gap-4 lg:min-h-28 lg:text-2xl">
           <p className="font-bold">Rolle in dem Projekt:</p>
           <p>{role}</p>
         </div>
-        <div className="text-md flex flex-col gap-4 sm:text-2xl">
+        <div className="text-md flex flex-col gap-4 lg:text-2xl">
           <p className="font-bold">Technologien:</p>
-          <div className="flex flex-wrap items-end gap-2 text-sm font-bold sm:gap-4">
+          <div className="flex flex-wrap items-end gap-2 text-sm font-bold lg:gap-4">
             {techStack.map((tech: JSX.Element) => tech)}
           </div>
         </div>
       </GridItem>
-      <GridItem className="animate-fade relative col-span-10 flex h-60 flex-1 justify-center sm:col-span-4 sm:h-auto sm:justify-end">
+      <GridItem className="animate-fade relative col-span-10 flex h-60 flex-1 justify-center lg:col-span-4 lg:h-auto lg:justify-end">
         <ArrowLeftIcon
           className="z-11 size-12 self-center transition-all hover:scale-[125%] hover:cursor-pointer"
           onClick={() =>
@@ -43,14 +43,14 @@ export const ItemPreview = ({
             )
           }
         />
-        <div className="relative flex w-full items-start justify-start px-12 sm:w-[496px] sm:justify-end">
+        <div className="relative flex w-full items-start justify-start px-12 lg:w-[496px] lg:justify-end">
           {images.map((image, index) => {
             const offset = index * 16 + 12
             const rotate = (index + 1) * 8 - 16
             return (
               <div
                 key={`${role}_image_${index}`}
-                className={`absolute top-0 right-0 z-0 flex h-full items-center justify-center self-end sm:w-[400px]`}
+                className={`absolute top-0 right-0 z-0 flex h-full items-center justify-center self-end lg:w-[400px]`}
                 style={{
                   right: offset,
                   rotate: `${rotate}deg`,
@@ -80,8 +80,8 @@ export const ItemPreview = ({
       <GridItem className="col-span-10" />
 
       <GridItem className="col-span-3" />
-      <GridItem className="animate-fade col-span-10 flex sm:col-span-7">
-        <p className="text-md sm:text-2xl">{description}</p>
+      <GridItem className="animate-fade col-span-10 flex lg:col-span-7">
+        <p className="text-md lg:text-2xl">{description}</p>
       </GridItem>
     </>
   )

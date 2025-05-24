@@ -67,9 +67,9 @@ export const TopNavigation = () => {
   }, [currentSection])
 
   return (
-    <nav className="fixed z-10 flex w-screen items-center gap-4 bg-black p-4 px-8 text-sm text-gray-300 sm:gap-8 sm:px-16 sm:text-2xl">
+    <nav className="fixed z-10 flex w-screen items-center gap-4 bg-black p-4 px-8 text-sm text-gray-300 lg:gap-8 lg:px-16 lg:text-2xl">
       <div
-        className="flex sm:hidden"
+        className="flex lg:hidden"
         onClick={() => {
           setIsMobileMenuOpen(true)
         }}
@@ -92,15 +92,15 @@ export const TopNavigation = () => {
       </div>
 
       <div className="flex">
-        <div className="flex flex-1 items-center gap-2 rounded-full border-1 p-2 sm:px-4">
+        <div className="flex flex-1 items-center gap-2 rounded-full border-1 p-2 lg:px-4">
           <div className="flex h-4 w-4 animate-pulse rounded-full bg-orange-500" />
-          <p className="text-center text-xs sm:text-sm">
+          <p className="text-center text-xs lg:text-sm">
             In Teilzeit verfügbar
           </p>
         </div>
       </div>
 
-      <div className="hidden flex-1 justify-end gap-4 sm:flex">
+      <div className="hidden flex-1 justify-end gap-4 lg:flex">
         <NavigationItemList
           onClick={handleNavigationItemClick}
           currentSection={currentSection}
@@ -109,7 +109,7 @@ export const TopNavigation = () => {
 
       <ArrowIcon
         className={cn(
-          'sm:bottom-32 sm:left-4 sm:block',
+          'lg:bottom-32 lg:left-4 lg:block',
           isFirstSection && 'pointer-events-none !animate-none !opacity-15'
         )}
         direction="up"
@@ -117,7 +117,7 @@ export const TopNavigation = () => {
       />
       <ArrowIcon
         className={cn(
-          'sm:bottom-16 sm:left-4 sm:block',
+          'lg:bottom-16 lg:left-4 lg:block',
           isLastSection && 'pointer-events-none !animate-none !opacity-15'
         )}
         direction="down"

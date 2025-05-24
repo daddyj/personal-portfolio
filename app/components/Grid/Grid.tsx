@@ -9,7 +9,7 @@ type GridProps = PropsWithChildren & {
 
 const Grid = ({ id = '', children, rows, className, ref }: GridProps) => {
   let defaultClassnames =
-    'p-12 sm:p-16 py-18 sm:pt-24 grid grid-cols-10 w-screen gap-4 sm:min-h-screen relative m-auto max-w-[120rem] bg-black text-gray-300'
+    'p-12 lg:p-16 py-18 lg:pt-24 grid grid-cols-10 w-screen gap-4 lg:min-h-screen relative m-auto max-w-[120rem] bg-black text-gray-300'
   defaultClassnames += ` grid-rows-${(rows || 1).toString()}`
 
   return (

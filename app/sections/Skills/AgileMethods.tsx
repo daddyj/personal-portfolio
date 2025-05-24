@@ -79,7 +79,7 @@ export const AgileMethods = () => {
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:grid-cols-3"
     >
       {agileMethods.map((method, index) => (
         <Card

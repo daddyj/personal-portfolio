@@ -23,15 +23,15 @@ export const SkillsCv = () => {
   return (
     <SkillsWrapper
       skillsKey="skillsCv"
-      className="px-4 sm:grid-rows-[120px_60px]"
+      className="px-4 lg:grid-rows-[120px_60px]"
     >
-      <GridItem className="col-span-10 px-8 sm:col-span-4">
-        <h2 className="text-4xl font-bold sm:text-8xl sm:font-normal">
+      <GridItem className="col-span-10 px-8 lg:col-span-4">
+        <h2 className="text-4xl font-bold lg:text-8xl lg:font-normal">
           Laufbahn
         </h2>
       </GridItem>
-      <GridItem className="col-span-10 px-8 sm:col-span-6">
-        <p className="mb-8 text-xl sm:text-2xl">
+      <GridItem className="col-span-10 px-8 lg:col-span-6">
+        <p className="mb-8 text-xl lg:text-2xl">
           Mein beruflicher Werdegang ist geprägt durch eine Mischung aus
           Freelance- und Angestelltenverhältnissen, was mir eine breite
           Perspektive und tiefes Verständnis für verschiedene Arbeitsumgebungen
@@ -190,7 +190,7 @@ export const SkillsCv = () => {
       </GridItem>
 
       {/* <GridItem className="col-span-10">
-      <div className="flex flex-col justify-center gap-8 sm:flex-row">
+      <div className="flex flex-col justify-center gap-8 lg:flex-row">
         <a
           href="/docs/acun_guersoy_cv_2025.pdf"
           target="_blank"

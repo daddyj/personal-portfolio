@@ -108,15 +108,15 @@ export const Projects = () => {
     <Grid
       ref={gridWrapper}
       id="projects"
-      className="grid-rows-[auto] sm:grid-rows-[auto_80px_auto_120px_1fr]"
+      className="grid-rows-[auto] lg:grid-rows-[auto_80px_auto_120px_1fr]"
     >
       <GridItem className="col-span-10">
-        <h1 className="text-4xl sm:text-6xl">Meine aktiven Projekte</h1>
+        <h1 className="text-4xl lg:text-6xl">Meine aktiven Projekte</h1>
       </GridItem>
 
       <GridItem className="col-span-10" />
 
-      <GridItem className="text-md col-span-10 flex flex-col gap-4 pb-8 sm:col-span-3 sm:gap-8 sm:pb-0 sm:text-4xl">
+      <GridItem className="text-md col-span-10 flex flex-col gap-4 pb-8 lg:col-span-3 lg:gap-8 lg:pb-0 lg:text-4xl">
         {projects.map((projectKey: ProjectListItem) => (
           <NavItem
             key={`nav_${projectKey}`}
