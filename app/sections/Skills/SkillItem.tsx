@@ -20,17 +20,16 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
   })
 
   useEffect(() => {
-    if (!isInView) {
-      rotateX.set(0)
-      rotateY.set(0)
-    }
-  }, [isInView, rotateX, rotateY])
+    rotateX.set(0)
+    rotateY.set(0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      animate={isInView && { opacity: 1, y: 0 }}
       transition={{
         duration: 0.4,
         delay: index * 0.1,
@@ -42,7 +41,7 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
         perspective: 1200,
         transformOrigin: 'center center',
       }}
-      className="group relative flex min-h-48 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-2 px-6 py-8 shadow-sm"
+      className="group relative flex min-h-48 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-2 px-6 py-8 shadow-sm"
       title={skill.name}
     >
       {/* Dynamic light effect overlay */}

@@ -9,7 +9,12 @@ export const SkillsWrapper = ({
   skillsKey,
   className = '',
   children,
-}: { skillsKey: HomeSection; className?: string } & PropsWithChildren) => {
+  ref,
+}: {
+  skillsKey: HomeSection
+  className?: string
+  ref?: React.RefObject<HTMLDivElement | null>
+} & PropsWithChildren) => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
 
   const gridWrapper = useRef<HTMLDivElement>(null)
@@ -21,7 +26,7 @@ export const SkillsWrapper = ({
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible, skillsKey])
 
   return (
-    <Grid ref={gridWrapper} id={skillsKey} className={className}>
+    <Grid ref={ref ?? gridWrapper} id={skillsKey} className={className}>
       {children}
     </Grid>
   )

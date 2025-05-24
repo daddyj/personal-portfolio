@@ -28,19 +28,18 @@ export const TopNavigation = () => {
   const isFirstSection = currentIndex === 0
   const isLastSection = currentIndex === sections.length - 1
 
-  const handleArrowDownClick = useCallback(() => {
-    const currentIndex = sections.findIndex(
-      (section) => currentSection === section
-    )
-    const isCurrentSectionFullyRendered = fullyVisible === currentSection
-    const nextIndex = isCurrentSectionFullyRendered
-      ? currentIndex + 1
-      : currentIndex
+  console.log('topNavigation', {
+    currentSection,
+    currentIndex: currentIndex,
+    isFirstSection,
+    isLastSection,
+  })
 
   const handleArrowDownClick = () => {
     if (currentIndex < sections.length - 1) {
       const nextIndex = currentIndex + 1
       setCurrentIndex(nextIndex)
+      console.log('arrowDown', sections[nextIndex])
       scrollToSection(sections[nextIndex])
     }
   }
@@ -49,7 +48,7 @@ export const TopNavigation = () => {
     if (currentIndex > 0) {
       const nextIndex = currentIndex - 1
       setCurrentIndex(nextIndex)
-    scrollToSection('hero')
+      console.log('arrowUp', sections[nextIndex])
       scrollToSection(sections[nextIndex])
     }
   }

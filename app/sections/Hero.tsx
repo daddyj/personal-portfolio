@@ -26,7 +26,7 @@ export const Hero = () => {
       <Grid
         ref={gridWrapper}
         id="hero"
-        className="rows-[auto_auto_auto] h-screen"
+        className="rows-[auto_auto_auto] h-screen bg-transparent"
       >
         <GridItem className="col-span-10 flex items-center justify-center sm:justify-start">
           <div
@@ -41,7 +41,7 @@ export const Hero = () => {
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-440 col-span-10 flex flex-col sm:col-span-8">
           <h1 className="text-4xl uppercase sm:text-6xl">Acun Gürsoy</h1>
           <h1 className="text-4xl uppercase sm:text-6xl">
-            Freelance Web & Mobile Entwickler
+            Web & Mobile Entwickler
           </h1>
           <h2 className="text-xl uppercase">React / React-Native</h2>
         </GridItem>

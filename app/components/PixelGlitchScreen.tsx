@@ -35,6 +35,10 @@ interface PixelGlitchScreenProps {
    * Maximum number of active effects at once (default: 10)
    */
   maxEffects?: number
+  /**
+   * Optional ref to the element to track
+   */
+  ref?: React.RefObject<HTMLDivElement | null>
 }
 
 export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
@@ -42,6 +46,7 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
   interval,
   gridSize = 20,
   maxEffects = 10,
+  ref,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const effectsRef = useRef<PixelEffect[]>([])
@@ -335,7 +340,10 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
   }, [interval, gridSize, maxEffects])
 
   return (
-    <div className={`absolute min-h-full w-full ${className ?? ''}`}>
+    <div
+      ref={ref}
+      className={`fixed top-0 left-0 min-h-full w-full ${className ?? ''}`}
+    >
       <canvas
         ref={canvasRef}
         className="pointer-events-none absolute top-0 left-0 h-full w-full"

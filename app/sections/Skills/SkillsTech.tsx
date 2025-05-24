@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
 
 import { GridItem } from '@/app/components/Grid'
 import {
@@ -18,6 +19,7 @@ import { Javascript } from '@/app/components/Icons/Javascript'
 import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { TailwindCss } from '@/app/components/Icons/TailwindCss'
 import { Typescript } from '@/app/components/Icons/Typescript'
+import { PixelGlitchScreen } from '@/app/components/PixelGlitchScreen'
 
 import { SkillItem } from './SkillItem'
 import { SkillsWrapper } from './SkillsWrapper'
@@ -54,13 +56,14 @@ const skills: Skill[] = [
   },
   { name: 'HTML', Icon: Html, hasIcon: true, categories: ['frontend'] },
   { name: 'CSS / SCSS', Icon: Css, hasIcon: true, categories: ['frontend'] },
+  { name: 'Canvas', Icon: Canvas, hasIcon: true, categories: ['frontend'] },
+  { name: 'React', Icon: React, hasIcon: true, categories: ['frontend'] },
   {
     name: 'React-Native',
     Icon: ReactNative,
     hasIcon: true,
     categories: ['frontend'],
   },
-  { name: 'React', Icon: React, hasIcon: true, categories: ['frontend'] },
   {
     name: 'NextJS',
     Icon: Nextjs,
@@ -68,8 +71,20 @@ const skills: Skill[] = [
     categories: ['frontend', 'backend'],
   },
   {
+    name: 'Tailwind CSS',
+    Icon: TailwindCss,
+    hasIcon: true,
+    categories: ['frontend'],
+  },
+  {
     name: 'Tamagui UI',
     Icon: Tamagui,
+    hasIcon: true,
+    categories: ['frontend'],
+  },
+  {
+    name: 'Material UI',
+    Icon: MaterialUi,
     hasIcon: true,
     categories: ['frontend'],
   },
@@ -84,98 +99,101 @@ const skills: Skill[] = [
     name: 'Git',
     Icon: Git,
     hasIcon: true,
-    categories: ['frontend', 'backend', 'tool'],
+    categories: ['tool'],
   },
   {
     name: 'Github / GitLab',
     Icon: Github,
     hasIcon: true,
-    categories: ['frontend', 'backend', 'tool'],
+    categories: ['tool'],
   },
-  {
-    name: 'Material UI',
-    Icon: MaterialUi,
-    hasIcon: true,
-    categories: ['frontend'],
-  },
-  {
-    name: 'Tailwind CSS',
-    Icon: TailwindCss,
-    hasIcon: true,
-    categories: ['frontend'],
-  },
-  { name: 'Canvas', Icon: Canvas, hasIcon: true, categories: ['frontend'] },
 ]
 
 type FilterCategory = 'all' | 'frontend' | 'backend'
 
 export const SkillsTech = () => {
   const [filter, setFilter] = useState<FilterCategory>('all')
-
+  const skillsWrapperRef = useRef<HTMLDivElement>(null)
   const filteredSkills = skills.filter((skill) =>
     filter === 'all' ? true : skill.categories.includes(filter)
   )
 
+  const isInView = useInView(skillsWrapperRef, {
+    once: false,
+    margin: '-100px 0px',
+  })
+
   return (
-    <SkillsWrapper
-      skillsKey="skillsTech"
-      className="grid-rows-[auto_auto_auto_1fr]"
-    >
-      <GridItem className="col-span-10 sm:col-span-3">
-        <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
-          Smart entwickeln.
-        </h2>
-      </GridItem>
-      <GridItem className="col-span-0 sm:col-span-1" />
-      <GridItem className="col-span-10 sm:col-span-6">
-        <p className="text-xl sm:text-2xl">
-          Ich habe viele Technologien ausprobiert und meinen Fokus bewusst auf
-          einen modernen Stack rund um React gelegt – für wiederverwendbare
-          Lösungen im Web und auf mobilen Plattformen. Neues auszuprobieren und
-          mich von Kolleg:innen inspirieren zu lassen, gehört für mich einfach
-          dazu.
-        </p>
-      </GridItem>
-      <GridItem className="col-span-10 mt-8 flex flex-col gap-4">
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={() => setFilter('all')}
-            className={`rounded-full px-6 py-2 transition-all ${
-              filter === 'all'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
-          >
-            Alle
-          </button>
-          <button
-            onClick={() => setFilter('frontend')}
-            className={`rounded-full px-6 py-2 transition-all ${
-              filter === 'frontend'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
-          >
-            Frontend
-          </button>
-          <button
-            onClick={() => setFilter('backend')}
-            className={`rounded-full px-6 py-2 transition-all ${
-              filter === 'backend'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
-          >
-            Backend
-          </button>
-        </div>
-        <div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {filteredSkills.map((skill, index) => (
-            <SkillItem key={skill.name} skill={skill} index={index} />
-          ))}
-        </div>
-      </GridItem>
-    </SkillsWrapper>
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-0 left-0 h-screen w-screen"
+      >
+        <PixelGlitchScreen interval={420} gridSize={80} />
+      </motion.div>
+      <SkillsWrapper
+        skillsKey="skillsTech"
+        ref={skillsWrapperRef}
+        className="z-1 grid-rows-[auto_1fr] bg-transparent"
+      >
+        <GridItem className="col-span-10 sm:col-span-3">
+          <h2 className="text-4xl font-bold sm:text-6xl sm:font-normal">
+            Smart entwickeln.
+          </h2>
+        </GridItem>
+        <GridItem className="col-span-0 sm:col-span-1" />
+        <GridItem className="col-span-10 sm:col-span-6">
+          <p className="text-xl sm:text-2xl">
+            Ich habe viele Technologien ausprobiert und meinen Fokus bewusst auf
+            einen modernen Stack rund um React gelegt – für wiederverwendbare
+            Lösungen im Web und auf mobilen Plattformen. Neues auszuprobieren
+            und mich von Kolleg:innen inspirieren zu lassen, gehört für mich
+            einfach dazu.
+          </p>
+        </GridItem>
+        <GridItem className="col-span-10 mt-8 flex flex-col gap-4">
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={() => setFilter('all')}
+              className={`rounded-full px-6 py-2 transition-all ${
+                filter === 'all'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+              }`}
+            >
+              Alle
+            </button>
+            <button
+              onClick={() => setFilter('frontend')}
+              className={`rounded-full px-6 py-2 transition-all ${
+                filter === 'frontend'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+              }`}
+            >
+              Frontend
+            </button>
+            <button
+              onClick={() => setFilter('backend')}
+              className={`rounded-full px-6 py-2 transition-all ${
+                filter === 'backend'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+              }`}
+            >
+              Backend
+            </button>
+          </div>
+          <div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {filteredSkills.map((skill, index) => (
+              <SkillItem key={skill.name} skill={skill} index={index} />
+            ))}
+          </div>
+        </GridItem>
+      </SkillsWrapper>
+    </>
   )
 }
 

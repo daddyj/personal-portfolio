@@ -19,6 +19,7 @@ export type CareerPhaseProps = {
   technologies: Technology[]
   achievements: Achievement[]
   customerBenefits: string[]
+  className?: string
 }
 
 type ModalProps = {
