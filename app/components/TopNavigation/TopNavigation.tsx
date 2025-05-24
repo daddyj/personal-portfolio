@@ -66,6 +66,21 @@ export const TopNavigation = () => {
     setCurrentIndex(sections.findIndex((section) => currentSection === section))
   }, [currentSection])
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowDown') {
+        handleArrowDownClick()
+      } else if (event.key === 'ArrowUp') {
+        handleArrowUpClick()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [currentIndex, handleArrowDownClick, handleArrowUpClick])
+
   return (
     <nav className="fixed z-10 flex w-screen items-center gap-4 bg-black p-4 px-8 text-sm text-gray-300 lg:gap-8 lg:px-16 lg:text-2xl">
       <div
