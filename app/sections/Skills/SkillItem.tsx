@@ -87,9 +87,6 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
           </span>
         )}
       </div>
-
-      {/* Bottom accent border */}
-      <div className="absolute right-0 bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500/0 via-blue-500 to-blue-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     </motion.div>
   )
 }
