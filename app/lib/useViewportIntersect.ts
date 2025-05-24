@@ -31,11 +31,6 @@ export const useViewportIntersect = (
     const isBottomOfPage =
       pageHeight - scrollYSectionEnd <= THRESHOLD_PAGE_EDGE_VERTICAL
 
-    console.log({
-      currentScrollY,
-      lastIntersectionScrollY: lastIntersectionScrollY.current,
-    })
-
     if ((isScrollingUp && !isTopOfPage) || isBottomOfPage) {
       setScrollDirection('up')
     } else {

@@ -9,19 +9,13 @@ interface BaseIconProps extends IconProps {
 }
 
 export function BaseIcon({
-  href,
   name,
   children,
   className,
   ...props
 }: BaseIconProps) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex flex-col items-center gap-2 transition-all"
-    >
+    <div className="flex flex-col items-center gap-2 transition-all">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="2rem"
@@ -32,6 +26,6 @@ export function BaseIcon({
         {children}
       </svg>
       <p className="text-center text-sm font-semibold">{name}</p>
-    </a>
+    </div>
   )
 }

@@ -1,9 +1,10 @@
 import { Bars3Icon } from '@heroicons/react/24/outline'
-import { useCallback, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { sections } from '@/app/lib/constants'
 import { HomeSection } from '@/app/lib/types'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
+import { cn } from '@/app/lib/utils'
 
 import { ArrowIcon } from './ArrowIcon'
 import { NavigationItemList } from './NavigationItemList'
@@ -18,9 +19,14 @@ const scrollToSection = (sectionId: string) => {
 }
 
 export const TopNavigation = () => {
-  const { currentSection, fullyVisible, scrollDirection } =
-    useNavigationContext()
+  const { currentSection } = useNavigationContext()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(
+    sections.findIndex((section) => currentSection === section)
+  )
+
+  const isFirstSection = currentIndex === 0
+  const isLastSection = currentIndex === sections.length - 1
 
   const handleArrowDownClick = useCallback(() => {
     const currentIndex = sections.findIndex(
@@ -30,11 +36,22 @@ export const TopNavigation = () => {
     const nextIndex = isCurrentSectionFullyRendered
       ? currentIndex + 1
       : currentIndex
-    scrollToSection(sections[nextIndex])
-  }, [currentSection, fullyVisible])
+
+  const handleArrowDownClick = () => {
+    if (currentIndex < sections.length - 1) {
+      const nextIndex = currentIndex + 1
+      setCurrentIndex(nextIndex)
+      scrollToSection(sections[nextIndex])
+    }
+  }
 
   const handleArrowUpClick = () => {
+    if (currentIndex > 0) {
+      const nextIndex = currentIndex - 1
+      setCurrentIndex(nextIndex)
     scrollToSection('hero')
+      scrollToSection(sections[nextIndex])
+    }
   }
 
   const handleNavigationItemClick = (section?: HomeSection) => () => {
@@ -45,6 +62,10 @@ export const TopNavigation = () => {
     if (section) scrollToSection(section)
     setIsMobileMenuOpen(false)
   }
+
+  useEffect(() => {
+    setCurrentIndex(sections.findIndex((section) => currentSection === section))
+  }, [currentSection])
 
   return (
     <nav className="fixed z-10 flex w-screen items-center gap-4 bg-black p-4 px-8 text-sm text-gray-300 sm:gap-8 sm:px-16 sm:text-2xl">
@@ -87,12 +108,22 @@ export const TopNavigation = () => {
         />
       </div>
 
-      {scrollDirection === 'down' && (
-        <ArrowIcon direction="down" onClick={handleArrowDownClick} />
-      )}
-      {scrollDirection === 'up' && (
-        <ArrowIcon direction="up" onClick={handleArrowUpClick} />
-      )}
+      <ArrowIcon
+        className={cn(
+          'sm:bottom-32 sm:left-4 sm:block',
+          isFirstSection && 'pointer-events-none !animate-none !opacity-15'
+        )}
+        direction="up"
+        onClick={handleArrowUpClick}
+      />
+      <ArrowIcon
+        className={cn(
+          'sm:bottom-16 sm:left-4 sm:block',
+          isLastSection && 'pointer-events-none !animate-none !opacity-15'
+        )}
+        direction="down"
+        onClick={handleArrowDownClick}
+      />
     </nav>
   )
 }
