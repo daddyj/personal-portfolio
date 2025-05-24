@@ -72,26 +72,26 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
   }, [])
 
   // Generate new noise frame
-  const generateNoiseFrame = () => {
-    const canvas = noiseCanvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+  // const generateNoiseFrame = () => {
+  //   const canvas = noiseCanvasRef.current
+  //   if (!canvas) return
+  //   const ctx = canvas.getContext('2d')
+  //   if (!ctx) return
 
-    const imageData = ctx.createImageData(512, 512)
-    const data = imageData.data
+  //   const imageData = ctx.createImageData(512, 512)
+  //   const data = imageData.data
 
-    // Create more intense noise pattern
-    for (let i = 0; i < data.length; i += 4) {
-      if (Math.random() > 0.5) {
-        // Much higher density (was 0.7)
-        const intensity = Math.random() * 255
-        data[i] = data[i + 1] = data[i + 2] = intensity
-        data[i + 3] = Math.random() * 100 // Higher opacity (was 60)
-      }
-    }
-    ctx.putImageData(imageData, 0, 0)
-  }
+  //   // Create more intense noise pattern
+  //   for (let i = 0; i < data.length; i += 4) {
+  //     if (Math.random() > 0.5) {
+  //       // Much higher density (was 0.7)
+  //       const intensity = Math.random() * 255
+  //       data[i] = data[i + 1] = data[i + 2] = intensity
+  //       data[i + 3] = Math.random() * 100 // Higher opacity (was 60)
+  //     }
+  //   }
+  //   ctx.putImageData(imageData, 0, 0)
+  // }
 
   // Generate a glitch color with RGB splitting - reduced offset for subtler effect
   const generateGlitchColor = () => {
@@ -215,7 +215,7 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
       }
     }
 
-    const noiseUpdateInterval = setInterval(generateNoiseFrame, 50) // Update noise every 50ms
+    // const noiseUpdateInterval = setInterval(generateNoiseFrame, 50) // Update noise every 50ms
 
     // Animation loop
     const animate = (timestamp: number) => {
@@ -228,11 +228,8 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
       }
       lastFrameTimeRef.current = timestamp
 
-      // Use dynamic background color based on color scheme
-      ctx.fillStyle = isDarkMode.current
-        ? 'rgba(0, 0, 0, 0.15)'
-        : 'rgba(255, 255, 255, 0.15)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // Clear the entire canvas while maintaining transparency
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       // Update and draw effects
       const currentTime = Date.now()
@@ -333,7 +330,7 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
       window.removeEventListener('resize', handleResize)
       cancelAnimationFrame(animationFrameId)
       clearInterval(intervalId)
-      clearInterval(noiseUpdateInterval)
+      // clearInterval(noiseUpdateInterval)
     }
   }, [interval, gridSize, maxEffects])
 
