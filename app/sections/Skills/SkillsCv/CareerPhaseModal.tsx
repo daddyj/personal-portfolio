@@ -87,7 +87,7 @@ export const CareerPhaseModal = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="relative mx-4 max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-lg border-2 border-blue-500 bg-black p-6 shadow-xl hover:cursor-default"
+            className="relative mx-4 max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-lg border-2 border-blue-500 bg-black p-6 shadow-xl hover:cursor-default sm:py-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button

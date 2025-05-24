@@ -40,9 +40,9 @@ export const Card = ({
         <div className="rounded-xl p-2 text-blue-500 transition-colors group-hover:bg-blue-200 group-hover:text-blue-500 dark:text-blue-300">
           {Icon && <Icon className="h-8 w-8" />}
         </div>
-        <h3 className="text-xl text-white lg:text-4xl">{title}</h3>
+        <h3 className="text-xl text-white lg:text-3xl">{title}</h3>
       </div>
-      <div className="text-left text-gray-300 lg:text-xl">{children}</div>
+      <div className="text-left text-gray-300">{children}</div>
     </motion.div>
   )
 }

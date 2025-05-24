@@ -25,7 +25,7 @@ export const SkillsCv = () => {
       skillsKey="skillsCv"
       className="gap-8 px-2 sm:px-12 lg:grid-rows-[auto_1fr]"
     >
-      <GridItem className="col-span-10 px-10 lg:col-span-4 lg:px-0">
+      <GridItem className="col-span-10 px-10 sm:px-0 lg:col-span-4">
         <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
           Laufbahn
         </h2>
