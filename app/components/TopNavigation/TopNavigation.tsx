@@ -1,5 +1,5 @@
 import { Bars3Icon } from '@heroicons/react/24/outline'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { sections } from '@/app/lib/constants'
 import { HomeSection } from '@/app/lib/types'
@@ -35,23 +35,23 @@ export const TopNavigation = () => {
     isLastSection,
   })
 
-  const handleArrowDownClick = () => {
+  const handleArrowDownClick = useCallback(() => {
     if (currentIndex < sections.length - 1) {
       const nextIndex = currentIndex + 1
       setCurrentIndex(nextIndex)
       console.log('arrowDown', sections[nextIndex])
       scrollToSection(sections[nextIndex])
     }
-  }
+  }, [currentIndex])
 
-  const handleArrowUpClick = () => {
+  const handleArrowUpClick = useCallback(() => {
     if (currentIndex > 0) {
       const nextIndex = currentIndex - 1
       setCurrentIndex(nextIndex)
       console.log('arrowUp', sections[nextIndex])
       scrollToSection(sections[nextIndex])
     }
-  }
+  }, [currentIndex])
 
   const handleNavigationItemClick = (section?: HomeSection) => () => {
     if (section) scrollToSection(section)
