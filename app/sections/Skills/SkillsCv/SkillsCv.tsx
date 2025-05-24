@@ -23,14 +23,14 @@ export const SkillsCv = () => {
   return (
     <SkillsWrapper
       skillsKey="skillsCv"
-      className="gap-8 px-4 lg:grid-rows-[120px_60px]"
+      className="gap-8 px-2 sm:px-12 lg:grid-rows-[auto_1fr]"
     >
-      <GridItem className="col-span-10 px-8 lg:col-span-4">
-        <h2 className="text-4xl font-bold lg:text-8xl lg:font-normal">
+      <GridItem className="col-span-10 px-10 lg:col-span-4 lg:px-0">
+        <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
           Laufbahn
         </h2>
       </GridItem>
-      <GridItem className="col-span-10 px-8 lg:col-span-6">
+      <GridItem className="col-span-10 px-10 sm:px-0 lg:col-span-6">
         <p className="mb-8 text-xl lg:text-2xl">
           Mein beruflicher Werdegang ist geprägt durch eine Mischung aus
           Freelance- und Angestelltenverhältnissen, was mir eine breite
@@ -188,42 +188,6 @@ export const SkillsCv = () => {
           </div>
         </div>
       </GridItem>
-
-      {/* <GridItem className="col-span-10">
-      <div className="flex flex-col justify-center gap-8 lg:flex-row">
-        <a
-          href="/docs/acun_guersoy_cv_2025.pdf"
-          target="_blank"
-          className="group flex items-center gap-4 transition-all hover:border-blue-500"
-        >
-          <DocumentIcon className="size-8 text-blue-500 transition-transform group-hover:scale-110" />
-          <div>
-            <p className="font-bold text-white">Lebenslauf als PDF</p>
-            <p className="text-sm text-gray-300">
-              Detaillierte Version herunterladen
-            </p>
-          </div>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/acun-g%C3%BCrsoy-83b8ab139/"
-          target="_blank"
-          className="group flex items-center gap-4 transition-all hover:border-blue-500"
-        >
-          <div className="relative size-24">
-            <Image
-              fill
-              src="/logos/linkedin.svg"
-              alt="LinkedIn Logo"
-              className="object-contain"
-            />
-          </div>
-          <div>
-            <p className="font-bold text-white">LinkedIn Profil</p>
-            <p className="text-sm text-gray-300">Mein berufliches Netzwerk</p>
-          </div>
-        </a>
-      </div>
-    </GridItem> */}
     </SkillsWrapper>
   )
 }

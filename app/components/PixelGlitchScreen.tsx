@@ -138,7 +138,7 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const ctx = canvas.getContext('2d', { alpha: false }) // Disable alpha for better performance
+    const ctx = canvas.getContext('2d', { alpha: true }) // Disable alpha for better performance
     if (!ctx) return
 
     // Function to update canvas size
@@ -342,7 +342,7 @@ export const PixelGlitchScreen: React.FC<PixelGlitchScreenProps> = ({
   return (
     <div
       ref={ref}
-      className={`fixed top-0 left-0 min-h-full w-full ${className ?? ''}`}
+      className={`absolute top-0 left-0 min-h-full w-full ${className ?? ''}`}
     >
       <canvas
         ref={canvasRef}

@@ -18,17 +18,15 @@ export const Hero = () => {
 
   return (
     <>
-      <PixelGlitchScreen
-        className="h-screen w-screen"
-        interval={42}
-        gridSize={80}
-      />
       <Grid
         ref={gridWrapper}
         id="hero"
-        className="rows-[auto_auto_auto] h-screen bg-transparent"
+        className="rows-[auto_auto_auto] h-screen"
       >
-        <GridItem className="col-span-10 flex items-center justify-center lg:justify-start">
+        <PixelGlitchScreen interval={42} gridSize={80} />
+        <PixelGlitchScreen interval={420} gridSize={30} />
+        <PixelGlitchScreen interval={840} gridSize={20} />
+        <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex items-center justify-center lg:justify-start">
           <div
             className="h-40 w-40 rounded-full bg-blue-500 bg-center bg-no-repeat lg:h-56 lg:w-56"
             style={{
@@ -47,7 +45,7 @@ export const Hero = () => {
         </GridItem>
         <GridItem className="col-span-0 lg:col-span-2" />
 
-        <GridItem className="col-span-10 flex items-end justify-end">
+        <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-640 col-span-10 flex items-end justify-end">
           <div
             className="h-40 w-40 rounded-full bg-center bg-no-repeat lg:my-0 lg:h-64 lg:w-64"
             style={{

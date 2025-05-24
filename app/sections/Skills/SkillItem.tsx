@@ -41,7 +41,7 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
         perspective: 1200,
         transformOrigin: 'center center',
       }}
-      className="group relative flex min-h-48 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 p-2 px-6 py-8 shadow-sm"
+      className="group relative flex h-40 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 px-4 py-6 shadow-sm"
       title={skill.name}
     >
       {/* Dynamic light effect overlay */}

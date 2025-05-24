@@ -125,26 +125,26 @@ export const SkillsTech = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 h-screen w-screen"
-      >
-        <PixelGlitchScreen interval={420} gridSize={80} />
-      </motion.div>
       <SkillsWrapper
         skillsKey="skillsTech"
         ref={skillsWrapperRef}
-        className="z-1 grid-rows-[auto_1fr] bg-transparent"
+        className="relative grid-rows-[auto_1fr]"
       >
-        <GridItem className="col-span-10 lg:col-span-3">
+        <motion.div
+          initial={{ display: 'none' }}
+          animate={isInView ? { display: 'block' } : { display: 'none' }}
+          transition={{ duration: 0.1 }}
+          className="absolute top-0 left-0 h-full w-full"
+        >
+          <PixelGlitchScreen interval={240} gridSize={80} />
+        </motion.div>
+        <GridItem className="z-1 col-span-10 lg:col-span-3">
           <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
             Smart entwickeln.
           </h2>
         </GridItem>
         <GridItem className="col-span-0 lg:col-span-1" />
-        <GridItem className="col-span-10 lg:col-span-6">
+        <GridItem className="z-1 col-span-10 lg:col-span-6">
           <p className="text-xl lg:text-2xl">
             Ich habe viele Technologien ausprobiert und meinen Fokus bewusst auf
             einen modernen Stack rund um React gelegt – für wiederverwendbare
@@ -153,7 +153,7 @@ export const SkillsTech = () => {
             einfach dazu.
           </p>
         </GridItem>
-        <GridItem className="col-span-10 mt-8 flex flex-col gap-4">
+        <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex flex-col gap-4">
           <div className="flex justify-center gap-4">
             <button
               onClick={() => setFilter('all')}
@@ -186,7 +186,7 @@ export const SkillsTech = () => {
               Backend
             </button>
           </div>
-          <div className="grid grid-cols-2 gap-4 px-4 md:grid-cols-4 lg:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
             {filteredSkills.map((skill, index) => (
               <SkillItem key={skill.name} skill={skill} index={index} />
             ))}
