@@ -23,7 +23,7 @@ export const SkillsCv = () => {
   return (
     <SkillsWrapper
       skillsKey="skillsCv"
-      className="px-4 lg:grid-rows-[120px_60px]"
+      className="gap-8 px-4 lg:grid-rows-[120px_60px]"
     >
       <GridItem className="col-span-10 px-8 lg:col-span-4">
         <h2 className="text-4xl font-bold lg:text-8xl lg:font-normal">
