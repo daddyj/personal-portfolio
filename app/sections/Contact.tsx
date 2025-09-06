@@ -34,7 +34,7 @@ export const Contact = () => {
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-440 col-span-10 flex items-center justify-center sm:col-span-5">
           <a
             href="mailto:acun.guersoy@gmail.com"
-            className="group text-md flex min-w-40 items-center justify-center gap-2 border-b-2 uppercase transition-all duration-210 hover:rotate-2 hover:border-2 hover:bg-black hover:p-16 hover:text-xl hover:text-blue-500 lg:text-6xl lg:hover:text-7xl"
+            className="group text-md flex min-w-40 items-center justify-center gap-2 border-b-2 uppercase transition-all duration-210 hover:-rotate-2 hover:border-2 hover:bg-black hover:p-16 hover:text-xl hover:text-blue-500 lg:text-6xl lg:hover:text-7xl"
           >
             <div className="block transition-opacity duration-210 group-hover:hidden">
               <EnvelopeIcon className="size-12 lg:size-24" />
