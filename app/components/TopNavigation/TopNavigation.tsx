@@ -73,8 +73,10 @@ export const TopNavigation = () => {
 
       <div className="flex">
         <div className="flex flex-1 items-center gap-2 rounded-full border-1 p-2 sm:px-4">
-          <div className="flex h-4 w-4 animate-pulse rounded-full bg-lime-500" />
-          <p className="text-center text-xs sm:text-sm">Offen für Projekte!</p>
+          <div className="flex h-4 w-4 animate-pulse rounded-full bg-orange-500" />
+          <p className="text-center text-xs sm:text-sm">
+            Teilzeit offen für Projekte!
+          </p>
         </div>
       </div>
 
