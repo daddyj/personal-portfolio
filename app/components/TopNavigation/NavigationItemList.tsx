@@ -1,3 +1,5 @@
+import { usePathname } from 'next/navigation'
+
 import { HomeSection } from '@/app/lib/types'
 
 import { NavigationItemProps, TopNavigationItem } from './TopNavigationItem'
@@ -10,6 +12,8 @@ export const NavigationItemList = ({
   currentSection,
   onClick,
 }: NavigationItemListProps) => {
+  const pathname = usePathname()
+
   return (
     <>
       <TopNavigationItem
@@ -37,6 +41,11 @@ export const NavigationItemList = ({
         label="kontakt"
         onClick={onClick}
         section="contact"
+      />
+      <TopNavigationItem
+        isSelected={pathname.includes('impressum')}
+        label="impressum"
+        onClick={onClick}
       />
     </>
   )
