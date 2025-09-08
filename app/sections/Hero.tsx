@@ -23,9 +23,21 @@ export const Hero = () => {
         id="hero"
         className="rows-[auto_auto_auto] h-screen"
       >
-        <PixelGlitchScreen interval={42} gridSize={80} />
-        <PixelGlitchScreen interval={420} gridSize={30} />
-        <PixelGlitchScreen interval={840} gridSize={20} />
+        <PixelGlitchScreen
+          interval={42}
+          gridSize={80}
+          className="fixed top-0 right-0 bottom-0 left-0 opacity-40 lg:absolute lg:opacity-100"
+        />
+        <PixelGlitchScreen
+          interval={420}
+          gridSize={30}
+          className="fixed top-0 right-0 bottom-0 left-0 opacity-40 lg:absolute lg:opacity-100"
+        />
+        <PixelGlitchScreen
+          interval={840}
+          gridSize={20}
+          className="fixed top-0 right-0 bottom-0 left-0 opacity-40 lg:absolute lg:opacity-100"
+        />
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex items-center justify-center lg:justify-start">
           <div
             className="h-40 w-40 rounded-full bg-blue-500 bg-center bg-no-repeat lg:h-56 lg:w-56"
