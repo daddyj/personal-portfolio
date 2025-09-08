@@ -1,0 +1,103 @@
+.swiperSkillsCv.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiperSkillsCv .swiper-slide {
+  font-size: 18px;
+  display: flex;
+}
+
+.swiperSkillsCv .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiperSkillsCv .swiper-slide {
+  width: 24%;
+}
+
+.swiperSkillsCv .swiper-slide:nth-child(2n) {
+  width: 50%;
+}
+
+.swiperSkillsCv .swiper-slide:nth-child(3n) {
+  width: 26%;
+}
+
+.swiperSkillsCv .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: var(--color-black);
+  opacity: 1;
+  background: var(--color-gray-200);
+}
+
+.swiperSkillsCv .swiper-pagination-bullet-active {
+  color: var(--color-white);
+  background: var(--color-blue-500);
+}
+
+.swiperSkillsCvTechnologies.swiper {
+  width: 240px;
+  height: 240px;
+  padding: 4px;
+}
+
+.swiperSkillsCvTechnologies .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--color-black);
+  border: 1px solid var(--color-white);
+}
+
+/* .swiperSkillsCvTechnologies .swiper-slide:nth-child(1n) {
+  background-color: rgb(206, 17, 17);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(2n) {
+  background-color: rgb(0, 140, 255);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(3n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(4n) {
+  background-color: rgb(211, 122, 7);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(5n) {
+  background-color: rgb(118, 163, 12);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(6n) {
+  background-color: rgb(180, 10, 47);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(7n) {
+  background-color: rgb(35, 99, 19);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(8n) {
+  background-color: rgb(0, 68, 255);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(9n) {
+  background-color: rgb(218, 12, 218);
+}
+
+.swiperSkillsCvTechnologies .swiper-slide:nth-child(10n) {
+  background-color: rgb(54, 94, 77);
+} */
