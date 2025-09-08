@@ -74,7 +74,7 @@ export const SkillsCv = () => {
                   transition={{ duration: 0.2 }}
                   className="flex flex-col justify-between sm:py-8"
                 >
-                  <div className="flex flex-1 gap-8">
+                  <div className="flex flex-1 gap-8 pr-16">
                     <div className="flex-1">
                       <p className="text-2xl lg:text-6xl lg:font-light">
                         2008 - 2011
@@ -172,7 +172,7 @@ export const SkillsCv = () => {
                   transition={{ duration: 0.2 }}
                   className="flex flex-col justify-between gap-16 sm:py-8"
                 >
-                  <div className="flex flex-1 gap-8">
+                  <div className="flex flex-1 gap-8 pr-16">
                     <div className="flex-1">
                       <p className="text-2xl lg:text-6xl lg:font-light">
                         2011 - 2025
@@ -218,7 +218,7 @@ export const SkillsCv = () => {
                         </SwiperSlide>
                       </Swiper>
                     </div>
-                    <div className="flex flex-col items-center gap-8">
+                    <div className="flex flex-col items-center gap-16">
                       <h4 className="text-6xl font-normal">Kundenbenefits</h4>
                       <Swiper
                         effect="cards"
@@ -290,7 +290,7 @@ export const SkillsCv = () => {
                   transition={{ duration: 0.2 }}
                   className="flex flex-col justify-between gap-16 sm:py-8"
                 >
-                  <div className="flex flex-1 gap-8">
+                  <div className="flex flex-1 gap-8 pr-16">
                     <div className="flex-1">
                       <p className="text-2xl lg:text-6xl lg:font-light">
                         2025 - heute
@@ -306,7 +306,7 @@ export const SkillsCv = () => {
                     </div>
                   </div>
                   <div className="flex flex-1 justify-around">
-                    <div className="flex flex-col items-center gap-8">
+                    <div className="flex flex-col items-center gap-16">
                       <h4 className="text-6xl font-normal">Technologien</h4>
                       <Swiper
                         effect="cards"
@@ -343,7 +343,7 @@ export const SkillsCv = () => {
                         </SwiperSlide>
                       </Swiper>
                     </div>
-                    <div className="flex flex-col items-center gap-8">
+                    <div className="flex flex-col items-center gap-16">
                       <h4 className="text-6xl font-normal">Kundenbenefits</h4>
                       <Swiper
                         effect="cards"

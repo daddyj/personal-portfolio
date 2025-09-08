@@ -44,12 +44,13 @@ export const Mindset = () => {
     <Grid id="mindset" ref={gridWrapper} className="grid-rows-[1fr] gap-8">
       <GridItem className="col-span-10 hidden gap-8 lg:flex">
         <Swiper
+          cssMode
           speed={600}
           parallax={true}
           pagination={{
             clickable: true,
           }}
-          navigation={true}
+          navigation
           modules={[Parallax, Pagination, Navigation]}
           className="swiperMindset"
         >
