@@ -57,6 +57,7 @@ export const SkillsCv = () => {
           Laufbahn
         </h2>
         <Swiper
+          rewind
           slidesPerView={1}
           cssMode
           navigation
