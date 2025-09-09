@@ -41,7 +41,7 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
         perspective: 1200,
         transformOrigin: 'center center',
       }}
-      className="group relative flex h-40 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 via-blue-100 to-indigo-100 px-4 py-6 shadow-sm transition-all lg:transition-none"
+      className="group relative flex h-40 items-center justify-center rounded-lg bg-blue-500/10 bg-gradient-to-br px-4 py-6 shadow-sm transition-all lg:transition-none"
       title={skill.name}
     >
       {/* Dynamic light effect overlay */}
@@ -82,7 +82,7 @@ export const SkillItem = ({ skill, index }: SkillItemProps) => {
             <skill.Icon className="h-16 w-16" />
           </div>
         ) : (
-          <span className="text-center text-lg font-semibold text-gray-700">
+          <span className="text-center text-lg font-normal text-white">
             {skill.name}
           </span>
         )}

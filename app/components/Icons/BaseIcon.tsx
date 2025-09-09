@@ -25,7 +25,7 @@ export function BaseIcon({
       >
         {children}
       </svg>
-      <p className="text-center text-sm font-semibold">{name}</p>
+      <p className="text-center text-sm font-normal text-white">{name}</p>
     </div>
   )
 }
