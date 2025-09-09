@@ -1,3 +1,7 @@
+.swiperProjects {
+  --swiper-pagination-bullet-inactive-color: var(--color-white);
+}
+
 .swiperProjects.swiper {
   width: 100%;
   height: 100%;
@@ -65,4 +69,8 @@
   stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
+}
+
+.swiperProject .swiper-slide {
+  border: none;
 }

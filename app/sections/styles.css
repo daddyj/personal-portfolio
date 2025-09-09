@@ -8,6 +8,7 @@
 .swiperMindset {
   --swiper-navigation-color: var(--color-blue-500);
   --swiper-pagination-color: var(--color-blue-500);
+  --swiper-pagination-bullet-inactive-color: var(--color-black);
 }
 
 .swiperMindset .swiper-slide {
