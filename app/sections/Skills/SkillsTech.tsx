@@ -10,14 +10,21 @@ import {
   ReactNative,
   Tamagui,
 } from '@/app/components/Icons'
+import { Aws } from '@/app/components/Icons/Aws'
+import { ChatGPT } from '@/app/components/Icons/ChatGPT'
+import { Claude } from '@/app/components/Icons/Claude'
 import { Css } from '@/app/components/Icons/CSS'
+import { CursorAi } from '@/app/components/Icons/CursorAi'
 import { Git } from '@/app/components/Icons/Git'
 import { Github } from '@/app/components/Icons/Github'
 import { Html } from '@/app/components/Icons/Html'
 import { Javascript } from '@/app/components/Icons/Javascript'
 import { MaterialUi } from '@/app/components/Icons/MaterialUi'
+import { MySQL } from '@/app/components/Icons/MySQL'
+import { PostgreSQL } from '@/app/components/Icons/PostgreSQL'
 import { TailwindCss } from '@/app/components/Icons/TailwindCss'
 import { Typescript } from '@/app/components/Icons/Typescript'
+import { Vscode } from '@/app/components/Icons/Vscode'
 import { PixelGlitchScreen } from '@/app/components/PixelGlitchScreen'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
@@ -25,7 +32,7 @@ import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 import { SkillItem } from './SkillItem'
 import { SkillsWrapper } from './SkillsWrapper'
 
-type TechCategory = 'frontend' | 'backend' | 'tool'
+type TechCategory = 'frontend' | 'backend' | 'tool' | 'devops'
 
 interface SkillWithIcon {
   name: string
@@ -55,9 +62,6 @@ const skills: Skill[] = [
     hasIcon: true,
     categories: ['frontend', 'backend'],
   },
-  { name: 'HTML', Icon: Html, hasIcon: true, categories: ['frontend'] },
-  { name: 'CSS / SCSS', Icon: Css, hasIcon: true, categories: ['frontend'] },
-  { name: 'Canvas', Icon: Canvas, hasIcon: true, categories: ['frontend'] },
   { name: 'React', Icon: React, hasIcon: true, categories: ['frontend'] },
   {
     name: 'React-Native',
@@ -70,6 +74,18 @@ const skills: Skill[] = [
     Icon: Nextjs,
     hasIcon: true,
     categories: ['frontend', 'backend'],
+  },
+  {
+    name: 'ChatGPT',
+    Icon: ChatGPT,
+    hasIcon: true,
+    categories: ['tool'],
+  },
+  {
+    name: 'Claude',
+    Icon: Claude,
+    hasIcon: true,
+    categories: ['tool'],
   },
   {
     name: 'Tailwind CSS',
@@ -94,8 +110,29 @@ const skills: Skill[] = [
     name: 'Google Cloud',
     Icon: GCloud,
     hasIcon: true,
+    categories: ['devops'],
+  },
+  {
+    name: 'AWS',
+    Icon: Aws,
+    hasIcon: true,
+    categories: ['devops'],
+  },
+  {
+    name: 'PostgreSQL',
+    Icon: PostgreSQL,
+    hasIcon: true,
     categories: ['backend'],
   },
+  {
+    name: 'MySQL',
+    Icon: MySQL,
+    hasIcon: true,
+    categories: ['backend'],
+  },
+  { name: 'HTML', Icon: Html, hasIcon: true, categories: ['frontend'] },
+  { name: 'CSS / SCSS', Icon: Css, hasIcon: true, categories: ['frontend'] },
+  { name: 'Canvas', Icon: Canvas, hasIcon: true, categories: ['frontend'] },
   {
     name: 'Git',
     Icon: Git,
@@ -108,9 +145,21 @@ const skills: Skill[] = [
     hasIcon: true,
     categories: ['tool'],
   },
+  {
+    name: 'Vscode',
+    Icon: Vscode,
+    hasIcon: true,
+    categories: ['tool'],
+  },
+  {
+    name: 'CursorAi',
+    Icon: CursorAi,
+    hasIcon: true,
+    categories: ['tool'],
+  },
 ]
 
-type FilterCategory = 'all' | 'frontend' | 'backend'
+type FilterCategory = 'all' | 'frontend' | 'backend' | 'devops' | 'tool'
 
 export const SkillsTech = () => {
   const [filter, setFilter] = useState<FilterCategory>('all')
@@ -148,7 +197,9 @@ export const SkillsTech = () => {
             einen modernen Stack rund um React gelegt – für wiederverwendbare
             Lösungen im Web und auf mobilen Plattformen. Neues auszuprobieren
             und mich von Kolleg:innen inspirieren zu lassen, gehört für mich
-            einfach dazu.
+            weiterhin dazu - never stop learning! Auch DevOps Awareness ist für
+            mich wichtig. Und ja klar: Auch ich beschleunige meine tägliche
+            Arbeit mit Hilfe von AI Tools.
           </p>
         </GridItem>
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex flex-col gap-4">
@@ -182,6 +233,26 @@ export const SkillsTech = () => {
               }`}
             >
               Backend
+            </button>
+            <button
+              onClick={() => setFilter('devops')}
+              className={`rounded-full px-6 py-2 transition-all ${
+                filter === 'devops'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+              }`}
+            >
+              DevOps
+            </button>
+            <button
+              onClick={() => setFilter('tool')}
+              className={`rounded-full px-6 py-2 transition-all ${
+                filter === 'tool'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+              }`}
+            >
+              Tools
             </button>
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
