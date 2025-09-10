@@ -1,7 +1,7 @@
 import { BaseIcon } from './BaseIcon'
 import { IconProps } from './types'
 
-export function Nextjs(props: IconProps) {
+export function NextJs(props: IconProps) {
   return (
     <BaseIcon
       href="https://nextjs.org"

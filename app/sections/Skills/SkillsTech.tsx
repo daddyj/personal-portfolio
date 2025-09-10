@@ -5,7 +5,7 @@ import {
   Canvas,
   Firebase,
   GCloud,
-  Nextjs,
+  NextJs,
   React,
   ReactNative,
   Tamagui,
@@ -71,7 +71,7 @@ const skills: Skill[] = [
   },
   {
     name: 'NextJS',
-    Icon: Nextjs,
+    Icon: NextJs,
     hasIcon: true,
     categories: ['frontend', 'backend'],
   },
