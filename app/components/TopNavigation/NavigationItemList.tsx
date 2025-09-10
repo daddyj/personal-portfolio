@@ -34,7 +34,7 @@ export const NavigationItemList = ({
         }
         label="kompetenzen"
         onClick={onClick}
-        section="skillsTech"
+        section="skillsCv"
       />
       <TopNavigationItem
         isSelected={currentSection === 'contact'}

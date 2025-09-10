@@ -3,8 +3,9 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 
+import Atropos from 'atropos'
 import Image from 'next/image'
-import { JSX, useRef } from 'react'
+import { JSX, useEffect, useRef } from 'react'
 import { Autoplay, EffectCards, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -37,15 +38,24 @@ export const Project = ({
   //   progressContent.current?.textContent = `${Math.ceil(time / 1000)}s`
   // }
 
+  useEffect(() => {
+    Atropos({
+      el: `.project-${projectId}`,
+      activeOffset: 5,
+      shadowScale: 1.05,
+      rotateYMax: 1,
+    })
+  })
+
   return (
     <div
-      className={`atropos project-${projectId}`}
+      className={`atropos project-${projectId} overflow-hidden rounded-2xl`}
       style={{ height: '100%', width: '100%' }}
     >
       <div className="atropos-scale">
         <div className="atropos-rotate">
           <div className="atropos-inner">
-            <div className="flex h-full gap-16 rounded-2xl bg-blue-500/10 px-16 py-8">
+            <div className="flex h-full gap-16 border-1 border-blue-500/10 bg-black/80 px-16 py-8">
               <div className="flex h-full flex-1 flex-col gap-4">
                 <h3 className="text-6xl font-thin">{title}</h3>
                 <h4 className="text-2xl font-normal">Kunde: {customer}</h4>
@@ -62,7 +72,9 @@ export const Project = ({
                   >
                     {technologies.map((technology) => (
                       <SwiperSlide key={technology.key}>
-                        {technology}
+                        <div className="h-full w-full overflow-hidden rounded-xl">
+                          {technology}
+                        </div>
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -74,7 +86,7 @@ export const Project = ({
                   spaceBetween={30}
                   centeredSlides={false}
                   autoplay={{
-                    delay: 2500,
+                    delay: 3000,
                     disableOnInteraction: true,
                   }}
                   pagination
@@ -90,7 +102,7 @@ export const Project = ({
                           alt={imageUrl}
                           width={1920}
                           height={1080}
-                          className="h-full w-full"
+                          className="h-full w-full rounded-2xl"
                         />
                       </div>
                     </SwiperSlide>

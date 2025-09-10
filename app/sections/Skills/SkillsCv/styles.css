@@ -46,58 +46,22 @@
 
 .swiperSkillsCvTechnologies.swiper {
   width: 240px;
-  height: 240px;
-  padding: 4px;
+  height: 320px;
 }
 
 .swiperSkillsCvTechnologies .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 18px;
+  border-radius: var(--radius-xl);
   font-size: 22px;
   font-weight: bold;
-  color: #fff;
+  color: var(--color-blue-200);
+  padding: 16px;
   background-color: var(--color-black);
-  border: 1px solid var(--color-white);
+  border: 2px solid var(--color-blue-200);
 }
 
-/* .swiperSkillsCvTechnologies .swiper-slide:nth-child(1n) {
-  background-color: rgb(206, 17, 17);
+.swiperSkillsCvTechnologies .swiper-slide svg {
+  border-radius: 16px;
 }
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(2n) {
-  background-color: rgb(0, 140, 255);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(3n) {
-  background-color: rgb(10, 184, 111);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(4n) {
-  background-color: rgb(211, 122, 7);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(5n) {
-  background-color: rgb(118, 163, 12);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(6n) {
-  background-color: rgb(180, 10, 47);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(7n) {
-  background-color: rgb(35, 99, 19);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(8n) {
-  background-color: rgb(0, 68, 255);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(9n) {
-  background-color: rgb(218, 12, 218);
-}
-
-.swiperSkillsCvTechnologies .swiper-slide:nth-child(10n) {
-  background-color: rgb(54, 94, 77);
-} */

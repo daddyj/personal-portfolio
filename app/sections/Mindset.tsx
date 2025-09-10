@@ -66,35 +66,6 @@ export const Mindset = () => {
           ></div>
           <SwiperSlide>
             <motion.h2
-              data-swiper-parallax="0"
-              variants={headingVariants}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-              className="text-4xl lg:text-8xl"
-            >
-              Agil denken
-            </motion.h2>
-            <div className="title" data-swiper-parallax="-750">
-              <Brain className="h-16 w-16" />
-            </div>
-            <div className="text" data-swiper-parallax="-250">
-              <p>
-                Ich bin seit über 15 Jahren als Softwareentwickler tätig –
-                sowohl im Web- als auch im App-Bereich, in agilen Teams und mit
-                crossfunktionalen Rollen. In der Zeit habe ich gelernt, dass
-                Veränderungen und neue Anforderungen kein Störfaktor, sondern
-                Teil des Entwicklungsprozesses sind. Mit Methoden wie SCRUM,
-                Kanban oder auch OKRs arbeite ich strukturiert,
-                lösungsorientiert und mit dem Blick dafür, was dem Team wirklich
-                weiterhilft. Dabei habe ich nie aufgehört, neue Ansätze
-                auszuprobieren oder mich von Kolleg:innen inspirieren zu lassen
-                – denn das gehört für mich genauso zu einer guten
-                Entwicklerkultur wie sauberer Code.
-              </p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <motion.h2
               variants={headingVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
@@ -106,7 +77,7 @@ export const Mindset = () => {
               <MessageSquare className="h-16 w-16" />
             </div>
             <div className="text" data-swiper-parallax="-250">
-              <p>
+              <p className="leading-6">
                 Ich lege viel Wert auf einen methodischen und gleichzeitig
                 menschlichen Ansatz in der Zusammenarbeit. Gute Kommunikation
                 bedeutet für mich, dass technische Zusammenhänge so erklärt
@@ -135,18 +106,52 @@ export const Mindset = () => {
               <LayoutPanelTop className="h-16 w-16" />
             </div>
             <div className="text" data-swiper-parallax="-250">
-              <p>
-                Ich arbeite mit einem modernen Stack rund um React, React
-                Native, Next.js, Firebase und Tailwind – bewusst gewählt, weil
-                er schnelle Ergebnisse liefert, sauber skalierbar ist und
-                perfekt mit aktuellen Trends wie AI-assisted Development
-                harmoniert. Gerade durch Tools wie Copilot und automatisierte
-                Tests wird klar: guter Code ist kein Selbstzweck, sondern
-                Teamarbeit auf Augenhöhe. Ich schreibe verständlich,
-                wiederverwendbar und mit Blick auf das große Ganze – für
-                Nutzer:innen, Entwickler:innen und alle, die das Produkt
-                langfristig betreuen wollen. Und ja, auch durch fremden (AI-)
-                Code kann ich mich durcharbeiten und Probleme lösen.
+              <p className="leading-6">
+                Ich arbeite mit einem modernen Stack rund um React – das habe
+                ich damals bewusst gewählt, weil es mir schnelle Ergebnisse
+                liefert, sauber skalierbar ist und perfekt mit aktuellen Trends
+                wie AI-assisted Development harmoniert. Mit React und
+                React-Native kann ich Codebasen erstellen die sowohl für Web als
+                auch für Mobile genutzt werden können. React-Native ermöglicht
+                mir auch die App in IOS und Android zu veröffentlichen. Gerade
+                durch Tools wie Github-Copilot / Cursor und automatisierte Tests
+                wird klar: guter Code ist kein Selbstzweck, sondern Teamarbeit
+                auf Augenhöhe. Ich schreibe verständlich, wiederverwendbar und
+                mit Blick auf das große Ganze – für Nutzer:innen,
+                Entwickler:innen und alle, die das Produkt langfristig betreuen
+                wollen. Und ja, auch durch fremden (AI-Vibe) Code kann ich mich
+                durcharbeiten und Probleme lösen, denn den Blick auf das große
+                Ganze schafft die Erfahrung des Menschen.
+              </p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <motion.h2
+              data-swiper-parallax="0"
+              variants={headingVariants}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              className="text-4xl lg:text-8xl"
+            >
+              Agil denken
+            </motion.h2>
+            <div className="title" data-swiper-parallax="-750">
+              <Brain className="h-16 w-16" />
+            </div>
+            <div className="text" data-swiper-parallax="-250">
+              <p className="leading-6">
+                Ich bin seit über 15 Jahren als Softwareentwickler tätig –
+                sowohl im Web- als auch im App-Bereich, in agilen Teams und mit
+                crossfunktionalen Rollen. In der Zeit habe ich gelernt, dass
+                Veränderungen und neue Anforderungen kein Störfaktor, sondern
+                Teil des Entwicklungsprozesses sind. Mit Methoden wie Lean,
+                SCRUM, Kanban oder auch OKRs arbeite ich strukturiert,
+                lösungsorientiert und mit dem Blick dafür, was dem Team wirklich
+                weiterhilft. Dabei habe ich nie aufgehört, neue Ansätze
+                auszuprobieren oder mich von Kolleg:innen inspirieren zu lassen
+                – denn für mich gilt:
+                <br />
+                Never stop learning, inspect and adapt.
               </p>
             </div>
           </SwiperSlide>
