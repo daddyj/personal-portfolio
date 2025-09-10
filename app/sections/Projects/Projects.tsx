@@ -79,7 +79,7 @@ export const Projects = () => {
           <SwiperSlide>
             <Project
               hasAi
-              url="https://the-answer.org/myla-for-school"
+              url="https://the-answer.org"
               projectId="2"
               title="Myla"
               customer="The Answer GmbH"
@@ -100,10 +100,10 @@ export const Projects = () => {
             <Project
               projectId="3"
               title="Queer*link"
-              customer="Queer*link e.V."
+              customer="Queer*link"
               url="https://www.queerlink.org/"
-              description="Die Website Queer*link e.V. ist eine Plattform für Queer* Menschen und ihre Angehörigen. Sie bietet Informationen, Ressourcen und eine Community für alle, die sich in der LGBTQ+ Community engagieren."
-              role="Webentwickler für Queer*link e.V."
+              description="Queer*Link ist eine Non-Profit Organisation, die sich für die psychosoziale Gesundheit und das Wohlbefinden von LGBTQIA+-Personen und deren Angehörige einsetzt. Ziel hier ist es eine digitale Präsenz zu schaffen und BLABLABLA."
+              role="Webentwickler für Queer*link"
               technologies={[
                 <React key="react" />,
                 <NextJs key="nextjs" />,
