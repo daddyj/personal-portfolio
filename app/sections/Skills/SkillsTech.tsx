@@ -193,13 +193,13 @@ export const SkillsTech = () => {
         <GridItem className="col-span-0 lg:col-span-1" />
         <GridItem className="z-1 col-span-10 lg:col-span-6">
           <p className="text-xl lg:text-2xl">
-            Ich habe viele Technologien ausprobiert und meinen Fokus bewusst auf
-            einen modernen Stack rund um React gelegt – für wiederverwendbare
-            Lösungen im Web und auf mobilen Plattformen. Neues auszuprobieren
-            und mich von Kolleg:innen inspirieren zu lassen, gehört für mich
-            weiterhin dazu - never stop learning! Auch DevOps Awareness ist für
-            mich wichtig. Und ja klar: Auch ich beschleunige meine tägliche
-            Arbeit mit Hilfe von AI Tools.
+            Ich habe meinen Fokus auf einen modernen Stack rund um React gelegt
+            – so biete ich wiederverwendbare Lösungen im Web und auf mobilen
+            Plattformen. Durch meine Erfahrungen in DevOps Tätigkeiten und
+            Zusammenarbeiten mit ehemaligen Kollegen kann ich das Produkt von
+            der Entwicklung bis zur Auslieferung vollständig betreuen.
+            Zusätzlich zu meiner Erfahrung nutze ich moderne Tools mit KI für
+            eine effiziente Bearbeitung der Themen.
           </p>
         </GridItem>
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex flex-col gap-4">

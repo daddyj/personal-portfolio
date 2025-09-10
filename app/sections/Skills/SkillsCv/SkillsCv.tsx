@@ -7,6 +7,17 @@ import './styles.css'
 import { useEffect, useRef } from 'react'
 
 import { GridItem } from '@/app/components/Grid'
+import { Firebase, Tamagui } from '@/app/components/Icons'
+import { Aws } from '@/app/components/Icons/Aws'
+import { Cypress } from '@/app/components/Icons/Cypress'
+import { GCloud } from '@/app/components/Icons/GCloud'
+import { Javascript } from '@/app/components/Icons/Javascript'
+import { MaterialUi } from '@/app/components/Icons/MaterialUi'
+import { NextJs } from '@/app/components/Icons/Nextjs'
+import { Php } from '@/app/components/Icons/Php'
+import { React } from '@/app/components/Icons/React'
+import { ReactNative } from '@/app/components/Icons/ReactNative'
+import { Typescript } from '@/app/components/Icons/Typescript'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
@@ -50,20 +61,20 @@ export const SkillsCv = () => {
             </p>
             <div className="flex flex-wrap gap-2">
               {[
-                'React.js',
-                'Next.js',
-                'React Native',
-                'AWS',
-                'GCP',
-                'Firebase',
-                'Cypress',
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
-                >
-                  {tech}
-                </span>
+                <Javascript key="javascript" />,
+                <Typescript key="typescript" />,
+                <React key="react" />,
+                <NextJs key="nextjs" />,
+                <ReactNative key="reactnative" />,
+                <Aws key="aws" />,
+                <GCloud key="gcloud" />,
+                <Firebase key="firebase" />,
+                <Cypress key="cypress" />,
+                <Php key="php" />,
+                <Tamagui key="tamagui" />,
+                <MaterialUi key="materialui" />,
+              ].map((technology) => (
+                <div key={technology.key}>{technology}</div>
               ))}
             </div>
           </div>
@@ -82,20 +93,32 @@ export const SkillsCv = () => {
               Technische Leitung und Entwickler der App Myla. Fokus auf
               KI-gestützte Bildungstechnologie.
             </p>
-            <div className="flex flex-wrap gap-2">
-              {[
-                'Mobile Development',
-                'Agile Methods',
-                'Project Management',
-                'Software Design',
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  <Javascript key="javascript" />,
+                  <Typescript key="typescript" />,
+                  <React key="react" />,
+                  <ReactNative key="reactnative" />,
+                  <NextJs key="nextjs" />,
+                  <GCloud key="gcloud" />,
+                  <Firebase key="firebase" />,
+                  <MaterialUi key="materialui" />,
+                  <Tamagui key="tamagui" />,
+                ]}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {['Agile Methods', 'Project Management', 'Software Design'].map(
+                  (skill) => (
+                    <div
+                      key={skill}
+                      className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                    >
+                      {skill}
+                    </div>
+                  )
+                )}
+              </div>
             </div>
           </div>
 
@@ -110,24 +133,42 @@ export const SkillsCv = () => {
               <span>Remote</span>
             </div>
             <p className="text-gray-300">Beschreibung TBD.</p>
-            <div className="flex flex-wrap gap-2">
-              {['React.js', 'JavaScript', 'Scrum', 'Code Review'].map(
-                (tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  <Javascript key="javascript" />,
+                  <Typescript key="typescript" />,
+                  <React key="react" />,
+                  <GCloud key="gcloud" />,
+                  <Cypress key="cypress" />,
+                  <MaterialUi key="materialui" />,
+                ]}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Projekt Management',
+                  'Software Design',
+                  'Scrum',
+                  'Code Review',
+                  'Google Objective and Key Results',
+                  'Teamleitung',
+                  'Mentoring Studenten',
+                ].map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
                   >
-                    {tech}
-                  </span>
-                )
-              )}
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <h3 className="text-2xl font-bold">
-                Frontend Entwickler - RobinHeat
+                Fullstack Entwickler - RobinHeat
               </h3>
               <span className="text-gray-500">Juni 2020–Jan. 2022</span>
             </div>
@@ -135,15 +176,36 @@ export const SkillsCv = () => {
               <span>Remote</span>
             </div>
             <p className="text-gray-300">Beschreibung TBD.</p>
-            <div className="flex flex-wrap gap-2">
-              {['React.js', 'React Native', 'JavaScript'].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  <Javascript key="javascript" />,
+                  <Typescript key="typescript" />,
+                  <React key="react" />,
+                  <ReactNative key="reactnative" />,
+                  <Firebase key="firebase" />,
+                  <Cypress key="cypress" />,
+                  <MaterialUi key="materialui" />,
+                ]}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Projekt Management',
+                  'Software Design',
+                  'Scrum',
+                  'Code Review',
+                  'Google Objective and Key Results',
+                  'Teamleitung',
+                  'Mentoring Studenten',
+                ].map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
