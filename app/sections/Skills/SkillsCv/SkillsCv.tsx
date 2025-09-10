@@ -4,18 +4,9 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import './styles.css'
 
-import { AnimatePresence, motion } from 'framer-motion'
-import { Award } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import { EffectCards, Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { GridItem } from '@/app/components/Grid'
-import { NextJsSvg, ReactSvg, TamaguiSvg } from '@/app/components/Icons'
-import { JavascriptSvg } from '@/app/components/Icons/Javascript'
-import { MaterialUiSvg } from '@/app/components/Icons/MaterialUi'
-import { TailwindCssSvg } from '@/app/components/Icons/TailwindCss'
-import { TypescriptSvg } from '@/app/components/Icons/Typescript'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
@@ -25,22 +16,6 @@ export const SkillsCv = () => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
-
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index: number, className: string) {
-      const width = index == 1 ? '60px' : '20px'
-      return (
-        '<span class="' +
-        className +
-        '", style="width: ' +
-        width +
-        '">' +
-        (index + 1) +
-        '</span>'
-      )
-    },
-  }
 
   useEffect(() => {
     if (isVisible) setCurrentSection('skillsCv')
@@ -56,339 +31,217 @@ export const SkillsCv = () => {
         <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
           Laufbahn
         </h2>
-        <Swiper
-          rewind
-          slidesPerView={1}
-          cssMode
-          navigation
-          pagination={pagination}
-          modules={[Pagination, Navigation]}
-          className="swiperSkillsCv"
-        >
-          <SwiperSlide>
-            <AnimatePresence mode="wait">
-              {
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex flex-col justify-between sm:py-8"
+        <div className="mt-8 flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">Freelancer</h3>
+              <span className="text-gray-500">Sept. 2024–Heute</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Nordrhein-Westfalen, Deutschland</span>
+              <span>•</span>
+              <span>Hybrid</span>
+            </div>
+            <p className="text-gray-300">
+              Freiberuflicher Fullstack-Entwickler für Web und Mobile.
+              Unterstützung von Entwicklungsteams sowohl in der aktiven
+              Entwicklung als auch als Team Lead. DevOps Awareness vorhanden :)
+              .
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                'React.js',
+                'Next.js',
+                'React Native',
+                'AWS',
+                'GCP',
+                'Firebase',
+                'Cypress',
+              ].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
                 >
-                  <div className="flex flex-1 gap-8 pr-16">
-                    <div className="flex-1">
-                      <p className="text-2xl lg:text-6xl lg:font-light">
-                        2008 - 2011
-                      </p>
-                    </div>
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
 
-                    <div className="flex-2">
-                      <p className="line-height-12 text-2xl">
-                        Beginn meiner Karriere als selbstständiger Entwickler
-                        mit Fokus auf Projektarbeit für Kunden inklusive
-                        Kundenbesuch, Beratung und Entwicklung vor Ort.
-                        <br />
-                        Da diese Phase gegen Ende während meines Studiums
-                        stattfand, habe ich die Möglichkeit gehabt praktische
-                        Erfahrungen in echten Projekten in der Wirtschaft zu
-                        sammeln. So konnte ich auch beginnen meine
-                        kommunikativen Fähigkeiten zu entwickeln.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 justify-around">
-                    <div className="flex flex-col items-center gap-16">
-                      <h4 className="text-6xl font-normal">Technologien</h4>
-                      <Swiper
-                        effect="cards"
-                        grabCursor
-                        modules={[EffectCards]}
-                        className="swiperSkillsCvTechnologies"
-                        onDrag={(e) => {
-                          e.stopPropagation()
-                        }}
-                      >
-                        <SwiperSlide>
-                          <JavascriptSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <p>PHP tbd</p>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <p>MySQL tbd</p>
-                        </SwiperSlide>
-                      </Swiper>
-                    </div>
-                    <div className="flex flex-col items-center gap-16">
-                      <h4 className="text-6xl font-normal">Kundenbenefits</h4>
-                      <Swiper
-                        effect="cards"
-                        grabCursor
-                        modules={[EffectCards]}
-                        className="swiperSkillsCvTechnologies"
-                        onDrag={(e) => {
-                          e.stopPropagation()
-                        }}
-                      >
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Kundenbetreuung und -beratung
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Tiefes Verständnis für Produktionsplanung und Best
-                              Practices
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Fähigkeit, komplexe technische Lösungen
-                              verständlich zu kommunizieren
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                      </Swiper>
-                    </div>
-                  </div>
-                </motion.div>
-              }
-            </AnimatePresence>
-          </SwiperSlide>
-          <SwiperSlide>
-            <AnimatePresence mode="wait">
-              {
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex flex-col justify-between gap-16 sm:py-8"
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">
+                Mitgründer - THE ANSWER GmbH
+              </h3>
+              <span className="text-gray-500">Jan. 2024–Heute</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Remote</span>
+            </div>
+            <p className="text-gray-300">
+              Technische Leitung und Entwickler der App Myla. Fokus auf
+              KI-gestützte Bildungstechnologie.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                'Mobile Development',
+                'Agile Methods',
+                'Project Management',
+                'Software Design',
+              ].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
                 >
-                  <div className="flex flex-1 gap-8 pr-16">
-                    <div className="flex-1">
-                      <p className="text-2xl lg:text-6xl lg:font-light">
-                        2011 - 2025
-                      </p>
-                    </div>
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
 
-                    <div className="flex-2">
-                      <p className="line-height-12 text-2xl">
-                        14 Jahre Erfahrung in verschiedenen Unternehmen, wo ich
-                        tiefe Einblicke in Unternehmensstrukturen und Teamarbeit
-                        gewonnen habe.
-                        <br />
-                        Durch die Zeit habe ich eine Menge Erfahrung in der
-                        Zusammenarbeit mit großen Unternehmen und die
-                        Möglichkeit gehabt meine Teamführungsfähigkeiten zu
-                        entwickeln.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 justify-around">
-                    <div className="flex flex-col items-center gap-16">
-                      <h4 className="text-6xl font-normal">Technologien</h4>
-                      <Swiper
-                        effect="cards"
-                        grabCursor
-                        modules={[EffectCards]}
-                        className="swiperSkillsCvTechnologies"
-                        onDrag={(e) => {
-                          e.stopPropagation()
-                        }}
-                      >
-                        <SwiperSlide>
-                          <ReactSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <TypescriptSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <p>C# tbd</p>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <p>Node.js tbd</p>
-                        </SwiperSlide>
-                      </Swiper>
-                    </div>
-                    <div className="flex flex-col items-center gap-16">
-                      <h4 className="text-6xl font-normal">Kundenbenefits</h4>
-                      <Swiper
-                        effect="cards"
-                        grabCursor
-                        modules={[EffectCards]}
-                        className="swiperSkillsCvTechnologies"
-                        onDrag={(e) => {
-                          e.stopPropagation()
-                        }}
-                      >
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Verantwortlich für die technische Leitung und
-                              Mentoring von Entwicklerteams
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Erfolgreiches globales Ausrollen einer neuen
-                              Benutzeroberfläche von 0 auf 100%
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Umfassende Erfahrung in der Zusammenarbeit mit
-                              großen Unternehmen
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Weiterbildung zur Teamführung
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Expertise in der Integration von modernen
-                              Technologien in bestehende Systeme
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                      </Swiper>
-                    </div>
-                  </div>
-                </motion.div>
-              }
-            </AnimatePresence>
-          </SwiperSlide>
-          <SwiperSlide>
-            <AnimatePresence mode="wait">
-              {
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex flex-col justify-between gap-16 sm:py-8"
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">
+                Frontend Entwickler / Servant Lead - DeepUp GmbH
+              </h3>
+              <span className="text-gray-500">Jan. 2022–Sept. 2024</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Remote</span>
+            </div>
+            <p className="text-gray-300">Beschreibung TBD.</p>
+            <div className="flex flex-wrap gap-2">
+              {['React.js', 'JavaScript', 'Scrum', 'Code Review'].map(
+                (tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+                  >
+                    {tech}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">
+                Frontend Entwickler - RobinHeat
+              </h3>
+              <span className="text-gray-500">Juni 2020–Jan. 2022</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Remote</span>
+            </div>
+            <p className="text-gray-300">Beschreibung TBD.</p>
+            <div className="flex flex-wrap gap-2">
+              {['React.js', 'React Native', 'JavaScript'].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
                 >
-                  <div className="flex flex-1 gap-8 pr-16">
-                    <div className="flex-1">
-                      <p className="text-2xl lg:text-6xl lg:font-light">
-                        2025 - heute
-                      </p>
-                    </div>
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
 
-                    <div className="flex-2">
-                      <p className="line-height-12 text-2xl">
-                        Selbstständigkeit wieder aktiviert um eigene Produkte zu
-                        entwickeln und für ausgewählte Projekte zu arbeiten und
-                        Impact zu erzielen.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 justify-around">
-                    <div className="flex flex-col items-center gap-16">
-                      <h4 className="text-6xl font-normal">Technologien</h4>
-                      <Swiper
-                        effect="cards"
-                        grabCursor
-                        modules={[EffectCards]}
-                        className="swiperSkillsCvTechnologies"
-                        onDrag={(e) => {
-                          e.stopPropagation()
-                        }}
-                      >
-                        <SwiperSlide>
-                          <TypescriptSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <NextJsSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <TamaguiSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <TailwindCssSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <MaterialUiSvg />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <p>Firebase tbd</p>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <p>AWS tbd</p>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <p>Docker tbd</p>
-                        </SwiperSlide>
-                      </Swiper>
-                    </div>
-                    <div className="flex flex-col items-center gap-16">
-                      <h4 className="text-6xl font-normal">Kundenbenefits</h4>
-                      <Swiper
-                        effect="cards"
-                        grabCursor
-                        modules={[EffectCards]}
-                        className="swiperSkillsCvTechnologies"
-                        onDrag={(e) => {
-                          e.stopPropagation()
-                        }}
-                      >
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Kundenbetreuung und -beratung
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Tiefes Verständnis für Produktionsplanung und Best
-                              Practices
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="font-sm flex flex-col items-center gap-2 p-4 text-center text-base">
-                            <Award className="h-16 w-16" />
-                            <p className="flex-1">
-                              Fähigkeit, komplexe technische Lösungen
-                              verständlich zu kommunizieren
-                            </p>
-                          </div>
-                        </SwiperSlide>
-                      </Swiper>
-                    </div>
-                  </div>
-                </motion.div>
-              }
-            </AnimatePresence>
-          </SwiperSlide>
-        </Swiper>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">
+                Frontend Entwickler - InVision Group
+              </h3>
+              <span className="text-gray-500">Jan. 2018–März 2020</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Düsseldorf, Deutschland</span>
+            </div>
+            <p className="text-gray-300">Beschreibung TBD.</p>
+            <div className="flex flex-wrap gap-2">
+              {['React.js', 'React Native', 'JavaScript', 'Scrum'].map(
+                (tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+                  >
+                    {tech}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">Weber Maschinenbau GmbH</h3>
+              <span className="text-gray-500">Aug. 2013–Dez. 2017</span>
+            </div>
+            <p className="text-gray-300">
+              Verschiedene Positionen: Frontend Entwickler, Teamleiter
+            </p>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Breidenbach, Hessen</span>
+            </div>
+            <p className="text-gray-300">Beschreibung TBD.</p>
+            <div className="flex flex-wrap gap-2">
+              {['React.js', 'JavaScript', 'Project Management'].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">
+                Software Entwickler - Innovapps GmbH
+              </h3>
+              <span className="text-gray-500">Aug. 2011–Aug. 2013</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Wiesbaden, Deutschland</span>
+            </div>
+            <p className="text-gray-300">Beschreibung TBD.</p>
+            <div className="flex flex-wrap gap-2">
+              {['JavaScript', 'Software Development'].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-bold">Software Entwickler - CSH</h3>
+              <span className="text-gray-500">Aug. 2008–Jan. 2011</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Seligenstadt</span>
+            </div>
+            <p className="text-gray-300">
+              Mitentwicklung für CAWA Framework (PHP based)
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {['PHP', 'JavaScript'].map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </GridItem>
     </SkillsWrapper>
   )

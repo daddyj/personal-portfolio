@@ -14,9 +14,10 @@ export default function Home() {
       <TopNavigation />
       <Hero />
       <Mindset />
-      <SkillsCv />
       <SkillsTech />
       <Projects />
+      <SkillsCv />
+      {/* <Testimonials /> */}
       <Contact />
     </NavigationWrapper>
   )

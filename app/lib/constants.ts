@@ -1,8 +1,9 @@
 export const sections = [
   'hero',
   'mindset',
-  'skillsCv',
   'skillsTech',
   'projects',
+  'skillsCv',
+  // 'testimonials',
   'contact',
 ] as const

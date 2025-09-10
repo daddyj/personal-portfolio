@@ -4,9 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { sections } from '@/app/lib/constants'
 import { HomeSection } from '@/app/lib/types'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
-import { cn } from '@/app/lib/utils'
 
-import { ArrowIcon } from './ArrowIcon'
 import { NavigationItemList } from './NavigationItemList'
 import { TopNavigationMobileSheet } from './TopNavigationMobileSheet'
 
@@ -63,6 +61,8 @@ export const TopNavigation = () => {
   }
 
   useEffect(() => {
+    console.log('currentSection', currentSection)
+    console.log('sections', sections)
     setCurrentIndex(sections.findIndex((section) => currentSection === section))
   }, [currentSection])
 
@@ -122,7 +122,7 @@ export const TopNavigation = () => {
         />
       </div>
 
-      <ArrowIcon
+      {/* <ArrowIcon
         className={cn(
           'lg:bottom-32 lg:left-4 lg:block',
           isFirstSection && 'pointer-events-none !animate-none !opacity-15'
@@ -137,7 +137,7 @@ export const TopNavigation = () => {
         )}
         direction="down"
         onClick={handleArrowDownClick}
-      />
+      /> */}
     </nav>
   )
 }

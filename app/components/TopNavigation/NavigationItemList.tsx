@@ -14,14 +14,10 @@ export const NavigationItemList = ({
 }: NavigationItemListProps) => {
   const pathname = usePathname()
 
+  console.log(currentSection)
+
   return (
     <>
-      <TopNavigationItem
-        isSelected={currentSection === 'projects'}
-        label="projekte"
-        onClick={onClick}
-        section="projects"
-      />
       <TopNavigationItem
         isSelected={currentSection === 'mindset'}
         label="warum ich?"
@@ -29,13 +25,29 @@ export const NavigationItemList = ({
         section="mindset"
       />
       <TopNavigationItem
-        isSelected={
-          currentSection && ['skillsTech', 'skillsCv'].includes(currentSection)
-        }
-        label="kompetenzen"
+        isSelected={currentSection === 'skillsTech'}
+        label="leistungen"
+        onClick={onClick}
+        section="skillsTech"
+      />
+      <TopNavigationItem
+        isSelected={currentSection === 'projects'}
+        label="projekte"
+        onClick={onClick}
+        section="projects"
+      />
+      <TopNavigationItem
+        isSelected={currentSection === 'skillsCv'}
+        label="laufbahn"
         onClick={onClick}
         section="skillsCv"
       />
+      {/* <TopNavigationItem
+        isSelected={currentSection === 'testimonials'}
+        label="referenzen"
+        onClick={onClick}
+        section="testimonials"
+      /> */}
       <TopNavigationItem
         isSelected={currentSection === 'contact'}
         label="kontakt"

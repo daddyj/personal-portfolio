@@ -55,7 +55,7 @@ export const Project = ({
       <div className="atropos-scale">
         <div className="atropos-rotate">
           <div className="atropos-inner">
-            <div className="flex h-full gap-16 border-1 border-blue-500/10 bg-black/80 px-16 py-8">
+            <div className="flex h-full gap-16 border-1 border-blue-500/20 bg-black/80 px-16 py-8">
               <div className="flex h-full flex-1 flex-col gap-4">
                 <h3 className="text-6xl font-thin">{title}</h3>
                 <h4 className="text-2xl font-normal">Kunde: {customer}</h4>
@@ -63,7 +63,6 @@ export const Project = ({
                 <div>
                   <Swiper
                     effect="cards"
-                    grabCursor
                     modules={[EffectCards]}
                     className="swiperSkillsCvTechnologies"
                     onDrag={(e) => {

@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="de" className="lg:overflow-hidden">
+    <html lang="de" className="">
       <body style={montserrat.style}>{children}</body>
     </html>
   )

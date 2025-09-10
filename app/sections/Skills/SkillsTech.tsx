@@ -1,5 +1,4 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { GridItem } from '@/app/components/Grid'
 import {
@@ -20,6 +19,8 @@ import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { TailwindCss } from '@/app/components/Icons/TailwindCss'
 import { Typescript } from '@/app/components/Icons/Typescript'
 import { PixelGlitchScreen } from '@/app/components/PixelGlitchScreen'
+import { useNavigationContext } from '@/app/lib/useNavigationContext'
+import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
 import { SkillItem } from './SkillItem'
 import { SkillsWrapper } from './SkillsWrapper'
@@ -113,31 +114,28 @@ type FilterCategory = 'all' | 'frontend' | 'backend'
 
 export const SkillsTech = () => {
   const [filter, setFilter] = useState<FilterCategory>('all')
-  const skillsWrapperRef = useRef<HTMLDivElement>(null)
+
   const filteredSkills = skills.filter((skill) =>
     filter === 'all' ? true : skill.categories.includes(filter)
   )
 
-  const isInView = useInView(skillsWrapperRef, {
-    once: false,
-    margin: '-100px 0px',
-  })
+  const gridWrapper = useRef<HTMLDivElement>(null)
+  const { setCurrentSection, setFullyVisible } = useNavigationContext()
+  const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
+
+  useEffect(() => {
+    if (isVisible) setCurrentSection('skillsTech')
+    if (isFullyVisible) setFullyVisible('skillsTech')
+  }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
   return (
     <>
       <SkillsWrapper
         skillsKey="skillsTech"
-        ref={skillsWrapperRef}
+        ref={gridWrapper}
         className="relative grid-rows-[auto_1fr]"
       >
-        <motion.div
-          initial={{ display: 'none' }}
-          animate={isInView ? { display: 'block' } : { display: 'none' }}
-          transition={{ duration: 0.1 }}
-          className="absolute top-0 left-0 h-full w-full"
-        >
-          <PixelGlitchScreen interval={240} gridSize={80} />
-        </motion.div>
+        <PixelGlitchScreen interval={240} gridSize={80} />
         <GridItem className="z-1 col-span-10 lg:col-span-3">
           <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
             Smart entwickeln.
