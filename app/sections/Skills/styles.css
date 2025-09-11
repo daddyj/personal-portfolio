@@ -1,0 +1,8 @@
+.swiperSkillsTech {
+  --swiper-pagination-bullet-inactive-color: var(--color-white);
+}
+
+.swiperSkillsTech.swiper {
+  width: 100%;
+  height: 100%;
+}

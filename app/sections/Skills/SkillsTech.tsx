@@ -1,4 +1,12 @@
+import 'atropos/css'
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/pagination'
+import './styles.css'
+
 import { useEffect, useRef, useState } from 'react'
+import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { GridItem } from '@/app/components/Grid'
 import {
@@ -184,7 +192,7 @@ export const SkillsTech = () => {
         ref={gridWrapper}
         className="relative grid-rows-[auto_1fr]"
       >
-        <PixelGlitchScreen interval={240} gridSize={80} />
+        <PixelGlitchScreen interval={240} gridSize={100} />
         <GridItem className="z-1 col-span-10 lg:col-span-3">
           <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
             Smart entwickeln.
@@ -203,63 +211,97 @@ export const SkillsTech = () => {
           </p>
         </GridItem>
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex flex-col gap-4">
-          <div className="flex justify-center gap-4">
-            <button
-              onClick={() => setFilter('all')}
-              className={`rounded-full px-6 py-2 transition-all ${
-                filter === 'all'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
-              }`}
-            >
-              Alle
-            </button>
-            <button
-              onClick={() => setFilter('frontend')}
-              className={`rounded-full px-6 py-2 transition-all ${
-                filter === 'frontend'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
-              }`}
-            >
-              Frontend
-            </button>
-            <button
-              onClick={() => setFilter('backend')}
-              className={`rounded-full px-6 py-2 transition-all ${
-                filter === 'backend'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
-              }`}
-            >
-              Backend
-            </button>
-            <button
-              onClick={() => setFilter('devops')}
-              className={`rounded-full px-6 py-2 transition-all ${
-                filter === 'devops'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
-              }`}
-            >
-              DevOps
-            </button>
-            <button
-              onClick={() => setFilter('tool')}
-              className={`rounded-full px-6 py-2 transition-all ${
-                filter === 'tool'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
-              }`}
-            >
-              Tools
-            </button>
-          </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
-            {filteredSkills.map((skill, index) => (
-              <SkillItem key={skill.name} skill={skill} index={index} />
-            ))}
-          </div>
+          <Swiper
+            effect={'coverflow'}
+            centeredSlides={true}
+            navigation
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={true}
+            modules={[EffectCoverflow, Pagination, Navigation]}
+            className="swiperSkillsTech"
+          >
+            <SwiperSlide>
+              <div className="flex h-full w-full flex-col items-center gap-2 rounded-2xl border-1 border-blue-500/20 p-8 text-4xl leading-20 text-white">
+                <div className="p-8">
+                  <h3 className="text-6xl font-bold text-blue-500">
+                    Leistungen
+                  </h3>
+                </div>
+                <p>Frontend Entwicklung</p>
+                <p>Fullstack Entwicklung</p>
+                <p>DevOps</p>
+                <p>Teamleitung</p>
+                <p>Agile Methoden</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex h-full w-full flex-col gap-2 rounded-2xl border-1 border-blue-500/20 p-8">
+                <div className="flex justify-center gap-4">
+                  <button
+                    onClick={() => setFilter('all')}
+                    className={`rounded-full px-6 py-2 transition-all ${
+                      filter === 'all'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+                    }`}
+                  >
+                    Alle
+                  </button>
+                  <button
+                    onClick={() => setFilter('frontend')}
+                    className={`rounded-full px-6 py-2 transition-all ${
+                      filter === 'frontend'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+                    }`}
+                  >
+                    Frontend
+                  </button>
+                  <button
+                    onClick={() => setFilter('backend')}
+                    className={`rounded-full px-6 py-2 transition-all ${
+                      filter === 'backend'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+                    }`}
+                  >
+                    Backend
+                  </button>
+                  <button
+                    onClick={() => setFilter('devops')}
+                    className={`rounded-full px-6 py-2 transition-all ${
+                      filter === 'devops'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+                    }`}
+                  >
+                    DevOps
+                  </button>
+                  <button
+                    onClick={() => setFilter('tool')}
+                    className={`rounded-full px-6 py-2 transition-all ${
+                      filter === 'tool'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:cursor-pointer hover:bg-gray-200'
+                    }`}
+                  >
+                    Tools
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
+                  {filteredSkills.map((skill, index) => (
+                    <SkillItem key={skill.name} skill={skill} index={index} />
+                  ))}
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </GridItem>
       </SkillsWrapper>
     </>
