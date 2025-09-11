@@ -62,10 +62,9 @@ export const Projects = () => {
           <SwiperSlide>
             <Project
               projectId="1"
-              url="https://fusionslab.de/"
               title="White Label CMS Lösung"
-              customer="tinkerbrain GmbH"
-              description="Mit dieser erweiterten, eigenen White Label CMS Lösung kann die Kundin pro Mandant ein eigenes Backend mit eigenen Inhalten verwalten und veröffentlichen und somit mehrere interne Tools ersetzen."
+              customer="anonym - auf Anfrage"
+              description="Mit dieser erweiterten, eigenen White Label CMS Lösung kann die Kundin pro Mandant ein eigenes Backend mit erweiterten Funktionen und eigenen Inhalten verwalten und veröffentlichen und somit mehrere interne Tools ersetzen."
               role="Fullstack Entwickler und DevOps Engineer für AWS Fargate Hosting"
               technologies={[
                 <Javascript key="javascript" />,
