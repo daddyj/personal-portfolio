@@ -17,7 +17,7 @@ export default function Impressum() {
         >
           Zurück zur Startseite
         </div>
-        <h1 className="mb-8 text-center text-4xl font-bold">Impressum</h1>
+        <h1 className="mb-8 text-4xl font-bold sm:text-center">Impressum</h1>
 
         <div className="space-y-6">
           <div className="space-y-2">

@@ -61,21 +61,21 @@ export const Contact = () => {
             <div className="block group-hover:hidden">
               <EnvelopeOpenIcon className="size-12 lg:size-24" />
             </div>
-            <p className="font-thin">E-Mail</p>
+            <p className="sm:font-thin">E-Mail</p>
           </a>
           <a
             href="tel:+4915258517763"
             className="group text-md lg:hover:text-7x flex items-center gap-4 uppercase transition-all duration-210 hover:bg-black hover:text-blue-500 lg:text-6xl"
           >
             <PhoneIcon className="size-12 rotate-136 transition-transform duration-210 group-hover:rotate-24 lg:size-24" />
-            <p className="font-thin">Telefon</p>
+            <p className="sm:font-thin">Telefon</p>
           </a>
           <a
             href="https://www.linkedin.com/in/acun-g%C3%BCrsoy-83b8ab139/"
             className="group text-md lg:hover:text-7x flex items-center gap-4 uppercase transition-all duration-210 hover:bg-black hover:text-blue-500 lg:text-6xl"
           >
             <GlobeIcon className="size-12 transition-transform duration-210 group-hover:rotate-180 lg:size-24" />
-            <p className="font-thin">LinkedIn</p>
+            <p className="sm:font-thin">LinkedIn</p>
           </a>
         </GridItem>
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-640 col-span-10 flex items-end justify-center text-sm lg:items-start lg:text-2xl">
