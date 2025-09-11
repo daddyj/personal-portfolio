@@ -3,6 +3,7 @@ import {
   EnvelopeOpenIcon,
   PhoneIcon,
 } from '@heroicons/react/24/outline'
+import { motion, useInView } from 'framer-motion'
 import { GlobeIcon } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 
@@ -17,6 +18,11 @@ export const Contact = () => {
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
 
+  const isInView = useInView(gridWrapper, {
+    once: false,
+    margin: '-100px 0px',
+  })
+
   useEffect(() => {
     if (isVisible) setCurrentSection('contact')
     if (isFullyVisible) setFullyVisible('contact')
@@ -29,11 +35,20 @@ export const Contact = () => {
         id="contact"
         className="relative h-screen grid-rows-[auto_auto_auto] lg:grid-rows-[auto_1fr_auto]"
       >
-        <PixelGlitchScreen interval={1260} gridSize={8} />
-        <PixelGlitchScreen interval={420} gridSize={30} />
-        <PixelGlitchScreen interval={840} gridSize={20} />
+        <motion.div
+          className="absolute inset-0 hidden sm:block"
+          animate={isInView ? 'visible' : 'hidden'}
+          initial="hidden"
+        >
+          <PixelGlitchScreen interval={1260} gridSize={8} />
+          <PixelGlitchScreen interval={420} gridSize={30} />
+          <PixelGlitchScreen interval={840} gridSize={20} />
+        </motion.div>
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex">
-          <p className="text-4xl lg:text-6xl">Kontaktmöglichkeiten</p>
+          <p className="hidden text-4xl sm:block lg:text-6xl">
+            Kontaktmöglichkeiten
+          </p>
+          <p className="block text-4xl sm:hidden lg:text-6xl">Kontakt</p>
         </GridItem>
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-440 col-span-10 flex flex-col gap-8 py-16 sm:col-span-10">
           <a

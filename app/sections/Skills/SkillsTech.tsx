@@ -4,7 +4,10 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 import './styles.css'
 
-import { useEffect, useRef, useState } from 'react'
+import { EyeSlashIcon } from '@heroicons/react/24/outline'
+import { motion, useInView } from 'framer-motion'
+import { EyeIcon } from 'lucide-react'
+import { ComponentType, useEffect, useRef, useState } from 'react'
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -49,13 +52,7 @@ interface SkillWithIcon {
   categories: TechCategory[]
 }
 
-interface SkillWithoutIcon {
-  name: string
-  hasIcon: false
-  categories: TechCategory[]
-}
-
-export type Skill = SkillWithIcon | SkillWithoutIcon
+export type Skill = SkillWithIcon
 
 const skills: Skill[] = [
   {
@@ -171,6 +168,7 @@ type FilterCategory = 'all' | 'frontend' | 'backend' | 'devops' | 'tool'
 
 export const SkillsTech = () => {
   const [filter, setFilter] = useState<FilterCategory>('all')
+  const [showAllTechSkills, setShowAllTechSkills] = useState(false) // for mobile only
 
   const filteredSkills = skills.filter((skill) =>
     filter === 'all' ? true : skill.categories.includes(filter)
@@ -179,6 +177,11 @@ export const SkillsTech = () => {
   const gridWrapper = useRef<HTMLDivElement>(null)
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const { isVisible, isFullyVisible } = useViewportIntersect(gridWrapper)
+
+  const isInView = useInView(gridWrapper, {
+    once: false,
+    margin: '-100px 0px',
+  })
 
   useEffect(() => {
     if (isVisible) setCurrentSection('skillsTech')
@@ -192,8 +195,14 @@ export const SkillsTech = () => {
         ref={gridWrapper}
         className="relative grid-rows-[auto_1fr]"
       >
-        <PixelGlitchScreen interval={750} gridSize={25} />
-        <PixelGlitchScreen interval={1250} gridSize={10} />
+        <motion.div
+          className="absolute inset-0 hidden sm:block"
+          animate={isInView ? 'visible' : 'hidden'}
+          initial="hidden"
+        >
+          <PixelGlitchScreen interval={750} gridSize={25} />
+          <PixelGlitchScreen interval={1250} gridSize={10} />
+        </motion.div>
         <GridItem className="z-1 col-span-10 lg:col-span-3">
           <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
             Smart entwickeln.
@@ -211,7 +220,7 @@ export const SkillsTech = () => {
             eine effiziente Bearbeitung der Themen.
           </p>
         </GridItem>
-        <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex flex-col gap-4">
+        <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 hidden flex-col gap-4 sm:flex">
           <Swiper
             effect={'coverflow'}
             centeredSlides={true}
@@ -304,16 +313,110 @@ export const SkillsTech = () => {
             </SwiperSlide>
           </Swiper>
         </GridItem>
+
+        <GridItem className="col-span-10 flex flex-col gap-2 sm:col-span-6 sm:hidden sm:gap-4">
+          <div className="flex h-full w-full flex-col items-center gap-2 rounded-2xl border-1 border-blue-500/20 p-8 text-xl leading-20 text-white">
+            <div className="p-8">
+              <h3 className="text-4xl font-bold text-blue-500">Leistungen</h3>
+            </div>
+            <p>Frontend Entwicklung</p>
+            <p>Fullstack Entwicklung</p>
+            <p>DevOps</p>
+            <p>Teamleitung</p>
+            <p>Agile Methoden</p>
+          </div>
+          <>
+            <SkillsGrid
+              skills={skills.map((skill) => skill.Icon)}
+              animated={!showAllTechSkills}
+            />
+            {!showAllTechSkills && (
+              <div
+                className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500 sm:text-xl"
+                onClick={() => setShowAllTechSkills(true)}
+              >
+                <EyeIcon className="size-10" />
+                <p>Alle anzeigen</p>
+              </div>
+            )}
+            {showAllTechSkills && (
+              <div
+                className="flex items-center gap-4 text-lg transition-all hover:cursor-pointer hover:text-blue-500"
+                onClick={() => setShowAllTechSkills(false)}
+              >
+                <EyeSlashIcon className="size-10" />
+                <p>Zufällig anzeigen</p>
+              </div>
+            )}
+          </>
+        </GridItem>
       </SkillsWrapper>
     </>
   )
 }
 
-// Add this to your global CSS file (app/globals.css)
-// .scrollbar-hide {
-//   -ms-overflow-style: none;  /* IE and Edge */
-//   scrollbar-width: none;  /* Firefox */
-// }
-// .scrollbar-hide::-webkit-scrollbar {
-//   display: none;  /* Chrome, Safari and Opera */
-// }
+interface SkillsGridProps {
+  skills: ComponentType<{
+    className?: string
+  }>[]
+  animated?: boolean
+}
+
+const SkillsGrid = ({ skills, animated = false }: SkillsGridProps) => {
+  const [currentAnimatedCells, setCurrentAnimatedCells] = useState<number[]>()
+  const animateTimer = useRef<NodeJS.Timeout>(null)
+
+  useEffect(() => {
+    if (animated) {
+      animateTimer.current = setInterval(() => {
+        const maxIndex = skills.length - 1
+        const nextCellIndex = Math.round((Math.random() * maxIndex) % maxIndex)
+        const nextCellIndex2 = Math.round((Math.random() * maxIndex) % maxIndex)
+        const nextCellIndex3 = Math.round((Math.random() * maxIndex) % maxIndex)
+        setCurrentAnimatedCells([nextCellIndex, nextCellIndex2, nextCellIndex3])
+      }, 1000)
+    }
+  }, [animated, skills.length])
+
+  useEffect(() => {
+    if (!animated && animateTimer.current) {
+      clearInterval(animateTimer.current)
+    }
+  }, [animated])
+
+  return (
+    <div className="animate-fade grid h-full grid-cols-3 grid-rows-5 gap-[1px] rounded-xl">
+      {skills.map((skill, index) => (
+        <SkillsItem
+          key={`skill-cell-${skill}`}
+          skill={skill}
+          render={
+            !animated || (animated && currentAnimatedCells?.includes(index))
+          }
+        />
+      ))}
+    </div>
+  )
+}
+
+const SkillsItem = ({
+  render = true,
+  skill,
+}: {
+  render?: boolean
+  skill: ComponentType<{
+    className?: string
+  }>
+}) => {
+  const animation = render ? 'animate-jump-in' : 'animate-jump-out'
+
+  const SkillIcon = skill
+
+  return (
+    <GridItem
+      className={`flex items-center justify-center border-1 border-blue-500/20 p-4 text-center text-xs font-bold text-white sm:p-0 sm:text-xl ${animation} animate-ease-in rounded-xl`}
+    >
+      <SkillIcon className="h-16 w-16" />
+    </GridItem>
+  )
+}

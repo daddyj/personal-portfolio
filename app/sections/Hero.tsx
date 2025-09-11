@@ -1,3 +1,4 @@
+import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
 import { Grid, GridItem } from '@/app/components/Grid'
@@ -16,6 +17,11 @@ export const Hero = () => {
     if (isFullyVisible) setFullyVisible('hero')
   }, [isFullyVisible, isVisible, setCurrentSection, setFullyVisible])
 
+  const isInView = useInView(gridWrapper, {
+    once: false,
+    margin: '-100px 0px',
+  })
+
   return (
     <>
       <Grid
@@ -23,9 +29,15 @@ export const Hero = () => {
         id="hero"
         className="rows-[auto_auto_auto] h-screen"
       >
-        <PixelGlitchScreen interval={42} gridSize={80} />
-        <PixelGlitchScreen interval={420} gridSize={30} />
-        <PixelGlitchScreen interval={840} gridSize={20} />
+        <motion.div
+          className="absolute inset-0"
+          animate={isInView ? 'visible' : 'hidden'}
+          initial="hidden"
+        >
+          <PixelGlitchScreen interval={42} gridSize={80} className="" />
+          <PixelGlitchScreen interval={420} gridSize={30} />
+          <PixelGlitchScreen interval={840} gridSize={20} />
+        </motion.div>
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex items-center justify-center lg:justify-start">
           <div
             className="h-40 w-40 rounded-full bg-blue-500 bg-center bg-no-repeat lg:h-56 lg:w-56"
