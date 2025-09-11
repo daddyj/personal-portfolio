@@ -10,6 +10,8 @@ import { Grid, GridItem } from '@/app/components/Grid'
 import { useNavigationContext } from '@/app/lib/useNavigationContext'
 import { useViewportIntersect } from '@/app/lib/useViewportIntersect'
 
+import { PixelGlitchScreen } from '../components/PixelGlitchScreen'
+
 export const Contact = () => {
   const { setCurrentSection, setFullyVisible } = useNavigationContext()
   const gridWrapper = useRef<HTMLDivElement>(null)
@@ -27,6 +29,9 @@ export const Contact = () => {
         id="contact"
         className="relative h-screen grid-rows-[auto_auto_auto] lg:grid-rows-[auto_1fr_auto]"
       >
+        <PixelGlitchScreen interval={1260} gridSize={8} />
+        <PixelGlitchScreen interval={420} gridSize={30} />
+        <PixelGlitchScreen interval={840} gridSize={20} />
         <GridItem className="animate-fade-down animate-once animate-duration-1200 animate-ease-out animate-delay-240 col-span-10 flex">
           <p className="text-4xl lg:text-6xl">Kontaktmöglichkeiten</p>
         </GridItem>

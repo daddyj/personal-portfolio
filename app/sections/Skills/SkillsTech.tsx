@@ -192,7 +192,8 @@ export const SkillsTech = () => {
         ref={gridWrapper}
         className="relative grid-rows-[auto_1fr]"
       >
-        <PixelGlitchScreen interval={240} gridSize={100} />
+        <PixelGlitchScreen interval={750} gridSize={25} />
+        <PixelGlitchScreen interval={1250} gridSize={10} />
         <GridItem className="z-1 col-span-10 lg:col-span-3">
           <h2 className="text-4xl font-bold lg:text-6xl lg:font-normal">
             Smart entwickeln.
