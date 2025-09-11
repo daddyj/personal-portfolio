@@ -9,8 +9,10 @@ import { useEffect, useRef } from 'react'
 import { GridItem } from '@/app/components/Grid'
 import { Firebase, Tamagui } from '@/app/components/Icons'
 import { Aws } from '@/app/components/Icons/Aws'
+import { Css } from '@/app/components/Icons/CSS'
 import { Cypress } from '@/app/components/Icons/Cypress'
 import { GCloud } from '@/app/components/Icons/GCloud'
+import { Html } from '@/app/components/Icons/Html'
 import { Javascript } from '@/app/components/Icons/Javascript'
 import { MaterialUi } from '@/app/components/Icons/MaterialUi'
 import { NextJs } from '@/app/components/Icons/Nextjs'
@@ -220,17 +222,33 @@ export const SkillsCv = () => {
               <span>Düsseldorf, Deutschland</span>
             </div>
             <p className="text-gray-300">Beschreibung TBD.</p>
-            <div className="flex flex-wrap gap-2">
-              {['React.js', 'React Native', 'JavaScript', 'Scrum'].map(
-                (tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  <Javascript key="javascript" />,
+                  <Typescript key="typescript" />,
+                  <React key="react" />,
+                  <ReactNative key="reactnative" />,
+                  <Cypress key="cypress" />,
+                  <MaterialUi key="materialui" />,
+                ]}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Software Design',
+                  'Scrum',
+                  'Code Review',
+                  'Google Objective and Key Results',
+                  'The Toyota Way',
+                ].map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
                   >
-                    {tech}
-                  </span>
-                )
-              )}
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -246,15 +264,24 @@ export const SkillsCv = () => {
               <span>Breidenbach, Hessen</span>
             </div>
             <p className="text-gray-300">Beschreibung TBD.</p>
-            <div className="flex flex-wrap gap-2">
-              {['React.js', 'JavaScript', 'Project Management'].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  <Javascript key="javascript" />,
+                  <React key="react" />,
+                  <Cypress key="cypress" />,
+                ]}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {['Projekt Management', 'Teamleitung', 'Scrum'].map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -269,15 +296,24 @@ export const SkillsCv = () => {
               <span>Wiesbaden, Deutschland</span>
             </div>
             <p className="text-gray-300">Beschreibung TBD.</p>
-            <div className="flex flex-wrap gap-2">
-              {['JavaScript', 'Software Development'].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  <Javascript key="javascript" />,
+                  <Html key="html" />,
+                  <Css key="css" />,
+                ]}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {['Projekt Management'].map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -292,15 +328,25 @@ export const SkillsCv = () => {
             <p className="text-gray-300">
               Mitentwicklung für CAWA Framework (PHP based)
             </p>
-            <div className="flex flex-wrap gap-2">
-              {['PHP', 'JavaScript'].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap gap-2">
+                {[
+                  <Php key="php" />,
+                  <Html key="html" />,
+                  <Css key="css" />,
+                  <Javascript key="javascript" />,
+                ]}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {['Projekt Management'].map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
