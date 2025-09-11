@@ -101,7 +101,7 @@ export const Projects = () => {
               title="Queer*link"
               customer="Queer*link"
               url="https://www.queerlink.org/"
-              description="Queer*Link ist eine Non-Profit Organisation, die sich für die psychosoziale Gesundheit und das Wohlbefinden von LGBTQIA+-Personen und deren Angehörige einsetzt. Ziel hier ist es eine digitale Präsenz zu schaffen und BLABLABLA."
+              description="Queer*Link ist eine Non-Profit Organisation, die sich für die psychosoziale Gesundheit und das Wohlbefinden von LGBTQIA+-Personen und deren Angehörige einsetzt. Ziel hier ist es eine digitale Präsenz zu schaffen."
               role="Webentwickler für Queer*link"
               technologies={[
                 <React key="react" />,
