@@ -30,7 +30,7 @@ export const Hero = () => {
         className="rows-[auto_auto_auto] h-screen"
       >
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden sm:block"
           animate={isInView ? 'visible' : 'hidden'}
           initial="hidden"
         >

@@ -88,9 +88,9 @@ export const Projects = () => {
                 <ReactNative key="react-native" />,
                 <Firebase key="firebase" />,
                 <Tamagui key="tamagui" />,
-                <GCloud key="gcloud" />,
                 <NextJs key="nextjs" />,
                 <React key="react" />,
+                <GCloud key="gcloud" />,
               ]}
               images={['/myla-3.png', '/myla-2.png', '/myla-1.png']}
             />

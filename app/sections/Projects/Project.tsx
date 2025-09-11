@@ -51,23 +51,27 @@ export const Project = ({
             <div className="relative flex h-full gap-16 border-1 border-blue-500/20 bg-black/80 px-16 py-8">
               <div className="flex h-full flex-1 flex-col gap-4">
                 <div className="flex items-center gap-4">
-                  <h3 className="text-6xl font-thin">{title}</h3>
+                  <h3 className="text-4xl font-thin sm:text-6xl">{title}</h3>
                   {url && (
                     <a href={url} target="_blank" rel="noopener noreferrer">
                       <ExternalLink />
                     </a>
                   )}
                 </div>
-                <h4 className="text-2xl font-normal">Kunde: {customer}</h4>
-                <p className="flex-1 text-2xl">Beschreibung: {description}</p>
-                <p className="flex-1 text-2xl">Rolle: {role}</p>
+                <h4 className="text-xl font-normal sm:text-2xl">
+                  Kunde: {customer}
+                </h4>
+                <p className="flex-1 text-base sm:text-2xl">
+                  Beschreibung: {description}
+                </p>
+                <p className="flex-1 text-base sm:text-2xl">Rolle: {role}</p>
                 <div className="flex flex-wrap gap-8">
                   {technologies.map((technology) => (
                     <div key={technology.key}>{technology}</div>
                   ))}
                 </div>
               </div>
-              <div className="flex h-full w-1/2 flex-1 flex-col justify-center">
+              <div className="hidden h-full w-1/2 flex-1 flex-col justify-center sm:flex">
                 <Swiper
                   cssMode
                   spaceBetween={30}
