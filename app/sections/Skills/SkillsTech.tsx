@@ -315,15 +315,15 @@ export const SkillsTech = () => {
         </GridItem>
 
         <GridItem className="col-span-10 flex flex-col gap-2 sm:col-span-6 sm:hidden sm:gap-4">
-          <div className="flex h-full w-full flex-col items-center gap-2 rounded-2xl border-1 border-blue-500/20 p-8 text-xl leading-20 text-white">
-            <div className="p-8">
+          <div className="flex h-full w-full flex-col gap-2 rounded-2xl border-1 border-blue-500/20 p-8 text-xl text-white sm:items-center sm:leading-20">
+            <div className="sm:p-8">
               <h3 className="text-4xl font-bold text-blue-500">Leistungen</h3>
             </div>
-            <p>Frontend Entwicklung</p>
-            <p>Fullstack Entwicklung</p>
+            <p>Frontend&shy; Entwicklung</p>
+            <p>Fullstack&shy; Entwicklung</p>
             <p>DevOps</p>
-            <p>Teamleitung</p>
-            <p>Agile Methoden</p>
+            <p>Team&shy;leitung</p>
+            <p>Agile&shy; Methoden</p>
           </div>
           <>
             <SkillsGrid
