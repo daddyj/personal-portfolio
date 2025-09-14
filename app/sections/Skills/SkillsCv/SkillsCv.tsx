@@ -7,7 +7,7 @@ import './styles.css'
 import { useEffect, useRef } from 'react'
 
 import { GridItem } from '@/app/components/Grid'
-import { Firebase, Tamagui } from '@/app/components/Icons'
+import { Canvas, Firebase, Tamagui } from '@/app/components/Icons'
 import { Aws } from '@/app/components/Icons/Aws'
 import { CSharp } from '@/app/components/Icons/CSharp'
 import { Css } from '@/app/components/Icons/CSS'
@@ -70,14 +70,34 @@ export const SkillsCv = () => {
                 <React key="react" />,
                 <NextJs key="nextjs" />,
                 <ReactNative key="reactnative" />,
-                <Aws key="aws" />,
                 <GCloud key="gcloud" />,
                 <Firebase key="firebase" />,
+                <Aws key="aws" />,
+                <MaterialUi key="materialui" />,
+                <Tamagui key="tamagui" />,
                 <Cypress key="cypress" />,
                 <Php key="php" />,
-                <Tamagui key="tamagui" />,
-                <MaterialUi key="materialui" />,
+                <Html key="html" />,
+                <Css key="css" />,
+                <Canvas key="canvas" />,
               ]}
+            </div>
+            <div className="flex flex-wrap gap-4 sm:gap-2">
+              {[
+                'Agile Methodiken',
+                'Projektmanagement',
+                'Softwaredesign',
+                'Teamleitung',
+                'Mentoring',
+                'Code Review',
+              ].map((skill) => (
+                <div
+                  key={skill}
+                  className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                >
+                  {skill}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -105,8 +125,8 @@ export const SkillsCv = () => {
                   <Javascript key="javascript" />,
                   <Typescript key="typescript" />,
                   <React key="react" />,
-                  <ReactNative key="reactnative" />,
                   <NextJs key="nextjs" />,
+                  <ReactNative key="reactnative" />,
                   <GCloud key="gcloud" />,
                   <Firebase key="firebase" />,
                   <MaterialUi key="materialui" />,
@@ -114,16 +134,18 @@ export const SkillsCv = () => {
                 ]}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
-                {['Agile Methods', 'Project Management', 'Software Design'].map(
-                  (skill) => (
-                    <div
-                      key={skill}
-                      className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
-                    >
-                      {skill}
-                    </div>
-                  )
-                )}
+                {[
+                  'Agile Methodiken',
+                  'Projektmanagement',
+                  'Softwaredesign',
+                ].map((skill) => (
+                  <div
+                    key={skill}
+                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                  >
+                    {skill}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -160,13 +182,13 @@ export const SkillsCv = () => {
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
                 {[
-                  'Projekt Management',
-                  'Software Design',
+                  'Projektmanagement',
+                  'Softwaredesign',
                   'Scrum',
                   'Code Review',
-                  'Google Objective and Key Results',
+                  'Google Objective and Key Results (OKRs)',
                   'Teamleitung',
-                  'Mentoring Studenten',
+                  'Mentoring',
                 ].map((skill) => (
                   <div
                     key={skill}
@@ -209,22 +231,16 @@ export const SkillsCv = () => {
                 ]}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
-                {[
-                  'Projekt Management',
-                  'Software Design',
-                  'Scrum',
-                  'Code Review',
-                  'Google Objective and Key Results',
-                  'Teamleitung',
-                  'Mentoring Studenten',
-                ].map((skill) => (
-                  <div
-                    key={skill}
-                    className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
-                  >
-                    {skill}
-                  </div>
-                ))}
+                {['Projektmanagement', 'Softwaredesign', 'Code Review'].map(
+                  (skill) => (
+                    <div
+                      key={skill}
+                      className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
+                    >
+                      {skill}
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -252,8 +268,10 @@ export const SkillsCv = () => {
               <div className="flex flex-wrap gap-4 sm:gap-2">
                 {[
                   <Javascript key="javascript" />,
-                  <Typescript key="typescript" />,
+                  <Html key="html" />,
+                  <Css key="css" />,
                   <React key="react" />,
+                  <Typescript key="typescript" />,
                   <ReactNative key="reactnative" />,
                   <Cypress key="cypress" />,
                   <MaterialUi key="materialui" />,
@@ -261,7 +279,7 @@ export const SkillsCv = () => {
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
                 {[
-                  'Software Design',
+                  'Softwaredesign',
                   'Scrum',
                   'Code Review',
                   'Google Objective and Key Results',
@@ -303,12 +321,14 @@ export const SkillsCv = () => {
               <div className="flex flex-wrap gap-4 sm:gap-2">
                 {[
                   <Javascript key="javascript" />,
+                  <Html key="html" />,
+                  <Css key="css" />,
                   <React key="react" />,
                   <Cypress key="cypress" />,
                 ]}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
-                {['Projekt Management', 'Teamleitung', 'Scrum'].map((skill) => (
+                {['Projektmanagement', 'Teamleitung', 'Scrum'].map((skill) => (
                   <div
                     key={skill}
                     className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
@@ -348,7 +368,7 @@ export const SkillsCv = () => {
                 ]}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
-                {['Projekt Management'].map((skill) => (
+                {['Projektmanagement'].map((skill) => (
                   <div
                     key={skill}
                     className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"
@@ -380,14 +400,14 @@ export const SkillsCv = () => {
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap gap-4 sm:gap-2">
                 {[
-                  <Php key="php" />,
+                  <Javascript key="javascript" />,
                   <Html key="html" />,
                   <Css key="css" />,
-                  <Javascript key="javascript" />,
+                  <Php key="php" />,
                 ]}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
-                {['Projekt Management'].map((skill) => (
+                {['Projektmanagement'].map((skill) => (
                   <div
                     key={skill}
                     className="flex items-center rounded-full bg-blue-500/20 px-4 py-2 text-sm text-white"

@@ -3,12 +3,7 @@ import { IconProps } from './types'
 
 export function Php(props: IconProps) {
   return (
-    <BaseIcon
-      href="https://php.net/"
-      name="Docker"
-      viewBox="0 0 32 32"
-      {...props}
-    >
+    <BaseIcon href="https://php.net/" name="PHP" viewBox="0 0 32 32" {...props}>
       <defs>
         <radialGradient
           id="SVG96V4AedI"

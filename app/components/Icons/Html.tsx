@@ -5,7 +5,7 @@ export function Html(props: IconProps) {
   return (
     <BaseIcon
       href="https://developer.mozilla.org/en-US/docs/Web/HTML"
-      name="Html"
+      name="HTML"
       viewBox="0 0 32 32"
       {...props}
     >

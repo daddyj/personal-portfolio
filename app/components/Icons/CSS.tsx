@@ -5,7 +5,7 @@ export function Css(props: IconProps) {
   return (
     <BaseIcon
       href="https://developer.mozilla.org/en-US/docs/Web/CSS"
-      name="Css"
+      name="CSS"
       viewBox="0 0 32 32"
       {...props}
     >
