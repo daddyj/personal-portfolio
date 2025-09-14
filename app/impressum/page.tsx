@@ -22,12 +22,12 @@ export default function Impressum() {
         <div className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">Acun Gürsoy</h2>
-            <p className="text-gray-600">Freiberuflicher Softwareentwickler</p>
+            <p className="text-gray-400">Freiberuflicher Softwareentwickler</p>
           </div>
 
           <div className="space-y-2">
             <h2 className="text-xl font-semibold">Anschrift</h2>
-            <p className="text-gray-600">
+            <p className="text-gray-400">
               Mauerstrasse 40
               <br />
               57334 Bad Laasphe
@@ -38,7 +38,7 @@ export default function Impressum() {
 
           <div className="space-y-2">
             <h2 className="text-xl font-semibold">Kontakt</h2>
-            <div className="text-gray-600">
+            <div className="text-gray-400">
               <p>
                 E-Mail:{' '}
                 <a

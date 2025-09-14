@@ -50,9 +50,9 @@ export const SkillsCv = () => {
           <div className="flex flex-col gap-4 border-b-2 border-b-blue-500/20 pb-8">
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center sm:gap-0">
               <h3 className="text-2xl font-bold">Freelancer</h3>
-              <span className="text-gray-500">Sept. 2024–Heute</span>
+              <span className="font-bold">Sept. 2024–Heute</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Nordrhein-Westfalen, Deutschland</span>
               <span>•</span>
               <span>Hybrid</span>
@@ -106,9 +106,9 @@ export const SkillsCv = () => {
               <h3 className="text-2xl font-bold">
                 Mitgründer - THE ANSWER GmbH
               </h3>
-              <span className="text-gray-500">Jan. 2024–Heute</span>
+              <span className="font-bold">Jan. 2024–Heute</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Remote</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
@@ -155,9 +155,9 @@ export const SkillsCv = () => {
               <h3 className="text-2xl font-bold">
                 Frontend Entwickler / Servant Lead - DeepUp GmbH
               </h3>
-              <span className="text-gray-500">Jan. 2022–Sept. 2024</span>
+              <span className="font-bold">Jan. 2022–Sept. 2024</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Remote</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
@@ -206,9 +206,9 @@ export const SkillsCv = () => {
               <h3 className="text-2xl font-bold">
                 Fullstack Entwickler - RobinHeat
               </h3>
-              <span className="text-gray-500">Juni 2020–Jan. 2022</span>
+              <span className="font-bold">Juni 2020–Jan. 2022</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Remote</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
@@ -250,9 +250,9 @@ export const SkillsCv = () => {
               <h3 className="text-2xl font-bold">
                 Frontend Entwickler - InVision Group
               </h3>
-              <span className="text-gray-500">Jan. 2018–März 2020</span>
+              <span className="font-bold">Jan. 2018–März 2020</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Düsseldorf, Deutschland</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
@@ -299,12 +299,12 @@ export const SkillsCv = () => {
           <div className="flex flex-col gap-4 border-b-2 border-b-blue-500/20 pb-8">
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center sm:gap-0">
               <h3 className="text-2xl font-bold">Weber Maschinenbau GmbH</h3>
-              <span className="text-gray-500">Aug. 2013–Dez. 2017</span>
+              <span className="font-bold">Aug. 2013–Dez. 2017</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
               Verschiedene Positionen: Frontend Entwickler, Teamleiter
             </p>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Breidenbach, Hessen</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
@@ -345,9 +345,9 @@ export const SkillsCv = () => {
               <h3 className="text-2xl font-bold">
                 Software Entwickler - Innovapps GmbH
               </h3>
-              <span className="text-gray-500">Aug. 2011–Aug. 2013</span>
+              <span className="font-bold">Aug. 2011–Aug. 2013</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Wiesbaden, Deutschland</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
@@ -383,9 +383,9 @@ export const SkillsCv = () => {
           <div className="flex flex-col gap-4 border-b-2 border-b-blue-500/20 pb-8">
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center sm:gap-0">
               <h3 className="text-2xl font-bold">Software Entwickler - CSH</h3>
-              <span className="text-gray-500">Aug. 2008–Jan. 2011</span>
+              <span className="font-bold">Aug. 2008–Jan. 2011</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-sm font-bold">
               <span>Seligenstadt</span>
             </div>
             <p className="text-gray-300 sm:pr-48">
