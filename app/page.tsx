@@ -6,6 +6,7 @@ import { Contact, Hero, Projects } from './sections'
 import { Mindset } from './sections/Mindset'
 import { SkillsCv } from './sections/Skills/SkillsCv'
 import { SkillsTech } from './sections/Skills/SkillsTech'
+import { Testimonials } from './sections/Testimonials'
 import { NavigationWrapper } from './wrappers/NavigationWrapper'
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
       <SkillsTech />
       <Projects />
       <SkillsCv />
-      {/* <Testimonials /> */}
+      <Testimonials />
       <Contact />
     </NavigationWrapper>
   )

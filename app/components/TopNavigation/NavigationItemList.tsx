@@ -42,12 +42,12 @@ export const NavigationItemList = ({
         onClick={onClick}
         section="skillsCv"
       />
-      {/* <TopNavigationItem
+      <TopNavigationItem
         isSelected={currentSection === 'testimonials'}
-        label="referenzen"
+        label="meinungen"
         onClick={onClick}
         section="testimonials"
-      /> */}
+      />
       <TopNavigationItem
         isSelected={currentSection === 'contact'}
         label="kontakt"
