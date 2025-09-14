@@ -9,12 +9,14 @@ import { useEffect, useRef } from 'react'
 import { GridItem } from '@/app/components/Grid'
 import { Firebase, Tamagui } from '@/app/components/Icons'
 import { Aws } from '@/app/components/Icons/Aws'
+import { CSharp } from '@/app/components/Icons/CSharp'
 import { Css } from '@/app/components/Icons/CSS'
 import { Cypress } from '@/app/components/Icons/Cypress'
 import { GCloud } from '@/app/components/Icons/GCloud'
 import { Html } from '@/app/components/Icons/Html'
 import { Javascript } from '@/app/components/Icons/Javascript'
 import { MaterialUi } from '@/app/components/Icons/MaterialUi'
+import { MySQL } from '@/app/components/Icons/MySQL'
 import { NextJs } from '@/app/components/Icons/Nextjs'
 import { Php } from '@/app/components/Icons/Php'
 import { React } from '@/app/components/Icons/React'
@@ -341,6 +343,8 @@ export const SkillsCv = () => {
                   <Javascript key="javascript" />,
                   <Html key="html" />,
                   <Css key="css" />,
+                  <CSharp key="csharp" />,
+                  <MySQL key="mysql" />,
                 ]}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-2">
