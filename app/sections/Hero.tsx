@@ -44,7 +44,7 @@ export const Hero = () => {
             src="/skills-cv-section-me.jpeg"
             alt="Acun Gürsoy"
             loading="eager"
-            sizes="128px"
+            sizes="(max-width: 1200px) 128px, 512px"
             className="rounded-full object-cover"
             fill
           />
