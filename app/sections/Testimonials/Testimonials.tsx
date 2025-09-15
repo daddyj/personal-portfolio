@@ -2,6 +2,7 @@
 
 import 'swiper/css'
 import 'swiper/css/pagination'
+import './styles.css'
 
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef } from 'react'
@@ -52,11 +53,11 @@ export const Testimonials = () => {
             spaceBetween={30}
             slidesPerView={1}
             pagination
-            // autoplay={{
-            //   delay: 5000,
-            //   disableOnInteraction: false,
-            // }}
-            className="h-[400px] w-full"
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            className="swiperTestimonials h-[400px] w-full"
             navigation
           >
             {testimonials.map((testimonial, index) => (
