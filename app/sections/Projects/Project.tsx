@@ -42,13 +42,13 @@ export const Project = ({
 
   return (
     <div
-      className={`atropos project-${projectId} overflow-hidden rounded-2xl`}
+      className={`atropos project-${projectId} relative rounded-2xl`}
       style={{ height: '100%', width: '100%' }}
     >
       <div className="atropos-scale">
         <div className="atropos-rotate">
           <div className="atropos-inner">
-            <div className="relative flex h-full gap-16 border-1 border-blue-500/20 bg-black/80 px-10 py-8 sm:px-16">
+            <div className="relative flex h-full gap-16 rounded-2xl border-1 border-blue-500/20 bg-black/80 px-10 py-8 sm:px-16">
               <div className="flex h-full flex-1 flex-col gap-4">
                 <div className="flex items-center gap-4">
                   <h3 className="text-4xl font-thin sm:text-6xl">{title}</h3>
@@ -91,8 +91,8 @@ export const Project = ({
                         <Image
                           src={imageUrl}
                           alt={imageUrl}
-                          width={1920}
-                          height={1080}
+                          fill
+                          sizes="100vw"
                           className="h-full w-full rounded-2xl"
                         />
                       </div>
@@ -100,21 +100,22 @@ export const Project = ({
                   ))}
                 </Swiper>
               </div>
-              {hasAi && (
-                <div className="absolute right-0 bottom-0 z-10">
-                  <Image
-                    key="certified"
-                    src="/certified.png"
-                    alt="certified"
-                    width={100}
-                    height={100}
-                  />
-                </div>
-              )}
             </div>
           </div>
         </div>
       </div>
+      {hasAi && (
+        <div className="absolute right-0 -bottom-16 z-1 h-40 w-40">
+          <Image
+            key="certified"
+            src="/certified.png"
+            alt="certified"
+            sizes="400px"
+            fill
+            className="rounded-full"
+          />
+        </div>
+      )}
     </div>
   )
 }
