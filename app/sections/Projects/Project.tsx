@@ -53,7 +53,12 @@ export const Project = ({
                 <div className="flex items-center gap-4">
                   <h3 className="text-4xl font-thin sm:text-6xl">{title}</h3>
                   {url && (
-                    <a href={url} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Externer Link zu Projekt"
+                    >
                       <ExternalLink />
                     </a>
                   )}
