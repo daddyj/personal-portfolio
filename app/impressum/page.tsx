@@ -11,12 +11,12 @@ export default function Impressum() {
   return (
     <div className="flex min-h-screen flex-col items-center px-4 py-16 sm:px-6 lg:px-8">
       <div className="w-full max-w-3xl space-y-8">
-        <div
+        <button
           onClick={handleGoBack}
           className="text-blue-600 transition-colors hover:cursor-pointer hover:text-blue-800"
         >
           Zurück zur Startseite
-        </div>
+        </button>
         <h1 className="mb-8 text-4xl font-bold sm:text-center">Impressum</h1>
 
         <div className="space-y-6">
