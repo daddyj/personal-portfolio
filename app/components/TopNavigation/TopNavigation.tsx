@@ -106,15 +106,6 @@ export const TopNavigation = () => {
         <p>acun gürsoy</p>
       </div>
 
-      <div className="flex">
-        <div className="flex flex-1 items-center gap-2 rounded-full border-1 p-2 lg:px-4">
-          <div className="flex h-4 w-4 animate-pulse rounded-full bg-orange-500" />
-          <p className="text-center text-xs lg:text-sm">
-            In Teilzeit verfügbar
-          </p>
-        </div>
-      </div>
-
       <div className="hidden flex-1 justify-end gap-4 lg:flex">
         <NavigationItemList
           onClick={handleNavigationItemClick}
